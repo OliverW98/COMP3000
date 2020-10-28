@@ -1,6 +1,7 @@
 <?php
 
-include $_SERVER['DOCUMENT_ROOT']."/src/DBFunction.php";
+include $_SERVER['DOCUMENT_ROOT']."/COMP3000/GymBuddy/src/DBFunctions.php";
+
 
 ?>
 
@@ -15,6 +16,6 @@ include $_SERVER['DOCUMENT_ROOT']."/src/DBFunction.php";
 
 </head>
 <body>
-
+<a href="createUserPage.php">Create User Page</a>
 </body>
 </html>

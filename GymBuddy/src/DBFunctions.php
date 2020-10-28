@@ -1,4 +1,5 @@
 <?php
+
 const DB_SERVER = "Proj-mysql.uopnet.plymouth.ac.uk";
 const DB_USER = "COMP3000_OWilkes";
 const DB_PASSWORD = 'FdpA151*';
@@ -18,7 +19,17 @@ function getConnection()
     return $dbConnection;
 }
 
-if(getConnection() != null){
-    var_dump("connected");
+function checkIfUserExists($userName, $email){
+   $result = getConnection()->query("select userID from users where userName = '". $userName."' or email = '".$email."' ");
+    if($result->rowCount() == 0){
+        return false;
+    } else{
+        return true;
+    }
 }
-?>
+
+function createUserHalf($userName, $email, $password)
+{
+    $statement = getConnection()->prepare("CALL createUserHalf ('" . $userName . "','" . $email . "','" . $password . "')");
+    $statement->execute();
+}
