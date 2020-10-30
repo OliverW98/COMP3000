@@ -33,3 +33,8 @@ function createUserHalf($userName, $email, $password)
     $statement = getConnection()->prepare("CALL createUserHalf ('" . $userName . "','" . $email . "','" . $password . "')");
     $statement->execute();
 }
+
+function createUserFull($userName, $email, $password , $weight, $height, $dob , $gender){
+    $statement = getConnection()->prepare("CALL createUserFull ('" . $userName . "','" . $email . "','" . $password . "','" . $weight . "','" . $height . "','" . $dob . "','" . $gender . "')");
+    $statement->execute();
+}

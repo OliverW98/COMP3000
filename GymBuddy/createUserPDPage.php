@@ -7,26 +7,35 @@ $outputPara = "";
 
 if(isset($_POST['btnCancel'])){
     header("Location: index.php");
+    session_destroy();
 }
 if(isset($_POST['btnBack'])){
     header("Location: createUserPage.php");
 }
 
-if(isset($_POST['btnCreateUser'])){
-    if(checkIfUserExists($_POST['userNameInput'],$_POST['emailInput'])){
-        $outputPara = "Username or Password is taken";
-    }else{
-        if(empty($_POST['userNameInput']) || empty($_POST['emailInput']) || empty($_POST['passwordInput'])){
-            $outputPara = "Make sure to fill all fields.";
-        }else{
-            // createUserHalf($_POST['userNameInput'],$_POST['emailInput'],$_POST['passwordInput']);
+if(isset($_POST['btnSkip'])){
+    header("Location: createUserConfirmPage.php");
+    $_SESSION['weight'] = "";
+    $_SESSION['height'] = "";
+    $_SESSION['dob'] = "";
+    $_SESSION['gender'] = "";
+}
 
-            $_SESSION['userName'] = $_POST['userNameInput'];
-            $_SESSION['email'] = $_POST['emailInput'];
-            $_SESSION['password'] = $_POST['passwordInput'];
-            // $outputPara = "User Created";
-        }
+
+if(isset($_POST['btnAddDetails'])){
+    if(empty($_POST['weightInput']) || empty($_POST['heightInput']) || empty($_POST['dobInput'] || $_POST['genderInput'] == "Select a Gender")){
+        $outputPara = "Make sure to fill all fields and a gender is selected.";
+        // issue with Gender select box:
+        // if statement will not read the select properly.
+    }else{
+        $_SESSION['weight'] = $_POST['weightInput'];
+        $_SESSION['height'] = $_POST['heightInput'];
+        $_SESSION['dob'] = $_POST['dobInput'];
+        $_SESSION['gender'] = $_POST['genderInput'];
+
+        header("Location: createUserConfirmPage.php");
     }
+
 
 }
 ?>
@@ -35,7 +44,7 @@ if(isset($_POST['btnCreateUser'])){
     <meta charset="UTF-8">
     <script>
     </script>
-    <title>Create User Page</title>
+    <title>Add Personal Details</title>
 </head>
 <body>
 <div class="container">
@@ -47,7 +56,7 @@ if(isset($_POST['btnCreateUser'])){
             <div class="input-group-prepend">
                 <label class="input-group-text text-light bg-dark" for="weightInput">Weight</label>
             </div>
-            <input class="form-control" name="weightInput" type="text">
+            <input class="form-control" name="weightInput" type="number">
             <div class="input-group-append">
                 <label class="input-group-text text-light bg-dark" for="weightInput" >Kg</label>
             </div>
@@ -57,7 +66,7 @@ if(isset($_POST['btnCreateUser'])){
             <div class="input-group-prepend">
                 <label class="input-group-text text-light bg-dark" for="heightInput">Height</label>
             </div>
-            <input class="form-control" name="heightInput" type="text">
+            <input class="form-control" name="heightInput" type="number">
             <div class="input-group-append">
                 <label class="input-group-text text-light bg-dark" for="heightInput" >Cm</label>
             </div>
@@ -82,10 +91,18 @@ if(isset($_POST['btnCreateUser'])){
         </div>
 
         <div>
-            <input class="btn btn-danger" name="btnCancel" type="submit" value="Cancel">
-            <input class="btn btn-secondary" name="btnBack" type="submit" value="Back">
-            <input class="btn btn-primary float-right" name="btnCreateUser" type="submit" value="Next">
+            <div class="btn-group">
+                <input class="btn btn-danger" name="btnCancel" type="submit" value="Cancel">
+                <input class="btn btn-secondary" name="btnBack" type="submit" value="Back">
+            </div>
+
+            <div class="btn-group float-right">
+                <input class="btn btn-secondary" name="btnSkip" type="submit" value="Skip">
+                <input class="btn btn-primary" name="btnAddDetails" type="submit" value="Add Details">
+            </div>
         </div>
+
+        <p class="text-center text-danger"><?php echo $outputPara?></p>
 
     </form>
 </div>
