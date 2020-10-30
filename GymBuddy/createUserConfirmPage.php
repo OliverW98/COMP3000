@@ -21,7 +21,7 @@ if(isset($_POST['btnCreateUser'])){
     if(checkIfUserExists($_POST['userNameInput'],$_POST['emailInput'])) {
         $failureOutputPara = "User already exists";
     }elseif(empty($_POST['weightInput'])){
-        createUserHalf($_SESSION['userName'],$_SESSION['email'],$_SESSION['password']);s
+        createUserHalf($_SESSION['userName'],$_SESSION['email'],$_SESSION['password']);
         $successOutputPara = "Sign up complete";
     }else{
         createUserFull($_SESSION['userName'],$_SESSION['email'],$_SESSION['password'],$_SESSION['weight'],$_SESSION['height'],$_SESSION['dob'],$_SESSION['gender']);
