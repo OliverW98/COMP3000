@@ -3,13 +3,11 @@
 include $_SERVER['DOCUMENT_ROOT'] . "/COMP3000/GymBuddy/src/DBFunctions.php";
 include_once 'header.php';
 
-session_start();
 $failureOutputPara="";
 $successOutputPara="";
 
 if(isset($_POST['btnCancel'])){
     header("Location: index.php");
-    session_destroy();
 }
 if(isset($_POST['btnBack'])){
     header("Location: createUserPDPage.php");

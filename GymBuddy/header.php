@@ -1,4 +1,10 @@
-<?php?>
+<?php
+
+
+session_start();
+
+
+?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -29,15 +35,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Meals</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Personal details</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="createUserPage.php">Sign up</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Login</a>
-                    </li>
+                    <?php
+                        if(isset($_SESSION['userID'])){
+                            echo '<li class="nav-item"><a class="nav-link" href="#">Personal details</a></li>';
+                            echo '<li class="nav-item"><a class="nav-link" href="logOut.php">Log out</a></li>';
+                        }else{
+                            echo '<li class="nav-item"><a class="nav-link" href="createUserPage.php">Sign up</a></li>';
+                            echo '<li class="nav-item"><a class="nav-link" href="logInPage.php">Login</a></li>';
+                        }
+                    ?>
                 </ul>
 
             </div>

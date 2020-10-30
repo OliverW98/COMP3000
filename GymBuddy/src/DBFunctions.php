@@ -38,3 +38,15 @@ function createUserFull($userName, $email, $password , $weight, $height, $dob , 
     $statement = getConnection()->prepare("CALL createUserFull ('" . $userName . "','" . $email . "','" . $password . "','" . $weight . "','" . $height . "','" . $dob . "','" . $gender . "')");
     $statement->execute();
 }
+
+function logInUser($userNameEmail, $password){
+
+    $statement = getConnection()->prepare("CALL logInUser('".$userNameEmail."','".$password."')");
+    $statement->execute();
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    $_SESSION['userID'] = $result[0]['userID'];
+
+    var_dump($_SESSION['userID']);
+
+}
