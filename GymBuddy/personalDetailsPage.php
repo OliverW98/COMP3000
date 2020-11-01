@@ -3,8 +3,34 @@
 include $_SERVER['DOCUMENT_ROOT'] . "/COMP3000/GymBuddy/src/DBFunctions.php";
 include_once 'header.php';
 
-$user = getUser($_SESSION['userID']);
+$user = updateUserDetails($_SESSION['userID']);
+$failureOutputPara = $successOutputPara = "";
 
+function updateUserDetails($userID){
+
+  return getUser($userID);
+
+}
+
+if(isset($_POST['btnEdit'])){
+    if(empty($_POST['weightInput']) || empty($_POST['heightInput']) || empty($_POST['dobInput'] || empty($_POST['genderInput']))){
+        $failureOutputPara = "Fields must not be empty when editing";
+    }else{
+        editUserDetails($user->getUserID(),$_POST['weightInput'],$_POST['heightInput'], $_POST['dobInput'] ,$_POST['genderInput']);
+        $successOutputPara = "Personal Details have be edited";
+        $user = updateUserDetails($_SESSION['userID']);
+    }
+}
+
+if(isset($_POST['btnDelete'])){
+    if(empty($_POST['weightInput']) || empty($_POST['heightInput']) || empty($_POST['dobInput'] || empty($_POST['genderInput']))){
+        $failureOutputPara = "Fields must be filed to delete them.";
+    }else{
+        deleteUserDetails($user->getUserID());
+        $successOutputPara = "Personal Details deleted";
+        $user = updateUserDetails($_SESSION['userID']);
+    }
+}
 
 
 ?>
@@ -52,12 +78,12 @@ $user = getUser($_SESSION['userID']);
                 <label class="input-group-text text-light bg-dark" for="genderInput">Gender</label>
             </div>
             <select class="form-control" name="genderInput">
-                <?php if($user->getGender() == "Male") {
-                    echo '<option>Male</option>';
+                <?php if($user->getGender() == "Female") {
                     echo '<option>Female</option>';
+                    echo '<option>Male</option>';
                 }else{
-                    echo '<option>Female</option>';
                     echo '<option>Male</option>';
+                    echo '<option>Female</option>';
                 }
                     ?>
             </select>
@@ -68,8 +94,8 @@ $user = getUser($_SESSION['userID']);
             <input class="btn btn-primary float-right" name="btnEdit" type="submit" value="Edit">
         </div>
 
-        <p class="text-center text-success"><?php echo"";// $successOutputPara?></p>
-        <p class="text-center text-danger"><?php echo""; //$failureOutputPara?></p>
+        <p class="text-center text-success"><?php echo $successOutputPara?></p>
+        <p class="text-center text-danger"><?php echo $failureOutputPara?></p>
     </form>
 </div>
 

@@ -7,7 +7,6 @@ const DB_USER = "COMP3000_OWilkes";
 const DB_PASSWORD = 'FdpA151*';
 const DB_DATABASE = "COMP3000_OWilkes";
 
-
 function getConnection()
 {
     $dataSourceName = 'mysql:dbname=' . DB_DATABASE . ';host=' . DB_SERVER;
@@ -42,14 +41,11 @@ function constructUserObject($userData){
         $gender = $userData[$i]['gender'];
     }
 
-    var_dump($userData);
-    var_dump($userID);
-
     return $user = new user($userID,$userName,$email,$password,$userWeight,$userHeight,$dob,$gender);
 }
 
-
 function checkIfUserExists($userName, $email){
+
    $result = getConnection()->query("select userID from users where userName = '". $userName."' or email = '".$email."' ");
     if($result->rowCount() == 0){
         return false;
@@ -58,13 +54,14 @@ function checkIfUserExists($userName, $email){
     }
 }
 
-function createUserHalf($userName, $email, $password)
-{
+function createUserHalf($userName, $email, $password){
+
     $statement = getConnection()->prepare("CALL createUserHalf ('" . $userName . "','" . $email . "','" . $password . "')");
     $statement->execute();
 }
 
 function createUserFull($userName, $email, $password , $weight, $height, $dob , $gender){
+
     $statement = getConnection()->prepare("CALL createUserFull ('" . $userName . "','" . $email . "','" . $password . "','" . $weight . "','" . $height . "','" . $dob . "','" . $gender . "')");
     $statement->execute();
 }
@@ -77,15 +74,23 @@ function logInUser($userNameEmail, $password){
 
     $_SESSION['userID'] = $result[0]['userID'];
 
-    var_dump($_SESSION['userID']);
-
 }
 
 function getUserDetails($userID){
 
-    $statement = getConnection()->prepare("CALL GetUserDetails('" . $userID . "')");
+    $statement = getConnection()->prepare("CALL getUserDetails('" . $userID . "')");
     $statement->execute();
     $data = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $data;
 
+}
+
+function editUserDetails($userID, $weight, $height, $dob , $gender){
+    $statement = getConnection()->prepare("CALL editUserDetails ('" . $userID . "','" . $weight . "','" . $height . "','" . $dob . "','" . $gender . "')");
+    $statement->execute();
+}
+
+function deleteUserDetails($userID){
+    $statement = getConnection()->prepare("CALL deleteUserDetails ('" . $userID . "')");
+    $statement->execute();
 }
