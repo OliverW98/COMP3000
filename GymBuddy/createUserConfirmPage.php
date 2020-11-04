@@ -31,8 +31,6 @@ if(isset($_POST['btnCreateUser'])){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script>
-    </script>
     <title>Confirm sign up</title>
 </head>
 <body>

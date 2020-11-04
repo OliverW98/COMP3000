@@ -37,8 +37,6 @@ if(isset($_POST['btnDelete'])){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script>
-    </script>
     <title>Personal Details</title>
 </head>
 <body>

@@ -40,8 +40,6 @@ if(isset($_POST['btnAddDetails'])){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script>
-    </script>
     <title>Add Personal Details</title>
 </head>
 <body>
@@ -72,14 +70,14 @@ if(isset($_POST['btnAddDetails'])){
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="dobInput">Date of Birth :</label>
+                <label class="input-group-text text-light bg-dark" for="dobInput">Date of Birth</label>
             </div>
             <input class="form-control" name="dobInput" type="date">
         </div>
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="genderInput">Gender :</label>
+                <label class="input-group-text text-light bg-dark" for="genderInput">Gender</label>
             </div>
             <select class="form-control" name="genderInput">
                 <option>Select a Gender</option>

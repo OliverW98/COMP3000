@@ -25,8 +25,6 @@ if(isset($_POST['btnLogIn'])){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script>
-    </script>
     <title>Sign up</title>
 </head>
 <body>

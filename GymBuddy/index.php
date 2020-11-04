@@ -8,9 +8,6 @@ include_once 'header.php';
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script>
-
-    </script>
     <title>Home page</title>
 
 </head>

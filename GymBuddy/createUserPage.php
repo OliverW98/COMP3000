@@ -35,8 +35,6 @@ if(isset($_POST['btnNext'])){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script>
-    </script>
     <title>Sign up</title>
 </head>
 <body>

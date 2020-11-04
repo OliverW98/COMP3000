@@ -94,3 +94,8 @@ function deleteUserDetails($userID){
     $statement = getConnection()->prepare("CALL deleteUserDetails ('" . $userID . "')");
     $statement->execute();
 }
+
+function createMeal($userID,$title,$mealDate,$caloriesIntake,$notes){
+    $statement = getConnection()->prepare("CALL createMeal ('" . $userID . "','" . $title . "','" . $mealDate . "','" . $caloriesIntake . "','" . $notes . "')");
+    $statement->execute();
+}
