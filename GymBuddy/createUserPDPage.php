@@ -25,7 +25,9 @@ if(isset($_POST['btnAddDetails'])){
         $outputPara = "Make sure to fill all fields and a gender is selected.";
         // issue with Gender select box:
         // if statement will not read the select properly.
-    }else{
+    }elseif ($_POST['weightInput'] <= 0 || $_POST['heightInput'] <=0){
+        $outputPara = "Weight or Height cannot be negative.";
+    } else{
         $_SESSION['weight'] = $_POST['weightInput'];
         $_SESSION['height'] = $_POST['heightInput'];
         $_SESSION['dob'] = $_POST['dobInput'];

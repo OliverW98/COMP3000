@@ -5,8 +5,16 @@ include_once 'header.php';
 $successOutputPara=$failureOutputPara="";
 
 if(isset($_POST['btnCreateMeal'])){
-    if(empty($_POST['titleInput']) || empty($_POST['dateInput']) || empty($_POST['caloriesInput']|| empty($_POST['notesInput']))){
+
+    $today = new DateTime();
+    $mealDate = new DateTime($_POST['dateInput']);
+
+    if(empty($_POST['titleInput']) || empty($_POST['dateInput']) || empty($_POST['caloriesInput']) || empty($_POST['notesInput'])){
         $failureOutputPara = "Fields must be filled to create meal";
+    }elseif ($_POST['caloriesInput'] <= 0){
+        $failureOutputPara = "Calories cannot be negative";
+    }elseif ($today < $mealDate){
+        $failureOutputPara = "Can't record a meal in the future";
     }else{
         createMeal($_SESSION['userID'],$_POST['titleInput'] , $_POST['dateInput'] , $_POST['caloriesInput'], $_POST['notesInput']);
         $successOutputPara = "Meal has been created and recorded";
@@ -41,7 +49,7 @@ if(isset($_POST['btnCreateMeal'])){
             <div class="input-group-prepend">
                 <label class="input-group-text text-light bg-dark" for="dateInput">Date</label>
             </div>
-            <input class="form-control" name="dobInput" type="date">
+            <input class="form-control" name="dateInput" type="datetime-local">
         </div>
 
         <div class="input-group mb-3">
