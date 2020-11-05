@@ -36,6 +36,7 @@ session_start();
                     </li>
                     <?php
                         if(isset($_SESSION['userID'])){
+                            echo '<li class="nav-item"><a class="nav-link" href="createMealPage.php">Record Meal</a></li>';
                             echo '<li class="nav-item"><a class="nav-link" href="personalDetailsPage.php">Personal details</a></li>';
                             echo '<li class="nav-item"><a class="nav-link" href="logOut.php">Log out</a></li>';
                         }else{

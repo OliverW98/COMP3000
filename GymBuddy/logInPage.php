@@ -10,14 +10,15 @@ if(isset($_POST['btnCancel'])){
 }
 
 if(isset($_POST['btnLogIn'])){
-    if(checkIfUserExists($_POST['userNameEmailInput'],$_POST['userNameEmailInput'])){
+    if(empty($_POST['userNameEmailInput']) || empty($_POST['passwordInput'])){
+        $outputPara = "Enter details before logging in";
+    }else if(checkIfLoginCorrect($_POST['userNameEmailInput'],$_POST['userNameEmailInput'],$_POST['passwordInput'])){
         logInUser($_POST['userNameEmailInput'],$_POST['passwordInput']);
         header("Location: index.php");
     }else{
-        $outputPara = "Wrong Log In";
+        $outputPara = "Log in details do not match";
     }
 }
-
 ?>
 
 

@@ -45,8 +45,16 @@ function constructUserObject($userData){
 }
 
 function checkIfUserExists($userName, $email){
-
    $result = getConnection()->query("select userID from users where userName = '". $userName."' or email = '".$email."' ");
+    if($result->rowCount() == 0){
+        return false;
+    } else{
+        return true;
+    }
+}
+
+function checkIfLoginCorrect($userName, $email, $password){
+    $result = getConnection()->query("select userID from users where (userName = '". $userName."' or email = '".$email."') and password = '".$password."' ");
     if($result->rowCount() == 0){
         return false;
     } else{
