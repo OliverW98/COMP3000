@@ -25,12 +25,6 @@ if(isset($_POST['btnCreateMeal'])){
 ?>
 <html lang="en">
 <head>
-    <style>
-        textarea{
-            resize: none;
-            height: 400px;
-        }
-    </style>
     <meta charset="UTF-8">
     <title>Create Meal</title>
 </head>
@@ -66,7 +60,7 @@ if(isset($_POST['btnCreateMeal'])){
             <textarea class="form-control" name="notesInput" style="resize: none;height: 90px;"></textarea>
         </div>
 
-        <input class="btn btn-success float-right" name="btnCreateMeal" type="submit" value="Create Meal">
+        <input class="btn btn-success float-right" name="btnCreateMeal" type="submit" value="Record Meal">
 
         <p class="text-center text-success"><?php echo $successOutputPara?></p>
         <p class="text-center text-danger"><?php echo $failureOutputPara?></p>
