@@ -63,34 +63,27 @@ function checkIfLoginCorrect($userName, $email, $password){
 }
 
 function createUserHalf($userName, $email, $password){
-
     $statement = getConnection()->prepare("CALL createUserHalf ('" . $userName . "','" . $email . "','" . $password . "')");
     $statement->execute();
 }
 
 function createUserFull($userName, $email, $password , $weight, $height, $dob , $gender){
-
     $statement = getConnection()->prepare("CALL createUserFull ('" . $userName . "','" . $email . "','" . $password . "','" . $weight . "','" . $height . "','" . $dob . "','" . $gender . "')");
     $statement->execute();
 }
 
 function logInUser($userNameEmail, $password){
-
     $statement = getConnection()->prepare("CALL logInUser('".$userNameEmail."','".$password."')");
     $statement->execute();
     $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-
     $_SESSION['userID'] = $result[0]['userID'];
-
 }
 
 function getUserDetails($userID){
-
     $statement = getConnection()->prepare("CALL getUserDetails('" . $userID . "')");
     $statement->execute();
     $data = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $data;
-
 }
 
 function editUserDetails($userID, $weight, $height, $dob , $gender){
@@ -105,5 +98,15 @@ function deleteUserDetails($userID){
 
 function createMeal($userID,$title,$mealDate,$caloriesIntake,$notes){
     $statement = getConnection()->prepare("CALL createMeal ('" . $userID . "','" . $title . "','" . $mealDate . "','" . $caloriesIntake . "','" . $notes . "')");
+    $statement->execute();
+}
+
+function createWeightsWorkout($userID,$type,$title,$date,$duration,$notes){
+    $statement = getConnection()->prepare("CALL createWeightsWorkout ('" . $userID . "','" . $type . "','" . $title . "','" . $date . "','" . $duration . "','" . $notes . "')");
+    $statement->execute();
+}
+
+function createExercise($workoutID,$name,$sets,$reps,$weight){
+    $statement = getConnection()->perpare("CALL createExercise ('".$workoutID."','".$name."','".$sets."','".$reps."','".$weight."')");
     $statement->execute();
 }
