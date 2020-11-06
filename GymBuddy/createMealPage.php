@@ -50,7 +50,7 @@ if(isset($_POST['btnCreateMeal'])){
             <div class="input-group-prepend">
                 <label class="input-group-text text-light bg-dark" for="caloriesInput">Calories</label>
             </div>
-            <input class="form-control" name="caloriesInput" type="number">
+            <input class="form-control" name="caloriesInput" min="0" type="number">
         </div>
 
         <div class="input-group mb-3">

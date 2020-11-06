@@ -5,7 +5,7 @@ include_once 'header.php';
 $outputPara = "";
 
 if(isset($_POST['btnCancel'])){
-    header("Location: index.php");
+    header("Location: home.php");
 }
 if(isset($_POST['btnBack'])){
     header("Location: createUserPage.php");
@@ -54,7 +54,7 @@ if(isset($_POST['btnAddDetails'])){
             <div class="input-group-prepend">
                 <label class="input-group-text text-light bg-dark" for="weightInput">Weight</label>
             </div>
-            <input class="form-control" name="weightInput" type="number">
+            <input class="form-control" name="weightInput" min="0" type="number">
             <div class="input-group-append">
                 <label class="input-group-text text-light bg-dark" for="weightInput" >Kg</label>
             </div>
@@ -64,7 +64,7 @@ if(isset($_POST['btnAddDetails'])){
             <div class="input-group-prepend">
                 <label class="input-group-text text-light bg-dark" for="heightInput">Height</label>
             </div>
-            <input class="form-control" name="heightInput" type="number">
+            <input class="form-control" name="heightInput" min="0" type="number">
             <div class="input-group-append">
                 <label class="input-group-text text-light bg-dark" for="heightInput" >Cm</label>
             </div>

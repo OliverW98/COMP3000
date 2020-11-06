@@ -79,6 +79,13 @@ function logInUser($userNameEmail, $password){
     $_SESSION['userID'] = $result[0]['userID'];
 }
 
+function getWorkoutID($date){
+    $statement = getConnection()->prepare("CALL getWorkoutID('".$date."')");
+    $statement->execute();
+    $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $result[0]['workoutID'];
+}
+
 function getUserDetails($userID){
     $statement = getConnection()->prepare("CALL getUserDetails('" . $userID . "')");
     $statement->execute();
@@ -107,6 +114,6 @@ function createWeightsWorkout($userID,$type,$title,$date,$duration,$notes){
 }
 
 function createExercise($workoutID,$name,$sets,$reps,$weight){
-    $statement = getConnection()->perpare("CALL createExercise ('".$workoutID."','".$name."','".$sets."','".$reps."','".$weight."')");
+    $statement = getConnection()->prepare("CALL createExercise ('".$workoutID."','".$name."','".$sets."','".$reps."','".$weight."')");
     $statement->execute();
 }

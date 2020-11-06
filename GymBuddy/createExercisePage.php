@@ -1,7 +1,35 @@
 <?php
 
 include $_SERVER['DOCUMENT_ROOT'] . "/COMP3000/GymBuddy/src/DBFunctions.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/COMP3000/GymBuddy/src/exercise.php";
 include_once 'header.php';
+
+$outputPara= "";
+
+$_SESSION['count'] = 1;
+
+if(isset($_POST['btnBack'])){
+    header("Location: createWeightsWorkoutPage.php");
+}
+
+if(isset($_POST['btnAddExercise'])){
+    if(empty($_POST['nameInput']) || empty($_POST['setsInput']) || empty($_POST['repsInput']) || empty($_POST['weightInput'])){
+        $outputPara = "All fields must be filled to fill";
+    }else if($_POST['setsInput'] <= 0){
+        $outputPara = "Sets can't be negative";
+    }
+    else if($_POST['repsInput'] <= 0){
+        $outputPara = "Reps can't be negative";
+    }
+    else if($_POST['weightInput'] <= 0){
+        $outputPara = "Weight can't be negative";
+    }else{
+
+        $exercise = new exercise("1",$_POST['nameInput'],$_POST['setsInput'],$_POST['repsInput'],$_POST['weightInput']);
+        array_push($_SESSION['tempExerciseArray'], $exercise);
+        header("Location: createWeightsWorkoutPage.php");
+    }
+}
 
 ?>
 
@@ -17,79 +45,38 @@ include_once 'header.php';
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="titleInput">Title</label>
+                <label class="input-group-text text-light bg-dark" for="nameInput">Name</label>
             </div>
-            <input class="form-control" name="titleInput" type="text">
+            <input class="form-control" name="nameInput" type="text">
         </div>
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="dateInput">Date</label>
+                <label class="input-group-text text-light bg-dark" min="0" for="setsInput">Sets</label>
             </div>
-            <input class="form-control" name="dateInput" type="datetime-local">
+            <input class="form-control" name="setsInput" type="number">
         </div>
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="durationInput">Duration</label>
+                <label class="input-group-text text-light bg-dark" min="0" for="repsInput">Reps</label>
             </div>
-            <input class="form-control" name="durationInput" type="number">
+            <input class="form-control" name="repsInput" type="number">
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text text-light bg-dark" for="weightInput">Weight</label>
+            </div>
+            <input class="form-control" name="weightInput" min="0" type="number">
             <div class="input-group-append">
-                <label class="input-group-text text-light bg-dark" for="durationInput" >Mins</label>
-            </div>
-        </div>
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="notesInput">Notes</label>
-            </div>
-            <input class="form-control" name="notesInput" type="number">
-            <div class="input-group-append">
-                <label class="input-group-text text-light bg-dark" for="notesInput" >Kg</label>
+                <label class="input-group-text text-light bg-dark" for="weightInput" >Kg</label>
             </div>
         </div>
 
         <div>
-            <table class="table" id="exerciseTable">
-                <thead class="thead-dark mt-3">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Exercise</th>
-                    <th scope="col">Sets</th>
-                    <th scope="col">Reps</th>
-                    <th scope="col">Weights</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>yeye</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>yeye</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                    <td>yeye</td>
-                </tr>
-                </tbody>
-            </table>
-
-        </div>
-
-        <div>
-            <input class="btn btn-primary" name="btnNext" type="submit" value="Add Exercise">
-            <input class="btn btn-success float-right" name="btnCreateWorkout" type="submit" value="Record Workout">
+            <input class="btn btn-danger" name="btnBack" type="submit"  value="Back">
+            <input class="btn btn-success float-right" name="btnAddExercise" type="submit" value="Add Exercise">
         </div>
 
         <p class="text-center text-danger"><?php echo $outputPara?></p>

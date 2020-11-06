@@ -8,7 +8,7 @@ $outputPara = "";
 
 
 if(isset($_POST['btnCancel'])){
-    header("Location: index.php");
+    header("Location: home.php");
 }
 
 
