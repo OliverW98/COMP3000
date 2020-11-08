@@ -57,7 +57,7 @@ if(isset($_POST['btnCreateMeal'])){
             <div class="input-group-prepend">
                 <label class="input-group-text text-light bg-dark" for="notesInput">Notes</label>
             </div>
-            <textarea class="form-control" name="notesInput" style="resize: none;height: 90px;"></textarea>
+            <textarea class="form-control" name="notesInput" maxlength="300" style="resize: none;height: 90px;"></textarea>
         </div>
 
         <input class="btn btn-success float-right" name="btnCreateMeal" type="submit" value="Record Meal">

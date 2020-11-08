@@ -117,3 +117,8 @@ function createExercise($workoutID,$name,$sets,$reps,$weight){
     $statement = getConnection()->prepare("CALL createExercise ('".$workoutID."','".$name."','".$sets."','".$reps."','".$weight."')");
     $statement->execute();
 }
+
+function createRunCycleWorkout($userID, $type , $title, $date , $duration , $distance , $elevation , $notes){
+    $statement = getConnection()->prepare("CALL createRunCycleWorkout ('" . $userID . "','" . $type . "','" . $title . "','" . $date . "','" . $duration . "','" . $distance . "','" . $elevation . "','" . $notes . "')");
+    $statement->execute();
+}

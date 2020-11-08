@@ -29,7 +29,7 @@ if(isset($_POST['btnCreateWorkout'])){
     $today = new DateTime();
     $workoutDate = new DateTime($_POST['dateInput']);
 
-    if( empty($_POST['titleInput'])|| empty($_POST['dateInput'])|| empty($_POST['durationInput'])|| empty($_POST['notesInput'])){
+    if(empty($_POST['titleInput'])|| empty($_POST['dateInput'])|| empty($_POST['durationInput'])|| empty($_POST['notesInput'])){
         $outputPara = "Fields must be filled to record a workout";
     }elseif (!isset($_SESSION['tempExerciseArray'])){
         $outputPara = "Workout must contain of one exercise to be recorded";
@@ -44,6 +44,7 @@ if(isset($_POST['btnCreateWorkout'])){
            createExercise($workoutID,$ex->getName(), $ex->getSets(), $ex->getReps() , $ex->getWeight());
         }
         unset($_SESSION['tempExerciseArray']);
+        header("Location: home.php");
     }
 }
 
@@ -55,7 +56,7 @@ if(isset($_POST['btnCreateWorkout'])){
 </head>
 <body>
 <div class="container">
-    <p class="text-center">Create a Weights Workout</p>
+    <p class="text-center">Enter Details about your weights session</p>
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
 
         <div class="input-group mb-3">
@@ -86,7 +87,7 @@ if(isset($_POST['btnCreateWorkout'])){
             <div class="input-group-prepend">
                 <label class="input-group-text text-light bg-dark" for="notesInput">Notes</label>
             </div>
-            <textarea class="form-control" name="notesInput" style="resize: none;height: 90px;"><?php echo $_SESSION['notesInput'] ?></textarea>
+            <textarea class="form-control" name="notesInput" maxlength="300" style="resize: none;height: 90px;"><?php echo $_SESSION['notesInput'] ?></textarea>
         </div>
 
     <div>
