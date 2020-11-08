@@ -21,7 +21,7 @@ if(isset($_POST['btnSkip'])){
 
 
 if(isset($_POST['btnAddDetails'])){
-    if(empty($_POST['weightInput']) || empty($_POST['heightInput']) || empty($_POST['dobInput'] || $_POST['genderInput'] == "Select a Gender")){
+    if(empty($_POST['weightInput']) || empty($_POST['heightInput']) || empty($_POST['dobInput'] || $_POST['genderInput'] === "Select a Gender")){
         $outputPara = "Make sure to fill all fields and a gender is selected.";
         // issue with Gender select box:
         // if statement will not read the select properly.

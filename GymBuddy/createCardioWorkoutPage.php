@@ -13,12 +13,22 @@ if(isset($_POST['btnCreateWorkout'])){
     if(empty($_POST['titleInput'])|| empty($_POST['dateInput'])|| empty($_POST['durationInput']) ||
         empty($_POST['distanceInput']) || empty($_POST['elevationInput'])|| empty($_POST['notesInput'])){
         $outputPara = "Fields must be filled to record a workout";
+    }elseif ($_POST['typeInput'] === "Select a Type"){
+        $outputPara = "Must select a cardio type";
     }elseif ($today < $workoutDate){
         $outputPara = "Can't record a workout in the future";
     }else{
-        createRunCycleWorkout($_SESSION['userID'], "1",$_POST['titleInput'], $_POST['dateInput'], $_POST['durationInput']
+        $type = "";
+        if($_POST['typeInput'] === "Run"){
+            $type = "1";
+        }elseif ($_POST['typeInput'] === "Cycle"){
+            $type = "0";
+        }
+        var_dump($type);
+        createRunCycleWorkout($_SESSION['userID'], $type ,$_POST['titleInput'], $_POST['dateInput'],$_POST['durationInput']
             ,$_POST['distanceInput'],$_POST['elevationInput'],$_POST['notesInput']);
-        header("Location: home.php");
+       // header("Location: home.php");
+
     }
 }
 
@@ -27,12 +37,23 @@ if(isset($_POST['btnCreateWorkout'])){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add Exercise</title>
+    <title>Add Cardio Workout</title>
 </head>
 <body>
 <div class="container">
-    <p class="text-center">Enter Details about your run</p>
+    <p class="text-center">Enter Details about your cardio</p>
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text text-light bg-dark" for="typeInput">Card Type</label>
+            </div>
+            <select class="form-control" name="typeInput">
+                <option>Select a Type</option>
+                <option>Run</option>
+                <option>Cycle</option>
+            </select>
+        </div>
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
