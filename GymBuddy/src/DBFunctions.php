@@ -1,6 +1,7 @@
 <?php
 
 include_once ('user.php');
+include_once ('meal.php');
 
 const DB_SERVER = "Proj-mysql.uopnet.plymouth.ac.uk";
 const DB_USER = "COMP3000_OWilkes";
@@ -24,11 +25,26 @@ function getUser($userID){
 
    $userData = getUserDetails($userID);
 
+   $usersMeals = getUsersMeals($userID);
 
-   return $user = constructUserObject($userData);
+   return $user = constructUserObject($userData,$usersMeals);
 }
 
-function constructUserObject($userData){
+function constructUserObject($userData,$usersMeals){
+
+    $mealsArray = array();
+
+    for ($i=0; $i<count($usersMeals); $i++){
+        $mealID = $usersMeals[$i]['mealID'];
+        $title = $usersMeals[$i]['title'];
+        $date = $usersMeals[$i]['mealDate'];
+        $caloriesIntake = $usersMeals[$i]['caloriesIntake'];
+        $notes = $usersMeals[$i]['notes'];
+
+        $meal = new meal($mealID, $title, $date, $caloriesIntake, $notes);
+
+        array_push($mealsArray , $meal);
+    }
 
     for ($i=0; $i<count($userData);$i++){
         $userID = $userData[$i]['userID'];
@@ -41,7 +57,7 @@ function constructUserObject($userData){
         $gender = $userData[$i]['gender'];
     }
 
-    return $user = new user($userID,$userName,$email,$password,$userWeight,$userHeight,$dob,$gender);
+    return $user = new user($userID,$userName,$email,$password,$userWeight,$userHeight,$dob,$gender,$mealsArray);
 }
 
 function checkIfUserExists($userName, $email){
@@ -89,8 +105,12 @@ function getWorkoutID($date){
 function getUserDetails($userID){
     $statement = getConnection()->prepare("CALL getUserDetails('" . $userID . "')");
     $statement->execute();
-    $data = $statement->fetchAll(PDO::FETCH_ASSOC);
-    return $data;
+    return $statement->fetchAll(PDO::FETCH_ASSOC);;
+}
+function getUsersMeals($userID){
+    $statement = getConnection()->prepare("CALL getUsersMeals('" . $userID . "')");
+    $statement->execute();
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
 function editUserDetails($userID, $weight, $height, $dob , $gender){
