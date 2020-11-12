@@ -13,7 +13,7 @@ if(isset($_POST['btnLogIn'])){
     if(empty($_POST['userNameEmailInput']) || empty($_POST['passwordInput'])){
         $outputPara = "Enter details before logging in";
     }else if(checkIfLoginCorrect($_POST['userNameEmailInput'],$_POST['userNameEmailInput'],$_POST['passwordInput'])){
-        logInUser($_POST['userNameEmailInput'],$_POST['passwordInput']);
+        $_SESSION['userID'] = logInUser($_POST['userNameEmailInput'],$_POST['passwordInput']);
         header("Location: index.php");
     }else{
         $outputPara = "Log in details do not match";

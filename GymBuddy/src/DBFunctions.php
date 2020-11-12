@@ -92,7 +92,7 @@ function logInUser($userNameEmail, $password){
     $statement = getConnection()->prepare("CALL logInUser('".$userNameEmail."','".$password."')");
     $statement->execute();
     $result = $statement->fetchAll(PDO::FETCH_ASSOC);
-    $_SESSION['userID'] = $result[0]['userID'];
+    return $result[0]['userID'];
 }
 
 function getWorkoutID($date){
