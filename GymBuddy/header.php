@@ -45,7 +45,7 @@ session_start();
                             Meals
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Record Meal</a>
+                            <a class="dropdown-item" href="createMealPage.php">Record Meal</a>
                             <a class="dropdown-item" href="#">View Meal</a>
                         </div>
                     </li>

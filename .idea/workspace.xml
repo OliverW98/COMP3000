@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/logInPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/logInPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +37,9 @@
       <option name="presentableId" value="Default" />
       <updated>1605109019839</updated>
       <workItem from="1605109020985" duration="2626000" />
-      <workItem from="1605191128470" duration="5005000" />
+      <workItem from="1605191128470" duration="5266000" />
+      <workItem from="1605203277147" duration="18000" />
+      <workItem from="1605275888447" duration="2170000" />
     </task>
     <servers />
   </component>
