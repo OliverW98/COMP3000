@@ -107,8 +107,21 @@ function getUserDetails($userID){
     $statement->execute();
     return $statement->fetchAll(PDO::FETCH_ASSOC);;
 }
+
 function getUsersMeals($userID){
     $statement = getConnection()->prepare("CALL getUsersMeals('" . $userID . "')");
+    $statement->execute();
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function getUsersWokrouts($userID){
+    $statement = getConnection()->prepare("CALL getUsersWokrouts('" . $userID . "')");
+    $statement->execute();
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function getWokroutExercises($workoutID){
+    $statement = getConnection()->prepare("CALL getWokroutExercises('" . $workoutID . "')");
     $statement->execute();
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }

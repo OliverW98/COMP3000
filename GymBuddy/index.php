@@ -7,6 +7,7 @@ include_once 'header.php';
 if(isset($_SESSION['userID'])){
     $user = getUser($_SESSION['userID']);
     $usersMeals = $user->getMeals();
+
 }
 
 

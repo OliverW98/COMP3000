@@ -12,9 +12,10 @@ class user
     private $height;
     private $dob;
     private $gender;
-    private $meals = array();
+    private $meals;
+    private $workouts;
 
-    public function __construct($userId,$userName ,$email,$password,$weight,$height,$dob,$gender, array $meals){
+    public function __construct($userId,$userName ,$email,$password,$weight,$height,$dob,$gender, array $meals , array $workouts){
         $this->userID = $userId;
         $this->userName =$userName;
         $this->email = $email;
@@ -24,7 +25,7 @@ class user
         $this->dob=$dob;
         $this->gender=$gender;
         $this->meals = $meals;
-
+        $this->workouts = $workouts;
     }
 
     /**
@@ -97,6 +98,14 @@ class user
     public function getMeals()
     {
         return $this->meals;
+    }
+
+    /**
+     * @return array
+     */
+    public function getWorkouts()
+    {
+        return $this->workouts;
     }
 
 }
