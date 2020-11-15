@@ -25,7 +25,7 @@ if(isset($_POST['btnCreateWorkout'])){
             $type = "0";
         }
         var_dump($type);
-        createRunCycleWorkout($_SESSION['userID'], $type ,$_POST['titleInput'], $_POST['dateInput'],$_POST['durationInput']
+        createWorkout($_SESSION['userID'], $type ,$_POST['titleInput'], $_POST['dateInput'],$_POST['durationInput']
             ,$_POST['distanceInput'],$_POST['elevationInput'],$_POST['notesInput']);
        // header("Location: home.php");
 

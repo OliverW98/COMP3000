@@ -23,8 +23,9 @@ if(isset($_SESSION['userID'])){
 <div class="container">
     <div class="row">
         <div class="col-sm-6">
+            <p class="text-center" style="font-size: 40px">Workouts</p>
             <?php
-            // var_dump($usersWorkouts);
+            var_dump($usersWorkouts);
             if(isset($_SESSION['userID'])){
                 if (count($usersMeals) <= 0){
                     echo '<p class="text-center">User does not have any workouts recorded</p>';

@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/createCardioWorkoutPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createCardioWorkoutPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/createWeightsWorkoutPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createWeightsWorkoutPage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" afterDir="false" />
     </list>
@@ -42,6 +44,7 @@
       <workItem from="1605275888447" duration="2655000" />
       <workItem from="1605377761485" duration="3040000" />
       <workItem from="1605454842799" duration="2256000" />
+      <workItem from="1605460038836" duration="2007000" />
     </task>
     <servers />
   </component>

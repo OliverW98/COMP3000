@@ -4,8 +4,9 @@ include_once ('user.php');
 include_once ('meal.php');
 include_once ('workout.php');
 include_once ('weights.php');
-//include_once ('cycle.php');
-//include_once ('run.php');
+include_once ('cycle.php');
+include_once ('run.php');
+include_once ('exercise.php');
 
 const DB_SERVER = "Proj-mysql.uopnet.plymouth.ac.uk";
 const DB_USER = "COMP3000_OWilkes";
@@ -33,7 +34,6 @@ function getUser($userID){
 
    $usersWorkouts = getUsersWorkouts($userID);
 
-   var_dump($usersWorkouts);
    return $user = constructUserObject($userData,$usersMeals, $usersWorkouts);
 }
 
@@ -61,7 +61,7 @@ function constructUserObject($userData,$usersMeals, $usersWorkouts){
         $title = $usersWorkouts[$i]['title'];
         $date = $usersWorkouts[$i]['workoutDate'];
         $duration = $usersWorkouts[$i]['duration'];
-        $distance = $usersWorkouts[$i]['$distance'];
+        $distance = $usersWorkouts[$i]['distance'];
         $elevation = $usersWorkouts[$i]['elevation'];
         $notes = $usersWorkouts[$i]['notes'];
 
@@ -79,15 +79,15 @@ function constructUserObject($userData,$usersMeals, $usersWorkouts){
 
         }elseif ($type == 2){
 
-            $workoutExercises = getWokroutExercises($workoutID);
+            $workoutExercises = getWorkoutExercises($workoutID);
             $exercisesArray = array();
 
-            for($i=0; $i<count($workoutExercises); $i++){
-                $exerciseID = $workoutExercises[$i]['exerciseID'];
-                $name = $workoutExercises[$i]['name'];
-                $sets = $workoutExercises[$i]['sets'];
-                $reps = $workoutExercises[$i]['reps'];
-                $weight = $workoutExercises[$i]['weight'];
+            for($j=0; $j<count($workoutExercises); $j++){
+                $exerciseID = $workoutExercises[$j]['exerciseID'];
+                $name = $workoutExercises[$j]['name'];
+                $sets = $workoutExercises[$j]['sets'];
+                $reps = $workoutExercises[$j]['reps'];
+                $weight = $workoutExercises[$j]['weight'];
 
                 $exercise = new exercise($exerciseID , $name , $sets , $reps , $weight);
 
@@ -174,8 +174,8 @@ function getUsersWorkouts($userID){
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function getWokroutExercises($workoutID){
-    $statement = getConnection()->prepare("CALL getWokroutExercises('" . $workoutID . "')");
+function getWorkoutExercises($workoutID){
+    $statement = getConnection()->prepare("CALL getWorkoutExercises('" . $workoutID . "')");
     $statement->execute();
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -195,17 +195,12 @@ function createMeal($userID,$title,$mealDate,$caloriesIntake,$notes){
     $statement->execute();
 }
 
-function createWeightsWorkout($userID,$type,$title,$date,$duration,$notes){
-    $statement = getConnection()->prepare("CALL createWeightsWorkout ('" . $userID . "','" . $type . "','" . $title . "','" . $date . "','" . $duration . "','" . $notes . "')");
-    $statement->execute();
-}
-
 function createExercise($workoutID,$name,$sets,$reps,$weight){
     $statement = getConnection()->prepare("CALL createExercise ('".$workoutID."','".$name."','".$sets."','".$reps."','".$weight."')");
     $statement->execute();
 }
 
-function createRunCycleWorkout($userID, $type , $title, $date , $duration , $distance , $elevation , $notes){
-    $statement = getConnection()->prepare("CALL createRunCycleWorkout ('" . $userID . "','" . $type . "','" . $title . "','" . $date . "','" . $duration . "','" . $distance . "','" . $elevation . "','" . $notes . "')");
+function createWorkout($userID, $type , $title, $date , $duration , $distance , $elevation , $notes){
+    $statement = getConnection()->prepare("CALL createWorkout ('" . $userID . "','" . $type . "','" . $title . "','" . $date . "','" . $duration . "','" . $distance . "','" . $elevation . "','" . $notes . "')");
     $statement->execute();
 }
