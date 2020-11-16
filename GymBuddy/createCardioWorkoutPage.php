@@ -24,11 +24,9 @@ if(isset($_POST['btnCreateWorkout'])){
         }elseif ($_POST['typeInput'] === "Cycle"){
             $type = "0";
         }
-        var_dump($type);
         createWorkout($_SESSION['userID'], $type ,$_POST['titleInput'], $_POST['dateInput'],$_POST['durationInput']
             ,$_POST['distanceInput'],$_POST['elevationInput'],$_POST['notesInput']);
-       // header("Location: home.php");
-
+        header("Location: home.php");
     }
 }
 

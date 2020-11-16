@@ -37,7 +37,9 @@ if(isset($_POST['btnCreateWorkout'])){
         $outputPara = "Can't record a workout in the future";
     }else{
         $type = "2";
-        createWorkout($_SESSION['userID'], $type ,$_POST['titleInput'],$_POST['dateInput'],$_POST['durationInput'],0 ,0,$_POST['notesInput']);
+        $distance = 0;
+        $elevation = 0;
+        createWorkout($_SESSION['userID'], $type ,$_POST['titleInput'],$_POST['dateInput'],$_POST['durationInput'],$distance ,$elevation,$_POST['notesInput']);
         $workoutID = getWorkoutID($_POST['dateInput']);
         $exercises = $_SESSION['tempExerciseArray'];
         foreach ($exercises as $ex){
@@ -98,7 +100,7 @@ if(isset($_POST['btnCreateWorkout'])){
             <th scope="col">Exercise</th>
             <th scope="col">Sets</th>
             <th scope="col">Reps</th>
-            <th scope="col">Weights</th>
+            <th scope="col">Weight (kg)</th>
         </tr>
         </thead>
         <tbody>
