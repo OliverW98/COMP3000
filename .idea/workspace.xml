@@ -4,6 +4,7 @@
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +29,11 @@
     <property name="settings.editor.selected.configurable" value="settings.saveactions" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\COMP3000\GymBuddy" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -49,7 +55,8 @@
       <workItem from="1605568907949" duration="1825000" />
       <workItem from="1605653040820" duration="1384000" />
       <workItem from="1605697612314" duration="37000" />
-      <workItem from="1605782345550" duration="3762000" />
+      <workItem from="1605782345550" duration="3945000" />
+      <workItem from="1605808412091" duration="2702000" />
     </task>
     <servers />
   </component>
@@ -61,20 +68,13 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1086" y="423" key="NewPhpClassDialog/-1920.189.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1605380033689" />
+    <state x="1114" y="623" key="NewPhpFileDialog" timestamp="1605809410568">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1114" y="623" key="NewPhpFileDialog/-1920.189.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1605809410568" />
     <state x="781" y="345" key="SettingsEditor" timestamp="1605653087154">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="781" y="345" key="SettingsEditor/-1920.189.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1605653087154" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/GymBuddy/index.php</url>
-          <line>54</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

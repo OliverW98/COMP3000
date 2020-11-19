@@ -4,7 +4,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/COMP3000/GymBuddy/src/DBFunctions.php";
 include_once 'header.php';
 
 $workoutIDArray = array();
-$submitbutton = "";
+$deleteButtonID = "";
 
 if (isset($_SESSION['userID'])) {
     $user = getUser($_SESSION['userID']);
@@ -17,10 +17,13 @@ if (isset($_SESSION['userID'])) {
 
 
 $i = 0;
-while ($i < count($workoutIDArray) && empty($submitbutton)) {
+while ($i < count($workoutIDArray) && empty($deleteButtonID)) {
     if (isset($_POST['btnDeleteWorkout' . $workoutIDArray[$i]])) {
-        $submitbutton = $workoutIDArray[$i];
-        var_dump($submitbutton);
+        $deleteButtonID = $workoutIDArray[$i];
+        $_SESSION['workoutIDToDelete'] = $deleteButtonID;
+        $_SESSION['tempWorkoutArray'] = $usersWorkouts;
+        
+        header("Location: deleteWorkoutConfirmPage.php");
     }
     $i++;
 }
