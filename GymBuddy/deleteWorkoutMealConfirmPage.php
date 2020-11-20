@@ -2,21 +2,18 @@
 include $_SERVER['DOCUMENT_ROOT'] . "/COMP3000/GymBuddy/src/DBFunctions.php";
 include_once 'header.php';
 
-$usersWorkouts = $_SESSION['tempWorkoutArray'];
-$workoutIDToDelete = $_SESSION['workoutIDToDelete'];
+$activity = $_SESSION['activityToDelete'];
+$IDToDelete = $_SESSION['IDToDelete'];
 
-foreach ($usersWorkouts as $workout) {
-    if ($workout->getWorkoutID() == $workoutIDToDelete) {
-        $title = $workout->getTitle();
-        $datetime = new DateTime($workout->getDate());
-        $date = "{$datetime->format('Y-m-d')}T{$datetime->format('H:i')}";
-    }
-}
+$title = $activity->getTitle();
+$datetime = new DateTime($activity->getDate());
+$date = "{$datetime->format('Y-m-d')}T{$datetime->format('H:i')}";
+
 
 function unsetSessions()
 {
-    unset($_SESSION['tempWorkoutArray']);
-    unset($_SESSION['workoutIDToDelete']);
+    unset($_SESSION['activityToDelete']);
+    unset($_SESSION['IDToDelete']);
 }
 
 if (isset($_POST['btnCancel'])) {
@@ -25,7 +22,12 @@ if (isset($_POST['btnCancel'])) {
 }
 
 if (isset($_POST['btnDeleteWorkout'])) {
-    deleteWorkout($workoutIDToDelete);
+    if (get_class($activity) == "meal") {
+        deleteMeal($IDToDelete);
+    } else {
+        deleteWorkout($IDToDelete);
+    }
+
     unsetSessions();
     header("Location: index.php");
 }
@@ -34,11 +36,18 @@ if (isset($_POST['btnDeleteWorkout'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Delete Workout</title>
+    <title>Delete Activity</title>
 </head>
 <body>
 <div class="container">
-    <p class="text-center">Are you sure you want to delete this workout?</p>
+    <?php
+    if (get_class($activity) == "meal") {
+        echo '<p class="text-center mt-3">Are you sure you want to delete this meal?</p>';
+    } else {
+        echo '<p class="text-center mt-3">Are you sure you want to delete this workout?</p>';
+    }
+
+    ?>
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
 
 

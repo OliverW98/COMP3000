@@ -3,31 +3,52 @@
 include $_SERVER['DOCUMENT_ROOT'] . "/COMP3000/GymBuddy/src/DBFunctions.php";
 include_once 'header.php';
 
-$workoutIDArray = array();
+$workoutIDArray = $mealIDArray = array();
 $deleteButtonID = "";
 
 if (isset($_SESSION['userID'])) {
     $user = getUser($_SESSION['userID']);
     $usersMeals = $user->getMeals();
     $usersWorkouts = $user->getWorkouts();
+    foreach ($usersMeals as $meal) {
+        array_push($mealIDArray, $meal->getMealID());
+    }
     foreach ($usersWorkouts as $workout) {
         array_push($workoutIDArray, $workout->getWorkoutID());
     }
 }
 
 
-$i = 0;
+$i = $j = 0;
+
+//Checks which Workout Delete button has been pressed
 while ($i < count($workoutIDArray) && empty($deleteButtonID)) {
     if (isset($_POST['btnDeleteWorkout' . $workoutIDArray[$i]])) {
         $deleteButtonID = $workoutIDArray[$i];
-        $_SESSION['workoutIDToDelete'] = $deleteButtonID;
-        $_SESSION['tempWorkoutArray'] = $usersWorkouts;
-        
-        header("Location: deleteWorkoutConfirmPage.php");
+        $_SESSION['IDToDelete'] = $deleteButtonID;
+        foreach ($usersWorkouts as $workout) {
+            if ($workout->getWorkoutID() == $deleteButtonID) {
+                $_SESSION['activityToDelete'] = $workout;
+            }
+        }
+        header("Location: deleteWorkoutMealConfirmPage.php");
     }
     $i++;
 }
-
+//Checks which Meal Delete button has been pressed
+while ($j < count($mealIDArray) && empty($deleteButtonID)) {
+    if (isset($_POST['btnDeleteMeal' . $mealIDArray[$j]])) {
+        $deleteButtonID = $mealIDArray[$j];
+        $_SESSION['IDToDelete'] = $deleteButtonID;
+        foreach ($usersMeals as $meal) {
+            if ($meal->getMealID() == $deleteButtonID) {
+                $_SESSION['activityToDelete'] = $meal;
+            }
+        }
+        header("Location: deleteWorkoutMealConfirmPage.php");
+    }
+    $j++;
+}
 
 //TO DO :
 // format dates
@@ -47,9 +68,8 @@ function displayMeal($meal)
     echo '<li class="list-group-item">' . $meal->getCalorieIntake() . ' Cals</li>';
     echo '</ul>';
     echo '<div class="card-body">';
-    echo '<input class="btn btn-danger" name="btnDeleteMeal" type="submit" value="Delete">';
+    echo '<input class="btn btn-danger" name="btnDeleteMeal' . $meal->getMealID() . '" type="submit" value="Delete">';
     echo '<input class="btn btn-primary float-right" name="btnEditMeal" type="submit" value="Edit">';
-    echo '<input type="hidden" name="id" value="<?php echo $row[' . $meal->getMealID() . ']; ?>"/>';
     echo '</div>';
     echo '</div>';
 }

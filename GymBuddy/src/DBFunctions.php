@@ -210,6 +210,12 @@ function deleteWorkout($workoutID)
     $statement->execute();
 }
 
+function deleteMeal($mealID)
+{
+    $statement = getConnection()->prepare("CALL deleteMeal ('" . $mealID . "')");
+    $statement->execute();
+}
+
 function createMeal($userID, $title, $mealDate, $caloriesIntake, $notes)
 {
     $statement = getConnection()->prepare("CALL createMeal ('" . $userID . "','" . $title . "','" . $mealDate . "','" . $caloriesIntake . "','" . $notes . "')");
