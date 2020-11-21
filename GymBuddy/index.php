@@ -4,7 +4,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/COMP3000/GymBuddy/src/DBFunctions.php";
 include_once 'header.php';
 
 $workoutIDArray = $mealIDArray = array();
-$deleteButtonID = "";
+$ButtonID = "";
 
 if (isset($_SESSION['userID'])) {
     $user = getUser($_SESSION['userID']);
@@ -21,32 +21,49 @@ if (isset($_SESSION['userID'])) {
 
 $i = $j = 0;
 
-//Checks which Workout Delete button has been pressed
+//Checks which Workouts Delete or Edit button has been pressed
 while ($i < count($workoutIDArray) && empty($deleteButtonID)) {
     if (isset($_POST['btnDeleteWorkout' . $workoutIDArray[$i]])) {
+
         $deleteButtonID = $workoutIDArray[$i];
-        $_SESSION['IDToDelete'] = $deleteButtonID;
+
         foreach ($usersWorkouts as $workout) {
             if ($workout->getWorkoutID() == $deleteButtonID) {
                 $_SESSION['activityToDelete'] = $workout;
             }
         }
+
         header("Location: deleteWorkoutMealConfirmPage.php");
     }
     $i++;
 }
-//Checks which Meal Delete button has been pressed
-while ($j < count($mealIDArray) && empty($deleteButtonID)) {
+//Checks which Meals Delete or Edit button has been pressed
+while ($j < count($mealIDArray) && empty($ButtonID)) {
     if (isset($_POST['btnDeleteMeal' . $mealIDArray[$j]])) {
-        $deleteButtonID = $mealIDArray[$j];
-        $_SESSION['IDToDelete'] = $deleteButtonID;
+
+        $ButtonID = $mealIDArray[$j];
+
         foreach ($usersMeals as $meal) {
-            if ($meal->getMealID() == $deleteButtonID) {
+            if ($meal->getMealID() == $ButtonID) {
                 $_SESSION['activityToDelete'] = $meal;
             }
         }
+
         header("Location: deleteWorkoutMealConfirmPage.php");
     }
+    if (isset($_POST['btnEditMeal' . $mealIDArray[$j]])) {
+
+        $ButtonID = $mealIDArray[$j];
+
+        foreach ($usersMeals as $meal) {
+            if ($meal->getMealID() == $ButtonID) {
+                $_SESSION['mealToEdit'] = $meal;
+            }
+        }
+
+        header("Location: editMealPage.php");
+    }
+
     $j++;
 }
 
@@ -69,7 +86,7 @@ function displayMeal($meal)
     echo '</ul>';
     echo '<div class="card-body">';
     echo '<input class="btn btn-danger" name="btnDeleteMeal' . $meal->getMealID() . '" type="submit" value="Delete">';
-    echo '<input class="btn btn-primary float-right" name="btnEditMeal" type="submit" value="Edit">';
+    echo '<input class="btn btn-primary float-right" name="btnEditMeal' . $meal->getMealID() . '" type="submit" value="Edit">';
     echo '</div>';
     echo '</div>';
 }

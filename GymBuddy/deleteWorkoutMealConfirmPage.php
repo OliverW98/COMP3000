@@ -3,9 +3,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/COMP3000/GymBuddy/src/DBFunctions.php";
 include_once 'header.php';
 
 $activity = $_SESSION['activityToDelete'];
-$IDToDelete = $_SESSION['IDToDelete'];
 
-$title = $activity->getTitle();
 $datetime = new DateTime($activity->getDate());
 $date = "{$datetime->format('Y-m-d')}T{$datetime->format('H:i')}";
 
@@ -13,7 +11,6 @@ $date = "{$datetime->format('Y-m-d')}T{$datetime->format('H:i')}";
 function unsetSessions()
 {
     unset($_SESSION['activityToDelete']);
-    unset($_SESSION['IDToDelete']);
 }
 
 if (isset($_POST['btnCancel'])) {
@@ -23,9 +20,9 @@ if (isset($_POST['btnCancel'])) {
 
 if (isset($_POST['btnDeleteWorkout'])) {
     if (get_class($activity) == "meal") {
-        deleteMeal($IDToDelete);
+        deleteMeal($activity->getMealID());
     } else {
-        deleteWorkout($IDToDelete);
+        deleteWorkout($activity->getMealID());
     }
 
     unsetSessions();
@@ -55,7 +52,8 @@ if (isset($_POST['btnDeleteWorkout'])) {
             <div class="input-group-prepend">
                 <label class="input-group-text text-light bg-dark" for="titleInput">Title</label>
             </div>
-            <input class="form-control" name="titleInput" disabled value="<?php echo $title ?>" type="text">
+            <input class="form-control" name="titleInput" disabled value="<?php echo $activity->getTitle() ?>"
+                   type="text">
         </div>
 
         <div class="input-group mb-3">

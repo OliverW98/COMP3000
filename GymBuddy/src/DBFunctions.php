@@ -198,6 +198,12 @@ function editUserDetails($userID, $weight, $height, $dob, $gender)
     $statement->execute();
 }
 
+function editMeal($mealID, $title, $mealDate, $caloriesIntake, $notes)
+{
+    $statement = getConnection()->prepare("CALL editMeal ('" . $mealID . "','" . $title . "','" . $mealDate . "','" . $caloriesIntake . "','" . $notes . "')");
+    $statement->execute();
+}
+
 function deleteUserDetails($userID)
 {
     $statement = getConnection()->prepare("CALL deleteUserDetails ('" . $userID . "')");
