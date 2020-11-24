@@ -5,27 +5,27 @@ include_once 'header.php';
 
 $outputPara = "";
 
-if(isset($_POST['btnCreateWorkout'])){
+if (isset($_POST['btnCreateWorkout'])) {
 
     $today = new DateTime();
     $workoutDate = new DateTime($_POST['dateInput']);
 
-    if(empty($_POST['titleInput'])|| empty($_POST['dateInput'])|| empty($_POST['durationInput']) ||
-        empty($_POST['distanceInput']) || empty($_POST['elevationInput'])|| empty($_POST['notesInput'])){
+    if (empty($_POST['titleInput']) || empty($_POST['dateInput']) || empty($_POST['durationInput']) ||
+        empty($_POST['distanceInput']) || empty($_POST['notesInput'])) {
         $outputPara = "Fields must be filled to record a workout";
-    }elseif ($_POST['typeInput'] === "Select a Type"){
+    } elseif ($_POST['typeInput'] === "Select a Type") {
         $outputPara = "Must select a cardio type";
-    }elseif ($today < $workoutDate){
+    } elseif ($today < $workoutDate) {
         $outputPara = "Can't record a workout in the future";
-    }else{
+    } else {
         $type = "";
-        if($_POST['typeInput'] === "Run"){
+        if ($_POST['typeInput'] === "Run") {
             $type = "1";
-        }elseif ($_POST['typeInput'] === "Cycle"){
+        } elseif ($_POST['typeInput'] === "Cycle") {
             $type = "0";
         }
-        createWorkout($_SESSION['userID'], $type ,$_POST['titleInput'], $_POST['dateInput'],$_POST['durationInput']
-            ,$_POST['distanceInput'],$_POST['elevationInput'],$_POST['notesInput']);
+        createWorkout($_SESSION['userID'], $type, $_POST['titleInput'], $_POST['dateInput'], $_POST['durationInput']
+            , $_POST['distanceInput'], $_POST['elevationInput'], $_POST['notesInput']);
         header("Location: home.php");
     }
 }
@@ -73,7 +73,7 @@ if(isset($_POST['btnCreateWorkout'])){
             </div>
             <input class="form-control" name="durationInput" type="number">
             <div class="input-group-append">
-                <label class="input-group-text text-light bg-dark" min="0" for="durationInput" >Mins</label>
+                <label class="input-group-text text-light bg-dark" min="0" for="durationInput">Mins</label>
             </div>
         </div>
 
@@ -83,7 +83,7 @@ if(isset($_POST['btnCreateWorkout'])){
             </div>
             <input class="form-control" name="distanceInput" min="0" type="number">
             <div class="input-group-append">
-                <label class="input-group-text text-light bg-dark" for="distanceInput" >M</label>
+                <label class="input-group-text text-light bg-dark" for="distanceInput">M</label>
             </div>
         </div>
 
@@ -91,9 +91,9 @@ if(isset($_POST['btnCreateWorkout'])){
             <div class="input-group-prepend">
                 <label class="input-group-text text-light bg-dark" for="elevationInput">Elevation</label>
             </div>
-            <input class="form-control" name="elevationInput" min="0" type="number">
+            <input class="form-control" name="elevationInput" type="number">
             <div class="input-group-append">
-                <label class="input-group-text text-light bg-dark" for="elevationInput" >M</label>
+                <label class="input-group-text text-light bg-dark" for="elevationInput">M</label>
             </div>
         </div>
 
@@ -101,14 +101,15 @@ if(isset($_POST['btnCreateWorkout'])){
             <div class="input-group-prepend">
                 <label class="input-group-text text-light bg-dark" for="notesInput">Notes</label>
             </div>
-            <textarea class="form-control" name="notesInput" maxlength="300" style="resize: none;height: 90px;"></textarea>
+            <textarea class="form-control" name="notesInput" maxlength="300"
+                      style="resize: none;height: 90px;"></textarea>
         </div>
 
         <div>
             <input class="btn btn-success float-right" name="btnCreateWorkout" type="submit" value="Record Workout">
         </div>
 
-        <p class="text-center text-danger"><?php echo $outputPara?></p>
+        <p class="text-center text-danger"><?php echo $outputPara ?></p>
     </form>
 </div>
 

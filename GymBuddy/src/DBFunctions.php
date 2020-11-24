@@ -206,7 +206,7 @@ function editMeal($mealID, $title, $mealDate, $caloriesIntake, $notes)
 
 function editCardioWorkout($workoutID, $title, $date, $duration, $distance, $elevation, $notes)
 {
-    $statement = getConnection()->prepare("CALL editCardioWorkout ('" . $workoutID . "','" . $title . "','" . $date . "','" . $duration . "','" . $distance . "',,'" . $elevation . "','" . $notes . "')");
+    $statement = getConnection()->prepare("CALL editCardioWorkout ('" . $workoutID . "','" . $title . "','" . $date . "','" . $duration . "','" . $distance . "','" . $elevation . "','" . $notes . "')");
     $statement->execute();
 }
 

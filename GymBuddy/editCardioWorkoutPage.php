@@ -20,21 +20,20 @@ if (isset($_POST['btnEditWorkout'])) {
     $workoutDate = new DateTime($_POST['dateInput']);
 
     if (empty($_POST['titleInput']) || empty($_POST['dateInput']) || empty($_POST['durationInput']) ||
-        empty($_POST['distanceInput']) || empty($_POST['elevationInput']) || empty($_POST['notesInput'])) {
+        empty($_POST['distanceInput']) || empty($_POST['notesInput'])) {
         $failureOutputPara = "Fields must be filled to edit a workout";
     } elseif ($today < $workoutDate) {
-        $failureOutputPara = "Can't record a workout in the future";
+        $failureOutputPara = "Workout cannot occur in the future";
     } else {
-        //editCardioWorkout($workout->getWorkoutID(), $_POST['titleInput'], $_POST['dateInput'], $_POST['durationInput'], $_POST['distanceInput'], $_POST['elevationInput'], $_POST['notesInput']);
-        $failureOutputPara = "edited lol";
-        // header("Location: index.php");
+        editCardioWorkout($workout->getWorkoutID(), $_POST['titleInput'], $_POST['dateInput'], $_POST['durationInput'], $_POST['distanceInput'], $_POST['elevationInput'], $_POST['notesInput']);
+        header("Location: index.php");
     }
 }
 ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add Cardio Workout</title>
+    <title>Edit Cardio Workout</title>
 </head>
 <body>
 <div class="container">
@@ -81,7 +80,7 @@ if (isset($_POST['btnEditWorkout'])) {
             <div class="input-group-prepend">
                 <label class="input-group-text text-light bg-dark" for="elevationInput">Elevation</label>
             </div>
-            <input class="form-control" name="elevationInput" min="0" value="<?php echo $workout->getElevation() ?>"
+            <input class="form-control" name="elevationInput" value="<?php echo $workout->getElevation() ?>"
                    type="number">
             <div class="input-group-append">
                 <label class="input-group-text text-light bg-dark" for="elevationInput">M</label>
@@ -92,13 +91,13 @@ if (isset($_POST['btnEditWorkout'])) {
             <div class="input-group-prepend">
                 <label class="input-group-text text-light bg-dark" for="notesInput">Notes</label>
             </div>
-            <textarea class="form-control" name="notesInput" value="<?php echo $workout->getNotes() ?>" maxlength="300"
-                      style="resize: none;height: 90px;"></textarea>
+            <textarea class="form-control" name="notesInput" maxlength="300"
+                      style="resize: none;height: 90px;"><?php echo $workout->getNotes() ?></textarea>
         </div>
 
         <div>
-            <input class="btn btn-primary float-right" name="btnCancel" type="submit" value="Record Workout">
-            <input class="btn btn-warning float-right" name="btnEditWorkout" type="submit" value="Record Workout">
+            <input class="btn btn-primary" name="btnCancel" type="submit" value="Cancel">
+            <input class="btn btn-warning float-right" name="btnEditWorkout" type="submit" value="Edit Workout">
         </div>
 
         <p class="text-center text-danger"><?php echo $failureOutputPara ?></p>

@@ -6,6 +6,11 @@ include_once 'header.php';
 $workoutIDArray = $mealIDArray = array();
 $ButtonID = "";
 
+//TO DO :
+// format dates
+// calories , watts and speed cals
+// order by date of workout
+
 if (isset($_SESSION['userID'])) {
     $user = getUser($_SESSION['userID']);
     $usersMeals = $user->getMeals();
@@ -31,24 +36,20 @@ while ($i < count($workoutIDArray) && empty($ButtonID)) {
                 $_SESSION['activityToDelete'] = $workout;
             }
         }
-        var_dump($ButtonID);
-        // header("Location: deleteWorkoutMealConfirmPage.php");
+        header("Location: deleteWorkoutMealConfirmPage.php");
     }
-    if (isset($_POST['btnEditWorkout' . $workoutIDArray[$j]])) {
+    if (isset($_POST['btnEditWorkout' . $workoutIDArray[$i]])) {
 
-        $ButtonID = $workoutIDArray[$j];
+        $ButtonID = $workoutIDArray[$i];
 
         foreach ($usersWorkouts as $workout) {
             if ($workout->getWorkoutID() == $ButtonID) {
                 $_SESSION['workoutToEdit'] = $workout;
-                var_dump($ButtonID);
+
                 if (get_class($workout) == "run" || get_class($workout) == "cycle") {
-                    // header("Location: editCardioWorkoutPage.php");
-                    var_dump("cardio");
-                    var_dump($workout->getWorkoutID());
+                    header("Location: editCardioWorkoutPage.php");
                 } elseif (get_class($workout) == "weights") {
-                    var_dump("Weights");
-                    var_dump($workout->getWorkoutID());
+
                 }
             }
         }
@@ -86,11 +87,6 @@ while ($j < count($mealIDArray) && empty($ButtonID)) {
     $j++;
 }
 
-//TO DO :
-// format dates
-// calories , watts and speed cals
-// order by date of workout
-
 
 function displayMeal($meal)
 {
@@ -110,7 +106,7 @@ function displayMeal($meal)
     echo '</div>';
 }
 
-function displayCycle($workout)
+function displayWorkout($workout)
 {
     echo '<div class="card mt-3 mx-auto border-dark" style="width: 25rem;">';
     echo '<div class="card-body">';
@@ -120,76 +116,43 @@ function displayCycle($workout)
     echo '<ul class="list-group list-group-flush">';
     echo '<li class="list-group-item">Date : ' . $workout->getDate() . '</li>';
     echo '<li class="list-group-item">' . $workout->getDuration() . ' Minutes</li>';
-    echo '<li class="list-group-item">Distance : ' . $workout->getDistance() . ' Meters</li>';
-    echo '<li class="list-group-item">Elevation : ' . $workout->getElevation() . ' Meters</li>';
-    echo '</ul>';
-    echo '<div class="card-body">';
-    echo '<input class="btn btn-danger" name="btnDeleteWorkout' . $workout->getWorkoutID() . '" type="submit" value="Delete">';
-    echo '<input class="btn btn-primary float-right" name="btnEditWorkout' . $workout->getWorkoutID() . '" type="submit" value="Edit">';
-    echo '</div>';
-    echo '</div>';
-}
-
-function displayRun($workout)
-{
-    echo '<div class="card mt-3 mx-auto border-dark" style="width: 25rem;">';
-    echo '<div class="card-body">';
-    echo '<h5 class="card-title">' . $workout->getTitle() . '</h5>';
-    echo '<p class="card-text">' . $workout->getNotes() . '</p>';
-    echo '</div>';
-    echo '<ul class="list-group list-group-flush">';
-    echo '<li class="list-group-item">Date : ' . $workout->getDate() . '</li>';
-    echo '<li class="list-group-item">' . $workout->getDuration() . ' Minutes</li>';
-    echo '<li class="list-group-item">Distance : ' . $workout->getDistance() . ' Meters</li>';
-    echo '<li class="list-group-item">Elevation : ' . $workout->getElevation() . ' Meters</li>';
-    echo '</ul>';
-    echo '<div class="card-body">';
-    echo '<input class="btn btn-danger" name="btnDeleteWorkout' . $workout->getWorkoutID() . '" type="submit" value="Delete">';
-    echo '<input class="btn btn-primary float-right" name="btnEditWorkout' . $workout->getWorkoutID() . '" type="submit" value="Edit">';
-    echo '</div>';
-    echo '</div>';
-}
-
-function displayWeights($workout)
-{
-    echo '<div class="card mt-3 mx-auto border-dark" style="width: 25rem;">';
-    echo '<div class="card-body">';
-    echo '<h5 class="card-title">' . $workout->getTitle() . '</h5>';
-    echo '<p class="card-text">' . $workout->getNotes() . '</p>';
-    echo '</div>';
-    echo '<ul class="list-group list-group-flush">';
-    echo '<li class="list-group-item">Date : ' . $workout->getDate() . '</li>';
-    echo '<li class="list-group-item">' . $workout->getDuration() . ' Minutes</li>';
-    echo '</ul>';
-    echo '<table class="table" id="exerciseTable">';
-    echo '<thead class="thead-dark mt-3">';
-    echo '<tr>';
-    echo '<th scope="col">#</th>';
-    echo '<th scope="col">Exercise</th>';
-    echo '<th scope="col">Sets</th>';
-    echo '<th scope="col">Reps</th>';
-    echo '<th scope="col">Weight (kg)</th>';
-    echo '</tr>';
-    echo '</thead>';
-    echo '<tbody>';
-    $exercises = $workout->getExercises();
-    for ($i = 0; $i < count($exercises); $i++) {
-        echo '<tr>';
-        echo '<th scope="row">' . ($i + 1) . '</th>';
-        echo '<td>' . $exercises[$i]->getName() . '</td>';
-        echo '<td>' . $exercises[$i]->getSets() . '</td>';
-        echo '<td>' . $exercises[$i]->getReps() . '</td>';
-        echo '<td>' . $exercises[$i]->getWeight() . '</td>';
-        echo '</tr>';
+    if (get_class($workout) == "run" || get_class($workout) == "cycle") {
+        echo '<li class="list-group-item">Distance : ' . $workout->getDistance() . ' Meters</li>';
+        echo '<li class="list-group-item">Elevation : ' . $workout->getElevation() . ' Meters</li>';
     }
-    echo '</tbody>';
-    echo '</table>';
+    echo '</ul>';
+    if (get_class($workout) == "weights") {
+        echo '<table class="table" id="exerciseTable">';
+        echo '<thead class="thead-dark mt-3">';
+        echo '<tr>';
+        echo '<th scope="col">#</th>';
+        echo '<th scope="col">Exercise</th>';
+        echo '<th scope="col">Sets</th>';
+        echo '<th scope="col">Reps</th>';
+        echo '<th scope="col">Weight (kg)</th>';
+        echo '</tr>';
+        echo '</thead>';
+        echo '<tbody>';
+        $exercises = $workout->getExercises();
+        for ($i = 0; $i < count($exercises); $i++) {
+            echo '<tr>';
+            echo '<th scope="row">' . ($i + 1) . '</th>';
+            echo '<td>' . $exercises[$i]->getName() . '</td>';
+            echo '<td>' . $exercises[$i]->getSets() . '</td>';
+            echo '<td>' . $exercises[$i]->getReps() . '</td>';
+            echo '<td>' . $exercises[$i]->getWeight() . '</td>';
+            echo '</tr>';
+        }
+        echo '</tbody>';
+        echo '</table>';
+    }
     echo '<div class="card-body">';
     echo '<input class="btn btn-danger" name="btnDeleteWorkout' . $workout->getWorkoutID() . '" type="submit" value="Delete">';
     echo '<input class="btn btn-primary float-right" name="btnEditWorkout' . $workout->getWorkoutID() . '" type="submit" value="Edit">';
     echo '</div>';
     echo '</div>';
 }
+
 
 ?>
 
@@ -212,13 +175,7 @@ function displayWeights($workout)
                         echo '<p class="text-center">User does not have any workouts recorded</p>';
                     } else {
                         foreach ($usersWorkouts as $workout) {
-                            if (get_class($workout) == "cycle") {
-                                displayCycle($workout);
-                            } elseif (get_class($workout) == "run") {
-                                displayRun($workout);
-                            } elseif (get_class($workout) == "weights") {
-                                displayWeights($workout);
-                            }
+                            displayWorkout($workout);
                         }
                     }
                 } else {
