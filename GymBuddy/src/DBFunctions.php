@@ -204,6 +204,12 @@ function editMeal($mealID, $title, $mealDate, $caloriesIntake, $notes)
     $statement->execute();
 }
 
+function editCardioWorkout($workoutID, $title, $date, $duration, $distance, $elevation, $notes)
+{
+    $statement = getConnection()->prepare("CALL editCardioWorkout ('" . $workoutID . "','" . $title . "','" . $date . "','" . $duration . "','" . $distance . "',,'" . $elevation . "','" . $notes . "')");
+    $statement->execute();
+}
+
 function deleteUserDetails($userID)
 {
     $statement = getConnection()->prepare("CALL deleteUserDetails ('" . $userID . "')");

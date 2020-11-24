@@ -20,20 +20,39 @@ if (isset($_SESSION['userID'])) {
 
 
 $i = $j = 0;
-
 //Checks which Workouts Delete or Edit button has been pressed
-while ($i < count($workoutIDArray) && empty($deleteButtonID)) {
+while ($i < count($workoutIDArray) && empty($ButtonID)) {
     if (isset($_POST['btnDeleteWorkout' . $workoutIDArray[$i]])) {
 
-        $deleteButtonID = $workoutIDArray[$i];
+        $ButtonID = $workoutIDArray[$i];
 
         foreach ($usersWorkouts as $workout) {
-            if ($workout->getWorkoutID() == $deleteButtonID) {
+            if ($workout->getWorkoutID() == $ButtonID) {
                 $_SESSION['activityToDelete'] = $workout;
             }
         }
+        var_dump($ButtonID);
+        // header("Location: deleteWorkoutMealConfirmPage.php");
+    }
+    if (isset($_POST['btnEditWorkout' . $workoutIDArray[$j]])) {
 
-        header("Location: deleteWorkoutMealConfirmPage.php");
+        $ButtonID = $workoutIDArray[$j];
+
+        foreach ($usersWorkouts as $workout) {
+            if ($workout->getWorkoutID() == $ButtonID) {
+                $_SESSION['workoutToEdit'] = $workout;
+                var_dump($ButtonID);
+                if (get_class($workout) == "run" || get_class($workout) == "cycle") {
+                    // header("Location: editCardioWorkoutPage.php");
+                    var_dump("cardio");
+                    var_dump($workout->getWorkoutID());
+                } elseif (get_class($workout) == "weights") {
+                    var_dump("Weights");
+                    var_dump($workout->getWorkoutID());
+                }
+            }
+        }
+
     }
     $i++;
 }
@@ -106,7 +125,7 @@ function displayCycle($workout)
     echo '</ul>';
     echo '<div class="card-body">';
     echo '<input class="btn btn-danger" name="btnDeleteWorkout' . $workout->getWorkoutID() . '" type="submit" value="Delete">';
-    echo '<input class="btn btn-primary float-right" name="btnEditWorkout" type="submit" value="Edit">';
+    echo '<input class="btn btn-primary float-right" name="btnEditWorkout' . $workout->getWorkoutID() . '" type="submit" value="Edit">';
     echo '</div>';
     echo '</div>';
 }
@@ -126,7 +145,7 @@ function displayRun($workout)
     echo '</ul>';
     echo '<div class="card-body">';
     echo '<input class="btn btn-danger" name="btnDeleteWorkout' . $workout->getWorkoutID() . '" type="submit" value="Delete">';
-    echo '<input class="btn btn-primary float-right" name="btnEditWorkout" type="submit" value="Edit">';
+    echo '<input class="btn btn-primary float-right" name="btnEditWorkout' . $workout->getWorkoutID() . '" type="submit" value="Edit">';
     echo '</div>';
     echo '</div>';
 }
@@ -167,7 +186,7 @@ function displayWeights($workout)
     echo '</table>';
     echo '<div class="card-body">';
     echo '<input class="btn btn-danger" name="btnDeleteWorkout' . $workout->getWorkoutID() . '" type="submit" value="Delete">';
-    echo '<input class="btn btn-primary float-right" name="btnEditWorkout" type="submit" value="Edit">';
+    echo '<input class="btn btn-primary float-right" name="btnEditWorkout' . $workout->getWorkoutID() . '" type="submit" value="Edit">';
     echo '</div>';
     echo '</div>';
 }

@@ -8,7 +8,7 @@ $meal = $_SESSION['mealToEdit'];
 $datetime = new DateTime($meal->getDate());
 $date = "{$datetime->format('Y-m-d')}T{$datetime->format('H:i')}";
 
-if (isset($_POSt['btnCancel'])) {
+if (isset($_POST['btnCancel'])) {
     unset($_SESSION['mealToEdit']);
     header("Location: index.php");
 }
@@ -33,7 +33,7 @@ if (isset($_POST['btnEditMeal'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Create Meal</title>
+    <title>Edit Meal</title>
 </head>
 <body>
 <div class="container">

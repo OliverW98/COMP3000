@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/GymBuddy/editCardioWorkout.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/deleteWorkoutMealConfirmPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/deleteWorkoutMealConfirmPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/editMealPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/editMealPage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" afterDir="false" />
     </list>
@@ -59,7 +60,9 @@
       <workItem from="1605782345550" duration="3945000" />
       <workItem from="1605808412091" duration="2946000" />
       <workItem from="1605872531905" duration="2241000" />
-      <workItem from="1605980658591" duration="2570000" />
+      <workItem from="1605980658591" duration="2802000" />
+      <workItem from="1606162673951" duration="22000" />
+      <workItem from="1606228858078" duration="3321000" />
     </task>
     <task id="LOCAL-00001" summary="delete meal complete">
       <created>1605874710721</created>
@@ -68,7 +71,21 @@
       <option name="project" value="LOCAL" />
       <updated>1605874710721</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="edit meal complete">
+      <created>1605983366231</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1605983366231</updated>
+    </task>
+    <task id="LOCAL-00003" summary="edit meal complete">
+      <created>1605983446859</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1605983446859</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -76,28 +93,33 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="delete meal complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete meal complete" />
+    <MESSAGE value="edit meal complete" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit meal complete" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="824" y="287" key="CommitChangelistDialog2" timestamp="1605874709748">
+    <state x="824" y="287" key="CommitChangelistDialog2" timestamp="1605983446385">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="824" y="287" key="CommitChangelistDialog2/-1920.189.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1605874709748" />
+    <state x="824" y="287" key="CommitChangelistDialog2/-1920.189.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1605983446385" />
+    <state x="1060" y="455" key="FileChooserDialogImpl" timestamp="1606162698906">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1060" y="455" key="FileChooserDialogImpl/-1920.189.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1606162698906" />
     <state x="1086" y="423" key="NewPhpClassDialog" timestamp="1605380033689">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1086" y="423" key="NewPhpClassDialog/-1920.189.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1605380033689" />
-    <state x="1114" y="623" key="NewPhpFileDialog" timestamp="1605981621975">
+    <state x="1114" y="623" key="NewPhpFileDialog" timestamp="1606229969478">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1114" y="623" key="NewPhpFileDialog/-1920.189.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1605981621975" />
+    <state x="1114" y="623" key="NewPhpFileDialog/-1920.189.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1606229969478" />
     <state x="781" y="345" key="SettingsEditor" timestamp="1605653087154">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="781" y="345" key="SettingsEditor/-1920.189.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1605653087154" />
-    <state x="872" y="433" key="Vcs.Push.Dialog.v2" timestamp="1605874722138">
+    <state x="872" y="433" key="Vcs.Push.Dialog.v2" timestamp="1605983454876">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="872" y="433" key="Vcs.Push.Dialog.v2/-1920.189.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1605874722138" />
+    <state x="872" y="433" key="Vcs.Push.Dialog.v2/-1920.189.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1605983454876" />
   </component>
 </project>
