@@ -49,7 +49,7 @@ while ($i < count($workoutIDArray) && empty($ButtonID)) {
                 if (get_class($workout) == "run" || get_class($workout) == "cycle") {
                     header("Location: editCardioWorkoutPage.php");
                 } elseif (get_class($workout) == "weights") {
-
+                    header("Location: editWeightsWorkoutPage.php");
                 }
             }
         }
@@ -159,7 +159,7 @@ function displayWorkout($workout)
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home page</title>
+    <title>Home Page</title>
 </head>
 <body>
 <div class="container">

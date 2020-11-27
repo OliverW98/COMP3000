@@ -6,9 +6,10 @@ class weights extends workout
     private $caloriesBurnt;
     private $exercises = array();
 
-    public function __construct($id, $title , $date , $duration ,$notes, $exercises ){
+    public function __construct($id, $title, $date, $duration, $notes, $exercises)
+    {
         $this->workoutID = $id;
-        $this->title=$title;
+        $this->title = $title;
         $this->date = $date;
         $this->duration = $duration;
         $this->notes = $notes;
@@ -23,8 +24,16 @@ class weights extends workout
         return $this->exercises;
     }
 
-    public function addExercise($exercise){
-       array_push($this->exercises, $exercise);
+    public function addExercise($exercise)
+    {
+        array_push($this->exercises, $exercise);
     }
 
+    /**
+     * @param array $exercises
+     */
+    public function setExercises($exercises)
+    {
+        $this->exercises = $exercises;
+    }
 }
