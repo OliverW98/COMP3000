@@ -50,6 +50,20 @@ if (isset($_POST['btnDeleteExercises'])) {
 
 }
 
+if (isset($_POST['btnEditWorkout'])) {
+    $today = new DateTime();
+    $workoutDate = new DateTime($_POST['dateInput']);
+
+    if (empty($_POST['titleInput']) || empty($_POST['dateInput']) || empty($_POST['durationInput']) || empty($_POST['notesInput'])) {
+        $failureOutputPara = "Fields must be filled to edit a workout";
+    } elseif ($today < $workoutDate) {
+        $failureOutputPara = "Workout cannot occur in the future";
+    } else {
+        editWorkout($workout->getWorkoutID(), $_POST['titleInput'], $_POST['dateInput'], $_POST['durationInput'], 0, 0, $_POST['notesInput']);
+        header("Location: index.php");
+    }
+}
+
 ?>
 <html lang="en">
 <head>

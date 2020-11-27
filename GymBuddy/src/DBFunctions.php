@@ -210,9 +210,9 @@ function editExercise($exerciseID, $name, $sets, $reps, $weight)
     $statement->execute();
 }
 
-function editCardioWorkout($workoutID, $title, $date, $duration, $distance, $elevation, $notes)
+function editWorkout($workoutID, $title, $date, $duration, $distance, $elevation, $notes)
 {
-    $statement = getConnection()->prepare("CALL editCardioWorkout ('" . $workoutID . "','" . $title . "','" . $date . "','" . $duration . "','" . $distance . "','" . $elevation . "','" . $notes . "')");
+    $statement = getConnection()->prepare("CALL editWorkout ('" . $workoutID . "','" . $title . "','" . $date . "','" . $duration . "','" . $distance . "','" . $elevation . "','" . $notes . "')");
     $statement->execute();
 }
 

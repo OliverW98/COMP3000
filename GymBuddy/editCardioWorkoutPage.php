@@ -25,7 +25,7 @@ if (isset($_POST['btnEditWorkout'])) {
     } elseif ($today < $workoutDate) {
         $failureOutputPara = "Workout cannot occur in the future";
     } else {
-        editCardioWorkout($workout->getWorkoutID(), $_POST['titleInput'], $_POST['dateInput'], $_POST['durationInput'], $_POST['distanceInput'], $_POST['elevationInput'], $_POST['notesInput']);
+        editWorkout($workout->getWorkoutID(), $_POST['titleInput'], $_POST['dateInput'], $_POST['durationInput'], $_POST['distanceInput'], $_POST['elevationInput'], $_POST['notesInput']);
         header("Location: index.php");
     }
 }
