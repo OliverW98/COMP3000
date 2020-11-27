@@ -234,6 +234,12 @@ function deleteMeal($mealID)
     $statement->execute();
 }
 
+function deleteExercise($exerciseID)
+{
+    $statement = getConnection()->prepare("CALL deleteExercise ('" . $exerciseID . "')");
+    $statement->execute();
+}
+
 function createMeal($userID, $title, $mealDate, $caloriesIntake, $notes)
 {
     $statement = getConnection()->prepare("CALL createMeal ('" . $userID . "','" . $title . "','" . $mealDate . "','" . $caloriesIntake . "','" . $notes . "')");

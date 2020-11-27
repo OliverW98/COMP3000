@@ -21,11 +21,31 @@ if (isset($_POST['btnAddExercises'])) {
 
 if (isset($_POST['btnEditExercises'])) {
     if ($_POST['selectExercise'] == "Choose Exercise...") {
-        $failureOutputPara = "Must chose a Exercise to Edit";
+        $failureOutputPara = "Must chose a exercise to Edit";
     } else {
         $_SESSION['exerciseToEdit'] = $_POST['selectExercise'];
         header("Location: editExercisesPage.php");
         $_SESSION['boolAddExercise'] = false;
+    }
+
+}
+
+if (isset($_POST['btnDeleteExercises'])) {
+    if (count($exercises) <= 0) {
+        $failureOutputPara = "There are no exercise to Delete";
+    } elseif ($_POST['selectExercise'] == "Choose Exercise...") {
+        $failureOutputPara = "Must chose a exercise to Delete";
+    } else {
+        $tempArray = array();
+        for ($i = 0; $i < count($exercises); $i++) {
+            if ($exercises[$i]->getName() != $_POST['selectExercise']) {
+                array_push($tempArray, $exercises[$i]);
+            } else {
+                deleteExercise($exercises[$i]->getExerciseID());
+            }
+        }
+        $workout->setExercises($tempArray);
+        header("Refresh:0");
     }
 
 }

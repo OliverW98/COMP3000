@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/GymBuddy/editExercisesPage.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GymBuddy/editWeightsWorkoutPage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/createExercisePage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createExercisePage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/editWeightsWorkoutPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/editWeightsWorkoutPage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/src/exercise.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/exercise.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/src/weights.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/weights.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +64,7 @@
       <workItem from="1606238384022" duration="3153000" />
       <workItem from="1606261114649" duration="10000" />
       <workItem from="1606394172286" duration="1593000" />
-      <workItem from="1606434993597" duration="7618000" />
+      <workItem from="1606434993597" duration="10313000" />
     </task>
     <task id="LOCAL-00001" summary="delete meal complete">
       <created>1605874710721</created>
@@ -106,7 +101,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606241516828</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="can edit exercise in a weights workout">
+      <created>1606442736942</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1606442736942</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -117,13 +119,14 @@
     <MESSAGE value="edit meal complete" />
     <MESSAGE value="edit cardio workout. edit button doesn't work on run workout" />
     <MESSAGE value="edit cardio workout complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit cardio workout complete" />
+    <MESSAGE value="can edit exercise in a weights workout" />
+    <option name="LAST_COMMIT_MESSAGE" value="can edit exercise in a weights workout" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="824" y="287" key="CommitChangelistDialog2" timestamp="1606241516021">
+    <state x="824" y="287" key="CommitChangelistDialog2" timestamp="1606442736073">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="824" y="287" key="CommitChangelistDialog2/-1920.189.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1606241516021" />
+    <state x="824" y="287" key="CommitChangelistDialog2/-1920.189.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1606442736073" />
     <state x="1060" y="455" key="FileChooserDialogImpl" timestamp="1606162698906">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -140,9 +143,9 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="781" y="345" key="SettingsEditor/-1920.189.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1605653087154" />
-    <state x="872" y="433" key="Vcs.Push.Dialog.v2" timestamp="1606241522248">
+    <state x="872" y="433" key="Vcs.Push.Dialog.v2" timestamp="1606442740784">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="872" y="433" key="Vcs.Push.Dialog.v2/-1920.189.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1606241522248" />
+    <state x="872" y="433" key="Vcs.Push.Dialog.v2/-1920.189.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1606442740784" />
   </component>
 </project>
