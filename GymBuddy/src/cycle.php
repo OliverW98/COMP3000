@@ -69,9 +69,7 @@ class cycle extends workout
     public function setAverageWatts($user)
     {
         $this->averageWatts = round((($this->Fg($user) + $this->Fr($user) + $this->Fa()) * $this->speed) / (1 - 0.04), 2);
-        var_dump($this->Fg($user));
-        var_dump($this->Fr($user));
-        var_dump($this->Fa());
+        $this->setCaloriesBurnt();
     }
 
     private function Fg($user)
@@ -110,8 +108,9 @@ class cycle extends workout
     /**
      * @param mixed $caloriesBurnt
      */
-    public function setCaloriesBurnt($caloriesBurnt)
+    public function setCaloriesBurnt()
     {
-        $this->caloriesBurnt = $caloriesBurnt;
+
+        $this->caloriesBurnt = round(($this->averageWatts * ($this->duration * 60) / 4180) / 0.24);
     }
 }

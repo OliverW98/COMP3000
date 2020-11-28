@@ -4,7 +4,6 @@
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/src/cycle.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/cycle.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -68,7 +67,7 @@
       <workItem from="1606434993597" duration="10416000" />
       <workItem from="1606490569406" duration="1083000" />
       <workItem from="1606586636628" duration="4346000" />
-      <workItem from="1606594884396" duration="1614000" />
+      <workItem from="1606594884396" duration="2410000" />
     </task>
     <task id="LOCAL-00001" summary="delete meal complete">
       <created>1605874710721</created>
@@ -126,7 +125,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606491201149</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="cycling average watts">
+      <created>1606596609217</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1606596609217</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,13 +146,14 @@
     <MESSAGE value="can edit exercise in a weights workout" />
     <MESSAGE value="can delete exercise in a weights workout" />
     <MESSAGE value="edit weights workout complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit weights workout complete" />
+    <MESSAGE value="cycling average watts" />
+    <option name="LAST_COMMIT_MESSAGE" value="cycling average watts" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="824" y="287" key="CommitChangelistDialog2" timestamp="1606491200048">
+    <state x="824" y="287" key="CommitChangelistDialog2" timestamp="1606596607684">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="824" y="287" key="CommitChangelistDialog2/-1920.189.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1606491200048" />
+    <state x="824" y="287" key="CommitChangelistDialog2/-1920.189.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1606596607684" />
     <state x="1060" y="455" key="FileChooserDialogImpl" timestamp="1606162698906">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
