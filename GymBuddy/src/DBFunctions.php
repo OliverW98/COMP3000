@@ -35,7 +35,16 @@ function getUser($userID)
 
     $usersWorkouts = getUsersWorkouts($userID);
 
-    return $user = constructUserObject($userData, $usersMeals, $usersWorkouts);
+    $user = constructUserObject($userData, $usersMeals, $usersWorkouts);
+
+    foreach ($user->getWorkouts() as $workout) {
+        if (get_class($workout) == "cycle") {
+            $workout->setAverageWatts($user);
+        }
+    }
+
+
+    return $user;
 }
 
 function constructUserObject($userData, $usersMeals, $usersWorkouts)
