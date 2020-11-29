@@ -40,6 +40,8 @@ function getUser($userID)
     foreach ($user->getWorkouts() as $workout) {
         if (get_class($workout) == "cycle") {
             $workout->setAverageWatts($user);
+        } elseif (get_class($workout) == "run") {
+            $workout->setCaloriesBurnt($user);
         }
     }
 

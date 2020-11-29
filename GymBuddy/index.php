@@ -120,7 +120,7 @@ function displayWorkout($workout)
         echo '<li class="list-group-item">Speed : ' . round(($workout->getSpeed() * 3.6), 1) . ' Km/h</li>';
         echo '<li class="list-group-item">Distance : ' . $workout->getDistance() . ' Meters</li>';
         echo '<li class="list-group-item">Elevation : ' . $workout->getElevation() . ' Meters</li>';
-        echo '<li class="list-group-item">Calories Burnt: ' . $workout->getCaloriesBurnt() . ' Cals</li>';
+        echo '<li class="list-group-item">Calories Burnt: ' . round($workout->getCaloriesBurnt()) . ' Cals</li>';
     }
     if (get_class($workout) == "cycle") {
         echo '<li class="list-group-item">Average Watts : ' . $workout->getAverageWatts() . ' Watts</li>';
