@@ -7,8 +7,6 @@ $workoutIDArray = $mealIDArray = array();
 $ButtonID = "";
 
 //TO DO :
-// format dates
-// calories , watts and speed cals
 // order by date of workout
 
 if (isset($_SESSION['userID'])) {
@@ -90,13 +88,15 @@ while ($j < count($mealIDArray) && empty($ButtonID)) {
 
 function displayMeal($meal)
 {
+    $datetime = new DateTime($meal->getDate());
+    $date = "{$datetime->format('d/m/y')} at {$datetime->format('H:i')}";
     echo '<div class="card mt-3 mx-auto border-dark" style="width: 25rem;">';
     echo '<div class="card-body">';
     echo '<h5 class="card-title">' . $meal->getTitle() . '</h5>';
     echo '<p class="card-text">' . $meal->getNotes() . '</p>';
     echo '</div>';
     echo '<ul class="list-group list-group-flush">';
-    echo '<li class="list-group-item">Date : ' . $meal->getDate() . '</li>';
+    echo '<li class="list-group-item">' . $date . '</li>';
     echo '<li class="list-group-item">' . $meal->getCalorieIntake() . ' Cals</li>';
     echo '</ul>';
     echo '<div class="card-body">';
@@ -108,13 +108,15 @@ function displayMeal($meal)
 
 function displayWorkout($workout)
 {
+    $datetime = new DateTime($workout->getDate());
+    $date = "{$datetime->format('d/m/y')} at {$datetime->format('H:i')}";
     echo '<div class="card mt-3 mx-auto border-dark" style="width: 25rem;">';
     echo '<div class="card-body">';
     echo '<h5 class="card-title">' . $workout->getTitle() . '</h5>';
     echo '<p class="card-text">' . $workout->getNotes() . '</p>';
     echo '</div>';
     echo '<ul class="list-group list-group-flush">';
-    echo '<li class="list-group-item">Date : ' . $workout->getDate() . '</li>';
+    echo '<li class="list-group-item">' . $date . '</li>';
     echo '<li class="list-group-item">' . $workout->getDuration() . ' Minutes</li>';
     if (get_class($workout) == "run" || get_class($workout) == "cycle") {
         echo '<li class="list-group-item">Speed : ' . round(($workout->getSpeed() * 3.6), 1) . ' Km/h</li>';

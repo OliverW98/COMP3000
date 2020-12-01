@@ -4,8 +4,6 @@
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/src/run.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/run.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +68,10 @@
       <workItem from="1606586636628" duration="4346000" />
       <workItem from="1606594884396" duration="2538000" />
       <workItem from="1606659477793" duration="2749000" />
-      <workItem from="1606671198870" duration="3086000" />
+      <workItem from="1606671198870" duration="3183000" />
+      <workItem from="1606709879932" duration="122000" />
+      <workItem from="1606825294591" duration="808000" />
+      <workItem from="1606843767635" duration="506000" />
     </task>
     <task id="LOCAL-00001" summary="delete meal complete">
       <created>1605874710721</created>
@@ -142,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606597405739</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="running calories burnt complete">
+      <created>1606674328747</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1606674328747</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,13 +166,14 @@
     <MESSAGE value="edit weights workout complete" />
     <MESSAGE value="cycling average watts" />
     <MESSAGE value="cycling calories burnt" />
-    <option name="LAST_COMMIT_MESSAGE" value="cycling calories burnt" />
+    <MESSAGE value="running calories burnt complete" />
+    <option name="LAST_COMMIT_MESSAGE" value="running calories burnt complete" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="824" y="287" key="CommitChangelistDialog2" timestamp="1606597405195">
+    <state x="824" y="287" key="CommitChangelistDialog2" timestamp="1606674327629">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="824" y="287" key="CommitChangelistDialog2/-1920.189.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1606597405195" />
+    <state x="824" y="287" key="CommitChangelistDialog2/-1920.189.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1606674327629" />
     <state x="1060" y="455" key="FileChooserDialogImpl" timestamp="1606162698906">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -181,9 +190,9 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="781" y="345" key="SettingsEditor/-1920.189.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1605653087154" />
-    <state x="872" y="433" key="Vcs.Push.Dialog.v2" timestamp="1606597433504">
+    <state x="872" y="433" key="Vcs.Push.Dialog.v2" timestamp="1606674333471">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="872" y="433" key="Vcs.Push.Dialog.v2/-1920.189.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1606597433504" />
+    <state x="872" y="433" key="Vcs.Push.Dialog.v2/-1920.189.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1606674333471" />
   </component>
 </project>
