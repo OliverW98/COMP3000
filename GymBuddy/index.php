@@ -6,9 +6,6 @@ include_once 'header.php';
 $workoutIDArray = $mealIDArray = array();
 $ButtonID = "";
 
-//TO DO :
-// order by date of workout
-
 if (isset($_SESSION['userID'])) {
     $user = getUser($_SESSION['userID']);
     $usersMeals = $user->getMeals();
@@ -20,7 +17,6 @@ if (isset($_SESSION['userID'])) {
         array_push($workoutIDArray, $workout->getWorkoutID());
     }
 }
-
 
 $i = $j = 0;
 //Checks which Workouts Delete or Edit button has been pressed

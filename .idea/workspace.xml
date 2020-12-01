@@ -71,7 +71,7 @@
       <workItem from="1606671198870" duration="3183000" />
       <workItem from="1606709879932" duration="122000" />
       <workItem from="1606825294591" duration="808000" />
-      <workItem from="1606843767635" duration="506000" />
+      <workItem from="1606843767635" duration="1470000" />
     </task>
     <task id="LOCAL-00001" summary="delete meal complete">
       <created>1605874710721</created>
@@ -150,7 +150,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606674328747</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="card dates formatted">
+      <created>1606844322400</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1606844322400</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,13 +174,14 @@
     <MESSAGE value="cycling average watts" />
     <MESSAGE value="cycling calories burnt" />
     <MESSAGE value="running calories burnt complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="running calories burnt complete" />
+    <MESSAGE value="card dates formatted" />
+    <option name="LAST_COMMIT_MESSAGE" value="card dates formatted" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="824" y="287" key="CommitChangelistDialog2" timestamp="1606674327629">
+    <state x="824" y="287" key="CommitChangelistDialog2" timestamp="1606844320928">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="824" y="287" key="CommitChangelistDialog2/-1920.189.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1606674327629" />
+    <state x="824" y="287" key="CommitChangelistDialog2/-1920.189.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1606844320928" />
     <state x="1060" y="455" key="FileChooserDialogImpl" timestamp="1606162698906">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
