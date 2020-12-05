@@ -127,6 +127,60 @@ function constructUserObject($userData, $usersMeals, $usersWorkouts)
     return $user = new user($userID, $userName, $email, $password, $userWeight, $userHeight, $dob, $gender, $mealsArray, $workoutsArray);
 }
 
+function constructWorkoutArrayByYear($userID, $year)
+{
+    $usersWorkouts = getUsersWorkoutsByYear($userID, $year);
+
+    $workoutsArray = array();
+
+    for ($i = 0; $i < count($usersWorkouts); $i++) {
+
+        $workoutID = $usersWorkouts[$i]['workoutID'];
+        $type = $usersWorkouts[$i]['type'];
+        $title = $usersWorkouts[$i]['title'];
+        $date = $usersWorkouts[$i]['workoutDate'];
+        $duration = $usersWorkouts[$i]['duration'];
+        $distance = $usersWorkouts[$i]['distance'];
+        $elevation = $usersWorkouts[$i]['elevation'];
+        $notes = $usersWorkouts[$i]['notes'];
+
+        if ($type == 0) {
+
+            $cycle = new cycle($workoutID, $title, $date, $duration, $distance, $elevation, $notes);
+
+            array_push($workoutsArray, $cycle);
+
+        } elseif ($type == 1) {
+
+            $run = new run($workoutID, $title, $date, $duration, $distance, $elevation, $notes);
+
+            array_push($workoutsArray, $run);
+
+        } elseif ($type == 2) {
+
+            $workoutExercises = getWorkoutExercises($workoutID);
+            $exercisesArray = array();
+
+            for ($j = 0; $j < count($workoutExercises); $j++) {
+                $exerciseID = $workoutExercises[$j]['exerciseID'];
+                $name = $workoutExercises[$j]['name'];
+                $sets = $workoutExercises[$j]['sets'];
+                $reps = $workoutExercises[$j]['reps'];
+                $weight = $workoutExercises[$j]['weight'];
+
+                $exercise = new exercise($exerciseID, $name, $sets, $reps, $weight);
+
+                array_push($exercisesArray, $exercise);
+            }
+            $weights = new weights($workoutID, $title, $date, $duration, $notes, $exercisesArray);
+
+            array_push($workoutsArray, $weights);
+        }
+    }
+    return $workoutsArray;
+}
+
+
 function checkIfUserExists($userName, $email)
 {
     $result = getConnection()->query("select userID from users where userName = '" . $userName . "' or email = '" . $email . "' ");
@@ -192,6 +246,13 @@ function getUsersMeals($userID)
 function getUsersWorkouts($userID)
 {
     $statement = getConnection()->prepare("CALL getUsersWorkouts('" . $userID . "')");
+    $statement->execute();
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function getUsersWorkoutsByYear($userID, $year)
+{
+    $statement = getConnection()->prepare("CALL getUsersWorkoutsByYear('" . $userID . "', '" . $year . "')");
     $statement->execute();
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }

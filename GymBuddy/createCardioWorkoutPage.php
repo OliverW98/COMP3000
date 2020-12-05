@@ -12,7 +12,7 @@ if (isset($_POST['btnCreateWorkout'])) {
 
     if (empty($_POST['titleInput']) || empty($_POST['dateInput']) || empty($_POST['durationInput']) ||
         empty($_POST['distanceInput']) || empty($_POST['notesInput'])) {
-        $outputPara = "Fields must be filled to record a workout";
+        $outputPara = "All fields must be filled to record a workout";
     } elseif ($_POST['typeInput'] === "Select a Type") {
         $outputPara = "Must select a cardio type";
     } elseif ($today < $workoutDate) {
