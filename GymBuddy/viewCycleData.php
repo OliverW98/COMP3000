@@ -92,34 +92,8 @@ for ($i = 0; $i < count($cycleWorkouts); $i++) {
             datasets: [{
                 label: 'Average Speed (Km/h)',
                 data: averageSpeeds,
-                backgroundColor: [
-                    'rgba(54, 162, 235, 0)',
-                    'rgba(54, 162, 235, 0)',
-                    'rgba(54, 162, 235, 0)',
-                    'rgba(54, 162, 235, 0)',
-                    'rgba(54, 162, 235, 0)',
-                    'rgba(54, 162, 235, 0)',
-                    'rgba(54, 162, 235, 0)',
-                    'rgba(54, 162, 235, 0)',
-                    'rgba(54, 162, 235, 0)',
-                    'rgba(54, 162, 235, 0)',
-                    'rgba(54, 162, 235, 0)',
-                    'rgba(54, 162, 235, 0)'
-                ],
-                borderColor: [
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(54, 162, 235, 1)'
-                ],
+                fill: false,
+                borderColor: 'blue',
                 borderWidth: 1
             }]
         },
@@ -141,34 +115,8 @@ for ($i = 0; $i < count($cycleWorkouts); $i++) {
             datasets: [{
                 label: 'Rides a Month',
                 data: chartData,
-                backgroundColor: [
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)'
-                ],
+                backgroundColor: 'lightblue',
+                borderColor: 'black',
                 borderWidth: 1
             }]
         },
