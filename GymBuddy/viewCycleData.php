@@ -6,7 +6,7 @@ include_once 'header.php';
 
 $selectedYear = date("Y");
 $user = getUserWithYear($_SESSION['userID'], $selectedYear);
-$cycleWorkouts = array();
+$cycleWorkouts = $cycleDates = $averageSpeeds = array();
 $cyclesAMonth = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
 
@@ -21,6 +21,16 @@ foreach ($user->getWorkouts() as $workout) {
     if (get_class($workout) == "cycle") {
         array_push($cycleWorkouts, $workout);
     }
+}
+
+for ($i = 0; $i < min(10, count($cycleWorkouts)); $i++) {
+
+    array_push($averageSpeeds, round($cycleWorkouts[$i]->getSpeed() * 3.6, 1));
+
+
+    $datetime = new DateTime($cycleWorkouts[$i]->getDate());
+    $date = "{$datetime->format('d/m/y')}";
+    array_push($cycleDates, $date);
 }
 
 for ($i = 0; $i < count($cycleWorkouts); $i++) {
@@ -52,8 +62,8 @@ for ($i = 0; $i < count($cycleWorkouts); $i++) {
             </div>
         </div>
     </form>
+    <canvas id="RidesPastWeek" width="200" height=100"></canvas>
     <canvas id="RidePerMonth" width="200" height=100"></canvas>
-    <canvas id="myChart" width="200" height=100"></canvas>
 </div>
 </body>
 </html>
@@ -62,45 +72,53 @@ for ($i = 0; $i < count($cycleWorkouts); $i++) {
 
 
     <?php
+    $js_array = json_encode($averageSpeeds);
+    echo "let averageSpeeds = " . $js_array . ";\n";
+
+    $js_array = json_encode($cycleDates);
+    echo "let cycleDates = " . $js_array . ";\n";
+
     $js_array = json_encode($cyclesAMonth);
     echo "let chartData = " . $js_array . ";\n";
     ?>
 
-    var ctx = document.getElementById('RidePerMonth').getContext('2d');
-    var RidePerMonth = new Chart(ctx, {
-        type: 'bar',
+
+
+    var ctx1 = document.getElementById('RidesPastWeek').getContext('2d');
+    var myChart = new Chart(ctx1, {
+        type: 'line',
         data: {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            labels: cycleDates,
             datasets: [{
-                label: 'Rides a Month',
-                data: chartData,
+                label: 'Average Speed (Km/h)',
+                data: averageSpeeds,
                 backgroundColor: [
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)'
+                    'rgba(54, 162, 235, 0)',
+                    'rgba(54, 162, 235, 0)',
+                    'rgba(54, 162, 235, 0)',
+                    'rgba(54, 162, 235, 0)',
+                    'rgba(54, 162, 235, 0)',
+                    'rgba(54, 162, 235, 0)',
+                    'rgba(54, 162, 235, 0)',
+                    'rgba(54, 162, 235, 0)',
+                    'rgba(54, 162, 235, 0)',
+                    'rgba(54, 162, 235, 0)',
+                    'rgba(54, 162, 235, 0)',
+                    'rgba(54, 162, 235, 0)'
                 ],
                 borderColor: [
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(54, 162, 235, 0.2)'
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(54, 162, 235, 1)'
                 ],
                 borderWidth: 1
             }]
@@ -115,8 +133,8 @@ for ($i = 0; $i < count($cycleWorkouts); $i++) {
             }
         }
     });
-    var ctx1 = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx1, {
+    var ctx = document.getElementById('RidePerMonth').getContext('2d');
+    var RidePerMonth = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],

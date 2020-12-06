@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/src/user.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/user.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +80,7 @@
       <workItem from="1607175255451" duration="167000" />
       <workItem from="1607182183446" duration="398000" />
       <workItem from="1607276806052" duration="999000" />
-      <workItem from="1607277840059" duration="242000" />
+      <workItem from="1607277840059" duration="2166000" />
     </task>
     <task id="LOCAL-00001" summary="delete meal complete">
       <created>1605874710721</created>
@@ -182,7 +180,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607175142820</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="better way of finding cycles">
+      <created>1607278142250</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1607278142250</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -202,6 +207,7 @@
     <MESSAGE value="card dates formatted" />
     <MESSAGE value="activities order by date in SQL statement" />
     <MESSAGE value="find number of cycles a month for a year" />
-    <option name="LAST_COMMIT_MESSAGE" value="find number of cycles a month for a year" />
+    <MESSAGE value="better way of finding cycles" />
+    <option name="LAST_COMMIT_MESSAGE" value="better way of finding cycles" />
   </component>
 </project>
