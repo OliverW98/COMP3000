@@ -3,16 +3,21 @@
 include $_SERVER['DOCUMENT_ROOT'] . "/COMP3000/GymBuddy/src/DBFunctions.php";
 include_once 'header.php';
 
+
+$selectedYear = date("Y");
+$user = getUserWithYear($_SESSION['userID'], $selectedYear);
 $cycleWorkouts = array();
 $cyclesAMonth = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-$selectedYear = date("Y");
+
 
 if (isset($_POST['btnFindYear'])) {
     $selectedYear = $_POST['selectYear'];
+    $user = getUserWithYear($_SESSION['userID'], $selectedYear);
+    $_POST['selectYear'] = $selectedYear;
 }
 
 
-foreach (constructWorkoutArrayByYear($_SESSION['userID'], $selectedYear) as $workout) {
+foreach ($user->getWorkouts() as $workout) {
     if (get_class($workout) == "cycle") {
         array_push($cycleWorkouts, $workout);
     }
@@ -35,14 +40,15 @@ for ($i = 0; $i < count($cycleWorkouts); $i++) {
 <div class="container">
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
         <div class="input-group mb-3 mt-3">
-            <select class="custom-select" name="selectYear">
-                <option>2017</option>
-                <option>2018</option>
+            <select id="selectYear" class="custom-select" name="selectYear">
+                <option selected>Choose a Year...</option>
+                <option>2020</option>
                 <option>2019</option>
-                <option selected>2020</option>
+                <option>2018</option>
+                <option>2017</option>
             </select>
             <div class="input-group-append">
-                <button class="btn btn-success" name="btnFindYear" type="submit">Find</button>
+                <button id="FindYear" class="btn btn-success" name="btnFindYear" type="submit">Find</button>
             </div>
         </div>
     </form>
@@ -66,7 +72,7 @@ for ($i = 0; $i < count($cycleWorkouts); $i++) {
         data: {
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
             datasets: [{
-                label: 'Rides a Month (2020)',
+                label: 'Rides a Month',
                 data: chartData,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.2)',
@@ -115,7 +121,7 @@ for ($i = 0; $i < count($cycleWorkouts); $i++) {
         data: {
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
             datasets: [{
-                label: 'Rides a Month (2020)',
+                label: 'Rides a Month',
                 data: chartData,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.2)',
@@ -158,4 +164,6 @@ for ($i = 0; $i < count($cycleWorkouts); $i++) {
             }
         }
     });
+
+
 </script>

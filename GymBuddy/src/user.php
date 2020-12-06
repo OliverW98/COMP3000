@@ -15,15 +15,16 @@ class user
     private $meals;
     private $workouts;
 
-    public function __construct($userId,$userName ,$email,$password,$weight,$height,$dob,$gender, array $meals , array $workouts){
+    public function __construct($userId, $userName, $email, $password, $weight, $height, $dob, $gender, array $meals, array $workouts)
+    {
         $this->userID = $userId;
-        $this->userName =$userName;
+        $this->userName = $userName;
         $this->email = $email;
-        $this->password=$password;
-        $this->weight=$weight;
-        $this->height=$height;
-        $this->dob=$dob;
-        $this->gender=$gender;
+        $this->password = $password;
+        $this->weight = $weight;
+        $this->height = $height;
+        $this->dob = $dob;
+        $this->gender = $gender;
         $this->meals = $meals;
         $this->workouts = $workouts;
     }
