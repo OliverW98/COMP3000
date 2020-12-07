@@ -121,7 +121,7 @@ function displayWorkout($workout)
         echo '<li class="list-group-item">Calories Burnt: ' . round($workout->getCaloriesBurnt()) . ' Cals</li>';
     }
     if (get_class($workout) == "cycle") {
-        echo '<li class="list-group-item">Average Watts : ' . $workout->getAverageWatts() . ' Watts</li>';
+        echo '<li class="list-group-item">Average Watts : ' . round($workout->getAverageWatts(), 2) . ' Watts</li>';
     }
     echo '</ul>';
     if (get_class($workout) == "weights") {

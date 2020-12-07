@@ -23,6 +23,7 @@ foreach ($user->getWorkouts() as $workout) {
     }
 }
 
+// grab the last 10 ride or less
 for ($i = 0; $i < min(10, count($cycleWorkouts)); $i++) {
 
     array_push($averageSpeeds, round($cycleWorkouts[$i]->getSpeed() * 3.6, 1));
@@ -33,6 +34,8 @@ for ($i = 0; $i < min(10, count($cycleWorkouts)); $i++) {
     array_push($cycleDates, $date);
 }
 
+
+// count how many rides a month
 for ($i = 0; $i < count($cycleWorkouts); $i++) {
     for ($j = 1; $j <= 12; $j++) {
         if (substr($cycleWorkouts[$i]->getDate(), 5, 2) == strval($j)) {
@@ -40,6 +43,22 @@ for ($i = 0; $i < count($cycleWorkouts); $i++) {
         }
     }
 }
+
+$totalDis = $totalDur = $totalSpeed = $totalWatts = $totalCals = $avDis = $avDur = $avSpeed = $avWatts = $avCals = 0;
+
+foreach ($cycleWorkouts as $cycle) {
+
+    $totalDis = $totalDis + $cycle->getDistance();
+    $totalDur = $totalDur + $cycle->getDuration();
+    $totalSpeed = $totalSpeed + $cycle->getSpeed();
+    $totalWatts = $totalWatts + $cycle->getAverageWatts();
+    $totalCals = $totalCals + $cycle->getCaloriesBurnt();
+}
+$avDis = $totalDis / count($cycleWorkouts);
+$avDur = $totalDur / count($cycleWorkouts);
+$avSpeed = $totalSpeed / count($cycleWorkouts);
+$avWatts = $totalWatts / count($cycleWorkouts);
+$avCals = $totalCals / count($cycleWorkouts);
 ?>
 <html lang="en">
 <head>
@@ -64,6 +83,22 @@ for ($i = 0; $i < count($cycleWorkouts); $i++) {
     </form>
     <canvas id="RidesPastWeek" width="200" height=100"></canvas>
     <canvas id="RidePerMonth" width="200" height=100"></canvas>
+    <div class="row">
+        <div class="col-sm-6">
+            <h4 class="text-center">Year Total</h4>
+            <P>Number of Rides : <?php echo count($cycleWorkouts) ?></P>
+            <p>Distance : <?php echo round($totalDis / 1000, 1) ?> Km</p>
+            <P>Duration : <?php echo $totalDur ?></P>
+        </div>
+        <div class="col-sm-6">
+            <h4 class="text-center">Average Ride</h4>
+            <p>Distance : <?php echo round($avDis / 1000, 1) ?> Km</p>
+            <P>Duration : <?php echo $avDur ?> Mins</P>
+            <P>Speed : <?php echo round($avSpeed * 3.6, 1) ?> Km/h</P>
+            <P>Watts : <?php echo round($avWatts, 2) ?></P>
+            <P>Calories Burnt : <?php echo round($avCals) ?></P>
+        </div>
+    </div>
 </div>
 </body>
 </html>

@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/src/cycle.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/cycle.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,7 +82,8 @@
       <workItem from="1607175255451" duration="167000" />
       <workItem from="1607182183446" duration="398000" />
       <workItem from="1607276806052" duration="999000" />
-      <workItem from="1607277840059" duration="3477000" />
+      <workItem from="1607277840059" duration="3788000" />
+      <workItem from="1607340182555" duration="2949000" />
     </task>
     <task id="LOCAL-00001" summary="delete meal complete">
       <created>1605874710721</created>
@@ -194,7 +197,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607280126644</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="change charts looks">
+      <created>1607281574285</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1607281574285</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,6 +226,7 @@
     <MESSAGE value="find number of cycles a month for a year" />
     <MESSAGE value="better way of finding cycles" />
     <MESSAGE value="display last 10 or less cycles average speed" />
-    <option name="LAST_COMMIT_MESSAGE" value="display last 10 or less cycles average speed" />
+    <MESSAGE value="change charts looks" />
+    <option name="LAST_COMMIT_MESSAGE" value="change charts looks" />
   </component>
 </project>
