@@ -44,17 +44,17 @@ for ($i = 0; $i < count($cycleWorkouts); $i++) {
     }
 }
 // find averages and totals
-$totalDis = $totalDur = $totalSpeed = $totalWatts = $totalCals = $avDis = $avDur = $avSpeed = $avWatts = $avCals = 0;
+$totalDis = $totalDurMins = $totalSpeed = $totalWatts = $totalCals = $avDis = $avDur = $avSpeed = $avWatts = $avCals = 0;
 foreach ($cycleWorkouts as $cycle) {
 
     $totalDis = $totalDis + $cycle->getDistance();
-    $totalDur = $totalDur + $cycle->getDuration();
+    $totalDurMins = $totalDurMins + $cycle->getDuration();
     $totalSpeed = $totalSpeed + $cycle->getSpeed();
     $totalWatts = $totalWatts + $cycle->getAverageWatts();
     $totalCals = $totalCals + $cycle->getCaloriesBurnt();
 }
 $avDis = $totalDis / count($cycleWorkouts);
-$avDur = $totalDur / count($cycleWorkouts);
+$avDur = $totalDurMins / count($cycleWorkouts);
 $avSpeed = $totalSpeed / count($cycleWorkouts);
 $avWatts = $totalWatts / count($cycleWorkouts);
 $avCals = $totalCals / count($cycleWorkouts);
@@ -90,7 +90,8 @@ $avCals = $totalCals / count($cycleWorkouts);
             <h4 class="text-center">Year Total</h4>
             <P>Number of Rides : <?php echo count($cycleWorkouts) ?></P>
             <p>Distance : <?php echo round($totalDis / 1000, 1) ?> Km</p>
-            <P>Duration : <?php echo $totalDur ?></P>
+            <P>Duration
+                : <?php echo $totalDurHrs = floor($totalDurMins / 60) . 'h' . ($totalDurMins - floor($totalDurMins / 60) * 60 . 'm'); ?></P>
         </div>
         <div class="col-sm-6">
             <h4 class="text-center">Average Ride</h4>

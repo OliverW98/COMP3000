@@ -27,7 +27,7 @@ session_start();
                         Cardio
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Record Cardio</a>
+                        <a class="dropdown-item" href="createCardioWorkoutPage.php">Record Cardio</a>
                         <a class="dropdown-item" href="viewCycleData.php">Cycle Stats</a>
                         <a class="dropdown-item" href="#">Run Stats</a>
                     </div>
@@ -38,7 +38,7 @@ session_start();
                         Weights
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Record Weights</a>
+                        <a class="dropdown-item" href="createWeightsWorkoutPage.php">Record Weights</a>
                         <a class="dropdown-item" href="#">View Weights</a>
                     </div>
                 </li>

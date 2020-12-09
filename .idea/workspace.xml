@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +83,8 @@
       <workItem from="1607276806052" duration="999000" />
       <workItem from="1607277840059" duration="3788000" />
       <workItem from="1607340182555" duration="3524000" />
-      <workItem from="1607424058690" duration="4652000" />
+      <workItem from="1607424058690" duration="4770000" />
+      <workItem from="1607521892780" duration="1442000" />
     </task>
     <task id="LOCAL-00001" summary="delete meal complete">
       <created>1605874710721</created>
@@ -210,7 +212,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607343630112</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="distance in pie chart">
+      <created>1607431831839</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1607431831841</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -234,6 +243,7 @@
     <MESSAGE value="display last 10 or less cycles average speed" />
     <MESSAGE value="change charts looks" />
     <MESSAGE value="average and total stats for a cycle" />
-    <option name="LAST_COMMIT_MESSAGE" value="average and total stats for a cycle" />
+    <MESSAGE value="distance in pie chart" />
+    <option name="LAST_COMMIT_MESSAGE" value="distance in pie chart" />
   </component>
 </project>
