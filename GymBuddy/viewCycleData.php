@@ -6,16 +6,20 @@ include_once 'header.php';
 
 $selectedYear = date("Y");
 $user = getUserWithYear($_SESSION['userID'], $selectedYear);
-$cycleWorkouts = $cycleDates = $averageSpeeds = $distanceRiden = array();
+$cycleWorkouts = $cycleDates = $averageSpeeds = $distanceRidden = $averageWatts = array();
 $cyclesAMonth = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-
+$failureOutputPara = "";
 
 if (isset($_POST['btnFindYear'])) {
-    $selectedYear = $_POST['selectYear'];
-    $user = getUserWithYear($_SESSION['userID'], $selectedYear);
-    $_POST['selectYear'] = $selectedYear;
+    if ($_POST['selectYear'] === "Choose a Year...") {
+        $failureOutputPara = "Must choose a year";
+    } elseif (count(getUsersWorkoutsByYear($_SESSION['userID'], $_POST['selectYear'])) === 0) {
+        $failureOutputPara = "Nothing rides recorded for " . $_POST['selectYear'];
+    } else {
+        $selectedYear = $_POST['selectYear'];
+        $user = getUserWithYear($_SESSION['userID'], $selectedYear);
+    }
 }
-
 
 foreach ($user->getWorkouts() as $workout) {
     if (get_class($workout) == "cycle") {
@@ -27,13 +31,13 @@ foreach ($user->getWorkouts() as $workout) {
 for ($i = min(10, count($cycleWorkouts) - 1); $i >= 0; $i--) {
 
     array_push($averageSpeeds, round($cycleWorkouts[$i]->getSpeed() * 3.6, 1));
-    array_push($distanceRiden, $cycleWorkouts[$i]->getDistance() / 1000);
+    array_push($distanceRidden, $cycleWorkouts[$i]->getDistance() / 1000);
+    array_push($averageWatts, round($cycleWorkouts[$i]->getAverageWatts(), 1));
 
     $datetime = new DateTime($cycleWorkouts[$i]->getDate());
     $date = "{$datetime->format('d/m/y')}";
     array_push($cycleDates, $date);
 }
-
 
 // count how many rides a month
 for ($i = 0; $i < count($cycleWorkouts); $i++) {
@@ -43,6 +47,7 @@ for ($i = 0; $i < count($cycleWorkouts); $i++) {
         }
     }
 }
+
 // find averages and totals
 $totalDis = $totalDurMins = $totalSpeed = $totalWatts = $totalCals = $avDis = $avDur = $avSpeed = $avWatts = $avCals = 0;
 foreach ($cycleWorkouts as $cycle) {
@@ -82,23 +87,25 @@ $avCals = $totalCals / count($cycleWorkouts);
             </div>
         </div>
     </form>
-    <canvas id="RidesPastWeek" width="200" height=100"></canvas>
-    <canvas id="pieChart" width="200" height="100"></canvas>
+    <p class="text-center text-danger"><?php echo $failureOutputPara ?></p>
+    <canvas id="averageSpeedChart" width="200" height=75"></canvas>
+    <canvas id="distanceRiddenChart" width="200" height="75"></canvas>
+    <canvas id="averageWattsChart" width="200" height="75"></canvas>
     <canvas id="RidePerMonth" width="200" height=100"></canvas>
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-6 mt-5">
             <h4 class="text-center">Year Total</h4>
             <P>Number of Rides : <?php echo count($cycleWorkouts) ?></P>
             <p>Distance : <?php echo round($totalDis / 1000, 1) ?> Km</p>
             <P>Duration
                 : <?php echo $totalDurHrs = floor($totalDurMins / 60) . 'h' . ($totalDurMins - floor($totalDurMins / 60) * 60 . 'm'); ?></P>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-6 mt-5">
             <h4 class="text-center">Average Ride</h4>
             <p>Distance : <?php echo round($avDis / 1000, 1) ?> Km</p>
             <P>Duration : <?php echo $avDur ?> Mins</P>
             <P>Speed : <?php echo round($avSpeed * 3.6, 1) ?> Km/h</P>
-            <P>Watts : <?php echo round($avWatts, 2) ?></P>
+            <P>Watts : <?php echo round($avWatts, 1) ?></P>
             <P>Calories Burnt : <?php echo round($avCals) ?></P>
         </div>
     </div>
@@ -113,8 +120,11 @@ $avCals = $totalCals / count($cycleWorkouts);
     $js_array = json_encode($averageSpeeds);
     echo "let averageSpeeds = " . $js_array . ";\n";
 
-    $js_array = json_encode($distanceRiden);
-    echo "let distanceRiden = " . $js_array . ";\n";
+    $js_array = json_encode($distanceRidden);
+    echo "let distanceRidden = " . $js_array . ";\n";
+
+    $js_array = json_encode($averageWatts);
+    echo "let averageWatts = " . $js_array . ";\n";
 
     $js_array = json_encode($cycleDates);
     echo "let cycleDates = " . $js_array . ";\n";
@@ -125,7 +135,7 @@ $avCals = $totalCals / count($cycleWorkouts);
 
 
 
-    var ctx = document.getElementById('RidesPastWeek').getContext('2d');
+    var ctx = document.getElementById('averageSpeedChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -134,13 +144,7 @@ $avCals = $totalCals / count($cycleWorkouts);
                 label: 'Average Speed (Km/h)',
                 data: averageSpeeds,
                 fill: false,
-                borderColor: 'blue',
-                borderWidth: 2
-            }, {
-                label: 'Distance Riden (Km)',
-                data: distanceRiden,
-                fill: false,
-                borderColor: 'red',
+                borderColor: 'navy',
                 borderWidth: 2
             }]
         },
@@ -155,30 +159,64 @@ $avCals = $totalCals / count($cycleWorkouts);
         }
     });
 
-    var ctx1 = document.getElementById('pieChart').getContext('2d');
+    var ctx1 = document.getElementById('distanceRiddenChart').getContext('2d');
     var myChart = new Chart(ctx1, {
-        type: 'doughnut',
+        type: 'line',
         data: {
             labels: cycleDates,
             datasets: [{
-                label: 'My First Dataset',
-                data: distanceRiden,
-                backgroundColor: ["rgb(255, 99, 132)", "rgb(54, 162, 235)", "rgb(255, 205, 86)"]
+                label: 'Distance Riden (Km)',
+                data: distanceRidden,
+                fill: false,
+                borderColor: 'navy',
+                borderWidth: 2
             }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
         }
     });
 
+    var ctx2 = document.getElementById('averageWattsChart').getContext('2d');
+    var myChart = new Chart(ctx2, {
+        type: 'line',
+        data: {
+            labels: cycleDates,
+            datasets: [{
+                label: 'Average Watts',
+                data: averageWatts,
+                fill: false,
+                borderColor: 'navy',
+                borderWidth: 2
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
 
-    var ctx2 = document.getElementById('RidePerMonth').getContext('2d');
-    var RidePerMonth = new Chart(ctx2, {
+    var ctx3 = document.getElementById('RidePerMonth').getContext('2d');
+    var RidePerMonth = new Chart(ctx3, {
         type: 'bar',
         data: {
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
             datasets: [{
                 label: 'Rides a Month',
                 data: chartData,
-                backgroundColor: 'lightblue',
-                borderColor: 'black',
+                backgroundColor: 'navy',
+                borderColor: 'navy',
                 borderWidth: 1
             }]
         },
