@@ -29,7 +29,7 @@ session_start();
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="createCardioWorkoutPage.php">Record Cardio</a>
                         <a class="dropdown-item" href="viewCycleData.php">Cycle Stats</a>
-                        <a class="dropdown-item" href="#">Run Stats</a>
+                        <a class="dropdown-item" href="viewRunData.php">Run Stats</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">

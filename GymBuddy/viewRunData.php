@@ -6,15 +6,15 @@ include_once 'header.php';
 
 $selectedYear = date("Y");
 $user = getUserWithYear($_SESSION['userID'], $selectedYear);
-$cycleWorkouts = $cycleDates = $averageSpeeds = $distanceRidden = $averageWatts = array();
-$cyclesAMonth = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+$runWorkouts = $runDates = $averageSpeeds = $distanceRun = $averageWatts = array();
+$runsAMonth = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 $failureOutputPara = "";
 
 if (isset($_POST['btnFindYear'])) {
     if ($_POST['selectYear'] === "Choose a Year...") {
         $failureOutputPara = "Must choose a year";
     } elseif (count(getUsersWorkoutsByYear($_SESSION['userID'], $_POST['selectYear'])) === 0) {
-        $failureOutputPara = "No rides recorded for " . $_POST['selectYear'];
+        $failureOutputPara = "No runs recorded for " . $_POST['selectYear'];
     } else {
         $selectedYear = $_POST['selectYear'];
         $user = getUserWithYear($_SESSION['userID'], $selectedYear);
@@ -22,54 +22,51 @@ if (isset($_POST['btnFindYear'])) {
 }
 
 foreach ($user->getWorkouts() as $workout) {
-    if (get_class($workout) == "cycle") {
-        array_push($cycleWorkouts, $workout);
+    if (get_class($workout) == "run") {
+        array_push($runWorkouts, $workout);
     }
 }
 
-// grab data from the last 10 ride or less
-for ($i = min(10, count($cycleWorkouts) - 1); $i >= 0; $i--) {
+// grab data from the last 10 runs or less
+for ($i = min(10, count($runWorkouts) - 1); $i >= 0; $i--) {
 
-    array_push($averageSpeeds, round($cycleWorkouts[$i]->getSpeed() * 3.6, 1));
-    array_push($distanceRidden, $cycleWorkouts[$i]->getDistance() / 1000);
-    array_push($averageWatts, round($cycleWorkouts[$i]->getAverageWatts(), 1));
+    array_push($averageSpeeds, round($runWorkouts[$i]->getSpeed() * 3.6, 1));
+    array_push($distanceRun, $runWorkouts[$i]->getDistance() / 1000);
 
-    $datetime = new DateTime($cycleWorkouts[$i]->getDate());
+    $datetime = new DateTime($runWorkouts[$i]->getDate());
     $date = "{$datetime->format('d/m/y')}";
-    array_push($cycleDates, $date);
+    array_push($runDates, $date);
 }
 
 // count how many rides a month
-for ($i = 0; $i < count($cycleWorkouts); $i++) {
+for ($i = 0; $i < count($runWorkouts); $i++) {
     for ($j = 1; $j <= 12; $j++) {
-        if (substr($cycleWorkouts[$i]->getDate(), 5, 2) == strval($j)) {
-            $cyclesAMonth[$j - 1] = $cyclesAMonth[$j - 1] + 1;
+        if (substr($runWorkouts[$i]->getDate(), 5, 2) == strval($j)) {
+            $runsAMonth[$j - 1] = $runsAMonth[$j - 1] + 1;
         }
     }
 }
 
 // find averages and totals
-$totalDis = $totalDurMins = $totalSpeed = $totalWatts = $totalCals = $avDis = $avDur = $avSpeed = $avWatts = $avCals = 0;
-foreach ($cycleWorkouts as $cycle) {
+$totalDis = $totalDurMins = $totalSpeed = $totalCals = $avDis = $avDur = $avSpeed = $avCals = 0;
+foreach ($runWorkouts as $run) {
 
-    $totalDis = $totalDis + $cycle->getDistance();
-    $totalDurMins = $totalDurMins + $cycle->getDuration();
-    $totalSpeed = $totalSpeed + $cycle->getSpeed();
-    $totalWatts = $totalWatts + $cycle->getAverageWatts();
-    $totalCals = $totalCals + $cycle->getCaloriesBurnt();
+    $totalDis = $totalDis + $run->getDistance();
+    $totalDurMins = $totalDurMins + $run->getDuration();
+    $totalSpeed = $totalSpeed + $run->getSpeed();
+    $totalCals = $totalCals + $run->getCaloriesBurnt();
 }
-$avDis = $totalDis / count($cycleWorkouts);
-$avDur = $totalDurMins / count($cycleWorkouts);
-$avSpeed = $totalSpeed / count($cycleWorkouts);
-$avWatts = $totalWatts / count($cycleWorkouts);
-$avCals = $totalCals / count($cycleWorkouts);
+$avDis = $totalDis / count($runWorkouts);
+$avDur = $totalDurMins / count($runWorkouts);
+$avSpeed = $totalSpeed / count($runWorkouts);
+$avCals = $totalCals / count($runWorkouts);
 
 
 ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Cycle Stats</title>
+    <title>Run Stats</title>
 </head>
 <body>
 <div class="container">
@@ -90,22 +87,20 @@ $avCals = $totalCals / count($cycleWorkouts);
     <p class="text-center text-danger"><?php echo $failureOutputPara ?></p>
     <canvas id="averageSpeedChart" width="200" height=75"></canvas>
     <canvas id="distanceRiddenChart" width="200" height="75"></canvas>
-    <canvas id="averageWattsChart" width="200" height="75"></canvas>
     <canvas id="RidePerMonth" width="200" height=100"></canvas>
     <div class="row">
         <div class="col-sm-6 mt-5">
             <h4 class="text-center">Year Total</h4>
-            <P>Number of Rides : <?php echo count($cycleWorkouts) ?></P>
+            <P>Number of Runs : <?php echo count($runWorkouts) ?></P>
             <p>Distance : <?php echo round($totalDis / 1000, 1) ?> Km</p>
             <P>Duration
                 : <?php echo $totalDurHrs = floor($totalDurMins / 60) . 'h' . ($totalDurMins - floor($totalDurMins / 60) * 60 . 'm'); ?></P>
         </div>
         <div class="col-sm-6 mt-5">
-            <h4 class="text-center">Average Ride</h4>
+            <h4 class="text-center">Average Run</h4>
             <p>Distance : <?php echo round($avDis / 1000, 1) ?> Km</p>
             <P>Duration : <?php echo $avDur ?> Mins</P>
             <P>Speed : <?php echo round($avSpeed * 3.6, 1) ?> Km/h</P>
-            <P>Watts : <?php echo round($avWatts, 1) ?></P>
             <P>Calories Burnt : <?php echo round($avCals) ?></P>
         </div>
     </div>
@@ -120,17 +115,14 @@ $avCals = $totalCals / count($cycleWorkouts);
     $js_array = json_encode($averageSpeeds);
     echo "let averageSpeeds = " . $js_array . ";\n";
 
-    $js_array = json_encode($distanceRidden);
-    echo "let distanceRidden = " . $js_array . ";\n";
+    $js_array = json_encode($distanceRun);
+    echo "let distanceRun = " . $js_array . ";\n";
 
-    $js_array = json_encode($averageWatts);
-    echo "let averageWatts = " . $js_array . ";\n";
+    $js_array = json_encode($runDates);
+    echo "let runDates = " . $js_array . ";\n";
 
-    $js_array = json_encode($cycleDates);
-    echo "let cycleDates = " . $js_array . ";\n";
-
-    $js_array = json_encode($cyclesAMonth);
-    echo "let cyclesAMonth = " . $js_array . ";\n";
+    $js_array = json_encode($runsAMonth);
+    echo "let runsAMonth = " . $js_array . ";\n";
     ?>
 
 
@@ -139,7 +131,7 @@ $avCals = $totalCals / count($cycleWorkouts);
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: cycleDates,
+            labels: runDates,
             datasets: [{
                 label: 'Average Speed (Km/h)',
                 data: averageSpeeds,
@@ -163,10 +155,10 @@ $avCals = $totalCals / count($cycleWorkouts);
     var myChart = new Chart(ctx1, {
         type: 'line',
         data: {
-            labels: cycleDates,
+            labels: runDates,
             datasets: [{
                 label: 'Distance Riden (Km)',
-                data: distanceRidden,
+                data: distanceRun,
                 fill: false,
                 borderColor: 'navy',
                 borderWidth: 2
@@ -183,38 +175,14 @@ $avCals = $totalCals / count($cycleWorkouts);
         }
     });
 
-    var ctx2 = document.getElementById('averageWattsChart').getContext('2d');
-    var myChart = new Chart(ctx2, {
-        type: 'line',
-        data: {
-            labels: cycleDates,
-            datasets: [{
-                label: 'Average Watts',
-                data: averageWatts,
-                fill: false,
-                borderColor: 'navy',
-                borderWidth: 2
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
-    });
-
-    var ctx3 = document.getElementById('RidePerMonth').getContext('2d');
-    var RidePerMonth = new Chart(ctx3, {
+    var ctx2 = document.getElementById('RidePerMonth').getContext('2d');
+    var RidePerMonth = new Chart(ctx2, {
         type: 'bar',
         data: {
             labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
             datasets: [{
                 label: 'Rides a Month',
-                data: cyclesAMonth,
+                data: runsAMonth,
                 backgroundColor: 'navy',
                 borderColor: 'navy',
                 borderWidth: 1
@@ -234,3 +202,4 @@ $avCals = $totalCals / count($cycleWorkouts);
 
 
 </script>
+
