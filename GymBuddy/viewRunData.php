@@ -5,7 +5,7 @@ include_once 'header.php';
 
 
 $failureOutputPara = "";
-$totalRuns = 0;
+$totalRuns = $totalDis = $totalDurMins = $avDis = $avDur = $avSpeed = $avCals = 0;
 
 
 if (isset($_POST['btnFindYear'])) {
@@ -14,7 +14,6 @@ if (isset($_POST['btnFindYear'])) {
         $failureOutputPara = "Must choose a year";
     } else {
         $user = getUserWithYear($_SESSION['userID'], $_POST['selectYear']);
-        var_dump(getUsersWorkoutsByYear($_SESSION['userID'], $_POST['selectYear']));
         $count = 0;
         foreach ($user->getWorkouts() as $workout) {
             if (get_class($workout) == "run") {
@@ -28,6 +27,12 @@ if (isset($_POST['btnFindYear'])) {
             $averageSpeeds = getRunSpeeds($runWorkouts);
             $distanceRun = getRunDistances($runWorkouts);
             $runsAMonth = runsAMonth($runWorkouts);
+            $totalDis = getTotalDistanceRun($runWorkouts);
+            $totalDurMins = getTotalDurationRun($runWorkouts);
+            $avSpeed = getAverageSpeed($runWorkouts);
+            $avDis = getAverageDistanceRun($runWorkouts);
+            $avDur = getTotalDurationRun($runWorkouts);
+            $avCals = getAverageCalories($runWorkouts);
             $totalRuns = count($runWorkouts);
         } else {
             $failureOutputPara = "No runs recorded for " . $_POST['selectYear'];
@@ -94,19 +99,55 @@ function runsAMonth($runWorkouts)
 
 
 // find averages and totals
-$totalDis = $totalDurMins = $totalSpeed = $totalCals = $avDis = $avDur = $avSpeed = $avCals = 0;
-//foreach ($runWorkouts as $run) {
-//
-//    $totalDis = $totalDis + $run->getDistance();
-//    $totalDurMins = $totalDurMins + $run->getDuration();
-//    $totalSpeed = $totalSpeed + $run->getSpeed();
-//    $totalCals = $totalCals + $run->getCaloriesBurnt();
-//}
-//$avDis = $totalDis / count($runWorkouts);
-//$avDur = $totalDurMins / count($runWorkouts);
-//$avSpeed = $totalSpeed / count($runWorkouts);
-//$avCals = $totalCals / count($runWorkouts);
 
+function getTotalDistanceRun($runWorkouts)
+{
+    $totalDis = 0;
+    foreach ($runWorkouts as $run) {
+        $totalDis = $totalDis + $run->getDistance();
+    }
+    return $totalDis;
+}
+
+function getTotalDurationRun($runWorkouts)
+{
+    $totalDur = 0;
+    foreach ($runWorkouts as $run) {
+        $totalDur = $totalDur + $run->getDuration();
+    }
+    return $totalDur;
+}
+
+
+function getAverageDistanceRun($runWorkouts)
+{
+    return $avDis = getTotalDistanceRun($runWorkouts) / count($runWorkouts);
+}
+
+function getAverageDurationRun($runWorkouts)
+{
+    return $avDur = getTotalDurationRun($runWorkouts) / count($runWorkouts);
+}
+
+function getAverageSpeed($runWorkouts)
+{
+    $totalSpeed = 0;
+    foreach ($runWorkouts as $run) {
+        $totalSpeed = $totalSpeed + $run->getSpeed();
+    }
+
+    return $avSpeed = $totalSpeed / count($runWorkouts);
+}
+
+function getAverageCalories($runWorkouts)
+{
+    $totalCals = 0;
+    foreach ($runWorkouts as $run) {
+        $totalCals = $totalCals + $run->getCaloriesBurnt();
+    }
+
+    return $avCals = $totalCals / count($runWorkouts);
+}
 
 ?>
 <html lang="en">
