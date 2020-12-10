@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/GymBuddy/viewRunData.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/viewRunData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewRunData.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +85,7 @@
       <workItem from="1607424058690" duration="4770000" />
       <workItem from="1607521892780" duration="4022000" />
       <workItem from="1607533845024" duration="70000" />
-      <workItem from="1607612952585" duration="2296000" />
+      <workItem from="1607612952585" duration="4720000" />
     </task>
     <task id="LOCAL-00001" summary="delete meal complete">
       <created>1605874710721</created>
@@ -236,7 +234,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607525939774</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="basic run stats page">
+      <created>1607615385722</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1607615385722</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,6 +268,7 @@
     <MESSAGE value="distance in pie chart" />
     <MESSAGE value="display total time as hours" />
     <MESSAGE value="graph for distance and watts. validation on the year selection" />
-    <option name="LAST_COMMIT_MESSAGE" value="graph for distance and watts. validation on the year selection" />
+    <MESSAGE value="basic run stats page" />
+    <option name="LAST_COMMIT_MESSAGE" value="basic run stats page" />
   </component>
 </project>

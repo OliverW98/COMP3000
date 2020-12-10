@@ -4,62 +4,108 @@ include $_SERVER['DOCUMENT_ROOT'] . "/COMP3000/GymBuddy/src/DBFunctions.php";
 include_once 'header.php';
 
 
-$selectedYear = date("Y");
-$user = getUserWithYear($_SESSION['userID'], $selectedYear);
-$runWorkouts = $runDates = $averageSpeeds = $distanceRun = $averageWatts = array();
-$runsAMonth = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 $failureOutputPara = "";
+$totalRuns = 0;
+
 
 if (isset($_POST['btnFindYear'])) {
+
     if ($_POST['selectYear'] === "Choose a Year...") {
         $failureOutputPara = "Must choose a year";
-    } elseif (count(getUsersWorkoutsByYear($_SESSION['userID'], $_POST['selectYear'])) === 0) {
-        $failureOutputPara = "No runs recorded for " . $_POST['selectYear'];
     } else {
-        $selectedYear = $_POST['selectYear'];
-        $user = getUserWithYear($_SESSION['userID'], $selectedYear);
-    }
-}
-
-foreach ($user->getWorkouts() as $workout) {
-    if (get_class($workout) == "run") {
-        array_push($runWorkouts, $workout);
-    }
-}
-
-// grab data from the last 10 runs or less
-for ($i = min(10, count($runWorkouts) - 1); $i >= 0; $i--) {
-
-    array_push($averageSpeeds, round($runWorkouts[$i]->getSpeed() * 3.6, 1));
-    array_push($distanceRun, $runWorkouts[$i]->getDistance() / 1000);
-
-    $datetime = new DateTime($runWorkouts[$i]->getDate());
-    $date = "{$datetime->format('d/m/y')}";
-    array_push($runDates, $date);
-}
-
-// count how many rides a month
-for ($i = 0; $i < count($runWorkouts); $i++) {
-    for ($j = 1; $j <= 12; $j++) {
-        if (substr($runWorkouts[$i]->getDate(), 5, 2) == strval($j)) {
-            $runsAMonth[$j - 1] = $runsAMonth[$j - 1] + 1;
+        $user = getUserWithYear($_SESSION['userID'], $_POST['selectYear']);
+        var_dump(getUsersWorkoutsByYear($_SESSION['userID'], $_POST['selectYear']));
+        $count = 0;
+        foreach ($user->getWorkouts() as $workout) {
+            if (get_class($workout) == "run") {
+                $count++;
+            }
+        }
+        if ($count > 0) {
+            $user = getUserWithYear($_SESSION['userID'], $_POST['selectYear']);
+            $runWorkouts = getRunWorkouts($user);
+            $runDates = getRunDates($runWorkouts);
+            $averageSpeeds = getRunSpeeds($runWorkouts);
+            $distanceRun = getRunDistances($runWorkouts);
+            $runsAMonth = runsAMonth($runWorkouts);
+            $totalRuns = count($runWorkouts);
+        } else {
+            $failureOutputPara = "No runs recorded for " . $_POST['selectYear'];
         }
     }
 }
 
+function getRunWorkouts($user)
+{
+    $runWorkouts = array();
+    foreach ($user->getWorkouts() as $workout) {
+        if (get_class($workout) == "run") {
+            array_push($runWorkouts, $workout);
+        }
+    }
+    return $runWorkouts;
+}
+
+function getRunDistances($runWorkouts)
+{
+    $distanceRun = array();
+    // grab data from the last 10 runs or less
+    for ($i = min(10, count($runWorkouts) - 1); $i >= 0; $i--) {
+        array_push($distanceRun, $runWorkouts[$i]->getDistance() / 1000);
+    }
+    return $distanceRun;
+}
+
+function getRunSpeeds($runWorkouts)
+{
+    $averageSpeeds = array();
+    // grab data from the last 10 runs or less
+    for ($i = min(10, count($runWorkouts) - 1); $i >= 0; $i--) {
+        array_push($averageSpeeds, round($runWorkouts[$i]->getSpeed() * 3.6, 1));
+    }
+    return $averageSpeeds;
+}
+
+function getRunDates($runWorkouts)
+{
+    $runDates = array();
+    // grab data from the last 10 runs or less
+    for ($i = min(10, count($runWorkouts) - 1); $i >= 0; $i--) {
+        $datetime = new DateTime($runWorkouts[$i]->getDate());
+        $date = "{$datetime->format('d/m/y')}";
+        array_push($runDates, $date);
+    }
+    return $runDates;
+}
+
+// count how many rides a month
+function runsAMonth($runWorkouts)
+{
+    $runsAMonth = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    for ($i = 0; $i < count($runWorkouts); $i++) {
+        for ($j = 1; $j <= 12; $j++) {
+            if (substr($runWorkouts[$i]->getDate(), 5, 2) == strval($j)) {
+                $runsAMonth[$j - 1] = $runsAMonth[$j - 1] + 1;
+            }
+        }
+    }
+    return $runsAMonth;
+}
+
+
 // find averages and totals
 $totalDis = $totalDurMins = $totalSpeed = $totalCals = $avDis = $avDur = $avSpeed = $avCals = 0;
-foreach ($runWorkouts as $run) {
-
-    $totalDis = $totalDis + $run->getDistance();
-    $totalDurMins = $totalDurMins + $run->getDuration();
-    $totalSpeed = $totalSpeed + $run->getSpeed();
-    $totalCals = $totalCals + $run->getCaloriesBurnt();
-}
-$avDis = $totalDis / count($runWorkouts);
-$avDur = $totalDurMins / count($runWorkouts);
-$avSpeed = $totalSpeed / count($runWorkouts);
-$avCals = $totalCals / count($runWorkouts);
+//foreach ($runWorkouts as $run) {
+//
+//    $totalDis = $totalDis + $run->getDistance();
+//    $totalDurMins = $totalDurMins + $run->getDuration();
+//    $totalSpeed = $totalSpeed + $run->getSpeed();
+//    $totalCals = $totalCals + $run->getCaloriesBurnt();
+//}
+//$avDis = $totalDis / count($runWorkouts);
+//$avDur = $totalDurMins / count($runWorkouts);
+//$avSpeed = $totalSpeed / count($runWorkouts);
+//$avCals = $totalCals / count($runWorkouts);
 
 
 ?>
@@ -91,7 +137,7 @@ $avCals = $totalCals / count($runWorkouts);
     <div class="row">
         <div class="col-sm-6 mt-5">
             <h4 class="text-center">Year Total</h4>
-            <P>Number of Runs : <?php echo count($runWorkouts) ?></P>
+            <P>Number of Runs : <?php echo $totalRuns ?></P>
             <p>Distance : <?php echo round($totalDis / 1000, 1) ?> Km</p>
             <P>Duration
                 : <?php echo $totalDurHrs = floor($totalDurMins / 60) . 'h' . ($totalDurMins - floor($totalDurMins / 60) * 60 . 'm'); ?></P>
