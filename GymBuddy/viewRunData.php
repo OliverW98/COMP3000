@@ -31,7 +31,7 @@ if (isset($_POST['btnFindYear'])) {
             $totalDurMins = getTotalDurationRun($runWorkouts);
             $avSpeed = getAverageSpeed($runWorkouts);
             $avDis = getAverageDistanceRun($runWorkouts);
-            $avDur = getTotalDurationRun($runWorkouts);
+            $avDur = getAverageDurationRun($runWorkouts);
             $avCals = getAverageCalories($runWorkouts);
             $totalRuns = count($runWorkouts);
         } else {
