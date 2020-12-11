@@ -21,7 +21,6 @@ if (isset($_POST['btnFindYear'])) {
             }
         }
         if ($count > 0) {
-            $user = getUserWithYear($_SESSION['userID'], $_POST['selectYear']);
             $runWorkouts = getRunWorkouts($user);
             $runDates = getRunDates($runWorkouts);
             $averageSpeeds = getRunSpeeds($runWorkouts);
