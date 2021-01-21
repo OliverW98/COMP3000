@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/GymBuddy/src/snapshot.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/viewRunData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewRunData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/src/run.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/run.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/src/user.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/user.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +89,11 @@
       <workItem from="1607521892780" duration="4022000" />
       <workItem from="1607533845024" duration="70000" />
       <workItem from="1607612952585" duration="5878000" />
-      <workItem from="1607686449952" duration="2075000" />
+      <workItem from="1607686449952" duration="2116000" />
+      <workItem from="1607782215450" duration="104000" />
+      <workItem from="1610542048385" duration="126000" />
+      <workItem from="1610971112414" duration="180000" />
+      <workItem from="1611225589552" duration="2289000" />
     </task>
     <task id="LOCAL-00001" summary="delete meal complete">
       <created>1605874710721</created>
@@ -264,7 +270,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607618861165</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="viewCycleData is now function driven">
+      <created>1607688567426</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1607688567426</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,6 +308,7 @@
     <MESSAGE value="added functions to control data" />
     <MESSAGE value="complete run stats" />
     <MESSAGE value="fixed average duration" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed average duration" />
+    <MESSAGE value="viewCycleData is now function driven" />
+    <option name="LAST_COMMIT_MESSAGE" value="viewCycleData is now function driven" />
   </component>
 </project>

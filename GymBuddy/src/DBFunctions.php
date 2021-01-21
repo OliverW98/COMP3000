@@ -1,6 +1,7 @@
 <?php
 
 include_once('user.php');
+include_once('snapshot.php');
 include_once('meal.php');
 include_once('workout.php');
 include_once('weights.php');
@@ -31,17 +32,20 @@ function getUser($userID)
 
     $userData = getUserDetails($userID);
 
+    $userSnapshots = getUserSnapshots($userID);
+
     $usersMeals = getUsersMeals($userID);
 
     $usersWorkouts = getUsersWorkouts($userID);
 
-    $user = constructUserObject($userData, $usersMeals, $usersWorkouts);
+    $user = constructUserObject($userData, $userSnapshots, $usersMeals, $usersWorkouts);
 
+    $userCurrentSnapshot = $user->getSnapshots();
     foreach ($user->getWorkouts() as $workout) {
         if (get_class($workout) == "cycle") {
-            $workout->setAverageWatts($user);
+            $workout->setAverageWatts($userCurrentSnapshot[count($userCurrentSnapshot) - 1]);
         } elseif (get_class($workout) == "run") {
-            $workout->setCaloriesBurnt($user);
+            $workout->setCaloriesBurnt($userCurrentSnapshot[count($userCurrentSnapshot) - 1], $user->getDob(), $user->getGender());
         }
     }
     return $user;
@@ -52,28 +56,46 @@ function getUserWithYear($userID, $year)
 
     $userData = getUserDetails($userID);
 
+    $userSnapshots = getUserSnapshots($userID);
+
     $usersMeals = getUsersMeals($userID);
 
     $usersWorkouts = getUsersWorkoutsByYear($userID, $year);
 
-    $user = constructUserObject($userData, $usersMeals, $usersWorkouts);
+    $user = constructUserObject($userData, $userSnapshots, $usersMeals, $usersWorkouts);
 
+    $userCurrentSnapshot = $user->getSnapshots();
     foreach ($user->getWorkouts() as $workout) {
         if (get_class($workout) == "cycle") {
-            $workout->setAverageWatts($user);
+            $workout->setAverageWatts($userCurrentSnapshot[count($userCurrentSnapshot) - 1]);
         } elseif (get_class($workout) == "run") {
-            $workout->setCaloriesBurnt($user);
+            $workout->setCaloriesBurnt($userCurrentSnapshot[count($userCurrentSnapshot) - 1], $user->getDob(), $user->getGender());
         }
     }
     return $user;
 }
 
 
-function constructUserObject($userData, $usersMeals, $usersWorkouts)
+function constructUserObject($userData, $userSnapshots, $usersMeals, $usersWorkouts)
 {
-
+    $snapshotArray = array();
     $mealsArray = array();
     $workoutsArray = array();
+
+
+    for ($i = 0; $i < count($userSnapshots); $i++) {
+        $snapshotID = $userSnapshots[$i]['bodySnapshotID'];
+        $date = $userSnapshots[$i]['snapshotDate'];
+        $weight = $userSnapshots[$i]['userWeight'];
+        $height = $userSnapshots[$i]['userHeight'];
+        $bodyFatPercent = $userSnapshots[$i]['bodyFatPercent'];
+        $muscleMassPercent = $userSnapshots[$i]['muscleMassPercent'];
+
+        $snapshot = new snapshot($snapshotID, $date, $weight, $height, $bodyFatPercent, $muscleMassPercent);
+
+        array_push($snapshotArray, $snapshot);
+    }
+
 
     for ($i = 0; $i < count($usersMeals); $i++) {
         $mealID = $usersMeals[$i]['mealID'];
@@ -138,13 +160,11 @@ function constructUserObject($userData, $usersMeals, $usersWorkouts)
         $userName = $userData[$i]['userName'];
         $email = $userData[$i]['email'];
         $password = $userData[$i]['password'];
-        $userWeight = $userData[$i]['userWeight'];
-        $userHeight = $userData[$i]['userHeight'];
         $dob = $userData[$i]['dateOfBirth'];
         $gender = $userData[$i]['gender'];
     }
 
-    return $user = new user($userID, $userName, $email, $password, $userWeight, $userHeight, $dob, $gender, $mealsArray, $workoutsArray);
+    return $user = new user($userID, $userName, $email, $password, $dob, $gender, $snapshotArray, $mealsArray, $workoutsArray);
 }
 
 function checkIfUserExists($userName, $email)
@@ -200,6 +220,13 @@ function getUserDetails($userID)
     $statement = getConnection()->prepare("CALL getUserDetails('" . $userID . "')");
     $statement->execute();
     return $statement->fetchAll(PDO::FETCH_ASSOC);;
+}
+
+function getUserSnapshots($userID)
+{
+    $statement = getConnection()->prepare("CALL getUsersSnapshots('" . $userID . "')");
+    $statement->execute();
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
 function getUsersMeals($userID)

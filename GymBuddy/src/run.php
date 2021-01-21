@@ -64,17 +64,17 @@ class run extends workout
     /**
      * @param mixed $caloriesBurnt
      */
-    public function setCaloriesBurnt($user)
+    public function setCaloriesBurnt($user, $dob, $gender)
     {
-        $this->caloriesBurnt = $this->BMR($user) * ($this->Mets() * ($this->getDuration() / 60)) / 24;
+        $this->caloriesBurnt = $this->BMR($user, $dob, $gender) * ($this->Mets() * ($this->getDuration() / 60)) / 24;
     }
 
-    private function BMR($user)
+    private function BMR($user, $dob, $gender)
     {
-        if ($user->getGender() == "Male") {
-            return 66.47 + (13.75 * $user->getWeight()) + (5.003 * $user->getHeight()) - (6.755 * $this->age($user->getDob()));
+        if ($gender == "Male") {
+            return 66.47 + (13.75 * $user->getWeight()) + (5.003 * $user->getHeight()) - (6.755 * $this->age($dob));
         } else {
-            return 655.1 + (9.563 * $user->getWeight()) + (1.85 * $user->getHeight()) - (4.676 * $this->age($user->getDob()));
+            return 655.1 + (9.563 * $user->getWeight()) + (1.85 * $user->getHeight()) - (4.676 * $this->age($dob));
         }
     }
 

@@ -8,23 +8,21 @@ class user
     private $userName;
     private $email;
     private $password;
-    private $weight;
-    private $height;
     private $dob;
     private $gender;
+    private $snapshots;
     private $meals;
     private $workouts;
 
-    public function __construct($userId, $userName, $email, $password, $weight, $height, $dob, $gender, array $meals, array $workouts)
+    public function __construct($userId, $userName, $email, $password, $dob, $gender, array $snapshots, array $meals, array $workouts)
     {
         $this->userID = $userId;
         $this->userName = $userName;
         $this->email = $email;
         $this->password = $password;
-        $this->weight = $weight;
-        $this->height = $height;
         $this->dob = $dob;
         $this->gender = $gender;
+        $this->snapshots = $snapshots;
         $this->meals = $meals;
         $this->workouts = $workouts;
     }
@@ -60,22 +58,7 @@ class user
     {
         return $this->password;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getWeight()
-    {
-        return $this->weight;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getHeight()
-    {
-        return $this->height;
-    }
+    
 
     /**
      * @return mixed
@@ -91,6 +74,14 @@ class user
     public function getGender()
     {
         return $this->gender;
+    }
+
+    /**
+     * @return array
+     */
+    public function getSnapshots()
+    {
+        return $this->snapshots;
     }
 
     /**
