@@ -257,9 +257,9 @@ function getWorkoutExercises($workoutID)
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function editUserDetails($userID, $weight, $height, $dob, $gender)
+function editUserDetails($userID, $dob, $gender)
 {
-    $statement = getConnection()->prepare("CALL editUserDetails ('" . $userID . "','" . $weight . "','" . $height . "','" . $dob . "','" . $gender . "')");
+    $statement = getConnection()->prepare("CALL editUserDetails ('" . $userID . "','" . $dob . "','" . $gender . "')");
     $statement->execute();
 }
 
@@ -287,6 +287,13 @@ function deleteUserDetails($userID)
     $statement->execute();
 }
 
+
+function deleteSnapshot($userID)
+{
+    $statement = getConnection()->prepare("CALL deleteSnapshot ('" . $userID . "')");
+    $statement->execute();
+}
+
 function deleteWorkout($workoutID)
 {
     $statement = getConnection()->prepare("CALL deleteWorkout ('" . $workoutID . "')");
@@ -296,6 +303,12 @@ function deleteWorkout($workoutID)
 function deleteMeal($mealID)
 {
     $statement = getConnection()->prepare("CALL deleteMeal ('" . $mealID . "')");
+    $statement->execute();
+}
+
+function createSnapshot($userID, $date, $weight, $height, $BFP, $MMP)
+{
+    $statement = getConnection()->prepare("CALL createSnapshot ('" . $userID . "','" . $date . "','" . $weight . "','" . $height . "','" . $BFP . "','" . $MMP . "')");
     $statement->execute();
 }
 
