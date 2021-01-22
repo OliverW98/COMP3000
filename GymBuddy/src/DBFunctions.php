@@ -41,13 +41,16 @@ function getUser($userID)
     $user = constructUserObject($userData, $userSnapshots, $usersMeals, $usersWorkouts);
 
     $userCurrentSnapshot = $user->getSnapshots();
-    foreach ($user->getWorkouts() as $workout) {
-        if (get_class($workout) == "cycle") {
-            $workout->setAverageWatts($userCurrentSnapshot[count($userCurrentSnapshot) - 1]);
-        } elseif (get_class($workout) == "run") {
-            $workout->setCaloriesBurnt($userCurrentSnapshot[count($userCurrentSnapshot) - 1], $user->getDob(), $user->getGender());
+    if (count($user->getSnapshots()) > 0) {
+        foreach ($user->getWorkouts() as $workout) {
+            if (get_class($workout) == "cycle") {
+                $workout->setAverageWatts($userCurrentSnapshot[count($userCurrentSnapshot) - 1]);
+            } elseif (get_class($workout) == "run") {
+                $workout->setCaloriesBurnt($userCurrentSnapshot[count($userCurrentSnapshot) - 1], $user->getDob(), $user->getGender());
+            }
         }
     }
+
     return $user;
 }
 
@@ -65,11 +68,13 @@ function getUserWithYear($userID, $year)
     $user = constructUserObject($userData, $userSnapshots, $usersMeals, $usersWorkouts);
 
     $userCurrentSnapshot = $user->getSnapshots();
-    foreach ($user->getWorkouts() as $workout) {
-        if (get_class($workout) == "cycle") {
-            $workout->setAverageWatts($userCurrentSnapshot[count($userCurrentSnapshot) - 1]);
-        } elseif (get_class($workout) == "run") {
-            $workout->setCaloriesBurnt($userCurrentSnapshot[count($userCurrentSnapshot) - 1], $user->getDob(), $user->getGender());
+    if (count($user->getSnapshots()) > 0) {
+        foreach ($user->getWorkouts() as $workout) {
+            if (get_class($workout) == "cycle") {
+                $workout->setAverageWatts($userCurrentSnapshot[count($userCurrentSnapshot) - 1]);
+            } elseif (get_class($workout) == "run") {
+                $workout->setCaloriesBurnt($userCurrentSnapshot[count($userCurrentSnapshot) - 1], $user->getDob(), $user->getGender());
+            }
         }
     }
     return $user;

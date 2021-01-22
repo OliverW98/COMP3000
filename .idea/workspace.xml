@@ -93,7 +93,7 @@
       <workItem from="1610971112414" duration="180000" />
       <workItem from="1611225589552" duration="3147000" />
       <workItem from="1611237188652" duration="46000" />
-      <workItem from="1611327652463" duration="2848000" />
+      <workItem from="1611327652463" duration="4923000" />
     </task>
     <task id="LOCAL-00001" summary="delete meal complete">
       <created>1605874710721</created>
@@ -284,14 +284,20 @@
       <option name="project" value="LOCAL" />
       <updated>1611229658137</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="personal details update works">
+      <created>1611330635316</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1611330635316</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="edit meal complete" />
     <MESSAGE value="edit cardio workout. edit button doesn't work on run workout" />
     <MESSAGE value="edit cardio workout complete" />
     <MESSAGE value="can edit exercise in a weights workout" />
@@ -316,6 +322,7 @@
     <MESSAGE value="fixed average duration" />
     <MESSAGE value="viewCycleData is now function driven" />
     <MESSAGE value="users snap shot are readin correct" />
-    <option name="LAST_COMMIT_MESSAGE" value="users snap shot are readin correct" />
+    <MESSAGE value="personal details update works" />
+    <option name="LAST_COMMIT_MESSAGE" value="personal details update works" />
   </component>
 </project>
