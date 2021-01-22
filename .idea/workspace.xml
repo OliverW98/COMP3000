@@ -4,7 +4,6 @@
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/personalDetailsPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/personalDetailsPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +92,7 @@
       <workItem from="1610971112414" duration="180000" />
       <workItem from="1611225589552" duration="3147000" />
       <workItem from="1611237188652" duration="46000" />
-      <workItem from="1611327652463" duration="4923000" />
+      <workItem from="1611327652463" duration="5624000" />
     </task>
     <task id="LOCAL-00001" summary="delete meal complete">
       <created>1605874710721</created>
@@ -291,14 +290,20 @@
       <option name="project" value="LOCAL" />
       <updated>1611330635316</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="split stats and details. Delete works">
+      <created>1611332717207</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1611332717207</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="edit cardio workout. edit button doesn't work on run workout" />
     <MESSAGE value="edit cardio workout complete" />
     <MESSAGE value="can edit exercise in a weights workout" />
     <MESSAGE value="can delete exercise in a weights workout" />
@@ -323,6 +328,7 @@
     <MESSAGE value="viewCycleData is now function driven" />
     <MESSAGE value="users snap shot are readin correct" />
     <MESSAGE value="personal details update works" />
-    <option name="LAST_COMMIT_MESSAGE" value="personal details update works" />
+    <MESSAGE value="split stats and details. Delete works" />
+    <option name="LAST_COMMIT_MESSAGE" value="split stats and details. Delete works" />
   </component>
 </project>

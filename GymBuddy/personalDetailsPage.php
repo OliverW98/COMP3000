@@ -24,7 +24,7 @@ function updateUserDetails($userID)
 function updateUsersSnapshot($user)
 {
     $userSnapshots = $user->getSnapshots();
-    if ((count($userSnapshots) - 1) >= 0) {
+    if (count($userSnapshots) > 0) {
         return $userSnapshots[count($userSnapshots) - 1];
     } else {
         return null;
@@ -68,6 +68,13 @@ if (isset($_POST['btnUpdateStats'])) {
         $successOutputPara = "Body Stats have be edited";
         $user = updateUserDetails($_SESSION['userID']);
         $userCurrentSnapshot = updateUsersSnapshot($user);
+        if (count($user->getSnapshots()) > 0) {
+            $snapshotDate = displaySnapshotDate($userCurrentSnapshot);
+            $weight = displayWeight($userCurrentSnapshot);
+            $height = displayHeight($userCurrentSnapshot);
+            $BFP = displayBFP($userCurrentSnapshot);
+            $MMP = displayMMP($userCurrentSnapshot);
+        }
     }
 }
 
@@ -80,6 +87,15 @@ if (isset($_POST['btnDeleteStats'])) {
         $successOutputPara = "Body Stats deleted";
         $user = updateUserDetails($_SESSION['userID']);
         $userCurrentSnapshot = updateUsersSnapshot($user);
+        if (count($user->getSnapshots()) > 0) {
+            $snapshotDate = displaySnapshotDate($userCurrentSnapshot);
+            $weight = displayWeight($userCurrentSnapshot);
+            $height = displayHeight($userCurrentSnapshot);
+            $BFP = displayBFP($userCurrentSnapshot);
+            $MMP = displayMMP($userCurrentSnapshot);
+        } else {
+            $snapshotDate = $weight = $height = $BFP = $MMP = "";
+        }
     }
 }
 
@@ -117,7 +133,7 @@ if (isset($_POST['btnDeleteDetails'])) {
     <h3 class="text-center mt-3">This information is used to created stats for you workouts</h3>
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
 
-        <h5 class="text-center mt-3">Stats</h5>
+        <h5 class="text-center mt-3">Body Stats</h5>
         <p class="text-center">This is you body Snapshot
             for <?php echo $snapshotDate; ?> </p>
         <div class="input-group mb-3">
@@ -168,6 +184,8 @@ if (isset($_POST['btnDeleteDetails'])) {
             <input class="btn btn-danger" name="btnDeleteStats" type="submit" value="Delete Stats">
             <input class="btn btn-primary float-right" name="btnUpdateStats" type="submit" value="Update Stats">
         </div>
+
+        <h5 class="text-center mt-3">Details</h5>
 
         <div class="input-group mt-3 mb-3">
             <div class="input-group-prepend">
