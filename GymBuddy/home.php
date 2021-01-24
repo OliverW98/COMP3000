@@ -18,6 +18,8 @@ unset($_SESSION['email']);
 unset($_SESSION['password']);
 unset($_SESSION['weight']);
 unset($_SESSION['height']);
+unset($_SESSION['BFP']);
+unset($_SESSION['MMP']);
 unset($_SESSION['dob']);
 unset($_SESSION['gender']);
 header("Location: index.php");

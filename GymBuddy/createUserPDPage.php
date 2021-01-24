@@ -4,32 +4,36 @@ include_once 'header.php';
 
 $outputPara = "";
 
-if(isset($_POST['btnCancel'])){
+if (isset($_POST['btnCancel'])) {
     header("Location: home.php");
 }
-if(isset($_POST['btnBack'])){
+if (isset($_POST['btnBack'])) {
     header("Location: createUserPage.php");
 }
 
-if(isset($_POST['btnSkip'])){
+if (isset($_POST['btnSkip'])) {
     header("Location: createUserConfirmPage.php");
     $_SESSION['weight'] = "";
     $_SESSION['height'] = "";
+    $_SESSION['BFP'] = "";
+    $_SESSION['MMP'] = "";
     $_SESSION['dob'] = "";
     $_SESSION['gender'] = "";
 }
 
 
-if(isset($_POST['btnAddDetails'])){
-    if(empty($_POST['weightInput']) || empty($_POST['heightInput']) || empty($_POST['dobInput'] || $_POST['genderInput'] === "Select a Gender")){
+if (isset($_POST['btnAddDetails'])) {
+    if (empty($_POST['weightInput']) || empty($_POST['heightInput']) || empty($_POST['dobInput'] || $_POST['genderInput'] === "Select a Gender")) {
         $outputPara = "Make sure to fill all fields and a gender is selected.";
         // issue with Gender select box:
         // if statement will not read the select properly.
-    }elseif ($_POST['weightInput'] <= 0 || $_POST['heightInput'] <=0){
+    } elseif ($_POST['weightInput'] <= 0 || $_POST['heightInput'] <= 0) {
         $outputPara = "Weight or Height cannot be negative.";
-    } else{
+    } else {
         $_SESSION['weight'] = $_POST['weightInput'];
         $_SESSION['height'] = $_POST['heightInput'];
+        $_SESSION['BFP'] = $_POST['BFPInput'];
+        $_SESSION['MMP'] = $_POST['MMPInput'];
         $_SESSION['dob'] = $_POST['dobInput'];
         $_SESSION['gender'] = $_POST['genderInput'];
 
@@ -56,7 +60,7 @@ if(isset($_POST['btnAddDetails'])){
             </div>
             <input class="form-control" name="weightInput" min="0" type="number">
             <div class="input-group-append">
-                <label class="input-group-text text-light bg-dark" for="weightInput" >Kg</label>
+                <label class="input-group-text text-light bg-dark" for="weightInput">Kg</label>
             </div>
         </div>
 
@@ -66,7 +70,27 @@ if(isset($_POST['btnAddDetails'])){
             </div>
             <input class="form-control" name="heightInput" min="0" type="number">
             <div class="input-group-append">
-                <label class="input-group-text text-light bg-dark" for="heightInput" >Cm</label>
+                <label class="input-group-text text-light bg-dark" for="heightInput">Cm</label>
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text text-light bg-dark" for="BFPInput">Body Fat Percent</label>
+            </div>
+            <input class="form-control" name="BFPInput" min="0" type="number">
+            <div class="input-group-append">
+                <label class="input-group-text text-light bg-dark" for="BFPInput">%</label>
+            </div>
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text text-light bg-dark" for="MMPInput">Muscle Mass Percent</label>
+            </div>
+            <input class="form-control" name="MMPInput" min="0" type="number">
+            <div class="input-group-append">
+                <label class="input-group-text text-light bg-dark" for="MMPInput">%</label>
             </div>
         </div>
 
@@ -100,7 +124,7 @@ if(isset($_POST['btnAddDetails'])){
             </div>
         </div>
 
-        <p class="text-center text-danger"><?php echo $outputPara?></p>
+        <p class="text-center text-danger"><?php echo $outputPara ?></p>
 
     </form>
 </div>

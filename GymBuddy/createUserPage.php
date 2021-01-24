@@ -6,28 +6,26 @@ include_once 'header.php';
 $outputPara = "";
 
 
-
-if(isset($_POST['btnCancel'])){
+if (isset($_POST['btnCancel'])) {
     header("Location: home.php");
 }
 
 
-if(isset($_POST['btnNext'])){
-   if(checkIfUserExists($_POST['userNameInput'],$_POST['emailInput'])){
-       $outputPara = "Username or Password is taken";
-   }else{
-       if(empty($_POST['userNameInput']) || empty($_POST['emailInput']) || empty($_POST['passwordInput'])){
-           $outputPara = "Make sure to fill all fields.";
-       }else{
-           $_SESSION['userName'] = $_POST['userNameInput'];
-           $_SESSION['email'] = $_POST['emailInput'];
-           $_SESSION['password'] = $_POST['passwordInput'];
+if (isset($_POST['btnNext'])) {
+    if (checkIfUserExists($_POST['userNameInput'], $_POST['emailInput'])) {
+        $outputPara = "Username is taken";
+    } else {
+        if (empty($_POST['userNameInput']) || empty($_POST['emailInput']) || empty($_POST['passwordInput'])) {
+            $outputPara = "Make sure to fill all fields.";
+        } else {
+            $_SESSION['userName'] = $_POST['userNameInput'];
+            $_SESSION['email'] = $_POST['emailInput'];
+            $_SESSION['password'] = $_POST['passwordInput'];
 
-           header("Location: createUserPDPage.php");
-       }
-   }
+            header("Location: createUserPDPage.php");
+        }
+    }
 }
-
 
 
 ?>
@@ -67,7 +65,7 @@ if(isset($_POST['btnNext'])){
             <input class="btn btn-primary float-right" name="btnNext" type="submit" value="Next">
         </div>
 
-        <p class="text-center text-danger"><?php echo $outputPara?></p>
+        <p class="text-center text-danger"><?php echo $outputPara ?></p>
     </form>
 </div>
 
