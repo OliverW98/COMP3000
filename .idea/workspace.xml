@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/createUserPDPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createUserPDPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/createUserPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createUserPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/createUserConfirmPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createUserConfirmPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +94,7 @@
       <workItem from="1611225589552" duration="3147000" />
       <workItem from="1611237188652" duration="46000" />
       <workItem from="1611327652463" duration="5680000" />
-      <workItem from="1611485319727" duration="1848000" />
+      <workItem from="1611485319727" duration="2354000" />
     </task>
     <task id="LOCAL-00001" summary="delete meal complete">
       <created>1605874710721</created>
@@ -313,14 +313,20 @@
       <option name="project" value="LOCAL" />
       <updated>1611491134673</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="small fixes to createUserPDPage.php">
+      <created>1611491365671</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1611491365671</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="can delete exercise in a weights workout" />
     <MESSAGE value="edit weights workout complete" />
     <MESSAGE value="cycling average watts" />
     <MESSAGE value="cycling calories burnt" />
@@ -345,6 +351,7 @@
     <MESSAGE value="split stats and details. Delete works" />
     <MESSAGE value="data is loaded in boxs when changed" />
     <MESSAGE value="added BFP and MMP to createUserPDPage.php" />
-    <option name="LAST_COMMIT_MESSAGE" value="added BFP and MMP to createUserPDPage.php" />
+    <MESSAGE value="small fixes to createUserPDPage.php" />
+    <option name="LAST_COMMIT_MESSAGE" value="small fixes to createUserPDPage.php" />
   </component>
 </project>

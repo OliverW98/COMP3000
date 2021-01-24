@@ -198,9 +198,9 @@ function createUserHalf($userName, $email, $password)
     $statement->execute();
 }
 
-function createUserFull($userName, $email, $password, $weight, $height, $dob, $gender)
+function createUserFull($userName, $email, $password, $dob, $gender)
 {
-    $statement = getConnection()->prepare("CALL createUserFull ('" . $userName . "','" . $email . "','" . $password . "','" . $weight . "','" . $height . "','" . $dob . "','" . $gender . "')");
+    $statement = getConnection()->prepare("CALL createUserFull ('" . $userName . "','" . $email . "','" . $password . "','" . $dob . "','" . $gender . "')");
     $statement->execute();
 }
 
