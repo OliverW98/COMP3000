@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/createUserPDPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createUserPDPage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/createUserPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createUserPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/home.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +94,7 @@
       <workItem from="1611225589552" duration="3147000" />
       <workItem from="1611237188652" duration="46000" />
       <workItem from="1611327652463" duration="5680000" />
-      <workItem from="1611485319727" duration="1528000" />
+      <workItem from="1611485319727" duration="1848000" />
     </task>
     <task id="LOCAL-00001" summary="delete meal complete">
       <created>1605874710721</created>
@@ -307,14 +306,20 @@
       <option name="project" value="LOCAL" />
       <updated>1611333358575</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="added BFP and MMP to createUserPDPage.php">
+      <created>1611491134673</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1611491134673</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="can edit exercise in a weights workout" />
     <MESSAGE value="can delete exercise in a weights workout" />
     <MESSAGE value="edit weights workout complete" />
     <MESSAGE value="cycling average watts" />
@@ -339,6 +344,7 @@
     <MESSAGE value="personal details update works" />
     <MESSAGE value="split stats and details. Delete works" />
     <MESSAGE value="data is loaded in boxs when changed" />
-    <option name="LAST_COMMIT_MESSAGE" value="data is loaded in boxs when changed" />
+    <MESSAGE value="added BFP and MMP to createUserPDPage.php" />
+    <option name="LAST_COMMIT_MESSAGE" value="added BFP and MMP to createUserPDPage.php" />
   </component>
 </project>

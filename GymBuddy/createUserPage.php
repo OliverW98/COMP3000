@@ -13,7 +13,7 @@ if (isset($_POST['btnCancel'])) {
 
 if (isset($_POST['btnNext'])) {
     if (checkIfUserExists($_POST['userNameInput'], $_POST['emailInput'])) {
-        $outputPara = "Username is taken";
+        $outputPara = "Username or Email is taken";
     } else {
         if (empty($_POST['userNameInput']) || empty($_POST['emailInput']) || empty($_POST['passwordInput'])) {
             $outputPara = "Make sure to fill all fields.";

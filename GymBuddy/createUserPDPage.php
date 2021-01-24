@@ -51,7 +51,8 @@ if (isset($_POST['btnAddDetails'])) {
 <body>
 <div class="container">
     <p class="text-center">Create Account >>> <b>Personal Details</b> >>> Confirmation</p>
-    <p>Personal details are optional. However if they are not filled out some statics will not be calculated.</p>
+    <p class="text-center">Personal details are optional.</p>
+    <p class="text-center">However if they are not filled out some statics will not be calculated.</p>
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
 
         <div class="input-group mb-3">
