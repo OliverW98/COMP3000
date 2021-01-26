@@ -160,6 +160,7 @@ function getAverageCalories($runWorkouts)
         <div class="input-group mb-3 mt-3">
             <select id="selectYear" class="custom-select" name="selectYear">
                 <option selected>Choose a Year...</option>
+                <option>2021</option>
                 <option>2020</option>
                 <option>2019</option>
                 <option>2018</option>
