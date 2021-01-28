@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/GymBuddy/viewBodySnapshots.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/viewRunData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewRunData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/viewBodySnapshots.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewBodySnapshots.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +97,8 @@
       <workItem from="1611327652463" duration="5680000" />
       <workItem from="1611485319727" duration="2670000" />
       <workItem from="1611656708473" duration="1721000" />
-      <workItem from="1611671875682" duration="2404000" />
+      <workItem from="1611671875682" duration="2452000" />
+      <workItem from="1611828527394" duration="2003000" />
     </task>
     <task id="LOCAL-00001" summary="delete meal complete">
       <created>1605874710721</created>
@@ -330,14 +331,20 @@
       <option name="project" value="LOCAL" />
       <updated>1611492041713</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="view body snap shot page basic graph">
+      <created>1611674668591</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1611674668591</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="cycling average watts" />
     <MESSAGE value="cycling calories burnt" />
     <MESSAGE value="running calories burnt complete" />
     <MESSAGE value="card dates formatted" />
@@ -362,6 +369,7 @@
     <MESSAGE value="added BFP and MMP to createUserPDPage.php" />
     <MESSAGE value="small fixes to createUserPDPage.php" />
     <MESSAGE value="added BFP And MMP to createUserConfirmPage.php" />
-    <option name="LAST_COMMIT_MESSAGE" value="added BFP And MMP to createUserConfirmPage.php" />
+    <MESSAGE value="view body snap shot page basic graph" />
+    <option name="LAST_COMMIT_MESSAGE" value="view body snap shot page basic graph" />
   </component>
 </project>

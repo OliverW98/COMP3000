@@ -32,7 +32,7 @@ function getUser($userID)
 
     $userData = getUserDetails($userID);
 
-    $userSnapshots = getUserSnapshots($userID);
+    $userSnapshots = getUsersSnapshots($userID);
 
     $usersMeals = getUsersMeals($userID);
 
@@ -59,7 +59,7 @@ function getUserWithYear($userID, $year)
 
     $userData = getUserDetails($userID);
 
-    $userSnapshots = getUserSnapshots($userID);
+    $userSnapshots = getUsersSnapshotsByYear($userID, $year);
 
     $usersMeals = getUsersMeals($userID);
 
@@ -227,9 +227,16 @@ function getUserDetails($userID)
     return $statement->fetchAll(PDO::FETCH_ASSOC);;
 }
 
-function getUserSnapshots($userID)
+function getUsersSnapshots($userID)
 {
     $statement = getConnection()->prepare("CALL getUsersSnapshots('" . $userID . "')");
+    $statement->execute();
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function getUsersSnapshotsByYear($userID, $year)
+{
+    $statement = getConnection()->prepare("CALL getUsersSnapshotsByYear('" . $userID . "','" . $year . "')");
     $statement->execute();
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }

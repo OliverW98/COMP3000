@@ -237,6 +237,18 @@ function getSnapshotMMP($bodySnapshots)
                 fill: false,
                 borderColor: 'navy',
                 borderWidth: 2
+            }, {
+                label: 'Body Fat (%)',
+                data: snapshotBFPs,
+                fill: false,
+                borderColor: 'red',
+                borderWidth: 2
+            }, {
+                label: 'Muscle Mass (%)',
+                data: snapshotMMPs,
+                fill: false,
+                borderColor: 'green',
+                borderWidth: 2
             }]
         },
         options: {

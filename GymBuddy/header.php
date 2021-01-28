@@ -54,6 +54,7 @@ session_start();
                 </li>
                 <?php
                 if (isset($_SESSION['userID'])) {
+                    echo '<li class="nav-item"><a class="nav-link" href="viewBodySnapshots.php">View Snapshot</a></li>';
                     echo '<li class="nav-item"><a class="nav-link" href="personalDetailsPage.php">Personal Details</a></li>';
                     echo '<li class="nav-item"><a class="nav-link" href="logOut.php">Log Out</a></li>';
                 } else {
