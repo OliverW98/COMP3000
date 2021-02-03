@@ -33,6 +33,7 @@ if (isset($_POST['btnFindYear'])) {
             $avSpeed = getAverageSpeed($cycleWorkouts);
             $avWatts = getAverageWatts($cycleWorkouts);
             $avCals = getAverageCals($cycleWorkouts);
+            $trendLine = createTrendLine($cycleWorkouts);
             $totalCycles = count($cycleWorkouts);
         } else {
             $failureOutputPara = "No rides recorded for " . $_POST['selectYear'];
@@ -68,6 +69,7 @@ function getCycleSpeeds($cycleWorkouts)
     for ($i = min(10, count($cycleWorkouts) - 1); $i >= 0; $i--) {
         array_push($averageSpeeds, round($cycleWorkouts[$i]->getSpeed() * 3.6, 1));
     }
+
     return $averageSpeeds;
 }
 
@@ -159,6 +161,19 @@ function getAverageCals($cycleWorkouts)
     return $totalCals / count($cycleWorkouts);
 }
 
+function createTrendLine($cycleWorkouts)
+{
+    $trendline = array();
+    for ($i = count($cycleWorkouts) - 1; $i >= 0; $i--) {
+        if ($i === (count($cycleWorkouts) - 1)) {
+            array_push($trendline, $cycleWorkouts[$i]->getSpeed() * 3.6);
+        } else {
+            $diff = ($cycleWorkouts[$i]->getSpeed() - $cycleWorkouts[$i + 1]->getSpeed()) / 2;
+            array_push($trendline, ($cycleWorkouts[$i + 1]->getSpeed() + $diff) * 3.6);
+        }
+    }
+    return $trendline;
+}
 
 ?>
 <html lang="en">
@@ -194,7 +209,7 @@ function getAverageCals($cycleWorkouts)
             <P>Number of Rides : <?php echo $totalCycles ?></P>
             <p>Distance : <?php echo round($totalDis / 1000, 1) ?> Km</p>
             <P>Duration
-                : <?php echo $totalDurHrs = floor($totalDurMins / 60) . 'h' . ($totalDurMins - floor($totalDurMins / 60) * 60 . 'm'); ?></P>
+                : <?php echo $totalDurHrs = floor($totalDurMins / 60) . 'h ' . ($totalDurMins - floor($totalDurMins / 60) * 60 . 'm'); ?></P>
         </div>
         <div class="col-sm-6 mt-5">
             <h4 class="text-center">Average Ride</h4>
@@ -216,12 +231,15 @@ function getAverageCals($cycleWorkouts)
     $js_array = json_encode($averageSpeeds);
     echo "let averageSpeeds = " . $js_array . ";\n";
 
+    $js_array = json_encode($trendLine);
+    echo "let trendLine = " . $js_array . ";\n";
+
     $js_array = json_encode($distanceRidden);
     echo "let distanceRidden = " . $js_array . ";\n";
 
     $js_array = json_encode($averageWatts);
     echo "let averageWatts = " . $js_array . ";\n";
-
+    
     $js_array = json_encode($cycleDates);
     echo "let cycleDates = " . $js_array . ";\n";
 
@@ -241,6 +259,12 @@ function getAverageCals($cycleWorkouts)
                 data: averageSpeeds,
                 fill: false,
                 borderColor: 'navy',
+                borderWidth: 2
+            }, {
+                label: 'Trend (Km/h)',
+                data: trendLine,
+                fill: false,
+                borderColor: 'yellow',
                 borderWidth: 2
             }]
         },
