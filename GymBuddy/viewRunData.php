@@ -22,6 +22,7 @@ if (isset($_POST['btnFindYear'])) {
         }
         if ($count > 0) {
             $runWorkouts = getRunWorkouts($user);
+            $runDatesPrediction = runDatesPrediction($runWorkouts);
             $runDates = getRunDates($runWorkouts);
             $averageSpeeds = getRunSpeeds($runWorkouts);
             $distanceRun = getRunDistances($runWorkouts);
@@ -32,6 +33,7 @@ if (isset($_POST['btnFindYear'])) {
             $avDis = getAverageDistanceRun($runWorkouts);
             $avDur = getAverageDurationRun($runWorkouts);
             $avCals = getAverageCalories($runWorkouts);
+            $trendLine = createTrendLine($runWorkouts);
             $totalRuns = count($runWorkouts);
         } else {
             $failureOutputPara = "No runs recorded for " . $_POST['selectYear'];
@@ -68,6 +70,19 @@ function getRunSpeeds($runWorkouts)
         array_push($averageSpeeds, round($runWorkouts[$i]->getSpeed() * 3.6, 1));
     }
     return $averageSpeeds;
+}
+
+function runDatesPrediction($runWorkouts)
+{
+    $runDates = array();
+    // grab data from the last 10 runs or less
+    for ($i = min(10, count($runWorkouts) - 1); $i >= 0; $i--) {
+        $datetime = new DateTime($runWorkouts[$i]->getDate());
+        $date = "{$datetime->format('d/m/y')}";
+        array_push($runDates, $date);
+    }
+    array_push($runDates, "Prediction");
+    return $runDates;
 }
 
 function getRunDates($runWorkouts)
@@ -148,6 +163,24 @@ function getAverageCalories($runWorkouts)
     return $avCals = $totalCals / count($runWorkouts);
 }
 
+function createTrendLine($runWorkouts)
+{
+    $trendline = array();
+    $totalDiff = 0;
+    for ($i = count($runWorkouts) - 1; $i >= 0; $i--) {
+        if ($i === (count($runWorkouts) - 1)) {
+            array_push($trendline, round($runWorkouts[$i]->getSpeed() * 3.6, 1));
+        } else {
+            $diff = ($runWorkouts[$i]->getSpeed() - $runWorkouts[$i + 1]->getSpeed()) / 2;
+            $totalDiff = $totalDiff + $diff;
+            array_push($trendline, round(($runWorkouts[$i + 1]->getSpeed() + $diff) * 3.6, 1));
+        }
+    }
+    array_push($trendline, round(($runWorkouts[$i + 1]->getSpeed() + $totalDiff) * 3.6, 1));
+    return $trendline;
+}
+
+
 ?>
 <html lang="en">
 <head>
@@ -202,8 +235,15 @@ function getAverageCalories($runWorkouts)
     $js_array = json_encode($averageSpeeds);
     echo "let averageSpeeds = " . $js_array . ";\n";
 
+    $js_array = json_encode($trendLine);
+    echo "let trendLine = " . $js_array . ";\n";
+
+
     $js_array = json_encode($distanceRun);
     echo "let distanceRun = " . $js_array . ";\n";
+
+    $js_array = json_encode($runDatesPrediction);
+    echo "let runDatesPrediction = " . $js_array . ";\n";
 
     $js_array = json_encode($runDates);
     echo "let runDates = " . $js_array . ";\n";
@@ -218,12 +258,18 @@ function getAverageCalories($runWorkouts)
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: runDates,
+            labels: runDatesPrediction,
             datasets: [{
                 label: 'Average Speed (Km/h)',
                 data: averageSpeeds,
                 fill: false,
                 borderColor: 'navy',
+                borderWidth: 2
+            }, {
+                label: 'Trend Line',
+                data: trendLine,
+                fill: false,
+                borderColor: 'green',
                 borderWidth: 2
             }]
         },

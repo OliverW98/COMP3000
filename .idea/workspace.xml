@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/deleteWorkoutMealConfirmPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/deleteWorkoutMealConfirmPage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/viewRunData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewRunData.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +101,7 @@
       <workItem from="1611831773910" duration="3879000" />
       <workItem from="1612348280086" duration="7916000" />
       <workItem from="1612376955954" duration="594000" />
-      <workItem from="1612443686436" duration="1715000" />
+      <workItem from="1612443686436" duration="2730000" />
     </task>
     <task id="LOCAL-00001" summary="delete meal complete">
       <created>1605874710721</created>
@@ -362,14 +362,20 @@
       <option name="project" value="LOCAL" />
       <updated>1612357895134</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="cycle show basic prediction">
+      <created>1612446704402</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1612446704402</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="activities order by date in SQL statement" />
     <MESSAGE value="find number of cycles a month for a year" />
     <MESSAGE value="better way of finding cycles" />
     <MESSAGE value="display last 10 or less cycles average speed" />
@@ -394,6 +400,7 @@
     <MESSAGE value="snap shot sorted by year and multiple lines on the graph" />
     <MESSAGE value="complete view bod snapshot page" />
     <MESSAGE value="Cycle basic trend shown" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cycle basic trend shown" />
+    <MESSAGE value="cycle show basic prediction" />
+    <option name="LAST_COMMIT_MESSAGE" value="cycle show basic prediction" />
   </component>
 </project>

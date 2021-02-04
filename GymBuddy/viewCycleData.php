@@ -180,18 +180,14 @@ function createTrendLine($cycleWorkouts)
     $totalDiff = 0;
     for ($i = count($cycleWorkouts) - 1; $i >= 0; $i--) {
         if ($i === (count($cycleWorkouts) - 1)) {
-            array_push($trendline, $cycleWorkouts[$i]->getSpeed() * 3.6);
+            array_push($trendline, round($cycleWorkouts[$i]->getSpeed() * 3.6, 1));
         } else {
             $diff = ($cycleWorkouts[$i]->getSpeed() - $cycleWorkouts[$i + 1]->getSpeed()) / 2;
-            var_dump("diff");
-            var_dump($diff);
             $totalDiff = $totalDiff + $diff;
-            var_dump("totalDiff");
-            var_dump($totalDiff);
-            array_push($trendline, ($cycleWorkouts[$i + 1]->getSpeed() + $diff) * 3.6);
+            array_push($trendline, round(($cycleWorkouts[$i + 1]->getSpeed() + $diff) * 3.6, 1));
         }
     }
-    array_push($trendline, ($cycleWorkouts[$i + 1]->getSpeed() + $totalDiff) * 3.6);
+    array_push($trendline, round(($cycleWorkouts[$i + 1]->getSpeed() + $totalDiff) * 3.6, 1));
     return $trendline;
 }
 
