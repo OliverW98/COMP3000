@@ -21,6 +21,7 @@ if (isset($_POST['btnFindYear'])) {
         if ($count > 0) {
             // do all the stuff
             $cycleWorkouts = getCycleWorkouts($user);
+            $cycleDatesPrediction = cycleDatesPrediction($cycleWorkouts);
             $cycleDates = getCycleDates($cycleWorkouts);
             $averageSpeeds = getCycleSpeeds($cycleWorkouts);
             $distanceRidden = getCycleDistances($cycleWorkouts);
@@ -50,6 +51,18 @@ function getCycleWorkouts($user)
         }
     }
     return $cycleWorkouts;
+}
+
+function cycleDatesPrediction($cycleWorkouts)
+{
+    $cycleDates = array();
+    for ($i = min(10, count($cycleWorkouts) - 1); $i >= 0; $i--) {
+        $datetime = new DateTime($cycleWorkouts[$i]->getDate());
+        $date = "{$datetime->format('d/m/y')}";
+        array_push($cycleDates, $date);
+    }
+    array_push($cycleDates, "Prediction");
+    return $cycleDates;
 }
 
 function getCycleDates($cycleWorkouts)
@@ -164,14 +177,21 @@ function getAverageCals($cycleWorkouts)
 function createTrendLine($cycleWorkouts)
 {
     $trendline = array();
+    $totalDiff = 0;
     for ($i = count($cycleWorkouts) - 1; $i >= 0; $i--) {
         if ($i === (count($cycleWorkouts) - 1)) {
             array_push($trendline, $cycleWorkouts[$i]->getSpeed() * 3.6);
         } else {
             $diff = ($cycleWorkouts[$i]->getSpeed() - $cycleWorkouts[$i + 1]->getSpeed()) / 2;
+            var_dump("diff");
+            var_dump($diff);
+            $totalDiff = $totalDiff + $diff;
+            var_dump("totalDiff");
+            var_dump($totalDiff);
             array_push($trendline, ($cycleWorkouts[$i + 1]->getSpeed() + $diff) * 3.6);
         }
     }
+    array_push($trendline, ($cycleWorkouts[$i + 1]->getSpeed() + $totalDiff) * 3.6);
     return $trendline;
 }
 
@@ -239,7 +259,10 @@ function createTrendLine($cycleWorkouts)
 
     $js_array = json_encode($averageWatts);
     echo "let averageWatts = " . $js_array . ";\n";
-    
+
+    $js_array = json_encode($cycleDatesPrediction);
+    echo "let cycleDatesPrediction = " . $js_array . ";\n";
+
     $js_array = json_encode($cycleDates);
     echo "let cycleDates = " . $js_array . ";\n";
 
@@ -253,7 +276,7 @@ function createTrendLine($cycleWorkouts)
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: cycleDates,
+            labels: cycleDatesPrediction,
             datasets: [{
                 label: 'Average Speed (Km/h)',
                 data: averageSpeeds,
@@ -261,10 +284,10 @@ function createTrendLine($cycleWorkouts)
                 borderColor: 'navy',
                 borderWidth: 2
             }, {
-                label: 'Trend (Km/h)',
+                label: 'Trend Line',
                 data: trendLine,
                 fill: false,
-                borderColor: 'yellow',
+                borderColor: 'green',
                 borderWidth: 2
             }]
         },

@@ -22,7 +22,7 @@ if (isset($_POST['btnDeleteWorkout'])) {
     if (get_class($activity) == "meal") {
         deleteMeal($activity->getMealID());
     } else {
-        deleteWorkout($activity->getMealID());
+        deleteWorkout($activity->getWorkoutID());
     }
 
     unsetSessions();
