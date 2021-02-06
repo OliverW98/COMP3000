@@ -135,7 +135,7 @@ if (isset($_POST['btnDeleteDetails'])) {
 
         <h5 class="text-center mt-3">Body Stats</h5>
         <p class="text-center">This is you body Snapshot
-            for <?php echo $snapshotDate; ?> </p>
+            from <?php echo $snapshotDate; ?> </p>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <label class="input-group-text text-light bg-dark" for="weightInput">Weight</label>

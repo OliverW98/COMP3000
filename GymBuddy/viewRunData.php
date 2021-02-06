@@ -5,7 +5,7 @@ include_once 'header.php';
 
 
 $failureOutputPara = "";
-$totalRuns = $totalDis = $totalDurMins = $avDis = $avDur = $avSpeed = $avCals = 0;
+$totalRuns = $totalDis = $totalDurMins = $avDis = $avDur = $avSpeed = $avCals = $count = 0;
 
 
 if (isset($_POST['btnFindYear'])) {
@@ -81,6 +81,8 @@ function runDatesPrediction($runWorkouts)
         $date = "{$datetime->format('d/m/y')}";
         array_push($runDates, $date);
     }
+    array_push($runDates, "Prediction");
+    array_push($runDates, "Prediction");
     array_push($runDates, "Prediction");
     return $runDates;
 }
@@ -177,7 +179,19 @@ function createTrendLine($runWorkouts)
         }
     }
     array_push($trendline, round(($runWorkouts[$i + 1]->getSpeed() + $totalDiff) * 3.6, 1));
+    array_push($trendline, round(($trendline[count($trendline) - 1] + ($totalDiff * 0.5) * 3.6), 1));
+    array_push($trendline, round(($trendline[count($trendline) - 1] + ($totalDiff * 0.5) * 3.6), 1));
     return $trendline;
+}
+
+function trendlineMessage($trendline)
+{
+    echo '<p class="text-center mt-3 mb-5">Over time your speed has been trending ';
+    if ($trendline[count($trendline) - 1] < $trendline[count($trendline) - 2]) {
+        echo 'slower.</p>';
+    } elseif ($trendline[count($trendline) - 1] > $trendline[count($trendline) - 2]) {
+        echo 'faster.</p>';
+    }
 }
 
 
@@ -206,6 +220,11 @@ function createTrendLine($runWorkouts)
     </form>
     <p class="text-center text-danger"><?php echo $failureOutputPara ?></p>
     <canvas id="averageSpeedChart" width="200" height=75"></canvas>
+    <?php
+    if ($count > 0) {
+        trendlineMessage($trendLine);
+    }
+    ?>
     <canvas id="distanceRiddenChart" width="200" height="75"></canvas>
     <canvas id="RidePerMonth" width="200" height=100"></canvas>
     <div class="row">
@@ -264,13 +283,17 @@ function createTrendLine($runWorkouts)
                 data: averageSpeeds,
                 fill: false,
                 borderColor: 'navy',
-                borderWidth: 2
+                borderWidth: 2,
+                showLine: false,
+                pointRadius: 4
             }, {
                 label: 'Trend Line',
                 data: trendLine,
                 fill: false,
                 borderColor: 'green',
-                borderWidth: 2
+                borderWidth: 2,
+                pointRadius: 0,
+                pointHitRadius: 0
             }]
         },
         options: {
@@ -294,7 +317,9 @@ function createTrendLine($runWorkouts)
                 data: distanceRun,
                 fill: false,
                 borderColor: 'navy',
-                borderWidth: 2
+                borderWidth: 2,
+                pointRadius: 4,
+                lineTension: 0.2
             }]
         },
         options: {

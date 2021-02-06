@@ -5,7 +5,7 @@ include_once 'header.php';
 
 
 $failureOutputPara = "";
-$totalDis = $totalDurMins = $totalSpeed = $totalWatts = $totalCals = $avDis = $avDur = $avSpeed = $avWatts = $avCals = $totalCycles = 0;
+$totalDis = $totalDurMins = $totalSpeed = $totalWatts = $totalCals = $avDis = $avDur = $avSpeed = $avWatts = $avCals = $totalCycles = $count = 0;
 
 if (isset($_POST['btnFindYear'])) {
     if ($_POST['selectYear'] === "Choose a Year...") {
@@ -23,18 +23,22 @@ if (isset($_POST['btnFindYear'])) {
             $cycleWorkouts = getCycleWorkouts($user);
             $cycleDatesPrediction = cycleDatesPrediction($cycleWorkouts);
             $cycleDates = getCycleDates($cycleWorkouts);
+
             $averageSpeeds = getCycleSpeeds($cycleWorkouts);
             $distanceRidden = getCycleDistances($cycleWorkouts);
             $averageWatts = getCycleAverageWatts($cycleWorkouts);
             $cyclesAMonth = getCyclesAMonth($cycleWorkouts);
             $totalDis = getTotalDistance($cycleWorkouts);
             $totalDurMins = getTotalDuration($cycleWorkouts);
+
             $avDis = getAverageDistance($cycleWorkouts);
             $avDur = getAverageDuration($cycleWorkouts);
             $avSpeed = getAverageSpeed($cycleWorkouts);
             $avWatts = getAverageWatts($cycleWorkouts);
             $avCals = getAverageCals($cycleWorkouts);
+
             $trendLine = createTrendLine($cycleWorkouts);
+
             $totalCycles = count($cycleWorkouts);
         } else {
             $failureOutputPara = "No rides recorded for " . $_POST['selectYear'];
@@ -61,6 +65,8 @@ function cycleDatesPrediction($cycleWorkouts)
         $date = "{$datetime->format('d/m/y')}";
         array_push($cycleDates, $date);
     }
+    array_push($cycleDates, "Prediction");
+    array_push($cycleDates, "Prediction");
     array_push($cycleDates, "Prediction");
     return $cycleDates;
 }
@@ -188,7 +194,19 @@ function createTrendLine($cycleWorkouts)
         }
     }
     array_push($trendline, round(($cycleWorkouts[$i + 1]->getSpeed() + $totalDiff) * 3.6, 1));
+    array_push($trendline, round(($trendline[count($trendline) - 1] + ($totalDiff * 0.5) * 3.6), 1));
+    array_push($trendline, round(($trendline[count($trendline) - 1] + ($totalDiff * 0.5) * 3.6), 1));
     return $trendline;
+}
+
+function trendlineMessage($trendline)
+{
+    echo '<p class="text-center mt-3 mb-5">Over time your speed has been trending ';
+    if ($trendline[count($trendline) - 1] < $trendline[count($trendline) - 2]) {
+        echo 'slower.</p>';
+    } elseif ($trendline[count($trendline) - 1] > $trendline[count($trendline) - 2]) {
+        echo 'faster.</p>';
+    }
 }
 
 ?>
@@ -216,6 +234,11 @@ function createTrendLine($cycleWorkouts)
     </form>
     <p class="text-center text-danger"><?php echo $failureOutputPara ?></p>
     <canvas id="averageSpeedChart" width="200" height=75"></canvas>
+    <?php
+    if ($count > 0) {
+        trendlineMessage($trendLine);
+    }
+    ?>
     <canvas id="distanceRiddenChart" width="200" height="75"></canvas>
     <canvas id="averageWattsChart" width="200" height="75"></canvas>
     <canvas id="RidePerMonth" width="200" height=100"></canvas>
@@ -278,13 +301,17 @@ function createTrendLine($cycleWorkouts)
                 data: averageSpeeds,
                 fill: false,
                 borderColor: 'navy',
-                borderWidth: 2
+                borderWidth: 2,
+                showLine: false,
+                pointRadius: 4
             }, {
                 label: 'Trend Line',
                 data: trendLine,
                 fill: false,
                 borderColor: 'green',
-                borderWidth: 2
+                borderWidth: 2,
+                pointRadius: 0,
+                pointHitRadius: 0
             }]
         },
         options: {
@@ -308,7 +335,9 @@ function createTrendLine($cycleWorkouts)
                 data: distanceRidden,
                 fill: false,
                 borderColor: 'navy',
-                borderWidth: 2
+                borderWidth: 2,
+                pointRadius: 4,
+                lineTension: 0.2
             }]
         },
         options: {
@@ -332,7 +361,9 @@ function createTrendLine($cycleWorkouts)
                 data: averageWatts,
                 fill: false,
                 borderColor: 'navy',
-                borderWidth: 2
+                borderWidth: 2,
+                pointRadius: 4,
+                lineTension: 0.2
             }]
         },
         options: {
