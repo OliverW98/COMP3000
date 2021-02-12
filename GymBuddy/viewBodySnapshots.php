@@ -5,7 +5,7 @@ include_once 'header.php';
 
 
 $failureOutputPara = "";
-$totalDis = $totalDurMins = $totalSpeed = $totalWatts = $totalCals = $avDis = $avDur = $avSpeed = $avWatts = $avCals = $totalCycles = 0;
+$count = 0;
 
 if (isset($_POST['btnFindYear'])) {
     if ($_POST['selectYear'] === "Choose a Year...") {
@@ -24,6 +24,7 @@ if (isset($_POST['btnFindYear'])) {
             $snapshotBFPs = getSnapshotBFP($bodySnapshots);
             $snapshotMMPs = getSnapshotMMP($bodySnapshots);
             $currentSnapshotWeights = getCurrentSnapshotWeights($bodySnapshots[0]);
+            $lastMonthMeals = getLastMonthsMeals($user->getMeals());
         } else {
             $failureOutputPara = "No Body Snapshots recorded for " . $_POST['selectYear'];
         }
@@ -89,12 +90,42 @@ function getCurrentSnapshotWeights($snapshot)
     return $Weights;
 }
 
+function getLastMonthsMeals($meals)
+{
+    $mealsLastmonth = array();
+
+    $currentDate = new DateTime();
+    $currentMonth = $currentDate->format("m");
+
+    if ($currentMonth === "1") {
+        $lastMonth = "12";
+    } elseif ($currentMonth !== "12" || "11") {
+        $lastMonth = "0" . (((int)$currentMonth) - 1);
+    } else {
+        $lastMonth = (string)((int)$currentMonth) - 1;
+    }
+
+    foreach ($meals as $meal) {
+
+        if (substr($meal->getDate(), 5, 2) === $lastMonth) {
+            array_push($mealsLastmonth, $meal);
+        }
+    }
+
+    return $mealsLastmonth;
+}
+
+function pieChartMessage($bodySnapshots)
+{
+    echo '<p class="text-center mt-3 mb-3">The Pie chart below shows how your weight of ' . $bodySnapshots[0]->getWeight() . ' Kg is divided up.  ';
+}
+
 
 ?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Cycle Stats</title>
+    <title>Snapshots</title>
 </head>
 <body>
 <div class="container">
@@ -115,9 +146,29 @@ function getCurrentSnapshotWeights($snapshot)
     </form>
     <p class="text-center text-danger"><?php echo $failureOutputPara ?></p>
     <h4 class="text-center">Current Body Composition</h4>
+    <?php
+    if ($count > 0) {
+        pieChartMessage($bodySnapshots);
+    }
+    ?>
     <canvas id="CurrentBodySnapshotChart" width="200" height="75"></canvas>
     <h4 class="text-center mt-5">Past Snapshots</h4>
     <canvas id="bodySnapshotChart" width="200" height=75"></canvas>
+    <div class="row">
+        <div class="col-sm-6 mt-5">
+            <h4 class="text-center">Total Meal</h4>
+            <p>meals a month</p>
+            <p>num opf activitys </p>
+        </div>
+        <div class="col-sm-6 mt-5">
+            <h4 class="text-center">Average Meal</h4>
+            <p>average meals a day : Km</p>
+            <p>average meal cal</p>
+            <p>average cals in a day</p>
+            <p> cals to be burn in a day +/-</p>
+            <p>average cals burnt </p>
+        </div>
+    </div>
 </div>
 </body>
 </html>

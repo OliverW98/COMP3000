@@ -107,6 +107,7 @@ function runsAMonth($runWorkouts)
         for ($j = 1; $j <= 12; $j++) {
             if (substr($runWorkouts[$i]->getDate(), 5, 2) == strval($j)) {
                 $runsAMonth[$j - 1] = $runsAMonth[$j - 1] + 1;
+                break;
             }
         }
     }

@@ -117,8 +117,11 @@ function getCyclesAMonth($cycleWorkouts)
     $cyclesAMonth = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
     for ($i = 0; $i < count($cycleWorkouts); $i++) {
         for ($j = 1; $j <= 12; $j++) {
+            var_dump(substr($cycleWorkouts[$i]->getDate(), 5, 2));
+            var_dump(strval($j));
             if (substr($cycleWorkouts[$i]->getDate(), 5, 2) == strval($j)) {
                 $cyclesAMonth[$j - 1] = $cyclesAMonth[$j - 1] + 1;
+                break;
             }
         }
     }
