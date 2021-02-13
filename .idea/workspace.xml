@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/viewBodySnapshots.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewBodySnapshots.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/viewRunData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewRunData.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +107,9 @@
       <workItem from="1612547968693" duration="473000" />
       <workItem from="1612606991189" duration="4282000" />
       <workItem from="1612956358453" duration="2357000" />
-      <workItem from="1613132688743" duration="5152000" />
+      <workItem from="1613132688743" duration="5386000" />
+      <workItem from="1613138221877" duration="9000" />
+      <workItem from="1613226222867" duration="4035000" />
     </task>
     <task id="LOCAL-00001" summary="delete meal complete">
       <created>1605874710721</created>
@@ -391,14 +391,20 @@
       <option name="project" value="LOCAL" />
       <updated>1612615931239</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="count meals last month">
+      <created>1613137933573</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1613137933573</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="display last 10 or less cycles average speed" />
     <MESSAGE value="change charts looks" />
     <MESSAGE value="average and total stats for a cycle" />
     <MESSAGE value="distance in pie chart" />
@@ -423,6 +429,7 @@
     <MESSAGE value="cycle show basic prediction" />
     <MESSAGE value="run show basic prediction" />
     <MESSAGE value="predicted further into the future and displayed small message" />
-    <option name="LAST_COMMIT_MESSAGE" value="predicted further into the future and displayed small message" />
+    <MESSAGE value="count meals last month" />
+    <option name="LAST_COMMIT_MESSAGE" value="count meals last month" />
   </component>
 </project>
