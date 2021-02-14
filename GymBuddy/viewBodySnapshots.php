@@ -149,16 +149,27 @@ function getLastMonthsActivities($workouts)
 
 function getAverageMealsADay($meals)
 {
-    $count = 0;
+    $Month = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
-    for ($i = 0; $i < count($meals); $i++) {
-        for ($j = 0; $j < count($meals); $j++) {
-            if (substr($meals[$i]->getDate(), 7, 2) === substr($meals[$j]->getDate(), 7, 2)) {
-                $count++;
+    foreach ($meals as $meal) {
+        for ($i = 1; $i <= 31; $i++) {
+            $date = new DateTime($meal->getDate());
+            $day = $date->format("j");
+            if ($day === strval($i)) {
+                $Month[$i - 1] = $Month[$i - 1] + 1;
+                break;
             }
         }
     }
-    return count($meals) / $count;
+
+    $daysWithMeals = 0;
+    foreach ($Month as $day) {
+        if ($day !== 0) {
+            $daysWithMeals++;
+        }
+    }
+
+    return count($meals) / $daysWithMeals;
 }
 
 function getLAverageMealsCals($meals)
