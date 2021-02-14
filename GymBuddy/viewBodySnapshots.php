@@ -5,7 +5,7 @@ include_once 'header.php';
 
 
 $failureOutputPara = "";
-$avgBurntCalsADay = $avgMealCals = $avgMealsADay = $mealsAMonth = $activitiesAMonth = $count = 0;
+$avgCalsADay = $avgBurntCalsADay = $avgMealCals = $avgMealsADay = $mealsAMonth = $activitiesAMonth = $count = 0;
 
 if (isset($_POST['btnFindYear'])) {
     if ($_POST['selectYear'] === "Choose a Year...") {
@@ -29,8 +29,9 @@ if (isset($_POST['btnFindYear'])) {
             $lastMonthActivities = getLastMonthsActivities($user->getWorkouts());
             $mealsAMonth = count($lastMonthMeals);
             $activitiesAMonth = count($lastMonthActivities);
-            $avgMealsADay = getAverageMealsADay($lastMonthMeals);
-            $avgMealCals = getLAverageMealsCals($lastMonthMeals);
+            $avgMealsADay = $mealsAMonth / getDaysWithMeal($lastMonthMeals);
+            $avgMealCals = getAverageMealsCals($lastMonthMeals);
+            $avgCalsADay = getTotalCals($lastMonthMeals) / getDaysWithMeal($lastMonthMeals);;
             $avgBurntCalsADay = BMR($bodySnapshots[0], $user->getDob(), $user->getGender());
         } else {
             $failureOutputPara = "No Body Snapshots recorded for " . $_POST['selectYear'];
@@ -147,7 +148,7 @@ function getLastMonthsActivities($workouts)
     return $mealsLastworkouts;
 }
 
-function getAverageMealsADay($meals)
+function getDaysWithMeal($meals)
 {
     $Month = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
@@ -169,10 +170,21 @@ function getAverageMealsADay($meals)
         }
     }
 
-    return count($meals) / $daysWithMeals;
+    return $daysWithMeals;
 }
 
-function getLAverageMealsCals($meals)
+function getTotalCals($meals)
+{
+    $totalCals = 0;
+
+    foreach ($meals as $meal) {
+        $totalCals = $totalCals + $meal->getCalorieIntake();
+    }
+
+    return $totalCals;
+}
+
+function getAverageMealsCals($meals)
 {
     $totalCals = 0;
 
@@ -254,10 +266,10 @@ function pieChartMessage($bodySnapshots)
         <div class="col-sm-6 mt-5">
             <h4 class="text-center">Averages</h4>
             <p>average meals a day : <?php echo $avgMealsADay ?></p>
-            <p>average meal cal : <?php echo $avgMealCals ?> </p>
-            <p>average cals in a day <?php echo $avgBurntCalsADay ?> </p>
+            <p>average meal cal : <?php echo round($avgMealCals) ?> </p>
+            <p>average cals in a day <?php echo round($avgCalsADay) ?> </p>
             <p>average cals burnt : <?php echo round($avgBurntCalsADay) ?></p>
-            <p> cals to be burn in a day +/-</p>
+            <p>cals to be burn in a day +/-</p>
         </div>
     </div>
 </div>

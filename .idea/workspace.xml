@@ -109,7 +109,7 @@
       <workItem from="1613132688743" duration="5386000" />
       <workItem from="1613138221877" duration="9000" />
       <workItem from="1613226222867" duration="4191000" />
-      <workItem from="1613311518475" duration="2393000" />
+      <workItem from="1613311518475" duration="3505000" />
     </task>
     <task id="LOCAL-00001" summary="delete meal complete">
       <created>1605874710721</created>
@@ -405,14 +405,20 @@
       <option name="project" value="LOCAL" />
       <updated>1613232532548</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="avg meals a day works">
+      <created>1613314750539</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1613314750539</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="average and total stats for a cycle" />
     <MESSAGE value="distance in pie chart" />
     <MESSAGE value="display total time as hours" />
     <MESSAGE value="graph for distance and watts. validation on the year selection" />
@@ -437,6 +443,7 @@
     <MESSAGE value="predicted further into the future and displayed small message" />
     <MESSAGE value="count meals last month" />
     <MESSAGE value="Stats for meals" />
-    <option name="LAST_COMMIT_MESSAGE" value="Stats for meals" />
+    <MESSAGE value="avg meals a day works" />
+    <option name="LAST_COMMIT_MESSAGE" value="avg meals a day works" />
   </component>
 </project>
