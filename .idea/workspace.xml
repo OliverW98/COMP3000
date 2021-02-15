@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
+    <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="fixed var name">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/viewBodySnapshots.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewBodySnapshots.php" afterDir="false" />
     </list>
@@ -109,7 +109,8 @@
       <workItem from="1613132688743" duration="5386000" />
       <workItem from="1613138221877" duration="9000" />
       <workItem from="1613226222867" duration="4191000" />
-      <workItem from="1613311518475" duration="6916000" />
+      <workItem from="1613311518475" duration="7186000" />
+      <workItem from="1613399517064" duration="94000" />
     </task>
     <task id="LOCAL-00001" summary="delete meal complete">
       <created>1605874710721</created>
@@ -419,15 +420,20 @@
       <option name="project" value="LOCAL" />
       <updated>1613315861750</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Average workout data">
+      <created>1613323045915</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1613323045915</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="display total time as hours" />
-    <MESSAGE value="graph for distance and watts. validation on the year selection" />
     <MESSAGE value="basic run stats page" />
     <MESSAGE value="added functions to control data" />
     <MESSAGE value="complete run stats" />
@@ -451,6 +457,8 @@
     <MESSAGE value="Stats for meals" />
     <MESSAGE value="avg meals a day works" />
     <MESSAGE value="avg cals a day" />
-    <option name="LAST_COMMIT_MESSAGE" value="avg cals a day" />
+    <MESSAGE value="Average workout data" />
+    <MESSAGE value="fixed var name" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed var name" />
   </component>
 </project>

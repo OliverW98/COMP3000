@@ -201,8 +201,8 @@ function getAverageActCalsBurnt($activities)
 {
     $totalBurnt = 0;
 
-    foreach ($activities as $meal) {
-        $totalBurnt = $totalBurnt + $meal->getCaloriesBurnt();
+    foreach ($activities as $act) {
+        $totalBurnt = $totalBurnt + $act->getCaloriesBurnt();
     }
 
     return $totalBurnt / count($activities);
