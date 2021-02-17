@@ -5,7 +5,7 @@ include_once 'header.php';
 
 
 $failureOutputPara = "";
-$avgActivitiesADay = $avgCalsADay = $avgBurntCalsADay = $avgMealCals = $avgMealsADay = $mealsAMonth = $activitiesAMonth = $count = 0;
+$avgActivitiesCalsBurnt = $avgActivitiesADay = $avgCalsADay = $avgBurntCalsADay = $avgMealCals = $avgMealsADay = $count = 0;
 
 if (isset($_POST['btnFindYear'])) {
     if ($_POST['selectYear'] === "Choose a Year...") {
@@ -271,21 +271,35 @@ function pieChartMessage($bodySnapshots)
     <canvas id="bodySnapshotChart" width="200" height=75"></canvas>
     <div class="row">
         <div class="col-sm-6 mt-5">
-            <h4 class="text-center">Meal Averages</h4>
-            <p>Meals a day : <?php echo $avgMealsADay ?></p>
-            <p>Meal cal : <?php echo round($avgMealCals) ?> </p>
-            <p>Cals in a day <?php echo round($avgCalsADay) ?> </p>
-            <h4 class="text-center mt-3">Activities Averages</h4>
-            <p>Activities a day : <?php echo $avgActivitiesADay ?></p>
-            <p>Cals burnt : <?php echo round($avgMealCals) ?> </p>
+            <h4 class="text-center">Meals</h4>
+            <p>Meal This Month: <?php echo count($lastMonthMeals) ?></p>
+            <p>Average Meals a day : <?php echo $avgMealsADay ?></p>
+            <p>Average meal calories : <?php echo round($avgMealCals) ?> </p>
+            <p>Average calories a day : <?php echo round($avgCalsADay) ?> </p>
+            <h4 class="text-center mt-3">Activities</h4>
+            <p>Activities This Month : <?php echo count($lastMonthActivities) ?></p>
+            <p>Average activities a day : <?php echo $avgActivitiesADay ?></p>
+            <p>Average calories burnt : <?php echo round($avgActivitiesCalsBurnt) ?> </p>
 
-            <p>average cals burnt : <?php echo "yeet" ?></p>
-            <p>cals to be burn in a day +/-</p>
         </div>
         <div class="col-sm-6 mt-5">
-            <h4 class="text-center">Totals</h4>
-            <p>Meal This Month: <?php echo $mealsAMonth ?></p>
-            <p>Activities This Month : <?php echo $activitiesAMonth ?></p>
+            <h4 class="text-center">Prediction</h4>
+            <p>your weight, height and age means you burn a average of <?php echo round(abs($avgBurntCalsADay)) ?>
+                calories a day just living.</p>
+            <p>This means on a average day you
+                <?php
+                if ($count > 0) {
+                    $calsTotal = round($avgCalsADay - ($avgActivitiesCalsBurnt + $avgBurntCalsADay));
+                    if ($calsTotal === 0) {
+                        echo " are matching you calories in and out.";
+                    } elseif ($calsTotal > 0) {
+                        echo " have a excess" . $calsTotal . " calories.";
+                    } elseif ($calsTotal < 0) {
+                        echo "are in a deficit of " . $calsTotal . " calories.";
+                    }
+                }
+                ?>
+            </p>
         </div>
     </div>
 </div>
