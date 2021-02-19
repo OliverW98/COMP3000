@@ -6,6 +6,7 @@ include_once 'header.php';
 
 $failureOutputPara = "";
 $avgActivitiesCalsBurnt = $avgActivitiesADay = $avgCalsADay = $avgBurntCalsADay = $avgMealCals = $avgMealsADay = $count = 0;
+$lastMonthMeals = $lastMonthActivities = array();
 
 if (isset($_POST['btnFindYear'])) {
     if ($_POST['selectYear'] === "Choose a Year...") {
@@ -235,6 +236,36 @@ function pieChartMessage($bodySnapshots)
     echo '<p class="text-center mt-3 mb-3">The Pie chart below shows how your weight of ' . $bodySnapshots[0]->getWeight() . ' Kg is divided up.  ';
 }
 
+function predcitionMessage($avgCalsADay, $avgActivitiesCalsBurnt, $avgBurntCalsADay)
+{
+    echo ' <p>Your weight, height and age means you burn a average of
+                <b> ' . round(abs($avgBurntCalsADay)) . '</b>
+                calories a day just living.</p>';
+    echo '<p>This means on a average day you';
+
+    $calsTotal = round($avgCalsADay - ($avgActivitiesCalsBurnt + $avgBurntCalsADay));
+    if ($calsTotal === 0) {
+        echo " are matching you calories in and out.";
+    } elseif ($calsTotal > 0) {
+        echo " have a excess <b>" . $calsTotal . " </b> calories.";
+    } elseif ($calsTotal < 0) {
+        echo "are in a deficit of <b>" . abs($calsTotal) . "</b> calories.";
+    }
+
+    echo '</p>';
+
+    echo '<p>A calorie differential of 500 calories a day is equivalent to a 2 kg per month change in weight.
+                Meaning if you maintain your current calorie intake you are predicted to ';
+    if ($calsTotal === 0) {
+        echo " maintain the same weight for the next month.";
+    } elseif ($calsTotal > 0) {
+        echo " excess <b>" . $calsTotal . " </b> calories.";
+    } elseif ($calsTotal < 0) {
+        echo " deficit of <b>" . abs($calsTotal) . "</b> calories.";
+    }
+    echo '</p>';
+}
+
 
 ?>
 <html lang="en">
@@ -284,22 +315,11 @@ function pieChartMessage($bodySnapshots)
         </div>
         <div class="col-sm-6 mt-5">
             <h4 class="text-center">Prediction</h4>
-            <p>your weight, height and age means you burn a average of <?php echo round(abs($avgBurntCalsADay)) ?>
-                calories a day just living.</p>
-            <p>This means on a average day you
-                <?php
-                if ($count > 0) {
-                    $calsTotal = round($avgCalsADay - ($avgActivitiesCalsBurnt + $avgBurntCalsADay));
-                    if ($calsTotal === 0) {
-                        echo " are matching you calories in and out.";
-                    } elseif ($calsTotal > 0) {
-                        echo " have a excess" . $calsTotal . " calories.";
-                    } elseif ($calsTotal < 0) {
-                        echo "are in a deficit of " . $calsTotal . " calories.";
-                    }
-                }
-                ?>
-            </p>
+            <?php
+            if ($count > 0) {
+                predcitionMessage($avgCalsADay, $avgActivitiesCalsBurnt, $avgBurntCalsADay);
+            }
+            ?>
         </div>
     </div>
 </div>
