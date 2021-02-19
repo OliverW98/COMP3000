@@ -236,7 +236,7 @@ function pieChartMessage($bodySnapshots)
     echo '<p class="text-center mt-3 mb-3">The Pie chart below shows how your weight of ' . $bodySnapshots[0]->getWeight() . ' Kg is divided up.  ';
 }
 
-function predcitionMessage($avgCalsADay, $avgActivitiesCalsBurnt, $avgBurntCalsADay)
+function predictionMessage($avgCalsADay, $avgActivitiesCalsBurnt, $avgBurntCalsADay)
 {
     echo ' <p>Your weight, height and age means you burn a average of
                 <b> ' . round(abs($avgBurntCalsADay)) . '</b>
@@ -244,6 +244,7 @@ function predcitionMessage($avgCalsADay, $avgActivitiesCalsBurnt, $avgBurntCalsA
     echo '<p>This means on a average day you';
 
     $calsTotal = round($avgCalsADay - ($avgActivitiesCalsBurnt + $avgBurntCalsADay));
+
     if ($calsTotal === 0) {
         echo " are matching you calories in and out.";
     } elseif ($calsTotal > 0) {
@@ -253,17 +254,16 @@ function predcitionMessage($avgCalsADay, $avgActivitiesCalsBurnt, $avgBurntCalsA
     }
 
     echo '</p>';
-
-    echo '<p>A calorie differential of 500 calories a day is equivalent to a 2 kg per month change in weight.
-                Meaning if you maintain your current calorie intake you are predicted to ';
+    echo '<p>A calorie differential of 500 calories a day is equivalent to a 2 kg per month change in weight.</p>';
+    echo '<p>Meaning if you maintain your current calorie intake you are predicted to ';
     if ($calsTotal === 0) {
-        echo " maintain the same weight for the next month.";
+        echo " maintain the same weight ";
     } elseif ($calsTotal > 0) {
-        echo " excess <b>" . $calsTotal . " </b> calories.";
+        echo " gain <b>" . ($calsTotal / 500) * 2 . "</b> Kgs ";
     } elseif ($calsTotal < 0) {
-        echo " deficit of <b>" . abs($calsTotal) . "</b> calories.";
+        echo " lose <b>" . (abs($calsTotal) / 500) * 2 . "</b> Kgs ";
     }
-    echo '</p>';
+    echo 'for the next month.</p>';
 }
 
 
@@ -317,7 +317,7 @@ function predcitionMessage($avgCalsADay, $avgActivitiesCalsBurnt, $avgBurntCalsA
             <h4 class="text-center">Prediction</h4>
             <?php
             if ($count > 0) {
-                predcitionMessage($avgCalsADay, $avgActivitiesCalsBurnt, $avgBurntCalsADay);
+                predictionMessage($avgCalsADay, $avgActivitiesCalsBurnt, $avgBurntCalsADay);
             }
             ?>
         </div>
