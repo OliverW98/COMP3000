@@ -5,7 +5,7 @@ include_once 'header.php';
 
 
 $failureOutputPara = "";
-$avgActivitiesCalsBurnt = $avgActivitiesADay = $avgCalsADay = $avgBurntCalsADay = $avgMealCals = $avgMealsADay = $count = 0;
+$avgActivitiesAWeek = $avgActivitiesCalsBurnt = $avgActivitiesADay = $avgCalsADay = $avgBurntCalsADay = $avgMealCals = $avgMealsADay = $count = 0;
 $lastMonthMeals = $lastMonthActivities = array();
 
 if (isset($_POST['btnFindYear'])) {
@@ -31,6 +31,7 @@ if (isset($_POST['btnFindYear'])) {
             $avgMealsADay = count($lastMonthMeals) / getDaysWithData($lastMonthMeals);
             $avgMealCals = getAverageMealsCals($lastMonthMeals);
             $avgCalsADay = getTotalCals($lastMonthMeals) / getDaysWithData($lastMonthMeals);
+            $avgActivitiesAWeek = count($lastMonthActivities) / getWeeksWithData($lastMonthActivities);
             $avgActivitiesADay = count($lastMonthActivities) / getDaysWithData($lastMonthActivities);
             $avgActivitiesCalsBurnt = getAverageActCalsBurnt($lastMonthActivities);
             $avgBurntCalsADay = BMR($bodySnapshots[0], $user->getDob(), $user->getGender());
@@ -176,6 +177,36 @@ function getDaysWithData($usersArray)
     return $daysWithData;
 }
 
+function getWeeksWithData($usersArray)
+{
+    $weeks = array(0, 0, 0, 0);
+
+    foreach ($usersArray as $data) {
+
+        $date = new DateTime($data->getDate());
+        $day = $date->format("j");
+
+        if ($day >= 0 && $day <= 7) {
+            $weeks[0] = $weeks[0] + 1;
+        } elseif ($day >= 8 && $day <= 14) {
+            $weeks[1] = $weeks[1] + 1;
+        } elseif ($day >= 15 && $day <= 21) {
+            $weeks[2] = $weeks[2] + 1;
+        } elseif ($day >= 22 && $day <= 28) {
+            $weeks[3] = $weeks[3] + 1;
+        }
+
+    }
+
+    $weeksWithData = 0;
+    foreach ($weeks as $week) {
+        if ($week !== 0) {
+            $weeksWithData++;
+        }
+    }
+    return $weeksWithData;
+}
+
 function getTotalCals($meals)
 {
     $totalCals = 0;
@@ -236,21 +267,34 @@ function pieChartMessage($bodySnapshots)
     echo '<p class="text-center mt-3 mb-3">The Pie chart below shows how your weight of ' . $bodySnapshots[0]->getWeight() . ' Kg is divided up.  ';
 }
 
-function predictionMessage($avgCalsADay, $avgActivitiesCalsBurnt, $avgBurntCalsADay)
+function predictionMessage($avgCalsADay, $avgBurntCalsADay, $avgActivitiesAWeek)
 {
-    echo ' <p>Your weight, height and age means you burn a average of
+    echo ' <p>Your weight, height and age means your body burn a average of
                 <b> ' . round(abs($avgBurntCalsADay)) . '</b>
-                calories a day just living.</p>';
-    echo '<p>This means on a average day you';
+                calories a day.</p>';
 
-    $calsTotal = round($avgCalsADay - ($avgActivitiesCalsBurnt + $avgBurntCalsADay));
+    echo '<p> Plus with the ';
+
+    if ($avgActivitiesAWeek === 0) {
+        echo ' no additional exercise  ';
+    } elseif ($avgActivitiesAWeek > 0 && $avgActivitiesAWeek <= 3) {
+        echo ' light exercise you perform of an average  ' . $avgActivitiesAWeek . ' activities a week this will add about 57 calories burnt a day.';
+    } elseif ($avgActivitiesAWeek > 3 && $avgActivitiesAWeek <= 5) {
+        echo ' moderate exercise you perform of an average  ' . $avgActivitiesAWeek . ' activities a week this will add about 114 calories burnt a day.';
+    } elseif ($avgActivitiesAWeek > 5) {
+        echo ' hard exercise you perform of an average ' . $avgActivitiesAWeek . ' activities a week this will add about 228 calories burnt a day.';
+    }
+
+    //$calsTotal = round($avgCalsADay - ($avgActivitiesCalsBurnt + $avgBurntCalsADay));
+    echo '<p>This means on a average day you ';
+    $calsTotal = round($avgCalsADay - $avgBurntCalsADay);
 
     if ($calsTotal === 0) {
         echo " are matching you calories in and out.";
     } elseif ($calsTotal > 0) {
         echo " have a excess <b>" . $calsTotal . " </b> calories.";
     } elseif ($calsTotal < 0) {
-        echo "are in a deficit of <b>" . abs($calsTotal) . "</b> calories.";
+        echo " are in a deficit of <b>" . abs($calsTotal) . "</b> calories.";
     }
 
     echo '</p>';
@@ -259,9 +303,9 @@ function predictionMessage($avgCalsADay, $avgActivitiesCalsBurnt, $avgBurntCalsA
     if ($calsTotal === 0) {
         echo " maintain the same weight ";
     } elseif ($calsTotal > 0) {
-        echo " gain <b>" . ($calsTotal / 500) * 2 . "</b> Kgs ";
+        echo " gain <b>" . round(($calsTotal / 500) * 2, 1) . "</b> Kgs ";
     } elseif ($calsTotal < 0) {
-        echo " lose <b>" . (abs($calsTotal) / 500) * 2 . "</b> Kgs ";
+        echo " lose <b>" . round(abs(($calsTotal) / 500) * 2, 1) . "</b> Kgs ";
     }
     echo 'for the next month.</p>';
 }
@@ -317,7 +361,7 @@ function predictionMessage($avgCalsADay, $avgActivitiesCalsBurnt, $avgBurntCalsA
             <h4 class="text-center">Prediction</h4>
             <?php
             if ($count > 0) {
-                predictionMessage($avgCalsADay, $avgActivitiesCalsBurnt, $avgBurntCalsADay);
+                predictionMessage($avgCalsADay, $avgBurntCalsADay, $avgActivitiesAWeek);
             }
             ?>
         </div>

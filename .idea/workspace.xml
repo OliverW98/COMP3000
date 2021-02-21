@@ -116,7 +116,8 @@
       <workItem from="1613573712100" duration="1751000" />
       <workItem from="1613641484054" duration="203000" />
       <workItem from="1613641861318" duration="60000" />
-      <workItem from="1613747086578" duration="3417000" />
+      <workItem from="1613747086578" duration="3546000" />
+      <workItem from="1613921184022" duration="4533000" />
     </task>
     <task id="LOCAL-00001" summary="delete meal complete">
       <created>1605874710721</created>
@@ -454,14 +455,20 @@
       <option name="project" value="LOCAL" />
       <updated>1613750015825</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="prediction message finished">
+      <created>1613750642842</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1613750642842</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="complete run stats" />
     <MESSAGE value="fixed average duration" />
     <MESSAGE value="viewCycleData is now function driven" />
     <MESSAGE value="users snap shot are readin correct" />
@@ -486,6 +493,7 @@
     <MESSAGE value="fixed var name" />
     <MESSAGE value="average cals burnt a day and sum of cals" />
     <MESSAGE value="prediction message moved to function" />
-    <option name="LAST_COMMIT_MESSAGE" value="prediction message moved to function" />
+    <MESSAGE value="prediction message finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="prediction message finished" />
   </component>
 </project>
