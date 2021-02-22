@@ -254,7 +254,7 @@ function trendlineMessage($trendline)
         <div class="col-sm-6 mt-5">
             <h4 class="text-center">Average Ride</h4>
             <p>Distance : <?php echo round($avDis / 1000, 1) ?> Km</p>
-            <P>Duration : <?php echo $avDur ?> Mins</P>
+            <P>Duration : <?php echo round($avDur, 1) ?> Mins</P>
             <P>Speed : <?php echo round($avSpeed * 3.6, 1) ?> Km/h</P>
             <P>Watts : <?php echo round($avWatts, 1) ?></P>
             <P>Calories Burnt : <?php echo round($avCals) ?></P>

@@ -4,6 +4,7 @@
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/viewBodySnapshots.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewBodySnapshots.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,14 +118,8 @@
       <workItem from="1613641484054" duration="203000" />
       <workItem from="1613641861318" duration="60000" />
       <workItem from="1613747086578" duration="3546000" />
-      <workItem from="1613921184022" duration="4533000" />
-    </task>
-    <task id="LOCAL-00001" summary="delete meal complete">
-      <created>1605874710721</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1605874710721</updated>
+      <workItem from="1613921184022" duration="4696000" />
+      <workItem from="1613993203338" duration="1619000" />
     </task>
     <task id="LOCAL-00002" summary="edit meal complete">
       <created>1605983366231</created>
@@ -462,14 +457,20 @@
       <option name="project" value="LOCAL" />
       <updated>1613750642842</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="add activity to prediction">
+      <created>1613926148562</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1613926148563</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed average duration" />
     <MESSAGE value="viewCycleData is now function driven" />
     <MESSAGE value="users snap shot are readin correct" />
     <MESSAGE value="personal details update works" />
@@ -494,6 +495,7 @@
     <MESSAGE value="average cals burnt a day and sum of cals" />
     <MESSAGE value="prediction message moved to function" />
     <MESSAGE value="prediction message finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="prediction message finished" />
+    <MESSAGE value="add activity to prediction" />
+    <option name="LAST_COMMIT_MESSAGE" value="add activity to prediction" />
   </component>
 </project>

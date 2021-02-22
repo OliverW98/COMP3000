@@ -267,27 +267,30 @@ function pieChartMessage($bodySnapshots)
     echo '<p class="text-center mt-3 mb-3">The Pie chart below shows how your weight of ' . $bodySnapshots[0]->getWeight() . ' Kg is divided up.  ';
 }
 
-function predictionMessage($avgCalsADay, $avgBurntCalsADay, $avgActivitiesAWeek)
+function predictionMessage($avgCalsADay, $avgBurntCalsADay, $avgActivitiesAWeek, $avgActivitiesCalsBurnt)
 {
     echo ' <p>Your weight, height and age means your body burn a average of
                 <b> ' . round(abs($avgBurntCalsADay)) . '</b>
                 calories a day.</p>';
 
     echo '<p> Plus with the ';
-
+    $actCals = 0;
     if ($avgActivitiesAWeek === 0) {
         echo ' no additional exercise  ';
     } elseif ($avgActivitiesAWeek > 0 && $avgActivitiesAWeek <= 3) {
-        echo ' light exercise you perform of an average  ' . $avgActivitiesAWeek . ' activities a week this will add about 57 calories burnt a day.';
+        $actCals = $avgActivitiesCalsBurnt / 7;
+        echo ' light exercise you perform of an average  ' . $avgActivitiesAWeek . ' activities a week this will add about <b> ' . round($avgActivitiesCalsBurnt / 7) . '</b> calories burnt a day.';
     } elseif ($avgActivitiesAWeek > 3 && $avgActivitiesAWeek <= 5) {
-        echo ' moderate exercise you perform of an average  ' . $avgActivitiesAWeek . ' activities a week this will add about 114 calories burnt a day.';
+        $actCals = $avgActivitiesCalsBurnt / 3;
+        echo ' moderate exercise you perform of an average  ' . $avgActivitiesAWeek . ' activities a week this will add about <b> ' . round($avgActivitiesCalsBurnt / 3) . '</b> calories burnt a day.';
     } elseif ($avgActivitiesAWeek > 5) {
-        echo ' hard exercise you perform of an average ' . $avgActivitiesAWeek . ' activities a week this will add about 228 calories burnt a day.';
+        $actCals = $avgActivitiesCalsBurnt;
+        echo ' hard exercise you perform of an average ' . $avgActivitiesAWeek . ' activities a week this will add about <b> ' . round($avgActivitiesCalsBurnt) . '</b> calories burnt a day.';
     }
 
     //$calsTotal = round($avgCalsADay - ($avgActivitiesCalsBurnt + $avgBurntCalsADay));
     echo '<p>This means on a average day you ';
-    $calsTotal = round($avgCalsADay - $avgBurntCalsADay);
+    $calsTotal = round($avgCalsADay - ($avgBurntCalsADay + $actCals));
 
     if ($calsTotal === 0) {
         echo " are matching you calories in and out.";
@@ -361,7 +364,7 @@ function predictionMessage($avgCalsADay, $avgBurntCalsADay, $avgActivitiesAWeek)
             <h4 class="text-center">Prediction</h4>
             <?php
             if ($count > 0) {
-                predictionMessage($avgCalsADay, $avgBurntCalsADay, $avgActivitiesAWeek);
+                predictionMessage($avgCalsADay, $avgBurntCalsADay, $avgActivitiesAWeek, $avgActivitiesCalsBurnt);
             }
             ?>
         </div>
