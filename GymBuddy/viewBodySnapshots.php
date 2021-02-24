@@ -287,8 +287,7 @@ function predictionMessage($avgCalsADay, $avgBurntCalsADay, $avgActivitiesAWeek,
         $actCals = $avgActivitiesCalsBurnt;
         echo ' hard exercise you perform of an average ' . $avgActivitiesAWeek . ' activities a week this will add about <b> ' . round($avgActivitiesCalsBurnt) . '</b> calories burnt a day.';
     }
-
-    //$calsTotal = round($avgCalsADay - ($avgActivitiesCalsBurnt + $avgBurntCalsADay));
+    
     echo '<p>This means on a average day you ';
     $calsTotal = round($avgCalsADay - ($avgBurntCalsADay + $actCals));
 

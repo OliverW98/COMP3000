@@ -23,3 +23,4 @@ unset($_SESSION['MMP']);
 unset($_SESSION['dob']);
 unset($_SESSION['gender']);
 header("Location: index.php");
+?>
