@@ -21,35 +21,6 @@ session_start();
                 <li class="nav-item active">
                     <a class="nav-link" href="home.php">Home<span class="sr-only">(current)</span></a>
                 </li>
-                <!--                <li class="nav-item dropdown">-->
-                <!--                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"-->
-                <!--                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-                <!--                        Cardio-->
-                <!--                    </a>-->
-                <!--                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-                <!--                        <a class="dropdown-item" href="createCardioWorkoutPage.php">Record Cardio</a>-->
-                <!--                        <a class="dropdown-item" href="viewCycleData.php">Cycle Stats</a>-->
-                <!--                        <a class="dropdown-item" href="viewRunData.php">Run Stats</a>-->
-                <!--                    </div>-->
-                <!--                </li>-->
-                <!--                <li class="nav-item dropdown">-->
-                <!--                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"-->
-                <!--                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-                <!--                        Weights-->
-                <!--                    </a>-->
-                <!--                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-                <!--                        <a class="dropdown-item" href="createWeightsWorkoutPage.php">Record Weights</a>-->
-                <!--                    </div>-->
-                <!--                </li>-->
-                <!--                <li class="nav-item dropdown">-->
-                <!--                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"-->
-                <!--                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-                <!--                        Meals-->
-                <!--                    </a>-->
-                <!--                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-                <!--                        <a class="dropdown-item" href="createMealPage.php">Record Meal</a>-->
-                <!--                    </div>-->
-                <!--                </li>-->
                 <?php
                 if (isset($_SESSION['userID'])) {
                     echo '<li class="nav-item dropdown">';
@@ -87,7 +58,6 @@ session_start();
                 }
                 ?>
             </ul>
-
         </div>
     </nav>
 </div>

@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/createExercisePage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createExercisePage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/createWeightsWorkoutPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createWeightsWorkoutPage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/viewBodySnapshots.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewBodySnapshots.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,14 +122,7 @@
       <workItem from="1613747086578" duration="3546000" />
       <workItem from="1613921184022" duration="4696000" />
       <workItem from="1613993203338" duration="1869000" />
-      <workItem from="1614190619757" duration="870000" />
-    </task>
-    <task id="LOCAL-00003" summary="edit meal complete">
-      <created>1605983446859</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1605983446859</updated>
+      <workItem from="1614190619757" duration="1855000" />
     </task>
     <task id="LOCAL-00004" summary="edit cardio workout. edit button doesn't work on run workout">
       <created>1606232378054</created>
@@ -466,14 +460,20 @@
       <option name="project" value="LOCAL" />
       <updated>1613998180834</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Fixed Header">
+      <created>1614191538935</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1614191538936</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="users snap shot are readin correct" />
     <MESSAGE value="personal details update works" />
     <MESSAGE value="split stats and details. Delete works" />
     <MESSAGE value="data is loaded in boxs when changed" />
@@ -498,6 +498,7 @@
     <MESSAGE value="prediction message finished" />
     <MESSAGE value="add activity to prediction" />
     <MESSAGE value="modify prediction" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify prediction" />
+    <MESSAGE value="Fixed Header" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed Header" />
   </component>
 </project>

@@ -1,7 +1,6 @@
 <?php
 
 include $_SERVER['DOCUMENT_ROOT'] . "/COMP3000/GymBuddy/src/DBFunctions.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/COMP3000/GymBuddy/src/exercise.php";
 include_once 'header.php';
 
 $outputPara = "";
