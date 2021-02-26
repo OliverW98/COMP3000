@@ -26,7 +26,7 @@ if (isset($_POST['btnCreateMeal'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Create Meal</title>
+    <title>Record Meal</title>
 </head>
 <body>
 <div class="container">

@@ -3,7 +3,7 @@
 include $_SERVER['DOCUMENT_ROOT'] . "/COMP3000/GymBuddy/src/DBFunctions.php";
 include_once 'header.php';
 
-$outputPara = "";
+$outputPara = $successOutputPara = "";
 
 if (isset($_POST['btnCreateWorkout'])) {
 
@@ -11,22 +11,27 @@ if (isset($_POST['btnCreateWorkout'])) {
     $workoutDate = new DateTime($_POST['dateInput']);
 
     if (empty($_POST['titleInput']) || empty($_POST['dateInput']) || empty($_POST['durationInput']) ||
-        empty($_POST['distanceInput']) || empty($_POST['notesInput'])) {
-        $outputPara = "All fields must be filled to record a workout";
+        empty($_POST['distanceInput'])) {
+        $outputPara = "Required fields must be filled to record a workout";
     } elseif ($_POST['typeInput'] === "Select a Type") {
         $outputPara = "Must select a cardio type";
     } elseif ($today < $workoutDate) {
         $outputPara = "Can't record a workout in the future";
     } else {
-        $type = "";
+        $type = $elevation = "";
         if ($_POST['typeInput'] === "Run") {
             $type = "1";
         } elseif ($_POST['typeInput'] === "Cycle") {
             $type = "0";
         }
+        if ($_POST['elevationInput'] === "") {
+            $elevation = "0";
+        } else {
+            $elevation = $_POST['elevationInput'];
+        }
         createWorkout($_SESSION['userID'], $type, $_POST['titleInput'], $_POST['dateInput'], $_POST['durationInput']
-            , $_POST['distanceInput'], $_POST['elevationInput'], $_POST['notesInput']);
-        header("Location: home.php");
+            , $_POST['distanceInput'], $elevation, $_POST['notesInput']);
+        $successOutputPara = "Workout has been recorded";
     }
 }
 
@@ -35,16 +40,17 @@ if (isset($_POST['btnCreateWorkout'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add Cardio Workout</title>
+    <title>Record Cardio Workout</title>
 </head>
 <body>
 <div class="container">
-    <p class="text-center">Enter Details about your cardio</p>
+    <p class="text-center mt-5">Enter Details about your workout</p>
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="typeInput">Card Type</label>
+                <label class="input-group-text text-light bg-dark" for="typeInput">Cardio Type<span
+                            style="color: red">*</span></label>
             </div>
             <select class="form-control" name="typeInput">
                 <option>Select a Type</option>
@@ -55,31 +61,35 @@ if (isset($_POST['btnCreateWorkout'])) {
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="titleInput">Title</label>
+                <label class="input-group-text text-light bg-dark" for="titleInput">Title<span
+                            style="color: red">*</span></label>
             </div>
             <input class="form-control" name="titleInput" type="text">
         </div>
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="dateInput">Date</label>
+                <label class="input-group-text text-light bg-dark" for="dateInput">Date<span
+                            style="color: red">*</span></label>
             </div>
             <input class="form-control" name="dateInput" type="datetime-local">
         </div>
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="durationInput">Duration</label>
+                <label class="input-group-text text-light bg-dark" for="durationInput">Duration<span
+                            style="color: red">*</span></label>
             </div>
-            <input class="form-control" name="durationInput" type="number">
+            <input class="form-control" name="durationInput" min="0" type="number">
             <div class="input-group-append">
-                <label class="input-group-text text-light bg-dark" min="0" for="durationInput">Mins</label>
+                <label class="input-group-text text-light bg-dark" for="durationInput">Mins</label>
             </div>
         </div>
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="distanceInput">Distance</label>
+                <label class="input-group-text text-light bg-dark" for="distanceInput">Distance<span
+                            style="color: red">*</span></label>
             </div>
             <input class="form-control" name="distanceInput" min="0" type="number">
             <div class="input-group-append">
@@ -91,7 +101,7 @@ if (isset($_POST['btnCreateWorkout'])) {
             <div class="input-group-prepend">
                 <label class="input-group-text text-light bg-dark" for="elevationInput">Elevation</label>
             </div>
-            <input class="form-control" name="elevationInput" type="number">
+            <input class="form-control" name="elevationInput" min="0" type="number">
             <div class="input-group-append">
                 <label class="input-group-text text-light bg-dark" for="elevationInput">M</label>
             </div>
@@ -109,6 +119,7 @@ if (isset($_POST['btnCreateWorkout'])) {
             <input class="btn btn-success float-right" name="btnCreateWorkout" type="submit" value="Record Workout">
         </div>
 
+        <p class="text-center text-success"><?php echo $successOutputPara ?></p>
         <p class="text-center text-danger"><?php echo $outputPara ?></p>
     </form>
 </div>
