@@ -18,7 +18,7 @@ if (isset($_POST['btnCancel'])) {
     header("Location: index.php");
 }
 
-if (isset($_POST['btnDeleteWorkout'])) {
+if (isset($_POST['btnDeleteActivity'])) {
     if (get_class($activity) == "meal") {
         deleteMeal($activity->getMealID());
     } else {
@@ -65,7 +65,15 @@ if (isset($_POST['btnDeleteWorkout'])) {
 
         <div>
             <input class="btn btn-primary" name="btnCancel" type="submit" value="Cancel">
-            <input class="btn btn-danger float-right" name="btnDeleteWorkout" type="submit" value="Delete Workout">
+            <?php
+            if (get_class($activity) == "meal") {
+                echo '<input class="btn btn-danger float-right" name="btnDeleteActivity" type="submit" value="Delete Meal">';
+            } else {
+                echo '<input class="btn btn-danger float-right" name="btnDeleteActivity" type="submit" value="Delete Workout">';
+            }
+
+            ?>
+
         </div>
 
     </form>

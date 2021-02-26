@@ -2,22 +2,22 @@
 include $_SERVER['DOCUMENT_ROOT'] . "/COMP3000/GymBuddy/src/DBFunctions.php";
 include_once 'header.php';
 
-$successOutputPara=$failureOutputPara="";
+$successOutputPara = $failureOutputPara = "";
 
-if(isset($_POST['btnCreateMeal'])){
+if (isset($_POST['btnCreateMeal'])) {
 
     $today = new DateTime();
     $mealDate = new DateTime($_POST['dateInput']);
 
-    if(empty($_POST['titleInput']) || empty($_POST['dateInput']) || empty($_POST['caloriesInput']) || empty($_POST['notesInput'])){
-        $failureOutputPara = "Fields must be filled to create meal";
-    }elseif ($_POST['caloriesInput'] <= 0){
+    if (empty($_POST['titleInput']) || empty($_POST['dateInput']) || empty($_POST['caloriesInput'])) {
+        $failureOutputPara = "Required fields must be filled to record a meal";
+    } elseif ($_POST['caloriesInput'] <= 0) {
         $failureOutputPara = "Calories cannot be negative";
-    }elseif ($today < $mealDate){
+    } elseif ($today < $mealDate) {
         $failureOutputPara = "Can't record a meal in the future";
-    }else{
-        createMeal($_SESSION['userID'],$_POST['titleInput'] , $_POST['dateInput'] , $_POST['caloriesInput'], $_POST['notesInput']);
-        $successOutputPara = "Meal has been created and recorded";
+    } else {
+        createMeal($_SESSION['userID'], $_POST['titleInput'], $_POST['dateInput'], $_POST['caloriesInput'], $_POST['notesInput']);
+        $successOutputPara = "Meal has been recorded";
     }
 }
 
@@ -34,21 +34,24 @@ if(isset($_POST['btnCreateMeal'])){
 
         <div class="input-group mb-3 mt-3">
             <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="titleInput">Title</label>
+                <label class="input-group-text text-light bg-dark" for="titleInput">Title<span
+                            style="color: red">*</span></label>
             </div>
             <input class="form-control" name="titleInput" type="text">
         </div>
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="dateInput">Date</label>
+                <label class="input-group-text text-light bg-dark" for="dateInput">Date<span
+                            style="color: red">*</span></label>
             </div>
             <input class="form-control" name="dateInput" type="datetime-local">
         </div>
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="caloriesInput">Calories</label>
+                <label class="input-group-text text-light bg-dark" for="caloriesInput">Calories<span
+                            style="color: red">*</span></label>
             </div>
             <input class="form-control" name="caloriesInput" min="0" type="number">
         </div>
@@ -57,13 +60,14 @@ if(isset($_POST['btnCreateMeal'])){
             <div class="input-group-prepend">
                 <label class="input-group-text text-light bg-dark" for="notesInput">Notes</label>
             </div>
-            <textarea class="form-control" name="notesInput" maxlength="300" style="resize: none;height: 90px;"></textarea>
+            <textarea class="form-control" name="notesInput" maxlength="300"
+                      style="resize: none;height: 90px;"></textarea>
         </div>
 
         <input class="btn btn-success float-right" name="btnCreateMeal" type="submit" value="Record Meal">
 
-        <p class="text-center text-success"><?php echo $successOutputPara?></p>
-        <p class="text-center text-danger"><?php echo $failureOutputPara?></p>
+        <p class="text-center text-success"><?php echo $successOutputPara ?></p>
+        <p class="text-center text-danger"><?php echo $failureOutputPara ?></p>
 
     </form>
 </div>
