@@ -4,6 +4,7 @@
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/createMealPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createMealPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/editCardioWorkoutPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/editCardioWorkoutPage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/editMealPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/editMealPage.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -129,14 +130,7 @@
       <workItem from="1613921184022" duration="4696000" />
       <workItem from="1613993203338" duration="1869000" />
       <workItem from="1614190619757" duration="2098000" />
-      <workItem from="1614348693120" duration="2815000" />
-    </task>
-    <task id="LOCAL-00007" summary="can delete exercise in a weights workout">
-      <created>1606445449247</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1606445449247</updated>
+      <workItem from="1614348693120" duration="3130000" />
     </task>
     <task id="LOCAL-00008" summary="edit weights workout complete">
       <created>1606491201149</created>
@@ -474,14 +468,20 @@
       <option name="project" value="LOCAL" />
       <updated>1614351310735</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="can edit meal to have no comment">
+      <created>1614351641098</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1614351641098</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added BFP and MMP to createUserPDPage.php" />
     <MESSAGE value="small fixes to createUserPDPage.php" />
     <MESSAGE value="added BFP And MMP to createUserConfirmPage.php" />
     <MESSAGE value="view body snap shot page basic graph" />
@@ -506,6 +506,7 @@
     <MESSAGE value="remove include in excercise pages" />
     <MESSAGE value="Fixed Delete Activity page and can record a Meal without comment" />
     <MESSAGE value="can create a cardio workout without elevation and comment" />
-    <option name="LAST_COMMIT_MESSAGE" value="can create a cardio workout without elevation and comment" />
+    <MESSAGE value="can edit meal to have no comment" />
+    <option name="LAST_COMMIT_MESSAGE" value="can edit meal to have no comment" />
   </component>
 </project>

@@ -20,12 +20,18 @@ if (isset($_POST['btnEditWorkout'])) {
     $workoutDate = new DateTime($_POST['dateInput']);
 
     if (empty($_POST['titleInput']) || empty($_POST['dateInput']) || empty($_POST['durationInput']) ||
-        empty($_POST['distanceInput']) || empty($_POST['notesInput'])) {
-        $failureOutputPara = "Fields must be filled to edit a workout";
+        empty($_POST['distanceInput'])) {
+        $failureOutputPara = "Required fields must be filled to edit a workout";
     } elseif ($today < $workoutDate) {
         $failureOutputPara = "Workout cannot occur in the future";
     } else {
-        editWorkout($workout->getWorkoutID(), $_POST['titleInput'], $_POST['dateInput'], $_POST['durationInput'], $_POST['distanceInput'], $_POST['elevationInput'], $_POST['notesInput']);
+        $elevation = "";
+        if ($_POST['elevationInput'] === "") {
+            $elevation = "0";
+        } else {
+            $elevation = $_POST['elevationInput'];
+        }
+        editWorkout($workout->getWorkoutID(), $_POST['titleInput'], $_POST['dateInput'], $_POST['durationInput'], $_POST['distanceInput'], $elevation, $_POST['notesInput']);
         header("Location: index.php");
     }
 }
@@ -37,37 +43,41 @@ if (isset($_POST['btnEditWorkout'])) {
 </head>
 <body>
 <div class="container">
-    <p class="text-center">Enter Details about your cardio</p>
+    <p class="text-center mt-5">Edit details about your workout</p>
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="titleInput">Title</label>
+                <label class="input-group-text text-light bg-dark" for="titleInput">Title<span
+                            style="color: red">*</span></label>
             </div>
             <input class="form-control" name="titleInput" value="<?php echo $workout->getTitle() ?>" type="text">
         </div>
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="dateInput">Date</label>
+                <label class="input-group-text text-light bg-dark" for="dateInput">Date<span
+                            style="color: red">*</span></label>
             </div>
             <input class="form-control" name="dateInput" value="<?php echo $date ?>" type="datetime-local">
         </div>
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="durationInput">Duration</label>
+                <label class="input-group-text text-light bg-dark" for="durationInput">Duration<span
+                            style="color: red">*</span></label>
             </div>
-            <input class="form-control" name="durationInput" value="<?php echo $workout->getDuration() ?>"
+            <input class="form-control" name="durationInput" min="0" value="<?php echo $workout->getDuration() ?>"
                    type="number">
             <div class="input-group-append">
-                <label class="input-group-text text-light bg-dark" min="0" for="durationInput">Mins</label>
+                <label class="input-group-text text-light bg-dark" for="durationInput">Mins</label>
             </div>
         </div>
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="distanceInput">Distance</label>
+                <label class="input-group-text text-light bg-dark" for="distanceInput">Distance<span
+                            style="color: red">*</span></label>
             </div>
             <input class="form-control" name="distanceInput" min="0" value="<?php echo $workout->getDistance() ?>"
                    type="number">
@@ -80,7 +90,7 @@ if (isset($_POST['btnEditWorkout'])) {
             <div class="input-group-prepend">
                 <label class="input-group-text text-light bg-dark" for="elevationInput">Elevation</label>
             </div>
-            <input class="form-control" name="elevationInput" value="<?php echo $workout->getElevation() ?>"
+            <input class="form-control" name="elevationInput" min="0" value="<?php echo $workout->getElevation() ?>"
                    type="number">
             <div class="input-group-append">
                 <label class="input-group-text text-light bg-dark" for="elevationInput">M</label>

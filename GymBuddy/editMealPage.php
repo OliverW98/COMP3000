@@ -37,7 +37,7 @@ if (isset($_POST['btnEditMeal'])) {
 </head>
 <body>
 <div class="container">
-    <p class="text-center mt-5">Edit Details about your meal</p>
+    <p class="text-center mt-5">Edit details about your meal</p>
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
         <div class="input-group mb-3 mt-3">
             <div class="input-group-prepend">
