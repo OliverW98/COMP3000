@@ -30,6 +30,7 @@ if (isset($_POST['btnCreateMeal'])) {
 </head>
 <body>
 <div class="container">
+    <p class="text-center mt-5">Enter Details about your meal</p>
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
 
         <div class="input-group mb-3 mt-3">

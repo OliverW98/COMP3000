@@ -17,8 +17,8 @@ if (isset($_POST['btnEditMeal'])) {
     $today = new DateTime();
     $mealDate = new DateTime($_POST['dateInput']);
 
-    if (empty($_POST['titleInput']) || empty($_POST['dateInput']) || empty($_POST['caloriesInput']) || empty($_POST['notesInput'])) {
-        $failureOutputPara = "Fields must be filled to Edit meal";
+    if (empty($_POST['titleInput']) || empty($_POST['dateInput']) || empty($_POST['caloriesInput'])) {
+        $failureOutputPara = "Required fields must be filled to edit a meal";
     } elseif ($_POST['caloriesInput'] <= 0) {
         $failureOutputPara = "Calories cannot be negative";
     } elseif ($today < $mealDate) {
@@ -37,25 +37,28 @@ if (isset($_POST['btnEditMeal'])) {
 </head>
 <body>
 <div class="container">
+    <p class="text-center mt-5">Edit Details about your meal</p>
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-
         <div class="input-group mb-3 mt-3">
             <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="titleInput">Title</label>
+                <label class="input-group-text text-light bg-dark" for="titleInput">Title<span
+                            style="color: red">*</span></label>
             </div>
             <input class="form-control" name="titleInput" value="<?php echo $meal->getTitle() ?>" type="text">
         </div>
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="dateInput">Date</label>
+                <label class="input-group-text text-light bg-dark" for="dateInput">Date<span
+                            style="color: red">*</span></label>
             </div>
             <input class="form-control" name="dateInput" value="<?php echo $date ?>" type="datetime-local">
         </div>
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="caloriesInput">Calories</label>
+                <label class="input-group-text text-light bg-dark" for="caloriesInput">Calories<span
+                            style="color: red">*</span></label>
             </div>
             <input class="form-control" name="caloriesInput" min="0" value="<?php echo $meal->getCalorieIntake() ?>"
                    type="number">
