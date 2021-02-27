@@ -32,10 +32,10 @@ if (isset($_POST['btnCreateWorkout'])) {
     $today = new DateTime();
     $workoutDate = new DateTime($_POST['dateInput']);
 
-    if (empty($_POST['titleInput']) || empty($_POST['dateInput']) || empty($_POST['durationInput']) || empty($_POST['notesInput'])) {
-        $outputPara = "Fields must be filled to record a workout";
+    if (empty($_POST['titleInput']) || empty($_POST['dateInput']) || empty($_POST['durationInput'])) {
+        $outputPara = "Required fields must be filled to record a workout";
     } elseif (!isset($_SESSION['tempExerciseArray'])) {
-        $outputPara = "Workout must contain of one exercise to be recorded";
+        $outputPara = "Workout must contain atleast one exercise";
     } elseif ($today < $workoutDate) {
         $outputPara = "Can't record a workout in the future";
     } else {
@@ -66,14 +66,16 @@ if (isset($_POST['btnCreateWorkout'])) {
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="titleInput">Title</label>
+                <label class="input-group-text text-light bg-dark" for="titleInput">Title<span
+                            style="color: red">*</span></label>
             </div>
             <input class="form-control" name="titleInput" value="<?php echo $_SESSION['titleInput'] ?>" type="text">
         </div>
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="dateInput">Date</label>
+                <label class="input-group-text text-light bg-dark" for="dateInput">Date<span
+                            style="color: red">*</span></label>
             </div>
             <input class="form-control" name="dateInput" value="<?php echo $_SESSION['dateInput'] ?>"
                    type="datetime-local">
@@ -81,7 +83,8 @@ if (isset($_POST['btnCreateWorkout'])) {
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="durationInput">Duration</label>
+                <label class="input-group-text text-light bg-dark" for="durationInput">Duration<span
+                            style="color: red">*</span></label>
             </div>
             <input class="form-control" name="durationInput" value="<?php echo $_SESSION['durationInput'] ?>"
                    type="number">

@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/GymBuddy/personalDetailsPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/personalDetailsPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/createWeightsWorkoutPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createWeightsWorkoutPage.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,14 +130,7 @@
       <workItem from="1613993203338" duration="1869000" />
       <workItem from="1614190619757" duration="2098000" />
       <workItem from="1614348693120" duration="3302000" />
-      <workItem from="1614439357697" duration="1541000" />
-    </task>
-    <task id="LOCAL-00011" summary="running calories burnt complete">
-      <created>1606674328747</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1606674328747</updated>
+      <workItem from="1614439357697" duration="2362000" />
     </task>
     <task id="LOCAL-00012" summary="card dates formatted">
       <created>1606844322400</created>
@@ -474,14 +468,20 @@
       <option name="project" value="LOCAL" />
       <updated>1614440895652</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="spell check">
+      <created>1614440933932</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1614440933933</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="snap shot sorted by year and multiple lines on the graph" />
     <MESSAGE value="complete view bod snapshot page" />
     <MESSAGE value="Cycle basic trend shown" />
     <MESSAGE value="cycle show basic prediction" />
@@ -506,6 +506,7 @@
     <MESSAGE value="can edit workout to have no elevation and  comment" />
     <MESSAGE value="fixed index card duration display" />
     <MESSAGE value="create pages now have cancel buttons" />
-    <option name="LAST_COMMIT_MESSAGE" value="create pages now have cancel buttons" />
+    <MESSAGE value="spell check" />
+    <option name="LAST_COMMIT_MESSAGE" value="spell check" />
   </component>
 </project>
