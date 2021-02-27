@@ -102,6 +102,7 @@ function displayMeal($meal)
     echo '</div>';
 }
 
+
 function displayWorkout($workout)
 {
     $datetime = new DateTime($workout->getDate());
@@ -113,7 +114,16 @@ function displayWorkout($workout)
     echo '</div>';
     echo '<ul class="list-group list-group-flush">';
     echo '<li class="list-group-item">' . $date . '</li>';
-    echo '<li class="list-group-item">' . $workout->getDuration() . ' Minutes</li>';
+    $totalDurMins = $workout->getDuration();
+    if ($totalDurMins >= 60) {
+        $totalDurHrs = floor($totalDurMins / 60) . 'h ' . ($totalDurMins - floor($totalDurMins / 60) * 60 . 'm');
+        $timeToDisplay = $totalDurHrs;
+    } else {
+        $timeToDisplay = $totalDurMins . ' Minutes';
+    }
+
+
+    echo '<li class="list-group-item">Duration : ' . $timeToDisplay . '</li>';
     if (get_class($workout) == "run" || get_class($workout) == "cycle") {
         echo '<li class="list-group-item">Speed : ' . round(($workout->getSpeed() * 3.6), 1) . ' Km/h</li>';
         echo '<li class="list-group-item">Distance : ' . $workout->getDistance() . ' Meters</li>';

@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/createMealPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createMealPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/editCardioWorkoutPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/editCardioWorkoutPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/editMealPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/editMealPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +31,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/Documents/COMP3006/COMP3006CW2/CW2Chess" />
     <property name="settings.editor.selected.configurable" value="settings.saveactions" />
@@ -130,14 +129,8 @@
       <workItem from="1613921184022" duration="4696000" />
       <workItem from="1613993203338" duration="1869000" />
       <workItem from="1614190619757" duration="2098000" />
-      <workItem from="1614348693120" duration="3130000" />
-    </task>
-    <task id="LOCAL-00008" summary="edit weights workout complete">
-      <created>1606491201149</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1606491201149</updated>
+      <workItem from="1614348693120" duration="3302000" />
+      <workItem from="1614439357697" duration="715000" />
     </task>
     <task id="LOCAL-00009" summary="cycling average watts">
       <created>1606596609217</created>
@@ -475,14 +468,20 @@
       <option name="project" value="LOCAL" />
       <updated>1614351641098</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="can edit workout to have no elevation and  comment">
+      <created>1614352017913</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1614352017913</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="small fixes to createUserPDPage.php" />
     <MESSAGE value="added BFP And MMP to createUserConfirmPage.php" />
     <MESSAGE value="view body snap shot page basic graph" />
     <MESSAGE value="snap shot sorted by year and multiple lines on the graph" />
@@ -507,6 +506,7 @@
     <MESSAGE value="Fixed Delete Activity page and can record a Meal without comment" />
     <MESSAGE value="can create a cardio workout without elevation and comment" />
     <MESSAGE value="can edit meal to have no comment" />
-    <option name="LAST_COMMIT_MESSAGE" value="can edit meal to have no comment" />
+    <MESSAGE value="can edit workout to have no elevation and  comment" />
+    <option name="LAST_COMMIT_MESSAGE" value="can edit workout to have no elevation and  comment" />
   </component>
 </project>
