@@ -54,10 +54,12 @@ if (isset($_POST['btnEditWorkout'])) {
     $today = new DateTime();
     $workoutDate = new DateTime($_POST['dateInput']);
 
-    if (empty($_POST['titleInput']) || empty($_POST['dateInput']) || empty($_POST['durationInput']) || empty($_POST['notesInput'])) {
-        $failureOutputPara = "Fields must be filled to edit a workout";
+    if (empty($_POST['titleInput']) || empty($_POST['dateInput']) || empty($_POST['durationInput'])) {
+        $failureOutputPara = "Required fields must be filled to edit a workout";
     } elseif ($today < $workoutDate) {
         $failureOutputPara = "Workout cannot occur in the future";
+    } elseif (count($exercises) === 0) {
+        $failureOutputPara = "Workout must contain atleast one exercise";
     } else {
         editWorkout($workout->getWorkoutID(), $_POST['titleInput'], $_POST['dateInput'], $_POST['durationInput'], 0, 0, $_POST['notesInput']);
         header("Location: index.php");
@@ -72,19 +74,21 @@ if (isset($_POST['btnEditWorkout'])) {
 </head>
 <body>
 <div class="container">
-    <p class="text-center">Edit Details about your weights session</p>
+    <p class="text-center mt-5">Edit Details about your weights session</p>
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="titleInput">Title</label>
+                <label class="input-group-text text-light bg-dark" for="titleInput">Title<span
+                            style="color: red">*</span></label>
             </div>
             <input class="form-control" name="titleInput" value="<?php echo $workout->getTitle() ?>" type="text">
         </div>
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="dateInput">Date</label>
+                <label class="input-group-text text-light bg-dark" for="dateInput">Date<span
+                            style="color: red">*</span></label>
             </div>
             <input class="form-control" name="dateInput" value="<?php echo $date ?>"
                    type="datetime-local">
@@ -92,7 +96,8 @@ if (isset($_POST['btnEditWorkout'])) {
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="durationInput">Duration</label>
+                <label class="input-group-text text-light bg-dark" for="durationInput">Duration<span
+                            style="color: red">*</span></label>
             </div>
             <input class="form-control" name="durationInput" value="<?php echo $workout->getDuration() ?>"
                    type="number">
@@ -125,7 +130,7 @@ if (isset($_POST['btnEditWorkout'])) {
                 <button class="btn btn-danger" name="btnDeleteExercises" type="submit">Delete</button>
             </div>
         </div>
-
+        <p class="text-center">A workout must contain atleast one exercise</p>
         <div>
             <table class="table" id="exerciseTable">
                 <thead class="thead-dark mt-3">
@@ -155,7 +160,7 @@ if (isset($_POST['btnEditWorkout'])) {
         </div>
 
         <div>
-            <input class="btn btn-primary" name="btnCancel" type="submit" value="Cancel">
+            <input class="btn btn-danger" name="btnCancel" type="submit" value="Cancel">
             <input class="btn btn-warning float-right" name="btnEditWorkout" type="submit" value="Edit Workout">
         </div>
 

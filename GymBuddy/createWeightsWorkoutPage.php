@@ -57,11 +57,11 @@ if (isset($_POST['btnCreateWorkout'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Create Weights Workout</title>
+    <title>Record Weights Workout</title>
 </head>
 <body>
 <div class="container">
-    <p class="text-center">Enter Details about your weights session</p>
+    <p class="text-center mt-5">Enter Details about your weights session</p>
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
 
         <div class="input-group mb-3">
@@ -100,7 +100,7 @@ if (isset($_POST['btnCreateWorkout'])) {
             <textarea class="form-control" name="notesInput" maxlength="300"
                       style="resize: none;height: 90px;"><?php echo $_SESSION['notesInput'] ?></textarea>
         </div>
-
+        <p class="text-center">A workout must contain atleast one exercise</p>
         <div>
             <table class="table" id="exerciseTable">
                 <thead class="thead-dark mt-3">
