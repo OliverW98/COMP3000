@@ -106,7 +106,7 @@ if (isset($_POST['btnEditWorkout'])) {
         </div>
 
         <div>
-            <input class="btn btn-primary" name="btnCancel" type="submit" value="Cancel">
+            <input class="btn btn-danger" name="btnCancel" type="submit" value="Cancel">
             <input class="btn btn-warning float-right" name="btnEditWorkout" type="submit" value="Edit Workout">
         </div>
 

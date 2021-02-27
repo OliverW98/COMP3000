@@ -72,7 +72,7 @@ if (isset($_POST['btnEditMeal'])) {
                       style="resize: none;height: 90px;"><?php echo $meal->getNotes() ?></textarea>
         </div>
 
-        <input class="btn btn-primary" name="btnCancel" type="submit" value="Cancel">
+        <input class="btn btn-danger" name="btnCancel" type="submit" value="Cancel">
         <input class="btn btn-warning float-right" name="btnEditMeal" type="submit" value="Edit">
 
         <p class="text-center text-danger"><?php echo $failureOutputPara ?></p>
