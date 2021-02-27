@@ -130,7 +130,7 @@ if (isset($_POST['btnDeleteDetails'])) {
 </head>
 <body>
 <div class="container">
-    <h3 class="text-center mt-3">This information is used to created stats for you workouts</h3>
+    <h3 class="text-center mt-3">This information is used to created stats for your workouts</h3>
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
 
         <h5 class="text-center mt-3">Body Stats</h5>
