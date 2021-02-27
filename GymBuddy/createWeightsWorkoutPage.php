@@ -5,6 +5,10 @@ include_once 'header.php';
 
 $outputPara = "";
 
+if (isset($_POST['btnCancel'])) {
+    header("Location: home.php");
+}
+
 if (!isset($_SESSION['titleInput'])) {
     $_SESSION['titleInput'] = "";
     $_SESSION['dateInput'] = "";
@@ -126,8 +130,11 @@ if (isset($_POST['btnCreateWorkout'])) {
         </div>
 
         <div>
-            <input class="btn btn-primary" name="btnAddExercise" type="submit" value="Add Exercise">
-            <input class="btn btn-success float-right" name="btnCreateWorkout" type="submit" value="Record Workout">
+            <input class="btn btn-danger" name="btnCancel" type="submit" value="Cancel">
+            <div class="btn-group float-right">
+                <input class="btn btn-primary" name="btnAddExercise" type="submit" value="Add Exercise">
+                <input class="btn btn-success" name="btnCreateWorkout" type="submit" value="Record Workout">
+            </div>
         </div>
 
         <p class="text-center text-danger"><?php echo $outputPara ?></p>

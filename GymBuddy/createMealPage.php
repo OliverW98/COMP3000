@@ -4,6 +4,10 @@ include_once 'header.php';
 
 $successOutputPara = $failureOutputPara = "";
 
+if (isset($_POST['btnCancel'])) {
+    header("Location: index.php");
+}
+
 if (isset($_POST['btnCreateMeal'])) {
 
     $today = new DateTime();
@@ -65,6 +69,7 @@ if (isset($_POST['btnCreateMeal'])) {
                       style="resize: none;height: 90px;"></textarea>
         </div>
 
+        <input class="btn btn-danger" name="btnCancel" type="submit" value="Cancel">
         <input class="btn btn-success float-right" name="btnCreateMeal" type="submit" value="Record Meal">
 
         <p class="text-center text-success"><?php echo $successOutputPara ?></p>

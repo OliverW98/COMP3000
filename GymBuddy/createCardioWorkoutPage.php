@@ -5,6 +5,10 @@ include_once 'header.php';
 
 $outputPara = $successOutputPara = "";
 
+if (isset($_POST['btnCancel'])) {
+    header("Location: index.php");
+}
+
 if (isset($_POST['btnCreateWorkout'])) {
 
     $today = new DateTime();
@@ -116,6 +120,7 @@ if (isset($_POST['btnCreateWorkout'])) {
         </div>
 
         <div>
+            <input class="btn btn-danger" name="btnCancel" type="submit" value="Cancel">
             <input class="btn btn-success float-right" name="btnCreateWorkout" type="submit" value="Record Workout">
         </div>
 
