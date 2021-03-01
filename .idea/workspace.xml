@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/GymBuddy/editCardioWorkoutPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/editCardioWorkoutPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/editMealPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/editMealPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/viewBodySnapshots.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewBodySnapshots.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,14 +131,8 @@
       <workItem from="1613993203338" duration="1869000" />
       <workItem from="1614190619757" duration="2098000" />
       <workItem from="1614348693120" duration="3302000" />
-      <workItem from="1614439357697" duration="3689000" />
-    </task>
-    <task id="LOCAL-00014" summary="find number of cycles a month for a year">
-      <created>1607175142820</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1607175142820</updated>
+      <workItem from="1614439357697" duration="3800000" />
+      <workItem from="1614600693080" duration="4924000" />
     </task>
     <task id="LOCAL-00015" summary="better way of finding cycles">
       <created>1607278142250</created>
@@ -475,14 +470,20 @@
       <option name="project" value="LOCAL" />
       <updated>1614443052536</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="edit page now have red themed cancel buttons">
+      <created>1614443134479</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1614443134479</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="cycle show basic prediction" />
     <MESSAGE value="run show basic prediction" />
     <MESSAGE value="predicted further into the future and displayed small message" />
     <MESSAGE value="count meals last month" />
@@ -507,6 +508,7 @@
     <MESSAGE value="spell check" />
     <MESSAGE value="can create weights workout without comment" />
     <MESSAGE value="can edit weight workout to have not comment and must have 1 exercise" />
-    <option name="LAST_COMMIT_MESSAGE" value="can edit weight workout to have not comment and must have 1 exercise" />
+    <MESSAGE value="edit page now have red themed cancel buttons" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit page now have red themed cancel buttons" />
   </component>
 </project>

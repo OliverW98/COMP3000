@@ -5,7 +5,7 @@ include_once 'header.php';
 
 
 $failureOutputPara = "";
-$avgActivitiesAWeek = $avgActivitiesCalsBurnt = $avgActivitiesADay = $avgCalsADay = $avgBurntCalsADay = $avgMealCals = $avgMealsADay = $count = 0;
+$avgActivitiesAWeek = $avgActivitiesCalsBurnt = $avgActivitiesADay = $avgCalsADay = $avgBurntCalsADay = $avgMealCals = $avgMealsADay = $snapshotCount = 0;
 $lastMonthMeals = $lastMonthActivities = array();
 
 if (isset($_POST['btnFindYear'])) {
@@ -13,11 +13,12 @@ if (isset($_POST['btnFindYear'])) {
         $failureOutputPara = "Must choose a year";
     } else {
         $user = getUserWithYear($_SESSION['userID'], $_POST['selectYear']);
-        $count = 0;
+        $snapshotCount = 0;
+        //  var_dump($user);
         foreach ($user->getSnapshots() as $snapshots) {
-            $count++;
+            $snapshotCount++;
         }
-        if ($count > 0) {
+        if ($snapshotCount > 0) {
             // do all the stuff
             $bodySnapshots = getBodySnapshots($user);
             $snapshotDates = getSnapshotDates($bodySnapshots);
@@ -25,16 +26,24 @@ if (isset($_POST['btnFindYear'])) {
             $snapshotBFPs = getSnapshotBFP($bodySnapshots);
             $snapshotMMPs = getSnapshotMMP($bodySnapshots);
             $currentSnapshotWeights = getCurrentSnapshotWeights($bodySnapshots[0]);
-
-            $lastMonthMeals = getLastMonthsMeals($user->getMeals());
-            $lastMonthActivities = getLastMonthsActivities($user->getWorkouts());
-            $avgMealsADay = count($lastMonthMeals) / getDaysWithData($lastMonthMeals);
-            $avgMealCals = getAverageMealsCals($lastMonthMeals);
-            $avgCalsADay = getTotalCals($lastMonthMeals) / getDaysWithData($lastMonthMeals);
-            $avgActivitiesAWeek = count($lastMonthActivities) / getWeeksWithData($lastMonthActivities);
-            $avgActivitiesADay = count($lastMonthActivities) / getDaysWithData($lastMonthActivities);
-            $avgActivitiesCalsBurnt = getAverageActCalsBurnt($lastMonthActivities);
             $avgBurntCalsADay = BMR($bodySnapshots[0], $user->getDob(), $user->getGender());
+
+            if (count($user->getMeals()) > 0 && count($user->getWorkouts()) > 0) {
+                $lastMonthMeals = getLastMonthsMeals($user->getMeals());
+                $lastMonthActivities = getLastMonthsActivities($user->getWorkouts());
+
+                if (count($lastMonthMeals) > 0) {
+                    $avgMealsADay = count($lastMonthMeals) / getDaysWithData($lastMonthMeals);
+                    $avgMealCals = getAverageMealsCals($lastMonthMeals);
+                    $avgCalsADay = getTotalCals($lastMonthMeals) / getDaysWithData($lastMonthMeals);
+                }
+                if (count($lastMonthActivities) > 0) {
+                    $avgActivitiesAWeek = count($lastMonthActivities) / getWeeksWithData($lastMonthActivities);
+                    $avgActivitiesADay = count($lastMonthActivities) / getDaysWithData($lastMonthActivities);
+                    $avgActivitiesCalsBurnt = getAverageActCalsBurnt($lastMonthActivities);
+                }
+
+            }
         } else {
             $failureOutputPara = "No Body Snapshots recorded for " . $_POST['selectYear'];
         }
@@ -116,18 +125,16 @@ function getLastMonthsMeals($meals)
     }
 
     foreach ($meals as $meal) {
-
         if (substr($meal->getDate(), 5, 2) === $lastMonth) {
             array_push($mealsLastmonth, $meal);
         }
     }
-
     return $mealsLastmonth;
 }
 
 function getLastMonthsActivities($workouts)
 {
-    $mealsLastworkouts = array();
+    $workoutsLastMonth = array();
 
     $currentDate = new DateTime();
     $currentMonth = $currentDate->format("m");
@@ -141,15 +148,15 @@ function getLastMonthsActivities($workouts)
     }
 
     foreach ($workouts as $workout) {
-        if (get_class($workout) === "run" || "cycle") {
+        if (get_class($workout) === "run" || get_class($workout) === "cycle") {
             if (substr($workout->getDate(), 5, 2) === $lastMonth) {
-                array_push($mealsLastworkouts, $workout);
+                array_push($workoutsLastMonth, $workout);
             }
         }
 
     }
-
-    return $mealsLastworkouts;
+    
+    return $workoutsLastMonth;
 }
 
 function getDaysWithData($usersArray)
@@ -287,7 +294,7 @@ function predictionMessage($avgCalsADay, $avgBurntCalsADay, $avgActivitiesAWeek,
         $actCals = $avgActivitiesCalsBurnt;
         echo ' hard exercise you perform of an average ' . $avgActivitiesAWeek . ' activities a week this will add about <b> ' . round($avgActivitiesCalsBurnt) . '</b> calories burnt a day.';
     }
-    
+
     echo '<p>This means on a average day you ';
     $calsTotal = round($avgCalsADay - ($avgBurntCalsADay + $actCals));
 
@@ -339,7 +346,7 @@ function predictionMessage($avgCalsADay, $avgBurntCalsADay, $avgActivitiesAWeek,
     <p class="text-center text-danger"><?php echo $failureOutputPara ?></p>
     <h4 class="text-center">Current Body Composition</h4>
     <?php
-    if ($count > 0) {
+    if ($snapshotCount > 0) {
         pieChartMessage($bodySnapshots);
     }
     ?>
@@ -362,8 +369,10 @@ function predictionMessage($avgCalsADay, $avgBurntCalsADay, $avgActivitiesAWeek,
         <div class="col-sm-6 mt-5">
             <h4 class="text-center">Prediction</h4>
             <?php
-            if ($count > 0) {
+            if ($snapshotCount > 0 && count($lastMonthMeals) > 0 && count($lastMonthActivities) > 0) {
                 predictionMessage($avgCalsADay, $avgBurntCalsADay, $avgActivitiesAWeek, $avgActivitiesCalsBurnt);
+            } else {
+                echo '<p>No Meal or Workouts are recorded last month meaning we cannot create a prediction.</p>';
             }
             ?>
         </div>

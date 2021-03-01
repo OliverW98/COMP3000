@@ -46,12 +46,19 @@ session_start();
                     echo '<a class="dropdown-item" href="createMealPage.php">Record Meal</a>';
                     echo '</div>';
                     echo '</li>';
-                    echo '<li class="nav-item"><a class="nav-link" href="viewBodySnapshots.php">View Snapshot</a></li>';
+                    echo '<li class="nav-item dropdown">';
+                    echo '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+                    echo 'Snapshots';
+                    echo '</a>';
+                    echo '<div class="dropdown-menu" aria-labelledby="navbarDropdown">';
+                    echo '<a class="dropdown-item" href="viewBodySnapshots.php">View Snapshot</a>';
+                    echo '</div>';
+                    echo '</li>';
                     echo '<li class="nav-item"><a class="nav-link" href="personalDetailsPage.php">Personal Details</a></li>';
                     echo '<li class="nav-item"><a class="nav-link" href="logOut.php">Log Out</a></li>';
                 } else {
-                    echo '<li class="nav-item"><a class="nav-link" href="createUserPage.php">Sign Up</a></li>';
-                    echo '<li class="nav-item"><a class="nav-link" href="logInPage.php">Log In</a></li>';
+                    echo '<li class="nav-item navbar-right"><a class="nav-link" href="createUserPage.php">Sign Up</a></li>';
+                    echo '<li class="nav-item navbar-right" ><a class="nav-link" href="logInPage.php">Log In</a></li>';
                 }
                 ?>
             </ul>
