@@ -3,7 +3,6 @@
 
 class weights extends workout
 {
-    private $caloriesBurnt;
     private $exercises = array();
 
     public function __construct($id, $title, $date, $duration, $notes, $exercises)

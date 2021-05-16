@@ -155,7 +155,7 @@ function getLastMonthsActivities($workouts)
         }
 
     }
-    
+
     return $workoutsLastMonth;
 }
 

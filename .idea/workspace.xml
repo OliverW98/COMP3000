@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/src/weights.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/weights.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/viewBodySnapshots.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewBodySnapshots.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/viewRunData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewRunData.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,14 +134,13 @@
       <workItem from="1614190619757" duration="2098000" />
       <workItem from="1614348693120" duration="3302000" />
       <workItem from="1614439357697" duration="3800000" />
-      <workItem from="1614600693080" duration="4924000" />
-    </task>
-    <task id="LOCAL-00015" summary="better way of finding cycles">
-      <created>1607278142250</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1607278142250</updated>
+      <workItem from="1614600693080" duration="5176000" />
+      <workItem from="1616426165576" duration="1114000" />
+      <workItem from="1614009224486" duration="116000" />
+      <workItem from="1616494957208" duration="591000" />
+      <workItem from="1618825823307" duration="618000" />
+      <workItem from="1618996236822" duration="1871000" />
+      <workItem from="1621161433166" duration="1063000" />
     </task>
     <task id="LOCAL-00016" summary="display last 10 or less cycles average speed">
       <created>1607280126644</created>
@@ -477,14 +478,20 @@
       <option name="project" value="LOCAL" />
       <updated>1614443134479</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="fixed no activities last month bug">
+      <created>1614606108519</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1614606108519</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="run show basic prediction" />
     <MESSAGE value="predicted further into the future and displayed small message" />
     <MESSAGE value="count meals last month" />
     <MESSAGE value="Stats for meals" />
@@ -509,6 +516,7 @@
     <MESSAGE value="can create weights workout without comment" />
     <MESSAGE value="can edit weight workout to have not comment and must have 1 exercise" />
     <MESSAGE value="edit page now have red themed cancel buttons" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit page now have red themed cancel buttons" />
+    <MESSAGE value="fixed no activities last month bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed no activities last month bug" />
   </component>
 </project>

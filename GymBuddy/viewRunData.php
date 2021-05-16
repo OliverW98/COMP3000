@@ -170,7 +170,7 @@ function createTrendLine($runWorkouts)
 {
     $trendline = array();
     $totalDiff = 0;
-    for ($i = count($runWorkouts) - 1; $i >= 0; $i--) {
+    for ($i = min(10, count($runWorkouts) - 1); $i >= 0; $i--) {
         if ($i === (count($runWorkouts) - 1)) {
             array_push($trendline, round($runWorkouts[$i]->getSpeed() * 3.6, 1));
         } else {
