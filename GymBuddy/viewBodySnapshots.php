@@ -311,7 +311,7 @@ function predictionMessage($avgCalsADay, $avgBurntCalsADay, $avgActivitiesAWeek,
 
     echo '</p>';
     echo '<p>A calorie differential of 500 calories a day is equivalent to a 2 kg per month change in weight.</p>';
-    echo '<p>Meaning if you maintain your current calorie intake you are predicted to ';
+    echo '<p>Meaning if you maintain your current calorie intake and level of activity, you are predicted to ';
     if ($calsTotal === 0) {
         echo " maintain the same weight ";
     } elseif ($calsTotal > 0) {

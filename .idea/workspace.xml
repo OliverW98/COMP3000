@@ -137,14 +137,7 @@
       <workItem from="1618825823307" duration="618000" />
       <workItem from="1618996236822" duration="1871000" />
       <workItem from="1621161433166" duration="1791000" />
-      <workItem from="1621184748289" duration="1903000" />
-    </task>
-    <task id="LOCAL-00018" summary="average and total stats for a cycle">
-      <created>1607343630112</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1607343630112</updated>
+      <workItem from="1621184748289" duration="2006000" />
     </task>
     <task id="LOCAL-00019" summary="distance in pie chart">
       <created>1607431831839</created>
@@ -482,14 +475,20 @@
       <option name="project" value="LOCAL" />
       <updated>1621186478093</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="spaceing">
+      <created>1621186729105</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1621186729105</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Stats for meals" />
     <MESSAGE value="avg meals a day works" />
     <MESSAGE value="avg cals a day" />
     <MESSAGE value="Average workout data" />
@@ -514,6 +513,7 @@
     <MESSAGE value="fixed no activities last month bug" />
     <MESSAGE value="fixed trendline" />
     <MESSAGE value="fixed snapshot prediction" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed snapshot prediction" />
+    <MESSAGE value="spaceing" />
+    <option name="LAST_COMMIT_MESSAGE" value="spaceing" />
   </component>
 </project>
