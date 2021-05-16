@@ -359,7 +359,7 @@ function predictionMessage($avgCalsADay, $avgBurntCalsADay, $avgActivitiesAWeek,
     <div class="row">
         <div class="col-sm-6 mt-5">
             <h4 class="text-center">Meals</h4>
-            <p>Meal This Month: <?php echo count($lastMonthMeals) ?></p>
+            <p>Meal This Month : <?php echo count($lastMonthMeals) ?></p>
             <p>Average Meals a day : <?php echo round($avgMealsADay, 1) ?></p>
             <p>Average meal calories : <?php echo round($avgMealCals) ?> </p>
             <p>Average calories a day : <?php echo round($avgCalsADay) ?> </p>

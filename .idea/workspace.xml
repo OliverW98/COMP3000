@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/viewBodySnapshots.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewBodySnapshots.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -138,14 +137,7 @@
       <workItem from="1618825823307" duration="618000" />
       <workItem from="1618996236822" duration="1871000" />
       <workItem from="1621161433166" duration="1791000" />
-      <workItem from="1621184748289" duration="1539000" />
-    </task>
-    <task id="LOCAL-00017" summary="change charts looks">
-      <created>1607281574285</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1607281574285</updated>
+      <workItem from="1621184748289" duration="1903000" />
     </task>
     <task id="LOCAL-00018" summary="average and total stats for a cycle">
       <created>1607343630112</created>
@@ -483,14 +475,20 @@
       <option name="project" value="LOCAL" />
       <updated>1621163494023</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="fixed snapshot prediction">
+      <created>1621186478093</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1621186478093</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="count meals last month" />
     <MESSAGE value="Stats for meals" />
     <MESSAGE value="avg meals a day works" />
     <MESSAGE value="avg cals a day" />
@@ -515,6 +513,7 @@
     <MESSAGE value="edit page now have red themed cancel buttons" />
     <MESSAGE value="fixed no activities last month bug" />
     <MESSAGE value="fixed trendline" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed trendline" />
+    <MESSAGE value="fixed snapshot prediction" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed snapshot prediction" />
   </component>
 </project>
