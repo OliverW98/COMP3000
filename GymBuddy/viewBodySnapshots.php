@@ -280,22 +280,25 @@ function predictionMessage($avgCalsADay, $avgBurntCalsADay, $avgActivitiesAWeek,
                 <b> ' . round(abs($avgBurntCalsADay)) . '</b>
                 calories a day.</p>';
 
+
     echo '<p> Plus with the ';
     $actCals = 0;
     if ($avgActivitiesAWeek === 0) {
         echo ' no additional exercise  ';
     } elseif ($avgActivitiesAWeek > 0 && $avgActivitiesAWeek <= 3) {
         $actCals = $avgActivitiesCalsBurnt / 7;
-        echo ' light exercise you perform of an average  ' . $avgActivitiesAWeek . ' activities a week this will add about <b> ' . round($avgActivitiesCalsBurnt / 7) . '</b> calories burnt a day.';
+        echo ' light exercise you perform of an average  ' . round($avgActivitiesAWeek) . ' activities a week this will add about <b> ' . round($avgActivitiesCalsBurnt / 7) . '</b> calories burnt a day.';
     } elseif ($avgActivitiesAWeek > 3 && $avgActivitiesAWeek <= 5) {
         $actCals = $avgActivitiesCalsBurnt / 3;
-        echo ' moderate exercise you perform of an average  ' . $avgActivitiesAWeek . ' activities a week this will add about <b> ' . round($avgActivitiesCalsBurnt / 3) . '</b> calories burnt a day.';
+        echo ' moderate exercise you perform of an average  ' . round($avgActivitiesAWeek) . ' activities a week this will add about <b> ' . round($avgActivitiesCalsBurnt / 3) . '</b> calories burnt a day.';
     } elseif ($avgActivitiesAWeek > 5) {
         $actCals = $avgActivitiesCalsBurnt;
-        echo ' hard exercise you perform of an average ' . $avgActivitiesAWeek . ' activities a week this will add about <b> ' . round($avgActivitiesCalsBurnt) . '</b> calories burnt a day.';
+        echo ' hard exercise you perform of an average ' . round($avgActivitiesAWeek) . ' activities a week this will add about <b> ' . round($avgActivitiesCalsBurnt) . '</b> calories burnt a day.';
     }
 
-    echo '<p>This means on a average day you ';
+    echo '<p>However, you have a average calorie in take of <b>' . round($avgCalsADay) . '</b> a day.</p>';
+
+    echo '<p>Meaning on a average day you ';
     $calsTotal = round($avgCalsADay - ($avgBurntCalsADay + $actCals));
 
     if ($calsTotal === 0) {
@@ -357,12 +360,12 @@ function predictionMessage($avgCalsADay, $avgBurntCalsADay, $avgActivitiesAWeek,
         <div class="col-sm-6 mt-5">
             <h4 class="text-center">Meals</h4>
             <p>Meal This Month: <?php echo count($lastMonthMeals) ?></p>
-            <p>Average Meals a day : <?php echo $avgMealsADay ?></p>
+            <p>Average Meals a day : <?php echo round($avgMealsADay, 1) ?></p>
             <p>Average meal calories : <?php echo round($avgMealCals) ?> </p>
             <p>Average calories a day : <?php echo round($avgCalsADay) ?> </p>
             <h4 class="text-center mt-3">Activities</h4>
             <p>Activities This Month : <?php echo count($lastMonthActivities) ?></p>
-            <p>Average activities a day : <?php echo $avgActivitiesADay ?></p>
+            <p>Average activities a day : <?php echo round($avgActivitiesADay, 1) ?></p>
             <p>Average calories burnt : <?php echo round($avgActivitiesCalsBurnt) ?> </p>
 
         </div>

@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/src/weights.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/weights.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/viewBodySnapshots.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewBodySnapshots.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/viewRunData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewRunData.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,14 +137,8 @@
       <workItem from="1616494957208" duration="591000" />
       <workItem from="1618825823307" duration="618000" />
       <workItem from="1618996236822" duration="1871000" />
-      <workItem from="1621161433166" duration="1063000" />
-    </task>
-    <task id="LOCAL-00016" summary="display last 10 or less cycles average speed">
-      <created>1607280126644</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1607280126644</updated>
+      <workItem from="1621161433166" duration="1791000" />
+      <workItem from="1621184748289" duration="1539000" />
     </task>
     <task id="LOCAL-00017" summary="change charts looks">
       <created>1607281574285</created>
@@ -485,14 +476,20 @@
       <option name="project" value="LOCAL" />
       <updated>1614606108519</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="fixed trendline">
+      <created>1621163494022</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1621163494023</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="predicted further into the future and displayed small message" />
     <MESSAGE value="count meals last month" />
     <MESSAGE value="Stats for meals" />
     <MESSAGE value="avg meals a day works" />
@@ -517,6 +514,7 @@
     <MESSAGE value="can edit weight workout to have not comment and must have 1 exercise" />
     <MESSAGE value="edit page now have red themed cancel buttons" />
     <MESSAGE value="fixed no activities last month bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed no activities last month bug" />
+    <MESSAGE value="fixed trendline" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed trendline" />
   </component>
 </project>
