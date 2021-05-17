@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/GymBuddy/viewBodySnapshots.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewBodySnapshots.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/header.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,14 +138,8 @@
       <workItem from="1618825823307" duration="618000" />
       <workItem from="1618996236822" duration="1871000" />
       <workItem from="1621161433166" duration="1791000" />
-      <workItem from="1621184748289" duration="2006000" />
-    </task>
-    <task id="LOCAL-00019" summary="distance in pie chart">
-      <created>1607431831839</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1607431831841</updated>
+      <workItem from="1621184748289" duration="2182000" />
+      <workItem from="1621238933778" duration="629000" />
     </task>
     <task id="LOCAL-00020" summary="display total time as hours">
       <created>1607523378968</created>
@@ -482,14 +477,20 @@
       <option name="project" value="LOCAL" />
       <updated>1621186729105</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="message fix">
+      <created>1621186838243</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1621186838244</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="avg meals a day works" />
     <MESSAGE value="avg cals a day" />
     <MESSAGE value="Average workout data" />
     <MESSAGE value="fixed var name" />
@@ -514,6 +515,7 @@
     <MESSAGE value="fixed trendline" />
     <MESSAGE value="fixed snapshot prediction" />
     <MESSAGE value="spaceing" />
-    <option name="LAST_COMMIT_MESSAGE" value="spaceing" />
+    <MESSAGE value="message fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="message fix" />
   </component>
 </project>
