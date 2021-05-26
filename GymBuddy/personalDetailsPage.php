@@ -25,7 +25,7 @@ function updateUsersSnapshot($user)
 {
     $userSnapshots = $user->getSnapshots();
     if (count($userSnapshots) > 0) {
-        return $userSnapshots[count($userSnapshots) - 1];
+        return $userSnapshots[0];
     } else {
         return null;
     }
@@ -130,10 +130,10 @@ if (isset($_POST['btnDeleteDetails'])) {
 </head>
 <body>
 <div class="container">
-    <h3 class="text-center mt-3">This information is used to created stats for your workouts</h3>
+    <h3 class="text-center mt-3">This information is used to created statistics for your workouts</h3>
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
 
-        <h5 class="text-center mt-3">Body Stats</h5>
+        <h5 class="text-center mt-5">Body Stats</h5>
         <p class="text-center">This is you body Snapshot
             from <?php echo $snapshotDate; ?> </p>
         <div class="input-group mb-3">
