@@ -9,10 +9,9 @@ $numOfCyclesToDislay = 2;
 $totalDis = $totalDurMins = $totalSpeed = $totalWatts = $totalCals = $avDis = $avDur = $avSpeed = $avWatts = $avCals = $totalCycles = $count = 0;
 
 if (isset($_POST['btnShowCycles'])) {
-    {
+    if (!empty($_POST['numOfRuns'])) {
         $currentDate = new DateTime();
         $user = getUserWithYear($_SESSION['userID'], $currentDate->format("Y"));
-        //$user = getUser($_SESSION['userID']);
         $numOfCyclesToDislay = $_POST['numOfCycles'];
         $count = 0;
         foreach ($user->getWorkouts() as $workout) {

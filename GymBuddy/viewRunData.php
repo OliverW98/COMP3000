@@ -5,15 +5,15 @@ include_once 'header.php';
 
 
 $failureOutputPara = "";
+$numOfRunsToDislay = 2;
 $totalRuns = $totalDis = $totalDurMins = $avDis = $avDur = $avSpeed = $avCals = $count = 0;
 
 
-if (isset($_POST['btnFindYear'])) {
-
-    if ($_POST['selectYear'] === "Choose a Year...") {
-        $failureOutputPara = "Must choose a year";
-    } else {
-        $user = getUserWithYear($_SESSION['userID'], $_POST['selectYear']);
+if (isset($_POST['btnShowRuns'])) {
+    if (!empty($_POST['numOfRuns'])) {
+        $currentDate = new DateTime();
+        $user = getUserWithYear($_SESSION['userID'], $currentDate->format("Y"));
+        $numOfRunsToDislay = $_POST['numOfRuns'];
         $count = 0;
         foreach ($user->getWorkouts() as $workout) {
             if (get_class($workout) == "run") {
@@ -22,10 +22,10 @@ if (isset($_POST['btnFindYear'])) {
         }
         if ($count > 0) {
             $runWorkouts = getRunWorkouts($user);
-            $runDatesPrediction = runDatesPrediction($runWorkouts);
-            $runDates = getRunDates($runWorkouts);
-            $averageSpeeds = getRunSpeeds($runWorkouts);
-            $distanceRun = getRunDistances($runWorkouts);
+            $runDatesPrediction = runDatesPrediction($runWorkouts, $numOfRunsToDislay);
+            $runDates = getRunDates($runWorkouts, $numOfRunsToDislay);
+            $averageSpeeds = getRunSpeeds($runWorkouts, $numOfRunsToDislay);
+            $distanceRun = getRunDistances($runWorkouts, $numOfRunsToDislay);
             $runsAMonth = runsAMonth($runWorkouts);
             $totalDis = getTotalDistanceRun($runWorkouts);
             $totalDurMins = getTotalDurationRun($runWorkouts);
@@ -33,7 +33,7 @@ if (isset($_POST['btnFindYear'])) {
             $avDis = getAverageDistanceRun($runWorkouts);
             $avDur = getAverageDurationRun($runWorkouts);
             $avCals = getAverageCalories($runWorkouts);
-            $trendLine = createTrendLine($runWorkouts);
+            $trendLine = createTrendLine($runWorkouts, $numOfRunsToDislay);
             $totalRuns = count($runWorkouts);
         } else {
             $failureOutputPara = "No runs recorded for " . $_POST['selectYear'];
@@ -52,31 +52,31 @@ function getRunWorkouts($user)
     return $runWorkouts;
 }
 
-function getRunDistances($runWorkouts)
+function getRunDistances($runWorkouts, $numOfRunsToDislay)
 {
     $distanceRun = array();
     // grab data from the last 10 runs or less
-    for ($i = min(10, count($runWorkouts) - 1); $i >= 0; $i--) {
+    for ($i = min($numOfRunsToDislay, count($runWorkouts) - 1); $i >= 0; $i--) {
         array_push($distanceRun, $runWorkouts[$i]->getDistance() / 1000);
     }
     return $distanceRun;
 }
 
-function getRunSpeeds($runWorkouts)
+function getRunSpeeds($runWorkouts, $numOfRunsToDislay)
 {
     $averageSpeeds = array();
     // grab data from the last 10 runs or less
-    for ($i = min(10, count($runWorkouts) - 1); $i >= 0; $i--) {
+    for ($i = min($numOfRunsToDislay, count($runWorkouts) - 1); $i >= 0; $i--) {
         array_push($averageSpeeds, round($runWorkouts[$i]->getSpeed() * 3.6, 1));
     }
     return $averageSpeeds;
 }
 
-function runDatesPrediction($runWorkouts)
+function runDatesPrediction($runWorkouts, $numOfRunsToDislay)
 {
     $runDates = array();
     // grab data from the last 10 runs or less
-    for ($i = min(10, count($runWorkouts) - 1); $i >= 0; $i--) {
+    for ($i = min($numOfRunsToDislay, count($runWorkouts) - 1); $i >= 0; $i--) {
         $datetime = new DateTime($runWorkouts[$i]->getDate());
         $date = "{$datetime->format('d/m/y')}";
         array_push($runDates, $date);
@@ -87,11 +87,11 @@ function runDatesPrediction($runWorkouts)
     return $runDates;
 }
 
-function getRunDates($runWorkouts)
+function getRunDates($runWorkouts, $numOfRunsToDislay)
 {
     $runDates = array();
     // grab data from the last 10 runs or less
-    for ($i = min(10, count($runWorkouts) - 1); $i >= 0; $i--) {
+    for ($i = min($numOfRunsToDislay, count($runWorkouts) - 1); $i >= 0; $i--) {
         $datetime = new DateTime($runWorkouts[$i]->getDate());
         $date = "{$datetime->format('d/m/y')}";
         array_push($runDates, $date);
@@ -166,11 +166,11 @@ function getAverageCalories($runWorkouts)
     return $avCals = $totalCals / count($runWorkouts);
 }
 
-function createTrendLine($runWorkouts)
+function createTrendLine($runWorkouts, $numOfRunsToDislay)
 {
     $trendline = array();
     $totalDiff = 0;
-    for ($i = min(10, count($runWorkouts) - 1); $i >= 0; $i--) {
+    for ($i = min($numOfRunsToDislay, count($runWorkouts) - 1); $i >= 0; $i--) {
         if ($i === (count($runWorkouts) - 1)) {
             array_push($trendline, round($runWorkouts[$i]->getSpeed() * 3.6, 1));
         } else {
@@ -205,18 +205,21 @@ function trendlineMessage($trendline)
 <body>
 <div class="container">
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-        <div class="input-group mb-3 mt-3">
-            <select id="selectYear" class="custom-select" name="selectYear">
-                <option selected>Choose a Year...</option>
-                <option>2021</option>
-                <option>2020</option>
-                <option>2019</option>
-                <option>2018</option>
-                <option>2017</option>
-            </select>
-            <div class="input-group-append">
-                <button id="FindYear" class="btn btn-success" name="btnFindYear" type="submit">Find</button>
+        <h4 class="text-center mt-3">Enter the number of runs you would like to see.</h4>
+
+        <div class="row">
+            <div class="col"></div>
+            <div class="col">
+                <div class="input-group mb-3 mt-3">
+                    <input class="form-control" name="numOfRuns" min="2" max="50"
+                           value="<?php echo $numOfRunsToDislay ?>"
+                           type="number">
+                    <div class="input-group-append">
+                        <button class="btn btn-success" name="btnShowRuns" type="submit">Show</button>
+                    </div>
+                </div>
             </div>
+            <div class="col"></div>
         </div>
     </form>
     <p class="text-center text-danger"><?php echo $failureOutputPara ?></p>
