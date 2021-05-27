@@ -284,7 +284,7 @@ function predictionMessage($avgCalsADay, $avgBurntCalsADay, $avgActivitiesAWeek,
     echo '<p> Plus with the ';
     $actCals = 0;
     if ($avgActivitiesAWeek === 0) {
-        echo ' no additional exercise  ';
+        echo ' no additional exercise you perform. ';
     } elseif ($avgActivitiesAWeek > 0 && $avgActivitiesAWeek <= 3) {
         $actCals = $avgActivitiesCalsBurnt / 7;
         echo ' light exercise you perform of an average  ' . round($avgActivitiesAWeek) . ' activities a week this will add about <b> ' . round($avgActivitiesCalsBurnt / 7) . '</b> calories burnt a day.';
@@ -304,7 +304,7 @@ function predictionMessage($avgCalsADay, $avgBurntCalsADay, $avgActivitiesAWeek,
     if ($calsTotal === 0) {
         echo " are matching you calories in and out.";
     } elseif ($calsTotal > 0) {
-        echo " have a excess <b>" . $calsTotal . " </b> calories.";
+        echo " have a excess of <b>" . $calsTotal . " </b> calories.";
     } elseif ($calsTotal < 0) {
         echo " are in a deficit of <b>" . abs($calsTotal) . "</b> calories.";
     }
