@@ -5,13 +5,15 @@ include_once 'header.php';
 
 
 $failureOutputPara = "";
+$numOfCyclesToDislay = 2;
 $totalDis = $totalDurMins = $totalSpeed = $totalWatts = $totalCals = $avDis = $avDur = $avSpeed = $avWatts = $avCals = $totalCycles = $count = 0;
 
-if (isset($_POST['btnFindYear'])) {
-    if ($_POST['selectYear'] === "Choose a Year...") {
-        $failureOutputPara = "Must choose a year";
-    } else {
-        $user = getUserWithYear($_SESSION['userID'], $_POST['selectYear']);
+if (isset($_POST['btnShowCycles'])) {
+    {
+        $currentDate = new DateTime();
+        $user = getUserWithYear($_SESSION['userID'], $currentDate->format("Y"));
+        //$user = getUser($_SESSION['userID']);
+        $numOfCyclesToDislay = $_POST['numOfCycles'];
         $count = 0;
         foreach ($user->getWorkouts() as $workout) {
             if (get_class($workout) == "cycle") {
@@ -21,12 +23,12 @@ if (isset($_POST['btnFindYear'])) {
         if ($count > 0) {
             // do all the stuff
             $cycleWorkouts = getCycleWorkouts($user);
-            $cycleDatesPrediction = cycleDatesPrediction($cycleWorkouts);
-            $cycleDates = getCycleDates($cycleWorkouts);
+            $cycleDatesPrediction = cycleDatesPrediction($cycleWorkouts, $numOfCyclesToDislay);
+            $cycleDates = getCycleDates($cycleWorkouts, $numOfCyclesToDislay);
 
-            $averageSpeeds = getCycleSpeeds($cycleWorkouts);
-            $distanceRidden = getCycleDistances($cycleWorkouts);
-            $averageWatts = getCycleAverageWatts($cycleWorkouts);
+            $averageSpeeds = getCycleSpeeds($cycleWorkouts, $numOfCyclesToDislay);
+            $distanceRidden = getCycleDistances($cycleWorkouts, $numOfCyclesToDislay);
+            $averageWatts = getCycleAverageWatts($cycleWorkouts, $numOfCyclesToDislay);
             $cyclesAMonth = getCyclesAMonth($cycleWorkouts);
             $totalDis = getTotalDistance($cycleWorkouts);
             $totalDurMins = getTotalDuration($cycleWorkouts);
@@ -37,11 +39,11 @@ if (isset($_POST['btnFindYear'])) {
             $avWatts = getAverageWatts($cycleWorkouts);
             $avCals = getAverageCals($cycleWorkouts);
 
-            $trendLine = createTrendLine($cycleWorkouts);
+            $trendLine = createTrendLine($cycleWorkouts, $numOfCyclesToDislay);
 
             $totalCycles = count($cycleWorkouts);
         } else {
-            $failureOutputPara = "No rides recorded for " . $_POST['selectYear'];
+            $failureOutputPara = "No rides are recorded.";
         }
     }
 }
@@ -57,10 +59,10 @@ function getCycleWorkouts($user)
     return $cycleWorkouts;
 }
 
-function cycleDatesPrediction($cycleWorkouts)
+function cycleDatesPrediction($cycleWorkouts, $numOfCyclesToDislay)
 {
     $cycleDates = array();
-    for ($i = min(10, count($cycleWorkouts) - 1); $i >= 0; $i--) {
+    for ($i = min($numOfCyclesToDislay, count($cycleWorkouts) - 1); $i >= 0; $i--) {
         $datetime = new DateTime($cycleWorkouts[$i]->getDate());
         $date = "{$datetime->format('d/m/y')}";
         array_push($cycleDates, $date);
@@ -71,10 +73,10 @@ function cycleDatesPrediction($cycleWorkouts)
     return $cycleDates;
 }
 
-function getCycleDates($cycleWorkouts)
+function getCycleDates($cycleWorkouts, $numOfCyclesToDislay)
 {
     $cycleDates = array();
-    for ($i = min(10, count($cycleWorkouts) - 1); $i >= 0; $i--) {
+    for ($i = min($numOfCyclesToDislay, count($cycleWorkouts) - 1); $i >= 0; $i--) {
         $datetime = new DateTime($cycleWorkouts[$i]->getDate());
         $date = "{$datetime->format('d/m/y')}";
         array_push($cycleDates, $date);
@@ -82,30 +84,30 @@ function getCycleDates($cycleWorkouts)
     return $cycleDates;
 }
 
-function getCycleSpeeds($cycleWorkouts)
+function getCycleSpeeds($cycleWorkouts, $numOfCyclesToDislay)
 {
     $averageSpeeds = array();
-    for ($i = min(10, count($cycleWorkouts) - 1); $i >= 0; $i--) {
+    for ($i = min($numOfCyclesToDislay, count($cycleWorkouts) - 1); $i >= 0; $i--) {
         array_push($averageSpeeds, round($cycleWorkouts[$i]->getSpeed() * 3.6, 1));
     }
 
     return $averageSpeeds;
 }
 
-function getCycleDistances($cycleWorkouts)
+function getCycleDistances($cycleWorkouts, $numOfCyclesToDislay)
 {
     $distanceRidden = array();
-    for ($i = min(10, count($cycleWorkouts) - 1); $i >= 0; $i--) {
+    for ($i = min($numOfCyclesToDislay, count($cycleWorkouts) - 1); $i >= 0; $i--) {
         array_push($distanceRidden, $cycleWorkouts[$i]->getDistance() / 1000);
 
     }
     return $distanceRidden;
 }
 
-function getCycleAverageWatts($cycleWorkouts)
+function getCycleAverageWatts($cycleWorkouts, $numOfCyclesToDislay)
 {
     $averageWatts = array();
-    for ($i = min(10, count($cycleWorkouts) - 1); $i >= 0; $i--) {
+    for ($i = min($numOfCyclesToDislay, count($cycleWorkouts) - 1); $i >= 0; $i--) {
         array_push($averageWatts, round($cycleWorkouts[$i]->getAverageWatts(), 1));
     }
     return $averageWatts;
@@ -181,11 +183,11 @@ function getAverageCals($cycleWorkouts)
     return $totalCals / count($cycleWorkouts);
 }
 
-function createTrendLine($cycleWorkouts)
+function createTrendLine($cycleWorkouts, $numOfCyclesToDislay)
 {
     $trendline = array();
     $totalDiff = 0;
-    for ($i = min(10, count($cycleWorkouts) - 1); $i >= 0; $i--) {
+    for ($i = min($numOfCyclesToDislay, count($cycleWorkouts) - 1); $i >= 0; $i--) {
         if ($i === (count($cycleWorkouts) - 1)) {
             array_push($trendline, round($cycleWorkouts[$i]->getSpeed() * 3.6, 1));
         } else {
@@ -219,19 +221,24 @@ function trendlineMessage($trendline)
 <body>
 <div class="container">
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-        <div class="input-group mb-3 mt-3">
-            <select id="selectYear" class="custom-select" name="selectYear">
-                <option selected>Choose a Year...</option>
-                <option>2021</option>
-                <option>2020</option>
-                <option>2019</option>
-                <option>2018</option>
-                <option>2017</option>
-            </select>
-            <div class="input-group-append">
-                <button id="FindYear" class="btn btn-success" name="btnFindYear" type="submit">Find</button>
+
+        <h4 class="text-center mt-3">Enter the number of rides you would like to see.</h4>
+
+        <div class="row">
+            <div class="col"></div>
+            <div class="col">
+                <div class="input-group mb-3 mt-3">
+                    <input class="form-control" name="numOfCycles" min="2" max="50"
+                           value="<?php echo $numOfCyclesToDislay ?>"
+                           type="number">
+                    <div class="input-group-append">
+                        <button class="btn btn-success" name="btnShowCycles" type="submit">Show</button>
+                    </div>
+                </div>
             </div>
+            <div class="col"></div>
         </div>
+
     </form>
     <p class="text-center text-danger"><?php echo $failureOutputPara ?></p>
     <canvas id="averageSpeedChart" width="200" height=75"></canvas>
@@ -245,7 +252,7 @@ function trendlineMessage($trendline)
     <canvas id="RidePerMonth" width="200" height=100"></canvas>
     <div class="row">
         <div class="col-sm-6 mt-5">
-            <h4 class="text-center">Year Total</h4>
+            <h4 class="text-center"> Year Totals</h4>
             <P>Number of Rides : <?php echo $totalCycles ?></P>
             <p>Distance : <?php echo round($totalDis / 1000, 1) ?> Km</p>
             <P>Duration
