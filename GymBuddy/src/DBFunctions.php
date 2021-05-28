@@ -337,9 +337,9 @@ function deleteExercise($exerciseID)
     $statement->execute();
 }
 
-function createMeal($userID, $title, $mealDate, $caloriesIntake, $notes)
+function createMeal($userID, $title, $mealDate, $caloriesIntake, $notes, $imageName, $img_dir)
 {
-    $statement = getConnection()->prepare("CALL createMeal ('" . $userID . "','" . $title . "','" . $mealDate . "','" . $caloriesIntake . "','" . $notes . "')");
+    $statement = getConnection()->prepare("CALL createMeal ('" . $userID . "','" . $title . "','" . $mealDate . "','" . $caloriesIntake . "','" . $notes . "','" . $imageName . "','" . $img_dir . "')");
     $statement->execute();
 }
 

@@ -4,6 +4,7 @@ include_once 'header.php';
 
 $successOutputPara = $failureOutputPara = "";
 
+
 if (isset($_POST['btnCancel'])) {
     header("Location: index.php");
 }
@@ -41,7 +42,8 @@ if (isset($_POST['btnCreateMeal'])) {
         $fileNewName = uniqid('', true) . "." . $fileActualExt;
         $fileDestination = $_SERVER['DOCUMENT_ROOT'] . '/COMP3000/Images/' . $fileNewName;
         move_uploaded_file($fileTmpName, $fileDestination);
-        // createMeal($_SESSION['userID'], $_POST['titleInput'], $_POST['dateInput'], $_POST['caloriesInput'], $_POST['notesInput']);
+
+        createMeal($_SESSION['userID'], $_POST['titleInput'], $_POST['dateInput'], $_POST['caloriesInput'], $_POST['notesInput'], $fileNewName, $fileDestination);
         $successOutputPara = "Meal has been recorded";
     }
 }
