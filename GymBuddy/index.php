@@ -179,7 +179,7 @@ function displayWorkout($workout)
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
         <div class="row">
             <div class="col-sm-6">
-                <p class="text-center" style="font-size: 40px">Workouts</p>
+                <p class="text-center mt-3" style="font-size: 40px">Workouts</p>
                 <!--            php for each workout row: render card -> function renderCard($workout) { return <div> $workout_title</div>}  -->
 
                 <?php
@@ -197,7 +197,7 @@ function displayWorkout($workout)
                 ?>
             </div>
             <div class="col-sm-6">
-                <p class="text-center" style="font-size: 40px">Meals</p>
+                <p class="text-center mt-3" style="font-size: 40px">Meals</p>
                 <?php
                 if (isset($_SESSION['userID'])) {
                     if (count($usersMeals) <= 0) {
