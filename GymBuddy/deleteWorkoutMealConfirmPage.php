@@ -21,6 +21,7 @@ if (isset($_POST['btnCancel'])) {
 if (isset($_POST['btnDeleteActivity'])) {
     if (get_class($activity) == "meal") {
         deleteMeal($activity->getMealID());
+        unlink('../Images/' . $activity->getImageName());
     } else {
         deleteWorkout($activity->getWorkoutID());
     }

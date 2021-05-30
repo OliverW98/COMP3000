@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/createMealPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createMealPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/src/meal.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/meal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/deleteWorkoutMealConfirmPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/deleteWorkoutMealConfirmPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,14 +146,7 @@
       <workItem from="1622129969916" duration="4180000" />
       <workItem from="1622217622607" duration="3687000" />
       <workItem from="1622376423922" duration="7000" />
-      <workItem from="1622381939195" duration="1486000" />
-    </task>
-    <task id="LOCAL-00029" summary="split stats and details. Delete works">
-      <created>1611332717207</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1611332717207</updated>
+      <workItem from="1622381939195" duration="2005000" />
     </task>
     <task id="LOCAL-00030" summary="data is loaded in boxs when changed">
       <created>1611333358575</created>
@@ -492,14 +484,20 @@
       <option name="project" value="LOCAL" />
       <updated>1622383030014</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="img_dir is no longer stored">
+      <created>1622383479790</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1622383479790</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="remove include in excercise pages" />
     <MESSAGE value="Fixed Delete Activity page and can record a Meal without comment" />
     <MESSAGE value="can create a cardio workout without elevation and comment" />
     <MESSAGE value="can edit meal to have no comment" />
@@ -524,6 +522,7 @@
     <MESSAGE value="upload image complete" />
     <MESSAGE value="access meal image" />
     <MESSAGE value="dispaly image above meal" />
-    <option name="LAST_COMMIT_MESSAGE" value="dispaly image above meal" />
+    <MESSAGE value="img_dir is no longer stored" />
+    <option name="LAST_COMMIT_MESSAGE" value="img_dir is no longer stored" />
   </component>
 </project>

@@ -95,6 +95,7 @@ function displayMeal($meal)
     echo '<div class="card-body">';
     echo '<h5 class="card-title">' . $meal->getTitle() . '</h5>';
     echo '<p class="card-text">' . $meal->getNotes() . '</p>';
+
     echo '</div>';
     echo '<ul class="list-group list-group-flush">';
     echo '<li class="list-group-item">' . $date . '</li>';
