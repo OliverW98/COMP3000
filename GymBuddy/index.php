@@ -10,7 +10,7 @@ $ButtonID = "";
 if (isset($_SESSION['userID'])) {
     $user = getUser($_SESSION['userID']);
     $usersMeals = $user->getMeals();
-    var_dump($usersMeals);
+    // var_dump($usersMeals);
     $usersWorkouts = $user->getWorkouts();
     foreach ($usersMeals as $meal) {
         array_push($mealIDArray, $meal->getMealID());
@@ -89,6 +89,9 @@ function displayMeal($meal)
     $datetime = new DateTime($meal->getDate());
     $date = "{$datetime->format('d/m/y')} at {$datetime->format('H:i')}";
     echo '<div class="card mt-3 mx-auto border-dark" style="width: 25rem;">';
+    if ($meal->getImageName() != "") {
+        echo '<img src="../Images/' . $meal->getImageName() . '" class="card-img-top" alt="...">';
+    }
     echo '<div class="card-body">';
     echo '<h5 class="card-title">' . $meal->getTitle() . '</h5>';
     echo '<p class="card-text">' . $meal->getNotes() . '</p>';

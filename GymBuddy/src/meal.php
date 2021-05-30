@@ -64,4 +64,20 @@ class meal
         return $this->notes;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getImageName()
+    {
+        return $this->imageName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImgDir()
+    {
+        return $this->img_dir;
+    }
+
 }
