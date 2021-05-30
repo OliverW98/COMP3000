@@ -6,9 +6,11 @@ include_once 'header.php';
 $workoutIDArray = $mealIDArray = array();
 $ButtonID = "";
 
+
 if (isset($_SESSION['userID'])) {
     $user = getUser($_SESSION['userID']);
     $usersMeals = $user->getMeals();
+    var_dump($usersMeals);
     $usersWorkouts = $user->getWorkouts();
     foreach ($usersMeals as $meal) {
         array_push($mealIDArray, $meal->getMealID());

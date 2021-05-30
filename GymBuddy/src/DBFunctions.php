@@ -108,8 +108,10 @@ function constructUserObject($userData, $userSnapshots, $usersMeals, $usersWorko
         $date = $usersMeals[$i]['mealDate'];
         $caloriesIntake = $usersMeals[$i]['caloriesIntake'];
         $notes = $usersMeals[$i]['notes'];
+        $imageName = $usersMeals[$i]['imageName'];
+        $img_dir = $usersMeals[$i]['img_dir'];
 
-        $meal = new meal($mealID, $title, $date, $caloriesIntake, $notes);
+        $meal = new meal($mealID, $title, $date, $caloriesIntake, $notes, $imageName, $img_dir);
 
         array_push($mealsArray, $meal);
     }
