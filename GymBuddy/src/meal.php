@@ -10,10 +10,9 @@ class meal
     private $calorieIntake;
     private $notes;
     private $imageName;
-    private $img_dir;
 
 
-    function __construct($mealID, $title, $date, $calorieIntake, $notes, $imageName, $img_dir)
+    function __construct($mealID, $title, $date, $calorieIntake, $notes, $imageName)
     {
         $this->mealID = $mealID;
         $this->title = $title;
@@ -21,7 +20,6 @@ class meal
         $this->calorieIntake = $calorieIntake;
         $this->notes = $notes;
         $this->imageName = $imageName;
-        $this->img_dir = $img_dir;
     }
 
     /**
@@ -72,12 +70,5 @@ class meal
         return $this->imageName;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getImgDir()
-    {
-        return $this->img_dir;
-    }
 
 }

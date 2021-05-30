@@ -109,9 +109,8 @@ function constructUserObject($userData, $userSnapshots, $usersMeals, $usersWorko
         $caloriesIntake = $usersMeals[$i]['caloriesIntake'];
         $notes = $usersMeals[$i]['notes'];
         $imageName = $usersMeals[$i]['imageName'];
-        $img_dir = $usersMeals[$i]['img_dir'];
 
-        $meal = new meal($mealID, $title, $date, $caloriesIntake, $notes, $imageName, $img_dir);
+        $meal = new meal($mealID, $title, $date, $caloriesIntake, $notes, $imageName);
 
         array_push($mealsArray, $meal);
     }
@@ -339,9 +338,9 @@ function deleteExercise($exerciseID)
     $statement->execute();
 }
 
-function createMeal($userID, $title, $mealDate, $caloriesIntake, $notes, $imageName, $img_dir)
+function createMeal($userID, $title, $mealDate, $caloriesIntake, $notes, $imageName)
 {
-    $statement = getConnection()->prepare("CALL createMeal ('" . $userID . "','" . $title . "','" . $mealDate . "','" . $caloriesIntake . "','" . $notes . "','" . $imageName . "','" . $img_dir . "')");
+    $statement = getConnection()->prepare("CALL createMeal ('" . $userID . "','" . $title . "','" . $mealDate . "','" . $caloriesIntake . "','" . $notes . "','" . $imageName . "')");
     $statement->execute();
 }
 

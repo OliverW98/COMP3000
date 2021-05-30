@@ -40,10 +40,10 @@ if (isset($_POST['btnCreateMeal'])) {
         $failureOutputPara = "Your image size is too big.";
     } else {
         $fileNewName = uniqid('', true) . "." . $fileActualExt;
-        $fileDestination = $_SERVER['DOCUMENT_ROOT'] . '/COMP3000/Images/' . $fileNewName;
+        $fileDestination = '../Images/' . $fileNewName;
         move_uploaded_file($fileTmpName, $fileDestination);
 
-        createMeal($_SESSION['userID'], $_POST['titleInput'], $_POST['dateInput'], $_POST['caloriesInput'], $_POST['notesInput'], $fileNewName, $fileDestination);
+        createMeal($_SESSION['userID'], $_POST['titleInput'], $_POST['dateInput'], $_POST['caloriesInput'], $_POST['notesInput'], $fileNewName);
         $successOutputPara = "Meal has been recorded";
     }
 }
