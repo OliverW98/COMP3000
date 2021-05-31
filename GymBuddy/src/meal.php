@@ -69,6 +69,6 @@ class meal
     {
         return $this->imageName;
     }
-
+    
 
 }

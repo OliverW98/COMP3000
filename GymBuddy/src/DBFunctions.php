@@ -283,9 +283,9 @@ function editUserDetails($userID, $dob, $gender)
     $statement->execute();
 }
 
-function editMeal($mealID, $title, $mealDate, $caloriesIntake, $notes)
+function editMeal($mealID, $title, $mealDate, $caloriesIntake, $notes, $imageName)
 {
-    $statement = getConnection()->prepare("CALL editMeal ('" . $mealID . "','" . $title . "','" . $mealDate . "','" . $caloriesIntake . "','" . $notes . "')");
+    $statement = getConnection()->prepare("CALL editMeal ('" . $mealID . "','" . $title . "','" . $mealDate . "','" . $caloriesIntake . "','" . $notes . "','" . $imageName . "')");
     $statement->execute();
 }
 

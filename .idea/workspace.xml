@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/deleteWorkoutMealConfirmPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/deleteWorkoutMealConfirmPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/editMealPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/editMealPage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/src/meal.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/meal.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,14 +148,9 @@
       <workItem from="1622129969916" duration="4180000" />
       <workItem from="1622217622607" duration="3687000" />
       <workItem from="1622376423922" duration="7000" />
-      <workItem from="1622381939195" duration="2005000" />
-    </task>
-    <task id="LOCAL-00030" summary="data is loaded in boxs when changed">
-      <created>1611333358575</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1611333358575</updated>
+      <workItem from="1622381939195" duration="3535000" />
+      <workItem from="1622477096696" duration="737000" />
+      <workItem from="1622478029108" duration="5594000" />
     </task>
     <task id="LOCAL-00031" summary="added BFP and MMP to createUserPDPage.php">
       <created>1611491134673</created>
@@ -491,14 +488,20 @@
       <option name="project" value="LOCAL" />
       <updated>1622383479790</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="can delete meal with image">
+      <created>1622384010659</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1622384010659</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed Delete Activity page and can record a Meal without comment" />
     <MESSAGE value="can create a cardio workout without elevation and comment" />
     <MESSAGE value="can edit meal to have no comment" />
     <MESSAGE value="can edit workout to have no elevation and  comment" />
@@ -523,6 +526,7 @@
     <MESSAGE value="access meal image" />
     <MESSAGE value="dispaly image above meal" />
     <MESSAGE value="img_dir is no longer stored" />
-    <option name="LAST_COMMIT_MESSAGE" value="img_dir is no longer stored" />
+    <MESSAGE value="can delete meal with image" />
+    <option name="LAST_COMMIT_MESSAGE" value="can delete meal with image" />
   </component>
 </project>
