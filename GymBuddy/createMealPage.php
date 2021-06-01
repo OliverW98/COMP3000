@@ -32,18 +32,24 @@ if (isset($_POST['btnCreateMeal'])) {
         $failureOutputPara = "Calories cannot be negative";
     } elseif ($today < $mealDate) {
         $failureOutputPara = "Can't record a meal in the future";
-    } elseif (!in_array($fileActualExt, $allowedFiles)) {
-        $failureOutputPara = "Can't upload file of this type.";
-    } elseif ($fileError === 1) {
-        $failureOutputPara = "There was an error whilst uploading your image.";
-    } elseif ($fileSize > 10000) {
-        $failureOutputPara = "Your image size is too big.";
-    } else {
-        $fileNewName = uniqid('', true) . "." . $fileActualExt;
-        $fileDestination = '../Images/' . $fileNewName;
-        move_uploaded_file($fileTmpName, $fileDestination);
+    } elseif ($filename != "") {
+        if (!in_array($fileActualExt, $allowedFiles)) {
+            $failureOutputPara = "Can't upload file of this type.";
+        } elseif ($fileError === 1) {
+            $failureOutputPara = "There was an error whilst uploading your image.";
+        } elseif ($fileSize > 10000) {
+            $failureOutputPara = "Your image size is too big.";
+        } else {
+            $fileNewName = uniqid('', true) . "." . $fileActualExt;
+            $fileDestination = '../Images/' . $fileNewName;
+            move_uploaded_file($fileTmpName, $fileDestination);
 
-        createMeal($_SESSION['userID'], $_POST['titleInput'], $_POST['dateInput'], $_POST['caloriesInput'], $_POST['notesInput'], $fileNewName);
+            createMeal($_SESSION['userID'], $_POST['titleInput'], $_POST['dateInput'], $_POST['caloriesInput'], $_POST['notesInput'], $fileNewName);
+            $successOutputPara = "Meal has been recorded";
+        }
+    } else {
+
+        createMeal($_SESSION['userID'], $_POST['titleInput'], $_POST['dateInput'], $_POST['caloriesInput'], $_POST['notesInput'], null);
         $successOutputPara = "Meal has been recorded";
     }
 }
