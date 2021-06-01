@@ -19,9 +19,14 @@ if (isset($_POST['btnCancel'])) {
 }
 
 if (isset($_POST['btnDeleteImage'])) {
-    editMeal($meal->getMealID(), $meal->getTitle(), $meal->getDate(), $meal->getCalorieIntake(), $meal->getNotes(), null);
-    unlink('../Images/' . $meal->getImageName());
-    $mealImageName = "No_Image_Available.jpg";
+    if ($meal->getImageName() === "") {
+        $failureOutputPara = "No image to delete";
+    } else {
+        editMeal($meal->getMealID(), $meal->getTitle(), $meal->getDate(), $meal->getCalorieIntake(), $meal->getNotes(), null);
+        unlink('../Images/' . $meal->getImageName());
+        $meal->setImageName("");
+        $mealImageName = "No_Image_Available.jpg";
+    }
 }
 
 if (isset($_POST['btnEditMeal'])) {
@@ -42,11 +47,11 @@ if (isset($_POST['btnEditMeal'])) {
     $allowedFiles = array('jpg', 'jpeg', 'png');
 
     if (empty($_POST['titleInput']) || empty($_POST['dateInput']) || empty($_POST['caloriesInput'])) {
-        $failureOutputPara = "Required fields must be filled to edit a meal";
+        $failureOutputPara = "Required fields must be filled to edit a meal.";
     } elseif ($_POST['caloriesInput'] <= 0) {
-        $failureOutputPara = "Calories cannot be negative";
+        $failureOutputPara = "Calories cannot be negative.";
     } elseif ($today < $mealDate) {
-        $failureOutputPara = "Meal cannot occur in the future";
+        $failureOutputPara = "Meal cannot occur in the future.";
     } elseif ($filename != "") {
         if (!in_array($fileActualExt, $allowedFiles)) {
             $failureOutputPara = "Can't upload file of this type.";
@@ -54,17 +59,20 @@ if (isset($_POST['btnEditMeal'])) {
             $failureOutputPara = "There was an error whilst uploading your image.";
         } elseif ($fileSize > 10000) {
             $failureOutputPara = "Your image size is too big.";
-        }
-    } else {
-        $fileNewName = "";
-        if ($filename != "") {
+        } elseif ($meal->getImageName() != "") {
+            $failureOutputPara = "Meal already has a picture.";
+        } else {
             $fileNewName = uniqid('', true) . "." . $fileActualExt;
             $fileDestination = '../Images/' . $fileNewName;
             move_uploaded_file($fileTmpName, $fileDestination);
+            editMeal($meal->getMealID(), $_POST['titleInput'], $_POST['dateInput'], $_POST['caloriesInput'], $_POST['notesInput'], $fileNewName);
+            header("Location: index.php");
         }
-        editMeal($meal->getMealID(), $_POST['titleInput'], $_POST['dateInput'], $_POST['caloriesInput'], $_POST['notesInput'], $fileNewName);
+    } else {
+        editMeal($meal->getMealID(), $_POST['titleInput'], $_POST['dateInput'], $_POST['caloriesInput'], $_POST['notesInput'], $meal->getImageName());
         header("Location: index.php");
     }
+
 }
 
 
