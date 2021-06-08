@@ -24,7 +24,7 @@ if (isset($_POST['btnAddExercise'])) {
     $_SESSION['dateInput'] = $_POST['dateInput'];
     $_SESSION['durationInput'] = $_POST['durationInput'];
     $_SESSION['notesInput'] = $_POST['notesInput'];
-    header("Location: createExercisePage.php");
+    header("Location: selectExerciseType.php");
 }
 
 if (isset($_POST['btnCreateWorkout'])) {
@@ -35,7 +35,7 @@ if (isset($_POST['btnCreateWorkout'])) {
     if (empty($_POST['titleInput']) || empty($_POST['dateInput']) || empty($_POST['durationInput'])) {
         $outputPara = "Required fields must be filled to record a workout";
     } elseif (!isset($_SESSION['tempExerciseArray'])) {
-        $outputPara = "Workout must contain atleast one exercise";
+        $outputPara = "Workout must contain at least one exercise";
     } elseif ($today < $workoutDate) {
         $outputPara = "Can't record a workout in the future";
     } else {
@@ -100,7 +100,7 @@ if (isset($_POST['btnCreateWorkout'])) {
             <textarea class="form-control" name="notesInput" maxlength="300"
                       style="resize: none;height: 90px;"><?php echo $_SESSION['notesInput'] ?></textarea>
         </div>
-        <p class="text-center">A workout must contain atleast one exercise</p>
+        <p class="text-center">A workout must contain at least one exercise</p>
         <div>
             <table class="table" id="exerciseTable">
                 <thead class="thead-dark mt-3">

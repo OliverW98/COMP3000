@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/GymBuddy/selectExerciseType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/createMealPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createMealPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/createWeightsWorkoutPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createWeightsWorkoutPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/viewBodySnapshots.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewBodySnapshots.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/viewRunData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewRunData.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,14 +152,9 @@
       <workItem from="1622381939195" duration="3535000" />
       <workItem from="1622477096696" duration="737000" />
       <workItem from="1622478029108" duration="5682000" />
-      <workItem from="1622532969245" duration="2128000" />
-    </task>
-    <task id="LOCAL-00033" summary="added BFP And MMP to createUserConfirmPage.php">
-      <created>1611492041713</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1611492041713</updated>
+      <workItem from="1622532969245" duration="2280000" />
+      <workItem from="1622645403538" duration="3349000" />
+      <workItem from="1623144374069" duration="3108000" />
     </task>
     <task id="LOCAL-00034" summary="view body snap shot page basic graph">
       <created>1611674668591</created>
@@ -493,14 +492,20 @@
       <option name="project" value="LOCAL" />
       <updated>1622534874433</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="image is no longer required for meals">
+      <created>1622535240045</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1622535240046</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="can edit workout to have no elevation and  comment" />
     <MESSAGE value="fixed index card duration display" />
     <MESSAGE value="create pages now have cancel buttons" />
     <MESSAGE value="spell check" />
@@ -525,6 +530,7 @@
     <MESSAGE value="can delete meal with image" />
     <MESSAGE value="basic edit meal image" />
     <MESSAGE value="complete edit meal image" />
-    <option name="LAST_COMMIT_MESSAGE" value="complete edit meal image" />
+    <MESSAGE value="image is no longer required for meals" />
+    <option name="LAST_COMMIT_MESSAGE" value="image is no longer required for meals" />
   </component>
 </project>

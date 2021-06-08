@@ -14,7 +14,6 @@ if (isset($_POST['btnFindYear'])) {
     } else {
         $user = getUserWithYear($_SESSION['userID'], $_POST['selectYear']);
         $snapshotCount = 0;
-        //  var_dump($user);
         foreach ($user->getSnapshots() as $snapshots) {
             $snapshotCount++;
         }
@@ -319,7 +318,7 @@ function predictionMessage($avgCalsADay, $avgBurntCalsADay, $avgActivitiesAWeek,
     } elseif ($calsTotal < 0) {
         echo " lose <b>" . round(abs(($calsTotal) / 500) * 2, 1) . "</b> Kgs ";
     }
-    echo 'for the next month.</p>';
+    echo 'for the next 30 days.</p>';
 }
 
 

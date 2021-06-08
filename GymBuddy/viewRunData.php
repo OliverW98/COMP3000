@@ -3,11 +3,9 @@
 include $_SERVER['DOCUMENT_ROOT'] . "/COMP3000/GymBuddy/src/DBFunctions.php";
 include_once 'header.php';
 
-
 $failureOutputPara = "";
 $numOfRunsToDislay = 2;
 $totalRuns = $totalDis = $totalDurMins = $avDis = $avDur = $avSpeed = $avCals = $count = 0;
-
 
 if (isset($_POST['btnShowRuns'])) {
     if (!empty($_POST['numOfRuns'])) {
@@ -24,11 +22,13 @@ if (isset($_POST['btnShowRuns'])) {
             $runWorkouts = getRunWorkouts($user);
             $runDatesPrediction = runDatesPrediction($runWorkouts, $numOfRunsToDislay);
             $runDates = getRunDates($runWorkouts, $numOfRunsToDislay);
+
             $averageSpeeds = getRunSpeeds($runWorkouts, $numOfRunsToDislay);
             $distanceRun = getRunDistances($runWorkouts, $numOfRunsToDislay);
             $runsAMonth = runsAMonth($runWorkouts);
             $totalDis = getTotalDistanceRun($runWorkouts);
             $totalDurMins = getTotalDurationRun($runWorkouts);
+
             $avSpeed = getAverageSpeed($runWorkouts);
             $avDis = getAverageDistanceRun($runWorkouts);
             $avDur = getAverageDurationRun($runWorkouts);

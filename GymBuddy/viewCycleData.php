@@ -3,13 +3,12 @@
 include $_SERVER['DOCUMENT_ROOT'] . "/COMP3000/GymBuddy/src/DBFunctions.php";
 include_once 'header.php';
 
-
 $failureOutputPara = "";
 $numOfCyclesToDislay = 2;
 $totalDis = $totalDurMins = $totalSpeed = $totalWatts = $totalCals = $avDis = $avDur = $avSpeed = $avWatts = $avCals = $totalCycles = $count = 0;
 
 if (isset($_POST['btnShowCycles'])) {
-    if (!empty($_POST['numOfRuns'])) {
+    if (!empty($_POST['numOfCycles'])) {
         $currentDate = new DateTime();
         $user = getUserWithYear($_SESSION['userID'], $currentDate->format("Y"));
         $numOfCyclesToDislay = $_POST['numOfCycles'];
@@ -20,7 +19,6 @@ if (isset($_POST['btnShowCycles'])) {
             }
         }
         if ($count > 0) {
-            // do all the stuff
             $cycleWorkouts = getCycleWorkouts($user);
             $cycleDatesPrediction = cycleDatesPrediction($cycleWorkouts, $numOfCyclesToDislay);
             $cycleDates = getCycleDates($cycleWorkouts, $numOfCyclesToDislay);
