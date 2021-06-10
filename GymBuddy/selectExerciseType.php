@@ -4,6 +4,7 @@ include $_SERVER['DOCUMENT_ROOT'] . "/COMP3000/GymBuddy/src/DBFunctions.php";
 include_once 'header.php';
 
 $outputPara = "";
+$_SESSION['muscleGroup'] = "";
 
 if (isset($_POST['btnBack'])) {
     header("Location: createWeightsWorkoutPage.php");
@@ -28,7 +29,7 @@ if (isset($_POST['btnNext'])) {
 </head>
 <body>
 <div class="container">
-    <p class="text-center mt-5">Choose Muscle Group</p>
+    <p class="text-center mt-5">Choose A Muscle Group</p>
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
 
         <div class="input-group mb-3">
@@ -38,8 +39,8 @@ if (isset($_POST['btnNext'])) {
             <select class="form-control" name="selMuscleGroup" type="text">
                 <option>Choose Muscle Group...</option>
                 <option>Chest</option>
-                <option>Back</option>
                 <option>Legs</option>
+                <option>Back</option>
                 <option>Arms</option>
                 <option>Shoulders</option>
                 <option>Core</option>

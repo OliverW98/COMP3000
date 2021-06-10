@@ -42,9 +42,35 @@ if (isset($_POST['btnAddExercise'])) {
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="nameInput">Name</label>
+                <label class="input-group-text text-light bg-dark" for="nameInput">Exercise</label>
             </div>
-            <input class="form-control" name="nameInput" type="text">
+            <select class="form-control" name="nameInput" type="text">
+                <?php
+                if ($_SESSION['muscleGroup'] === "Chest") {
+                    echo '<option>Barbell Bench Press</option>';
+                    echo '<option>Dumbbell Bench Press</option>';
+                    echo '<option>Incline Bench Press</option>';
+                    echo '<option>Decline Press</option>';
+                    echo '<option>Machine Chest Press</option>';
+                    echo '<option>Chest Fly</option>';
+                    echo '<option>Push Up</option>';
+                } elseif ($_SESSION['muscleGroup'] === "Legs") {
+                    echo '<option>Squat</option>';
+                    echo '<option>Lunges</option>';
+
+                } elseif ($_SESSION['muscleGroup'] === "Back") {
+                    echo '<option>Deadlift</option>';
+                    echo '<option>Row</option>';
+                    echo '<option>Lat Pull Down</option>';
+                } elseif ($_SESSION['muscleGroup'] === "Arms") {
+                    echo '<option>Arms</option>';
+                } elseif ($_SESSION['muscleGroup'] === "Shoulders") {
+                    echo '<option>Shoulders</option>';
+                } elseif ($_SESSION['muscleGroup'] === "Core") {
+                    echo '<option>Core</option>';
+                }
+                ?>
+            </select>
         </div>
 
         <div class="input-group mb-3">

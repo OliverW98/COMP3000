@@ -8,6 +8,7 @@ unset($_SESSION['titleInput']);
 unset($_SESSION['dateInput']);
 unset($_SESSION['durationInput']);
 unset($_SESSION['notesInput']);
+unset($_SESSION['muscleGroup']);
 
 //creating a user
 unset($_SESSION['userName']);
