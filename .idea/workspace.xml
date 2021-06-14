@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/GymBuddy/viewWeightsWorkoutData.php" afterDir="false" />
+    <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="basic exercise stats page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/src/weights.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/weights.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/viewWeightsWorkoutData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewWeightsWorkoutData.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,14 +154,9 @@
       <workItem from="1623144374069" duration="3108000" />
       <workItem from="1623149588001" duration="50000" />
       <workItem from="1623314745253" duration="1539000" />
-      <workItem from="1623331731432" duration="3997000" />
-    </task>
-    <task id="LOCAL-00036" summary="complete view bod snapshot page">
-      <created>1611835973008</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1611835973008</updated>
+      <workItem from="1623331731432" duration="4034000" />
+      <workItem from="1623501437560" duration="2249000" />
+      <workItem from="1623677287251" duration="4090000" />
     </task>
     <task id="LOCAL-00037" summary="Cycle basic trend shown">
       <created>1612357895134</created>
@@ -500,15 +494,20 @@
       <option name="project" value="LOCAL" />
       <updated>1623316285323</updated>
     </task>
-    <option name="localTasksCounter" value="85" />
+    <task id="LOCAL-00085" summary="basic exercise stats page">
+      <created>1623336177932</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1623336177933</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="spell check" />
-    <MESSAGE value="can create weights workout without comment" />
     <MESSAGE value="can edit weight workout to have not comment and must have 1 exercise" />
     <MESSAGE value="edit page now have red themed cancel buttons" />
     <MESSAGE value="fixed no activities last month bug" />
@@ -532,6 +531,8 @@
     <MESSAGE value="image is no longer required for meals" />
     <MESSAGE value="select exercise type page" />
     <MESSAGE value="adding exercises" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding exercises" />
+    <MESSAGE value="basic exercise page" />
+    <MESSAGE value="basic exercise stats page" />
+    <option name="LAST_COMMIT_MESSAGE" value="basic exercise stats page" />
   </component>
 </project>

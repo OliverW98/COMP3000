@@ -4,13 +4,13 @@ include $_SERVER['DOCUMENT_ROOT'] . "/COMP3000/GymBuddy/src/DBFunctions.php";
 include_once 'header.php';
 
 $failureOutputPara = "";
-
+$count = $maxLift = $totalExercises = $avgLifted = $avgReps = 0;
 if (isset($_POST['btnShowExercise'])) {
     if ($_POST['selExercise'] === "Select an Exercise...") {
         $failureOutputPara = "Please select a Exercise.";
     } else {
         $currentDate = new DateTime();
-        $user = getUser($_SESSION['userID'], $currentDate->format("Y"));
+        $user = getUser($_SESSION['userID']);
         $count = 0;
         foreach ($user->getWorkouts() as $workout) {
             if (get_class($workout) == "weights") {
@@ -24,6 +24,11 @@ if (isset($_POST['btnShowExercise'])) {
                 // complete if there are exercises
                 $exerciseDates = getExerciseDates($weightWorkouts, $_POST['selExercise']);
                 $exerciseWeights = getExerciseWeights($selectedExercises);
+                $predictionLine = getPredictionLine($selectedExercises);
+                $totalExercises = count($selectedExercises);
+                $maxLift = getMaxLift($selectedExercises);
+                $avgLifted = getAverageLifted($selectedExercises);
+                $avgReps = getAverageReps($selectedExercises);
             } else {
                 $failureOutputPara = "No exercise of this type are recorded.";
             }
@@ -56,6 +61,7 @@ function getExerciseDates($weightWorkouts, $exerciseToFind)
             }
         }
     }
+    array_push($Dates, "Predicted Heaviest Lift");
     return $Dates;
 }
 
@@ -84,6 +90,67 @@ function getExerciseWeights($selectedExercises)
     return $weights;
 }
 
+function getPredictionLine($selectedExercises)
+{
+    $weights = array();
+
+    foreach ($selectedExercises as $ex) {
+        array_push($weights, $ex->getWeight());
+    }
+    $heaviestLift = getNon1RepMaxLiftExercise($selectedExercises);
+    $prediction = getPrediction($heaviestLift);
+    array_push($weights, $prediction);
+    return $weights;
+}
+
+function getPrediction($heaviestLift)
+{
+    $x = $heaviestLift->getReps() * 2.5;
+    $y = (100 - $x) / 100;
+    return round($heaviestLift->getWeight() / $y);;
+}
+
+function getMaxLift($selectedExercises)
+{
+    $max = 0;
+    foreach ($selectedExercises as $ex) {
+        if (intval($ex->getWeight()) >= $max) {
+
+            $max = intval($ex->getWeight());
+        }
+    }
+    return $max;
+}
+
+function getNon1RepMaxLiftExercise($selectedExercises)
+{
+    $exercise = $max = 0;
+    foreach ($selectedExercises as $ex) {
+        if (intval($ex->getWeight()) >= $max && intval($ex->getReps()) > 1) {
+            $max = intval($ex->getWeight());
+            $exercise = $ex;
+        }
+    }
+    return $exercise;
+}
+
+function getAverageLifted($selectedExercises)
+{
+    $weightTotal = 0;
+    foreach ($selectedExercises as $ex) {
+        $weightTotal = $weightTotal + intval($ex->getWeight());
+    }
+    return $weightTotal / count($selectedExercises);
+}
+
+function getAverageReps($selectedExercises)
+{
+    $repsTotal = 0;
+    foreach ($selectedExercises as $ex) {
+        $repsTotal = $repsTotal + intval($ex->getReps());
+    }
+    return $repsTotal / count($selectedExercises);
+}
 
 ?>
 <html lang="en">
@@ -115,6 +182,40 @@ function getExerciseWeights($selectedExercises)
     </form>
     <p class="text-center text-danger"><?php echo $failureOutputPara ?></p>
     <canvas id="exerciseWeightChart" width="200" height=75"></canvas>
+    <?php
+    if ($count > 0) {
+
+        echo '<p class="text-center">To create the prediction your heaviest non one rep max lift is used, as it allows for the most accurate result.</p>';
+
+        echo '<p class="text-center"> With the ';
+        $lift = getNon1RepMaxLiftExercise($selectedExercises);
+        if ($lift->getReps() <= 4) {
+            echo 'low amount of reps of <b>' . $lift->getReps() . '</b> ';
+        } elseif ($lift->getReps() >= 5 && $lift->getReps() <= 8) {
+            echo 'medium amount of reps of <b> ' . $lift->getReps() . '</b> ';
+        } else {
+            echo 'high amount of reps of  <b>' . $lift->getReps() . '</b> ';
+        }
+        echo 'and the weight of  <b>' . $lift->getWeight() . '</b> kg, ';
+
+        echo 'your predicted one rep maximum lift for ' . $_POST['selExercise'] . ' is <b>' . getPrediction($lift) . '</b> kg </p>';
+    }
+
+
+    ?>
+
+    <div class="row">
+        <div class="col-sm-6 mt-5">
+            <h4 class="text-center">Exercise Totals</h4>
+            <p>Heaviest lift : <?php echo $maxLift ?> kg </p>
+            <p>Exercise Performed : <?php echo $totalExercises ?> times</p>
+        </div>
+        <div class="col-sm-6 mt-5">
+            <h4 class="text-center">Exercise Averages</h4>
+            <p>Average Lifted : <?php echo round($avgLifted) ?> kg </p>
+            <p>Average Number of Reps : <?php echo round($avgReps) ?></p>
+        </div>
+    </div>
 </div>
 </body>
 </html>
@@ -125,9 +226,11 @@ function getExerciseWeights($selectedExercises)
     $js_array = json_encode($exerciseWeights);
     echo "let exerciseWeights = " . $js_array . ";\n";
 
-
     $js_array = json_encode($exerciseDates);
     echo "let exerciseDates = " . $js_array . ";\n";
+
+    $js_array = json_encode($predictionLine);
+    echo "let predictionLine = " . $js_array . ";\n";
 
     ?>
 
@@ -142,7 +245,16 @@ function getExerciseWeights($selectedExercises)
                 fill: false,
                 borderColor: 'navy',
                 borderWidth: 2,
+                showLine: false,
                 pointRadius: 4
+            }, {
+                label: '1 Rep Max',
+                data: predictionLine,
+                fill: false,
+                borderColor: 'green',
+                borderWidth: 2,
+                pointRadius: 0,
+                pointHitRadius: 0
             }]
         },
         options: {
@@ -153,6 +265,19 @@ function getExerciseWeights($selectedExercises)
                     }
                 }]
             }
+        }, annotation: {
+            annotations: [{
+                type: 'line',
+                mode: 'horizontal',
+                scaleID: 'y-axis-0',
+                value: 5,
+                borderColor: 'rgb(75, 192, 192)',
+                borderWidth: 4,
+                label: {
+                    enabled: false,
+                    content: 'Test label'
+                }
+            }]
         }
     });
 </script>

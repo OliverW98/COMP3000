@@ -249,7 +249,7 @@ function trendlineMessage($trendline)
     <canvas id="RidePerMonth" width="200" height=100"></canvas>
     <div class="row">
         <div class="col-sm-6 mt-5">
-            <h4 class="text-center"> Year Totals</h4>
+            <h4 class="text-center">Year Totals</h4>
             <P>Number of Rides : <?php echo $totalCycles ?></P>
             <p>Distance : <?php echo round($totalDis / 1000, 1) ?> Km</p>
             <P>Duration
