@@ -57,17 +57,45 @@ if (isset($_POST['btnAddExercise'])) {
                 } elseif ($_SESSION['muscleGroup'] === "Legs") {
                     echo '<option>Squat</option>';
                     echo '<option>Lunges</option>';
-
+                    echo '<option>Romanian Deadlift</option>';
+                    echo '<option>Goblet Squat</option>';
+                    echo '<option>Hip Thruster</option>';
+                    echo '<option>Single Leg Curl</option>';
+                    echo '<option>Leg Extension</option>';
                 } elseif ($_SESSION['muscleGroup'] === "Back") {
                     echo '<option>Deadlift</option>';
                     echo '<option>Row</option>';
-                    echo '<option>Lat Pull Down</option>';
+                    echo '<option>Barbell Bent-Over Row</option>';
+                    echo '<option>Dumbbell Single-arm Row</option>';
+                    echo '<option>Chest-supported Dumbbell Row</option>';
+                    echo '<option>Kettlebell Swings</option>';
                 } elseif ($_SESSION['muscleGroup'] === "Arms") {
-                    echo '<option>Arms</option>';
+                    echo '<option>Incline Bicep Curl</option>';
+                    echo '<option>Concentration Curl</option>';
+                    echo '<option>Twisting Dumbbell Curl</option>';
+                    echo '<option>Reverse Curl Straight Bar</option>';
+                    echo '<option>Diamond Press-up</option>';
+                    echo '<option>One Arm Tricep Extension</option>';
+                    echo '<option>Skullcrusher</option>';
+                    echo '<option>Close-grip Bench Press</option>';
+                    echo '<option>Barbell Palms-up Wrist Curl</option>';
+                    echo '<option>Barbell Palms-down Wrist Curl</option>';
                 } elseif ($_SESSION['muscleGroup'] === "Shoulders") {
-                    echo '<option>Shoulders</option>';
+                    echo '<option>Barbell Standing Press</option>';
+                    echo '<option>Seated Dumbbell Press</option>';
+                    echo '<option>Arnold Press</option>';
+                    echo '<option>Lateral Raise</option>';
+                    echo '<option>Upright Row</option>';
+                    echo '<option>Kettlebell Single-Arm Press</option>';
+                    echo '<option>Front Raises</option>';
+                    echo '<option>Military Press</option>';
                 } elseif ($_SESSION['muscleGroup'] === "Core") {
-                    echo '<option>Core</option>';
+                    echo '<option>Plank</option>';
+                    echo '<option>Butterfly Sit-up</option>';
+                    echo '<option>Dead Bug</option>';
+                    echo '<option>Flutter kicks</option>';
+                    echo '<option>Leg raise</option>';
+                    echo '<option>Bird-dog</option>';
                 }
                 ?>
             </select>
