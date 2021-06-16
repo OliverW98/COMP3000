@@ -169,8 +169,22 @@ function getAverageReps($selectedExercises)
                     <select class="form-control" name="selExercise">
                         <option>Select an Exercise...</option>
                         <option>Barbell Bench Press</option>
+                        <option>Dumbbell Bench Press</option>
+                        <option>Incline Bench Press</option>
                         <option>Squat</option>
+                        <option>Single Leg Curl</option>
+                        <option>Leg Extension</option>
                         <option>Deadlift</option>
+                        <option>Row</option>
+                        <option>Barbell Bent-Over Row</option>
+                        <option>Dumbbell Single-arm Row</option>
+                        <option>Incline Bicep Curl</option>
+                        <option>Concentration Curl</option>
+                        <option>One Arm Tricep Extension</option>
+                        <option>Skullcrusher</option>
+                        <option>Military Press</option>
+                        <option>Barbell Standing Press</option>
+                        <option>Seated Dumbbell Press</option>
                     </select>
                     <div class="input-group-append">
                         <button class="btn btn-success" name="btnShowExercise" type="submit">Show</button>

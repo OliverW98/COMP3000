@@ -53,7 +53,6 @@ if (isset($_POST['btnAddExercise'])) {
                     echo '<option>Decline Press</option>';
                     echo '<option>Machine Chest Press</option>';
                     echo '<option>Chest Fly</option>';
-                    echo '<option>Push Up</option>';
                 } elseif ($_SESSION['muscleGroup'] === "Legs") {
                     echo '<option>Squat</option>';
                     echo '<option>Lunges</option>';
@@ -74,7 +73,6 @@ if (isset($_POST['btnAddExercise'])) {
                     echo '<option>Concentration Curl</option>';
                     echo '<option>Twisting Dumbbell Curl</option>';
                     echo '<option>Reverse Curl Straight Bar</option>';
-                    echo '<option>Diamond Press-up</option>';
                     echo '<option>One Arm Tricep Extension</option>';
                     echo '<option>Skullcrusher</option>';
                     echo '<option>Close-grip Bench Press</option>';

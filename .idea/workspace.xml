@@ -4,6 +4,7 @@
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/createExercisePage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createExercisePage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/viewWeightsWorkoutData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewWeightsWorkoutData.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,14 +157,7 @@
       <workItem from="1623331731432" duration="4034000" />
       <workItem from="1623501437560" duration="2249000" />
       <workItem from="1623677287251" duration="4194000" />
-      <workItem from="1623830352457" duration="1040000" />
-    </task>
-    <task id="LOCAL-00038" summary="cycle show basic prediction">
-      <created>1612446704402</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1612446704402</updated>
+      <workItem from="1623830352457" duration="1595000" />
     </task>
     <task id="LOCAL-00039" summary="run show basic prediction">
       <created>1612447509262</created>
@@ -501,14 +495,20 @@
       <option name="project" value="LOCAL" />
       <updated>1623681508792</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="exercises names added">
+      <created>1623831812229</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1623831812229</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="edit page now have red themed cancel buttons" />
     <MESSAGE value="fixed no activities last month bug" />
     <MESSAGE value="fixed trendline" />
     <MESSAGE value="fixed snapshot prediction" />
@@ -533,6 +533,7 @@
     <MESSAGE value="basic exercise page" />
     <MESSAGE value="basic exercise stats page" />
     <MESSAGE value="totals and average for exercises. predcition messages. cleaned up functions." />
-    <option name="LAST_COMMIT_MESSAGE" value="totals and average for exercises. predcition messages. cleaned up functions." />
+    <MESSAGE value="exercises names added" />
+    <option name="LAST_COMMIT_MESSAGE" value="exercises names added" />
   </component>
 </project>
