@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/GymBuddy/viewGoals.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/createExercisePage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createExercisePage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/viewWeightsWorkoutData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewWeightsWorkoutData.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -157,14 +157,8 @@
       <workItem from="1623331731432" duration="4034000" />
       <workItem from="1623501437560" duration="2249000" />
       <workItem from="1623677287251" duration="4194000" />
-      <workItem from="1623830352457" duration="1595000" />
-    </task>
-    <task id="LOCAL-00039" summary="run show basic prediction">
-      <created>1612447509262</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1612447509262</updated>
+      <workItem from="1623830352457" duration="1796000" />
+      <workItem from="1623919474525" duration="409000" />
     </task>
     <task id="LOCAL-00040" summary="predicted further into the future and displayed small message">
       <created>1612615931239</created>
@@ -502,14 +496,20 @@
       <option name="project" value="LOCAL" />
       <updated>1623831812229</updated>
     </task>
-    <option name="localTasksCounter" value="88" />
+    <task id="LOCAL-00088" summary="exercises names added 2">
+      <created>1623832112560</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1623832112560</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed no activities last month bug" />
     <MESSAGE value="fixed trendline" />
     <MESSAGE value="fixed snapshot prediction" />
     <MESSAGE value="spaceing" />
@@ -534,6 +534,7 @@
     <MESSAGE value="basic exercise stats page" />
     <MESSAGE value="totals and average for exercises. predcition messages. cleaned up functions." />
     <MESSAGE value="exercises names added" />
-    <option name="LAST_COMMIT_MESSAGE" value="exercises names added" />
+    <MESSAGE value="exercises names added 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="exercises names added 2" />
   </component>
 </project>
