@@ -8,6 +8,7 @@ include_once('weights.php');
 include_once('cycle.php');
 include_once('run.php');
 include_once('exercise.php');
+include_once('goal.php');
 
 const DB_SERVER = "Proj-mysql.uopnet.plymouth.ac.uk";
 const DB_USER = "COMP3000_OWilkes";
@@ -67,7 +68,9 @@ function getUserWithYear($userID, $year)
 
     $usersWorkouts = getUsersWorkoutsByYear($userID, $year);
 
-    $user = constructUserObject($userData, $userSnapshots, $usersMeals, $usersWorkouts);
+    $usersGoals = getUsersGoals($userID);
+
+    $user = constructUserObject($userData, $userSnapshots, $usersMeals, $usersWorkouts, $usersGoals);
 
     $userCurrentSnapshot = $user->getSnapshots();
     if (count($user->getSnapshots()) > 0) {
@@ -164,10 +167,10 @@ function constructUserObject($userData, $userSnapshots, $usersMeals, $usersWorko
     }
 
     for ($i = 0; $i < count($usersGoals); $i++) {
-        $goalID = $usersMeals[$i]['mealID'];
-        $type = $usersMeals[$i]['title'];
-        $title = $usersMeals[$i]['mealDate'];
-        $value = $usersMeals[$i]['caloriesIntake'];
+        $goalID = $usersGoals[$i]['goalID'];
+        $type = $usersGoals[$i]['goalType'];
+        $title = $usersGoals[$i]['goalTitle'];
+        $value = $usersGoals[$i]['goalValue'];
 
         $goal = new goal($goalID, $type, $title, $value);
 
@@ -322,6 +325,13 @@ function editWorkout($workoutID, $title, $date, $duration, $distance, $elevation
     $statement->execute();
 }
 
+function editGoal($goalID, $value)
+{
+    $statement = getConnection()->prepare("CALL editGoal ('" . $goalID . "','" . $value . "')");
+    $statement->execute();
+}
+
+
 function deleteUserDetails($userID)
 {
     $statement = getConnection()->prepare("CALL deleteUserDetails ('" . $userID . "')");
@@ -359,6 +369,12 @@ function deleteExercise($exerciseID)
     $statement->execute();
 }
 
+function deleteGoal($goalID)
+{
+    $statement = getConnection()->prepare("CALL deleteGoal ('" . $goalID . "')");
+    $statement->execute();
+}
+
 function createMeal($userID, $title, $mealDate, $caloriesIntake, $notes, $imageName)
 {
     $statement = getConnection()->prepare("CALL createMeal ('" . $userID . "','" . $title . "','" . $mealDate . "','" . $caloriesIntake . "','" . $notes . "','" . $imageName . "')");
@@ -379,6 +395,6 @@ function createWorkout($userID, $type, $title, $date, $duration, $distance, $ele
 
 function createGoal($userID, $type, $title, $value)
 {
-    $statement = getConnection()->prepare("CALL createWorkout ('" . $userID . "','" . $type . "','" . $title . "','" . $value . "')");
+    $statement = getConnection()->prepare("CALL createGoal ('" . $userID . "','" . $type . "','" . $title . "','" . $value . "')");
     $statement->execute();
 }

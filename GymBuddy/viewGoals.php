@@ -4,17 +4,46 @@ include $_SERVER['DOCUMENT_ROOT'] . "/COMP3000/GymBuddy/src/DBFunctions.php";
 include_once 'header.php';
 
 $user = getUser($_SESSION['userID']);
-$failureOutputPara = "";
+$userGoals = $user->getGoals();
 
-if (isset($_POST['btnShowExercise'])) {
-    if ($_POST['selExercise'] === "Select an Exercise...") {
-        $failureOutputPara = "Please select a Exercise.";
+$failureOutputPara = "";
+$averageSpeedGoal = 0;
+
+var_dump($user->getGoals());
+
+foreach ($userGoals as $goal) {
+    if ($goal->getType() === "0") {
+        $averageSpeedGoal = $goal->getValue();
     }
 }
 
 if (isset($_POST['btnSetCycleGoal'])) {
-    createGoal($_SESSION['userID'], 1, 'averageSpeed', $_POST['cycleGoal']);
 
+    if (count($userGoals) === 0) {
+        createGoal($_SESSION['userID'], 0, "averageSpeed", $_POST['cycleGoal']);
+    } else {
+        foreach ($userGoals as $goal) {
+            var_dump("pog");
+            if ($goal->getType() === "0") {
+                editGoal($goal->getGoalID(), $_POST['cycleGoal']);
+            } else {
+                createGoal($_SESSION['userID'], 0, "averageSpeed", $_POST['cycleGoal']);
+            }
+        }
+    }
+    header("Refresh:0");
+}
+
+if (isset($_POST['btnDeleteCycleGoal'])) {
+
+    $goalID = 0;
+    foreach ($userGoals as $goal) {
+        if ($goal->getType() === "0") {
+            $goalID = $goal->getGoalID();
+        }
+    }
+    deleteGoal($goalID);
+    header("Refresh:0");
 }
 
 
@@ -28,70 +57,72 @@ if (isset($_POST['btnSetCycleGoal'])) {
 <div class="container">
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
         <h4 class="text-center mt-3">Select the exercise you would like to see.</h4>
+
+
+        <p class="text-center text-danger"><?php echo $failureOutputPara ?></p>
+
         <div class="row">
+            <div class="col"></div>
+            <div class="col-sm-5">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="cycleGoal">Speed</label>
+                    </div>
+                    <input class="form-control" type="number" min="0" value="<?php echo $averageSpeedGoal ?>"
+                           name="cycleGoal">
+                    <div class="input-group-append">
+                        <label class="input-group-text" for="cycleGoal">Km/s</label>
+                        <button class="btn btn-success" name="btnSetCycleGoal" type="submit">Set</button>
+                        <button class="btn btn-danger" name="btnDeleteCycleGoal" type="submit">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
         </div>
+        <canvas id="cycleAverageSpeedChart" width="200" height=75"></canvas>
+
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-sm-5">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Options</label>
+                    </div>
+                    <input type="number" name="789789">
+                    <div class="input-group-append">
+                        <button class="btn btn-warning" name="btnEditExercises" type="submit">Edit</button>
+                        <button class="btn btn-danger" name="btnDeleteExercises" type="submit">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+        <canvas id="exerciseWeight" width="200" height=75"></canvas>
+
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-sm-5">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Options</label>
+                    </div>
+                    <input type="number" name="cyc789789789leGoal">
+                    <div class="input-group-append">
+                        <button class="btn btn-warning" name="btnEditExercises" type="submit">Edit</button>
+                        <button class="btn btn-danger" name="btnDeleteExercises" type="submit">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+        <canvas id="exercise" width="200" height=75"></canvas>
     </form>
-    <p class="text-center text-danger"><?php echo $failureOutputPara ?></p>
-
-    <div class="row">
-        <div class="col"></div>
-        <div class="col-sm-5">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="cycleGoal">Speed</label>
-                </div>
-                <input type="number" min="0" name="cycleGoal">
-                <div class="input-group-append">
-                    <button class="btn btn-success" name="btnSetCycleGoal" type="submit">Set</button>
-                    <button class="btn btn-danger" name="btnDeleteCycleGoa" type="submit">Delete</button>
-                </div>
-            </div>
-        </div>
-        <div class="col"></div>
-    </div>
-    <canvas id="exerciseWeightChart" width="200" height=75"></canvas>
-
-    <div class="row">
-        <div class="col"></div>
-        <div class="col-sm-5">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01">Options</label>
-                </div>
-                <input type="number" name="cycleGoal">
-                <div class="input-group-append">
-                    <button class="btn btn-warning" name="btnEditExercises" type="submit">Edit</button>
-                    <button class="btn btn-danger" name="btnDeleteExercises" type="submit">Delete</button>
-                </div>
-            </div>
-        </div>
-        <div class="col"></div>
-    </div>
-    <canvas id="exerciseWeight" width="200" height=75"></canvas>
-
-    <div class="row">
-        <div class="col"></div>
-        <div class="col-sm-5">
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01">Options</label>
-                </div>
-                <input type="number" name="cycleGoal">
-                <div class="input-group-append">
-                    <button class="btn btn-warning" name="btnEditExercises" type="submit">Edit</button>
-                    <button class="btn btn-danger" name="btnDeleteExercises" type="submit">Delete</button>
-                </div>
-            </div>
-        </div>
-        <div class="col"></div>
-    </div>
-    <canvas id="exercise" width="200" height=75"></canvas>
 </div>
 </body>
 </html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 <script>
-    var ctx = document.getElementById('exerciseWeightChart').getContext('2d');
+    var ctx = document.getElementById('cycleAverageSpeedChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
