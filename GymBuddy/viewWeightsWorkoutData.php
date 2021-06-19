@@ -5,6 +5,7 @@ include_once 'header.php';
 
 $failureOutputPara = "";
 $count = $maxLift = $totalExercises = $avgLifted = $avgReps = 0;
+$selectedExercises = array();
 if (isset($_POST['btnShowExercise'])) {
     if ($_POST['selExercise'] === "Select an Exercise...") {
         $failureOutputPara = "Please select a Exercise.";
@@ -197,7 +198,7 @@ function getAverageReps($selectedExercises)
     <p class="text-center text-danger"><?php echo $failureOutputPara ?></p>
     <canvas id="exerciseWeightChart" width="200" height=75"></canvas>
     <?php
-    if ($count > 0) {
+    if (count($selectedExercises) > 0) {
 
         echo '<p class="text-center">To create the prediction your heaviest non one rep max lift is used, as it allows for the most accurate result.</p>';
 

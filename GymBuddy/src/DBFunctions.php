@@ -38,7 +38,9 @@ function getUser($userID)
 
     $usersWorkouts = getUsersWorkouts($userID);
 
-    $user = constructUserObject($userData, $userSnapshots, $usersMeals, $usersWorkouts);
+    $usersGoals = getUsersGoals($userID);
+
+    $user = constructUserObject($userData, $userSnapshots, $usersMeals, $usersWorkouts, $usersGoals);
 
     $userCurrentSnapshot = $user->getSnapshots();
     if (count($user->getSnapshots()) > 0) {
@@ -81,11 +83,12 @@ function getUserWithYear($userID, $year)
 }
 
 
-function constructUserObject($userData, $userSnapshots, $usersMeals, $usersWorkouts)
+function constructUserObject($userData, $userSnapshots, $usersMeals, $usersWorkouts, $usersGoals)
 {
     $snapshotArray = array();
     $mealsArray = array();
     $workoutsArray = array();
+    $goalArray = array();
 
 
     for ($i = 0; $i < count($userSnapshots); $i++) {
@@ -160,6 +163,17 @@ function constructUserObject($userData, $userSnapshots, $usersMeals, $usersWorko
         }
     }
 
+    for ($i = 0; $i < count($usersGoals); $i++) {
+        $goalID = $usersMeals[$i]['mealID'];
+        $type = $usersMeals[$i]['title'];
+        $title = $usersMeals[$i]['mealDate'];
+        $value = $usersMeals[$i]['caloriesIntake'];
+
+        $goal = new goal($goalID, $type, $title, $value);
+
+        array_push($goalArray, $goal);
+    }
+
 
     for ($i = 0; $i < count($userData); $i++) {
         $userID = $userData[$i]['userID'];
@@ -170,7 +184,7 @@ function constructUserObject($userData, $userSnapshots, $usersMeals, $usersWorko
         $gender = $userData[$i]['gender'];
     }
 
-    return $user = new user($userID, $userName, $email, $password, $dob, $gender, $snapshotArray, $mealsArray, $workoutsArray);
+    return new user($userID, $userName, $email, $password, $dob, $gender, $snapshotArray, $mealsArray, $workoutsArray, $goalArray);
 }
 
 function checkIfUserExists($userName, $email)
@@ -277,6 +291,13 @@ function getWorkoutExercises($workoutID)
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function getUsersGoals($userID)
+{
+    $statement = getConnection()->prepare("CALL getUsersGoals('" . $userID . "')");
+    $statement->execute();
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+}
+
 function editUserDetails($userID, $dob, $gender)
 {
     $statement = getConnection()->prepare("CALL editUserDetails ('" . $userID . "','" . $dob . "','" . $gender . "')");
@@ -353,5 +374,11 @@ function createExercise($workoutID, $name, $sets, $reps, $weight)
 function createWorkout($userID, $type, $title, $date, $duration, $distance, $elevation, $notes)
 {
     $statement = getConnection()->prepare("CALL createWorkout ('" . $userID . "','" . $type . "','" . $title . "','" . $date . "','" . $duration . "','" . $distance . "','" . $elevation . "','" . $notes . "')");
+    $statement->execute();
+}
+
+function createGoal($userID, $type, $title, $value)
+{
+    $statement = getConnection()->prepare("CALL createWorkout ('" . $userID . "','" . $type . "','" . $title . "','" . $value . "')");
     $statement->execute();
 }

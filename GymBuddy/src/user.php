@@ -13,8 +13,9 @@ class user
     private $snapshots;
     private $meals;
     private $workouts;
+    private $goals;
 
-    public function __construct($userId, $userName, $email, $password, $dob, $gender, array $snapshots, array $meals, array $workouts)
+    public function __construct($userId, $userName, $email, $password, $dob, $gender, array $snapshots, array $meals, array $workouts, array $goals)
     {
         $this->userID = $userId;
         $this->userName = $userName;
@@ -25,6 +26,7 @@ class user
         $this->snapshots = $snapshots;
         $this->meals = $meals;
         $this->workouts = $workouts;
+        $this->goals = $goals;
     }
 
     /**
@@ -58,7 +60,7 @@ class user
     {
         return $this->password;
     }
-    
+
 
     /**
      * @return mixed
@@ -98,6 +100,14 @@ class user
     public function getWorkouts()
     {
         return $this->workouts;
+    }
+
+    /**
+     * @return array
+     */
+    public function getGoals()
+    {
+        return $this->goals;
     }
 
 }

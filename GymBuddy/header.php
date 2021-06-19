@@ -55,6 +55,14 @@ session_start();
                     echo '<a class="dropdown-item" href="viewBodySnapshots.php">View Snapshot</a>';
                     echo '</div>';
                     echo '</li>';
+                    echo '<li class="nav-item dropdown">';
+                    echo '<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+                    echo 'Goals';
+                    echo '</a>';
+                    echo '<div class="dropdown-menu" aria-labelledby="navbarDropdown">';
+                    echo '<a class="dropdown-item" href="viewGoals.php">My Goals</a>';
+                    echo '</div>';
+                    echo '</li>';
                     echo '<li class="nav-item"><a class="nav-link" href="personalDetailsPage.php">Personal Details</a></li>';
                     echo '<li class="nav-item"><a class="nav-link" href="logOut.php">Log Out</a></li>';
                 } else {
