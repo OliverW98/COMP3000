@@ -16,7 +16,8 @@ foreach ($userGoals as $goal) {
         $averageDiff = cyclingAverageDiff($cycleWorkouts);
         $averageCycleSpeed = averageCyclingSpeed($cycleWorkouts);
         $cyclePrediction = createCyclePrediction($userGoals, $averageCycleSpeed, $averageDiff);
-        $cycleDates = createDates($cyclePrediction);
+        $cycleDates = createDates($cyclePrediction, averageDateDiff($cycleWorkouts));
+
     }
 }
 
@@ -25,7 +26,6 @@ if (isset($_POST['btnSetCycleGoal'])) {
         createGoal($_SESSION['userID'], 0, "averageSpeed", $_POST['cycleGoal']);
     } else {
         foreach ($userGoals as $goal) {
-            var_dump("pog");
             if ($goal->getType() === "0") {
                 editGoal($goal->getGoalID(), $_POST['cycleGoal']);
             } else {
@@ -97,13 +97,32 @@ function createCyclePrediction($userGoal, $averageSpeed, $averageDiff)
     return $speedPrediction;
 }
 
-function createDates($array)
+function averageDateDiff($array)
+{
+    $totalDiff = 0;
+    for ($i = 0; $i < count($array); $i++) {
+        if ($i < count($array) - 1) {
+            $origin = new DateTime($array[$i]->getDate());
+            $target = new DateTime($array[$i + 1]->getDate());
+            $interval = $origin->diff($target);
+            $totalDiff = $totalDiff + intval($interval->format('%a'));
+        }
+    }
+    return round($totalDiff / count($array));
+}
+
+function createDates($array, $dateDiff)
 {
 
     $dates = array();
 
+    $todaysDate = date('d/m/Y');
+
     for ($i = 0; $i < count($array); $i++) {
-        array_push($dates, $i);
+        $newDate = date('d/m/Y', strtotime($todaysDate . ' +' . $dateDiff . ' days'));
+        echo $newDate;
+        array_push($dates, $todaysDate);
+        $todaysDate = $newDate;
     }
 
     return $dates;

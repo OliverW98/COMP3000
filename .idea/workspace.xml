@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/viewGoals.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewGoals.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -163,14 +162,7 @@
       <workItem from="1624174904561" duration="3209000" />
       <workItem from="1624259753269" duration="1719000" />
       <workItem from="1624280011324" duration="2078000" />
-      <workItem from="1624358123052" duration="594000" />
-    </task>
-    <task id="LOCAL-00043" summary="avg meals a day works">
-      <created>1613314750539</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1613314750539</updated>
+      <workItem from="1624358123052" duration="3145000" />
     </task>
     <task id="LOCAL-00044" summary="avg cals a day">
       <created>1613315861750</created>
@@ -508,14 +500,20 @@
       <option name="project" value="LOCAL" />
       <updated>1624093041354</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="cycle goal duration prediction">
+      <created>1624358752328</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1624358752328</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="message fix" />
     <MESSAGE value="header home change" />
     <MESSAGE value="fixed wrong date/snapshot being displayed on PD page" />
     <MESSAGE value="Prediction message" />
@@ -540,6 +538,7 @@
     <MESSAGE value="removed annotation" />
     <MESSAGE value="goal class and basic page layout" />
     <MESSAGE value="set and delete cycle goals" />
-    <option name="LAST_COMMIT_MESSAGE" value="set and delete cycle goals" />
+    <MESSAGE value="cycle goal duration prediction" />
+    <option name="LAST_COMMIT_MESSAGE" value="cycle goal duration prediction" />
   </component>
 </project>
