@@ -256,7 +256,7 @@ function trendlineMessage($trendline)
                 : <?php echo $totalDurHrs = floor($totalDurMins / 60) . 'h ' . ($totalDurMins - floor($totalDurMins / 60) * 60 . 'm'); ?></P>
         </div>
         <div class="col-sm-6 mt-5">
-            <h4 class="text-center">Average Ride</h4>
+            <h4 class="text-center">Year Average Ride</h4>
             <p>Distance : <?php echo round($avDis / 1000, 1) ?> Km</p>
             <P>Duration : <?php echo round($avDur, 1) ?> Mins</P>
             <P>Speed : <?php echo round($avSpeed * 3.6, 1) ?> Km/h</P>

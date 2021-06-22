@@ -9,16 +9,18 @@ $userGoals = $user->getGoals();
 $failureOutputPara = "";
 $averageSpeedGoal = 0;
 
-var_dump($user->getGoals());
-
 foreach ($userGoals as $goal) {
     if ($goal->getType() === "0") {
         $averageSpeedGoal = $goal->getValue();
+        $cycleWorkouts = getCycleWorkouts($user);
+        $averageDiff = cyclingAverageDiff($cycleWorkouts);
+        $averageCycleSpeed = averageCyclingSpeed($cycleWorkouts);
+        $cyclePrediction = createCyclePrediction($userGoals, $averageCycleSpeed, $averageDiff);
+        $cycleDates = createDates($cyclePrediction);
     }
 }
 
 if (isset($_POST['btnSetCycleGoal'])) {
-
     if (count($userGoals) === 0) {
         createGoal($_SESSION['userID'], 0, "averageSpeed", $_POST['cycleGoal']);
     } else {
@@ -35,7 +37,6 @@ if (isset($_POST['btnSetCycleGoal'])) {
 }
 
 if (isset($_POST['btnDeleteCycleGoal'])) {
-
     $goalID = 0;
     foreach ($userGoals as $goal) {
         if ($goal->getType() === "0") {
@@ -46,6 +47,67 @@ if (isset($_POST['btnDeleteCycleGoal'])) {
     header("Refresh:0");
 }
 
+function getCycleWorkouts($user)
+{
+    $cycleWorkouts = array();
+    foreach ($user->getWorkouts() as $workout) {
+        if (get_class($workout) == "cycle") {
+            array_push($cycleWorkouts, $workout);
+        }
+    }
+    return array_reverse($cycleWorkouts);
+}
+
+function averageCyclingSpeed($cycleWorkouts)
+{
+    $speed = 0;
+    foreach ($cycleWorkouts as $cycle) {
+        $speed = $speed + $cycle->getSpeed();
+    }
+    return ($speed / count($cycleWorkouts)) * 3.6;
+}
+
+function cyclingAverageDiff($cycleWorkouts)
+{
+    $totalDiff = 0;
+    for ($i = 0; $i < count($cycleWorkouts); $i++) {
+        if ($i < count($cycleWorkouts) - 1) {
+            $diff = ($cycleWorkouts[$i]->getSpeed() - $cycleWorkouts[$i + 1]->getSpeed());
+            $totalDiff = $totalDiff + $diff;
+        }
+    }
+    return ($totalDiff / count($cycleWorkouts)) * 3.6;
+}
+
+function createCyclePrediction($userGoal, $averageSpeed, $averageDiff)
+{
+
+    $speedPrediction = array();
+    $goalSpeed = 0;
+
+    foreach ($userGoal as $goal) {
+        if ($goal->getType() === "0") {
+            $goalSpeed = $goal->getValue();
+        }
+    }
+    for ($i = $averageSpeed; $i < $goalSpeed; $i = $i + $averageDiff) {
+
+        array_push($speedPrediction, round($i, 2));
+    }
+    return $speedPrediction;
+}
+
+function createDates($array)
+{
+
+    $dates = array();
+
+    for ($i = 0; $i < count($array); $i++) {
+        array_push($dates, $i);
+    }
+
+    return $dates;
+}
 
 ?>
 <html lang="en">
@@ -122,14 +184,24 @@ if (isset($_POST['btnDeleteCycleGoal'])) {
 </html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 <script>
+
+    <?php
+    $js_array = json_encode($cyclePrediction);
+    echo "let cyclePrediction = " . $js_array . ";\n";
+
+    $js_array = json_encode($cycleDates);
+    echo "let cycleDates = " . $js_array . ";\n";
+
+    ?>
+
     var ctx = document.getElementById('cycleAverageSpeedChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: [1, 2, 3, 4, 5, 6, 7],
+            labels: cycleDates,
             datasets: [{
                 label: 'Weight (kg)',
-                data: [1, 2, 3, 4, 5, 6, 7],
+                data: cyclePrediction,
                 fill: false,
                 borderColor: 'navy',
                 borderWidth: 2,
@@ -137,15 +209,7 @@ if (isset($_POST['btnDeleteCycleGoal'])) {
                 pointRadius: 4
             }]
         },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
+        options: {}
     });
     var ctx = document.getElementById('exerciseWeight').getContext('2d');
     var myChart = new Chart(ctx, {
