@@ -163,14 +163,7 @@
       <workItem from="1624259753269" duration="1719000" />
       <workItem from="1624280011324" duration="2078000" />
       <workItem from="1624358123052" duration="3174000" />
-      <workItem from="1624521426551" duration="2065000" />
-    </task>
-    <task id="LOCAL-00045" summary="Average workout data">
-      <created>1613323045915</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1613323045915</updated>
+      <workItem from="1624521426551" duration="3847000" />
     </task>
     <task id="LOCAL-00046" summary="fixed var name">
       <created>1613399624179</created>
@@ -508,14 +501,20 @@
       <option name="project" value="LOCAL" />
       <updated>1624361319669</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="fixed bugged Dates for graphs">
+      <created>1624524095040</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1624524095041</updated>
+    </task>
+    <option name="localTasksCounter" value="95" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="fixed wrong date/snapshot being displayed on PD page" />
     <MESSAGE value="Prediction message" />
     <MESSAGE value="change selcet year too select number of rides to view" />
     <MESSAGE value="change selcet year too select number of run to view. fixed bug with empthy num box" />
@@ -540,6 +539,7 @@
     <MESSAGE value="set and delete cycle goals" />
     <MESSAGE value="cycle goal duration prediction" />
     <MESSAGE value="prediction dates (bugged)" />
-    <option name="LAST_COMMIT_MESSAGE" value="prediction dates (bugged)" />
+    <MESSAGE value="fixed bugged Dates for graphs" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed bugged Dates for graphs" />
   </component>
 </project>

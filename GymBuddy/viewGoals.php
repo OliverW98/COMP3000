@@ -11,13 +11,13 @@ $averageSpeedGoal = 0;
 
 foreach ($userGoals as $goal) {
     if ($goal->getType() === "0") {
+        // Cycle goal functions
         $averageSpeedGoal = $goal->getValue();
         $cycleWorkouts = getCycleWorkouts($user);
         $averageDiff = cyclingAverageDiff($cycleWorkouts);
         $averageCycleSpeed = averageCyclingSpeed($cycleWorkouts);
         $cyclePrediction = createCyclePrediction($userGoals, $averageCycleSpeed, $averageDiff);
         $cycleDates = createDates($cyclePrediction, averageDateDiff($cycleWorkouts));
-
     }
 }
 
@@ -114,9 +114,9 @@ function createDates($array, $dateDiff)
 {
     $dates = array();
     $todaysDate = new DateTime();
-    for ($i = 0; $i < count($array); $i++) {
+    array_push($dates, $todaysDate->format('d/m/Y'));
+    for ($i = 0; $i < count($array) - 1; $i++) {
         $todaysDate->add(new DateInterval('P' . $dateDiff . 'D'));
-        echo $todaysDate->format('Y-m-d') . "\n";
         array_push($dates, $todaysDate->format('d/m/Y'));
     }
     return $dates;
@@ -154,8 +154,23 @@ function createDates($array, $dateDiff)
             </div>
             <div class="col"></div>
         </div>
-        <canvas id="cycleAverageSpeedChart" width="200" height=75"></canvas>
 
+        <?php
+        foreach ($userGoals as $goal) {
+            if ($goal->getType() === "0") {
+                if ($goal->getValue() > $averageCycleSpeed) {
+                    echo '<canvas id="cycleAverageSpeedChart" width="200" height=75"></canvas>';
+                    var_dump($averageCycleSpeed);
+                    var_dump($goal->getValue());
+                } else {
+                    echo '<p class="text-center">Goal cannot be below your average speed.</p>';
+                    var_dump($averageCycleSpeed);
+                    var_dump($goal->getValue());
+                }
+            }
+        }
+        ?>
+        
         <div class="row">
             <div class="col"></div>
             <div class="col-sm-5">
@@ -213,7 +228,7 @@ function createDates($array, $dateDiff)
         data: {
             labels: cycleDates,
             datasets: [{
-                label: 'Weight (kg)',
+                label: 'Speed (km/h)',
                 data: cyclePrediction,
                 fill: false,
                 borderColor: 'navy',
