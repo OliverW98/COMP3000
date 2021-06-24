@@ -90,8 +90,7 @@ function createCyclePrediction($userGoal, $averageSpeed, $averageDiff)
             $goalSpeed = $goal->getValue();
         }
     }
-    for ($i = $averageSpeed; $i < $goalSpeed; $i = $i + $averageDiff) {
-
+    for ($i = $averageSpeed; $i <= $goalSpeed; $i = $i + $averageDiff) {
         array_push($speedPrediction, round($i, 2));
     }
     return $speedPrediction;
@@ -113,18 +112,13 @@ function averageDateDiff($array)
 
 function createDates($array, $dateDiff)
 {
-
     $dates = array();
-
-    $todaysDate = date('d/m/Y');
-
+    $todaysDate = new DateTime();
     for ($i = 0; $i < count($array); $i++) {
-        $newDate = date('d/m/Y', strtotime($todaysDate . ' +' . $dateDiff . ' days'));
-        echo $newDate;
-        array_push($dates, $todaysDate);
-        $todaysDate = $newDate;
+        $todaysDate->add(new DateInterval('P' . $dateDiff . 'D'));
+        echo $todaysDate->format('Y-m-d') . "\n";
+        array_push($dates, $todaysDate->format('d/m/Y'));
     }
-
     return $dates;
 }
 

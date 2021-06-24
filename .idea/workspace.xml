@@ -162,14 +162,8 @@
       <workItem from="1624174904561" duration="3209000" />
       <workItem from="1624259753269" duration="1719000" />
       <workItem from="1624280011324" duration="2078000" />
-      <workItem from="1624358123052" duration="3145000" />
-    </task>
-    <task id="LOCAL-00044" summary="avg cals a day">
-      <created>1613315861750</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1613315861750</updated>
+      <workItem from="1624358123052" duration="3174000" />
+      <workItem from="1624521426551" duration="2065000" />
     </task>
     <task id="LOCAL-00045" summary="Average workout data">
       <created>1613323045915</created>
@@ -507,14 +501,20 @@
       <option name="project" value="LOCAL" />
       <updated>1624358752328</updated>
     </task>
-    <option name="localTasksCounter" value="93" />
+    <task id="LOCAL-00093" summary="prediction dates (bugged)">
+      <created>1624361319669</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1624361319669</updated>
+    </task>
+    <option name="localTasksCounter" value="94" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="header home change" />
     <MESSAGE value="fixed wrong date/snapshot being displayed on PD page" />
     <MESSAGE value="Prediction message" />
     <MESSAGE value="change selcet year too select number of rides to view" />
@@ -539,6 +539,7 @@
     <MESSAGE value="goal class and basic page layout" />
     <MESSAGE value="set and delete cycle goals" />
     <MESSAGE value="cycle goal duration prediction" />
-    <option name="LAST_COMMIT_MESSAGE" value="cycle goal duration prediction" />
+    <MESSAGE value="prediction dates (bugged)" />
+    <option name="LAST_COMMIT_MESSAGE" value="prediction dates (bugged)" />
   </component>
 </project>
