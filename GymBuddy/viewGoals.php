@@ -6,34 +6,45 @@ include_once 'header.php';
 $user = getUser($_SESSION['userID']);
 $userGoals = $user->getGoals();
 
-$failureOutputPara = "";
-$averageSpeedGoal = 0;
+var_dump($userGoals);
+$averageCycleSpeedGoal = $averageRunSpeedGoal = 0;
 
 foreach ($userGoals as $goal) {
     if ($goal->getType() === "0") {
-        // Cycle goal functions
-        $averageSpeedGoal = $goal->getValue();
+        //Cycle goal functions
+        $averageCycleSpeedGoal = $goal->getValue();
         $cycleWorkouts = getCycleWorkouts($user);
-        $averageDiff = cyclingAverageDiff($cycleWorkouts);
-        $averageCycleSpeed = averageCyclingSpeed($cycleWorkouts);
-        $cyclePrediction = createCyclePrediction($userGoals, $averageCycleSpeed, $averageDiff);
+        $averageDiff = averageWorkoutDiff($cycleWorkouts);
+        $averageCycleSpeed = getAverageSpeed($cycleWorkouts);
+        $cyclePrediction = createCardioPrediction($userGoals, $averageCycleSpeed, $averageDiff, 0);
         $cycleDates = createDates($cyclePrediction, averageDateDiff($cycleWorkouts));
+    } elseif ($goal->getType() === "1") {
+        //Run goal functions
+        $averageRunSpeedGoal = $goal->getValue();
+        $runWorkouts = getRunWorkouts($user);
+        $averageDiff = averageWorkoutDiff($runWorkouts);
+        $averageRunSpeed = getAverageSpeed($runWorkouts);
+        $runPrediction = createCardioPrediction($userGoals, $averageRunSpeed, $averageDiff, 1);
+        $runDates = createDates($runPrediction, averageDateDiff($runWorkouts));
     }
 }
 
 if (isset($_POST['btnSetCycleGoal'])) {
     if (count($userGoals) === 0) {
-        createGoal($_SESSION['userID'], 0, "averageSpeed", $_POST['cycleGoal']);
+        // createGoal($_SESSION['userID'], 0, "averageSpeed", $_POST['cycleGoal']);
+        var_dump("yeet");
     } else {
         foreach ($userGoals as $goal) {
             if ($goal->getType() === "0") {
-                editGoal($goal->getGoalID(), $_POST['cycleGoal']);
+                //  editGoal($goal->getGoalID(), $_POST['cycleGoal']);
+                var_dump("feet");
             } else {
-                createGoal($_SESSION['userID'], 0, "averageSpeed", $_POST['cycleGoal']);
+                var_dump("yoot");
+                // createGoal($_SESSION['userID'], 0, "averageSpeed", $_POST['cycleGoal']);
             }
         }
     }
-    header("Refresh:0");
+    $averageCycleSpeedGoal = $_POST['cycleGoal'];
 }
 
 if (isset($_POST['btnDeleteCycleGoal'])) {
@@ -44,7 +55,36 @@ if (isset($_POST['btnDeleteCycleGoal'])) {
         }
     }
     deleteGoal($goalID);
-    header("Refresh:0");
+    $averageCycleSpeedGoal = 0;
+}
+
+if (isset($_POST['btnSetRunGoal'])) {
+    if (count($userGoals) === 0) {
+        var_dump("yeet");
+        createGoal($_SESSION['userID'], 1, "averageSpeed", $_POST['runGoal']);
+    } else {
+        foreach ($userGoals as $goal) {
+            if ($goal->getType() === "1") {
+                var_dump("feet");
+                editGoal($goal->getGoalID(), $_POST['runGoal']);
+            } else {
+                var_dump("yoot");
+                createGoal($_SESSION['userID'], 1, "averageSpeed", $_POST['runGoal']);
+            }
+        }
+    }
+    $averageRunSpeedGoal = $_POST['runGoal'];
+}
+
+if (isset($_POST['btnDeleteRunGoal'])) {
+    $goalID = 0;
+    foreach ($userGoals as $goal) {
+        if ($goal->getType() === "1") {
+            $goalID = $goal->getGoalID();
+        }
+    }
+    deleteGoal($goalID);
+    $averageRunSpeedGoal = 0;
 }
 
 function getCycleWorkouts($user)
@@ -58,41 +98,53 @@ function getCycleWorkouts($user)
     return array_reverse($cycleWorkouts);
 }
 
-function averageCyclingSpeed($cycleWorkouts)
+function getRunWorkouts($user)
 {
-    $speed = 0;
-    foreach ($cycleWorkouts as $cycle) {
-        $speed = $speed + $cycle->getSpeed();
+    $runWorkouts = array();
+    foreach ($user->getWorkouts() as $workout) {
+        if (get_class($workout) == "run") {
+            array_push($runWorkouts, $workout);
+        }
     }
-    return ($speed / count($cycleWorkouts)) * 3.6;
+    return array_reverse($runWorkouts);
 }
 
-function cyclingAverageDiff($cycleWorkouts)
+function getAverageSpeed($workouts)
+{
+    $speed = 0;
+    foreach ($workouts as $x) {
+        $speed = $speed + $x->getSpeed();
+    }
+    return ($speed / count($workouts)) * 3.6;
+}
+
+function averageWorkoutDiff($workouts)
 {
     $totalDiff = 0;
-    for ($i = 0; $i < count($cycleWorkouts); $i++) {
-        if ($i < count($cycleWorkouts) - 1) {
-            $diff = ($cycleWorkouts[$i]->getSpeed() - $cycleWorkouts[$i + 1]->getSpeed());
+    for ($i = 0; $i < count($workouts); $i++) {
+        if ($i < count($workouts) - 1) {
+            $diff = ($workouts[$i]->getSpeed() - $workouts[$i + 1]->getSpeed());
             $totalDiff = $totalDiff + $diff;
         }
     }
-    return ($totalDiff / count($cycleWorkouts)) * 3.6;
+    return ($totalDiff / count($workouts)) * 3.6;
 }
 
-function createCyclePrediction($userGoal, $averageSpeed, $averageDiff)
+function createCardioPrediction($userGoal, $averageSpeed, $averageDiff, $type)
 {
-
     $speedPrediction = array();
     $goalSpeed = 0;
-
-    foreach ($userGoal as $goal) {
-        if ($goal->getType() === "0") {
-            $goalSpeed = $goal->getValue();
+    if ($averageDiff > 0) {
+        foreach ($userGoal as $goal) {
+            if ($goal->getType() === strval($type)) {
+                $goalSpeed = $goal->getValue();
+            }
+        }
+        for ($i = $averageSpeed; $i <= $goalSpeed; $i = $i + $averageDiff) {
+            array_push($speedPrediction, round($i, 2));
         }
     }
-    for ($i = $averageSpeed; $i <= $goalSpeed; $i = $i + $averageDiff) {
-        array_push($speedPrediction, round($i, 2));
-    }
+
     return $speedPrediction;
 }
 
@@ -133,9 +185,6 @@ function createDates($array, $dateDiff)
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
         <h4 class="text-center mt-3">Select the exercise you would like to see.</h4>
 
-
-        <p class="text-center text-danger"><?php echo $failureOutputPara ?></p>
-
         <div class="row">
             <div class="col"></div>
             <div class="col-sm-5">
@@ -143,7 +192,7 @@ function createDates($array, $dateDiff)
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="cycleGoal">Speed</label>
                     </div>
-                    <input class="form-control" type="number" min="0" value="<?php echo $averageSpeedGoal ?>"
+                    <input class="form-control" type="number" min="0" value="<?php echo $averageCycleSpeedGoal ?>"
                            name="cycleGoal">
                     <div class="input-group-append">
                         <label class="input-group-text" for="cycleGoal">Km/s</label>
@@ -160,17 +209,13 @@ function createDates($array, $dateDiff)
             if ($goal->getType() === "0") {
                 if ($goal->getValue() > $averageCycleSpeed) {
                     echo '<canvas id="cycleAverageSpeedChart" width="200" height=75"></canvas>';
-                    var_dump($averageCycleSpeed);
-                    var_dump($goal->getValue());
                 } else {
                     echo '<p class="text-center">Goal cannot be below your average speed.</p>';
-                    var_dump($averageCycleSpeed);
-                    var_dump($goal->getValue());
                 }
             }
         }
         ?>
-        
+
         <div class="row">
             <div class="col"></div>
             <div class="col-sm-5">
@@ -178,16 +223,28 @@ function createDates($array, $dateDiff)
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Options</label>
                     </div>
-                    <input type="number" name="789789">
+                    <input class="form-control" type="number" min="0" value="<?php echo $averageRunSpeedGoal ?>"
+                           name="runGoal">
                     <div class="input-group-append">
-                        <button class="btn btn-warning" name="btnEditExercises" type="submit">Edit</button>
-                        <button class="btn btn-danger" name="btnDeleteExercises" type="submit">Delete</button>
+                        <button class="btn btn-success" name="btnSetRunGoal" type="submit">Set</button>
+                        <button class="btn btn-danger" name="btnDeleteRunGoal" type="submit">Delete</button>
                     </div>
                 </div>
             </div>
             <div class="col"></div>
         </div>
-        <canvas id="exerciseWeight" width="200" height=75"></canvas>
+
+        <?php
+        foreach ($userGoals as $goal) {
+            if ($goal->getType() === "1") {
+                if ($goal->getValue() > $averageRunSpeed) {
+                    echo '<canvas id="runAverageSpeedChart" width="200" height=75"></canvas>';
+                } else {
+                    echo '<p class="text-center">Goal cannot be below your average speed.</p>';
+                }
+            }
+        }
+        ?>
 
         <div class="row">
             <div class="col"></div>
@@ -220,6 +277,12 @@ function createDates($array, $dateDiff)
     $js_array = json_encode($cycleDates);
     echo "let cycleDates = " . $js_array . ";\n";
 
+    $js_array = json_encode($runPrediction);
+    echo "let runPrediction = " . $js_array . ";\n";
+
+    $js_array = json_encode($runDates);
+    echo "let runDates = " . $js_array . ";\n";
+
     ?>
 
     var ctx = document.getElementById('cycleAverageSpeedChart').getContext('2d');
@@ -239,14 +302,14 @@ function createDates($array, $dateDiff)
         },
         options: {}
     });
-    var ctx = document.getElementById('exerciseWeight').getContext('2d');
+    var ctx = document.getElementById('runAverageSpeedChart').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: [1, 2, 3, 4, 5, 6, 7],
+            labels: runDates,
             datasets: [{
-                label: 'Weight (kg)',
-                data: [1, 2, 3, 4, 5, 6, 7],
+                label: 'Speed (km/h)',
+                data: runPrediction,
                 fill: false,
                 borderColor: 'navy',
                 borderWidth: 2,
@@ -254,16 +317,9 @@ function createDates($array, $dateDiff)
                 pointRadius: 4
             }]
         },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
+        options: {}
     });
+
     var ctx = document.getElementById('exercise').getContext('2d');
     var myChart = new Chart(ctx, {
         type: 'line',
