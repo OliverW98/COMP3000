@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
+    <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="fix set">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/viewGoals.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewGoals.php" afterDir="false" />
     </list>
@@ -164,14 +164,8 @@
       <workItem from="1624280011324" duration="2078000" />
       <workItem from="1624358123052" duration="3174000" />
       <workItem from="1624521426551" duration="4040000" />
-      <workItem from="1624707587816" duration="3618000" />
-    </task>
-    <task id="LOCAL-00047" summary="average cals burnt a day and sum of cals">
-      <created>1613575577595</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1613575577595</updated>
+      <workItem from="1624707587816" duration="3759000" />
+      <workItem from="1624784838921" duration="1935000" />
     </task>
     <task id="LOCAL-00048" summary="prediction message moved to function">
       <created>1613750015825</created>
@@ -509,14 +503,20 @@
       <option name="project" value="LOCAL" />
       <updated>1624526036185</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="run predcition">
+      <created>1624712669753</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1624712669753</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="change selcet year too select number of rides to view" />
     <MESSAGE value="change selcet year too select number of run to view. fixed bug with empthy num box" />
     <MESSAGE value="basic upload of image for meals" />
     <MESSAGE value="upload image complete" />
@@ -541,6 +541,7 @@
     <MESSAGE value="prediction dates (bugged)" />
     <MESSAGE value="fixed bugged Dates for graphs" />
     <MESSAGE value="goals can be lower than avr speed" />
-    <option name="LAST_COMMIT_MESSAGE" value="goals can be lower than avr speed" />
+    <MESSAGE value="run predcition" />
+    <option name="LAST_COMMIT_MESSAGE" value="run predcition" />
   </component>
 </project>

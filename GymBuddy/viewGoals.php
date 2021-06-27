@@ -6,7 +6,7 @@ include_once 'header.php';
 $user = getUser($_SESSION['userID']);
 $userGoals = $user->getGoals();
 
-var_dump($userGoals);
+//var_dump($userGoals);
 $averageCycleSpeedGoal = $averageRunSpeedGoal = 0;
 
 foreach ($userGoals as $goal) {
@@ -31,20 +31,20 @@ foreach ($userGoals as $goal) {
 
 if (isset($_POST['btnSetCycleGoal'])) {
     if (count($userGoals) === 0) {
-        // createGoal($_SESSION['userID'], 0, "averageSpeed", $_POST['cycleGoal']);
-        var_dump("yeet");
+        createGoal($_SESSION['userID'], 0, "averageSpeed", $_POST['cycleGoal']);
     } else {
+        $found = false;
         foreach ($userGoals as $goal) {
-            if ($goal->getType() === "0") {
-                //  editGoal($goal->getGoalID(), $_POST['cycleGoal']);
-                var_dump("feet");
-            } else {
-                var_dump("yoot");
-                // createGoal($_SESSION['userID'], 0, "averageSpeed", $_POST['cycleGoal']);
+            if ($found == false && $goal->getType() === "0") {
+                editGoal($goal->getGoalID(), $_POST['cycleGoal']);
+                $found = true;
             }
         }
+        if ($found == false) {
+            createGoal($_SESSION['userID'], 0, "averageSpeed", $_POST['cycleGoal']);
+        }
     }
-    $averageCycleSpeedGoal = $_POST['cycleGoal'];
+    header("Refresh:0");
 }
 
 if (isset($_POST['btnDeleteCycleGoal'])) {
@@ -55,25 +55,25 @@ if (isset($_POST['btnDeleteCycleGoal'])) {
         }
     }
     deleteGoal($goalID);
-    $averageCycleSpeedGoal = 0;
+    header("Refresh:0");
 }
 
 if (isset($_POST['btnSetRunGoal'])) {
     if (count($userGoals) === 0) {
-        var_dump("yeet");
-        createGoal($_SESSION['userID'], 1, "averageSpeed", $_POST['runGoal']);
+        createGoal($_SESSION['userID'], 0, "averageSpeed", $_POST['runGoal']);
     } else {
+        $found = false;
         foreach ($userGoals as $goal) {
-            if ($goal->getType() === "1") {
-                var_dump("feet");
+            if ($found == false && $goal->getType() === "1") {
                 editGoal($goal->getGoalID(), $_POST['runGoal']);
-            } else {
-                var_dump("yoot");
-                createGoal($_SESSION['userID'], 1, "averageSpeed", $_POST['runGoal']);
+                $found = true;
             }
         }
+        if ($found == false) {
+            createGoal($_SESSION['userID'], 0, "averageSpeed", $_POST['runGoal']);
+        }
     }
-    $averageRunSpeedGoal = $_POST['runGoal'];
+    header("Refresh:0");
 }
 
 if (isset($_POST['btnDeleteRunGoal'])) {
@@ -84,7 +84,7 @@ if (isset($_POST['btnDeleteRunGoal'])) {
         }
     }
     deleteGoal($goalID);
-    $averageRunSpeedGoal = 0;
+    header("Refresh:0");
 }
 
 function getCycleWorkouts($user)
@@ -195,7 +195,7 @@ function createDates($array, $dateDiff)
                     <input class="form-control" type="number" min="0" value="<?php echo $averageCycleSpeedGoal ?>"
                            name="cycleGoal">
                     <div class="input-group-append">
-                        <label class="input-group-text" for="cycleGoal">Km/s</label>
+                        <label class="input-group-text" for="cycleGoal">Km/h</label>
                         <button class="btn btn-success" name="btnSetCycleGoal" type="submit">Set</button>
                         <button class="btn btn-danger" name="btnDeleteCycleGoal" type="submit">Delete</button>
                     </div>
@@ -221,11 +221,12 @@ function createDates($array, $dateDiff)
             <div class="col-sm-5">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">Options</label>
+                        <label class="input-group-text" for="inputGroupSelect01">Speed</label>
                     </div>
                     <input class="form-control" type="number" min="0" value="<?php echo $averageRunSpeedGoal ?>"
                            name="runGoal">
                     <div class="input-group-append">
+                        <label class="input-group-text" for="cycleGoal">Km/h</label>
                         <button class="btn btn-success" name="btnSetRunGoal" type="submit">Set</button>
                         <button class="btn btn-danger" name="btnDeleteRunGoal" type="submit">Delete</button>
                     </div>
