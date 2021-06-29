@@ -6,7 +6,6 @@ include_once 'header.php';
 $user = getUser($_SESSION['userID']);
 $userGoals = $user->getGoals();
 
-//var_dump($userGoals);
 $averageCycleSpeedGoal = $averageRunSpeedGoal = 0;
 
 foreach ($userGoals as $goal) {
@@ -26,6 +25,7 @@ foreach ($userGoals as $goal) {
         $averageRunSpeed = getAverageSpeed($runWorkouts);
         $runPrediction = createCardioPrediction($userGoals, $averageRunSpeed, $averageDiff, 1);
         $runDates = createDates($runPrediction, averageDateDiff($runWorkouts));
+
     }
 }
 
@@ -134,13 +134,19 @@ function createCardioPrediction($userGoal, $averageSpeed, $averageDiff, $type)
 {
     $speedPrediction = array();
     $goalSpeed = 0;
-    if ($averageDiff > 0) {
-        foreach ($userGoal as $goal) {
-            if ($goal->getType() === strval($type)) {
-                $goalSpeed = $goal->getValue();
-            }
+
+    foreach ($userGoal as $goal) {
+        if ($goal->getType() === strval($type)) {
+            $goalSpeed = $goal->getValue();
         }
+    }
+    if ($averageDiff > 0) {
         for ($i = $averageSpeed; $i <= $goalSpeed; $i = $i + $averageDiff) {
+            array_push($speedPrediction, round($i, 2));
+        }
+    } elseif ($averageDiff < 0) {
+        for ($i = $averageSpeed; $i >= $goalSpeed; $i = $i + $averageDiff) {
+
             array_push($speedPrediction, round($i, 2));
         }
     }
@@ -183,8 +189,29 @@ function createDates($array, $dateDiff)
 <body>
 <div class="container">
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-        <h4 class="text-center mt-3">Select the exercise you would like to see.</h4>
+        <h2 class="text-center mt-3">My Goals</h2>
 
+        <h4 class="text-center mt-3">Cycling</h4>
+        <?php
+        echo '<p class="text-center">Your average speed for cycling is ' . round($averageCycleSpeed, 1) . ' Km/h and ';
+        $avrDiff = averageWorkoutDiff($cycleWorkouts);
+        if ($avrDiff > 0) {
+            echo 'on average you gain ' . round($avrDiff, 2) . ' Km/h each ride.';
+        } elseif ($avrDiff < 0) {
+            echo 'on average you lose ' . round($avrDiff, 2) . ' Km/h each ride.';
+        } elseif ($avrDiff === 0) {
+            echo 'you dont make any improvement from ride to ride.';
+        }
+
+        if ($averageCycleSpeed < $averageCycleSpeedGoal && $avrDiff > 0) {
+            echo ' The graph below shows you how long we predict it will take to reach your goal.</p>';
+        } elseif ($averageCycleSpeed > $averageCycleSpeedGoal && $avrDiff < 0) {
+            echo ' The graph below shows you how long we predict it will take to reach your goal.</p>';
+        } else {
+            echo ' Meaning you will be unable to reach your goal at the moment.</p>';
+        }
+
+        ?>
         <div class="row">
             <div class="col"></div>
             <div class="col-sm-5">
@@ -203,19 +230,10 @@ function createDates($array, $dateDiff)
             </div>
             <div class="col"></div>
         </div>
+        <canvas id="cycleAverageSpeedChart" width="200" height=75"></canvas>
 
-        <?php
-        foreach ($userGoals as $goal) {
-            if ($goal->getType() === "0") {
-                if ($goal->getValue() > $averageCycleSpeed) {
-                    echo '<canvas id="cycleAverageSpeedChart" width="200" height=75"></canvas>';
-                } else {
-                    echo '<p class="text-center">Goal cannot be below your average speed.</p>';
-                }
-            }
-        }
-        ?>
 
+        <h4 class="text-center mt-3">Running</h4>
         <div class="row">
             <div class="col"></div>
             <div class="col-sm-5">
@@ -234,18 +252,7 @@ function createDates($array, $dateDiff)
             </div>
             <div class="col"></div>
         </div>
-
-        <?php
-        foreach ($userGoals as $goal) {
-            if ($goal->getType() === "1") {
-                if ($goal->getValue() > $averageRunSpeed) {
-                    echo '<canvas id="runAverageSpeedChart" width="200" height=75"></canvas>';
-                } else {
-                    echo '<p class="text-center">Goal cannot be below your average speed.</p>';
-                }
-            }
-        }
-        ?>
+        <canvas id="runAverageSpeedChart" width="200" height=75"></canvas>
 
         <div class="row">
             <div class="col"></div>
@@ -286,8 +293,8 @@ function createDates($array, $dateDiff)
 
     ?>
 
-    var ctx = document.getElementById('cycleAverageSpeedChart').getContext('2d');
-    var myChart = new Chart(ctx, {
+    var ctx1 = document.getElementById('cycleAverageSpeedChart').getContext('2d');
+    var myChart = new Chart(ctx1, {
         type: 'line',
         data: {
             labels: cycleDates,
@@ -303,8 +310,9 @@ function createDates($array, $dateDiff)
         },
         options: {}
     });
-    var ctx = document.getElementById('runAverageSpeedChart').getContext('2d');
-    var myChart = new Chart(ctx, {
+
+    var ctx2 = document.getElementById('runAverageSpeedChart').getContext('2d');
+    var myChart = new Chart(ctx2, {
         type: 'line',
         data: {
             labels: runDates,
@@ -321,8 +329,8 @@ function createDates($array, $dateDiff)
         options: {}
     });
 
-    var ctx = document.getElementById('exercise').getContext('2d');
-    var myChart = new Chart(ctx, {
+    var ctx3 = document.getElementById('exercise').getContext('2d');
+    var myChart = new Chart(ctx3, {
         type: 'line',
         data: {
             labels: [1, 2, 3, 4, 5, 6, 7],
