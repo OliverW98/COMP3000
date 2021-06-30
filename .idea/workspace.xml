@@ -168,14 +168,8 @@
       <workItem from="1624784838921" duration="1978000" />
       <workItem from="1624872958055" duration="3040000" />
       <workItem from="1624956343957" duration="3354000" />
-      <workItem from="1625041220297" duration="724000" />
-    </task>
-    <task id="LOCAL-00050" summary="add activity to prediction">
-      <created>1613926148562</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1613926148563</updated>
+      <workItem from="1625041220297" duration="937000" />
+      <workItem from="1625068888655" duration="4697000" />
     </task>
     <task id="LOCAL-00051" summary="modify prediction">
       <created>1613998180834</created>
@@ -513,14 +507,20 @@
       <option name="project" value="LOCAL" />
       <updated>1624959719709</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL-00099" summary="run message">
+      <created>1625041973210</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1625041973210</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="upload image complete" />
     <MESSAGE value="access meal image" />
     <MESSAGE value="dispaly image above meal" />
     <MESSAGE value="img_dir is no longer stored" />
@@ -545,6 +545,7 @@
     <MESSAGE value="run predcition" />
     <MESSAGE value="fix setting goal bug" />
     <MESSAGE value="goals can be less than average speed and cycle message" />
-    <option name="LAST_COMMIT_MESSAGE" value="goals can be less than average speed and cycle message" />
+    <MESSAGE value="run message" />
+    <option name="LAST_COMMIT_MESSAGE" value="run message" />
   </component>
 </project>

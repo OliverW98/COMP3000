@@ -3,10 +3,11 @@
 include $_SERVER['DOCUMENT_ROOT'] . "/COMP3000/GymBuddy/src/DBFunctions.php";
 include_once 'header.php';
 
+$failureOutputPara = "";
 $user = getUser($_SESSION['userID']);
 $userGoals = $user->getGoals();
 
-$averageCycleSpeedGoal = $averageRunSpeedGoal = 0;
+$averageCycleSpeedGoal = $averageRunSpeedGoal = $WeightGoal = 0;
 
 foreach ($userGoals as $goal) {
     if ($goal->getType() === "0") {
@@ -60,7 +61,7 @@ if (isset($_POST['btnDeleteCycleGoal'])) {
 
 if (isset($_POST['btnSetRunGoal'])) {
     if (count($userGoals) === 0) {
-        createGoal($_SESSION['userID'], 0, "averageSpeed", $_POST['runGoal']);
+        createGoal($_SESSION['userID'], 1, "averageSpeed", $_POST['runGoal']);
     } else {
         $found = false;
         foreach ($userGoals as $goal) {
@@ -70,7 +71,7 @@ if (isset($_POST['btnSetRunGoal'])) {
             }
         }
         if ($found == false) {
-            createGoal($_SESSION['userID'], 0, "averageSpeed", $_POST['runGoal']);
+            createGoal($_SESSION['userID'], 1, "averageSpeed", $_POST['runGoal']);
         }
     }
     header("Refresh:0");
@@ -85,6 +86,51 @@ if (isset($_POST['btnDeleteRunGoal'])) {
     }
     deleteGoal($goalID);
     header("Refresh:0");
+}
+
+if (isset($_POST['btnSetWeightGoal'])) {
+
+    if ($_POST['selExercise'] === "Select an Exercise...") {
+        $failureOutputPara = "Please Select an Exercise";
+    } else {
+        if (count($userGoals) === 0) {
+            createGoal($_SESSION['userID'], 2, $_POST['selExercise'], $_POST['weightGoal']);
+        } else {
+            $found = false;
+            foreach ($userGoals as $goal) {
+                if ($found == false && $goal->getType() === "2" && $_POST['selExercise'] === $goal->getTitle()) {
+                    editGoal($goal->getGoalID(), $_POST['weightGoal']);
+                    $found = true;
+                }
+            }
+            if ($found == false) {
+                createGoal($_SESSION['userID'], 2, $_POST['selExercise'], $_POST['weightGoal']);
+            }
+        }
+        header("Refresh:0");
+    }
+}
+
+if (isset($_POST['btnDeleteWeightGoal'])) {
+    $goalID = 0;
+    foreach ($userGoals as $goal) {
+        if ($goal->getType() === "2" && $_POST['selExercise'] === $goal->getTitle()) {
+            $goalID = $goal->getGoalID();
+        }
+    }
+    deleteGoal($goalID);
+    header("Refresh:0");
+}
+
+if (isset($_POST['btnShowExerciseGoal'])) {
+    var_dump($_POST['selExercise']);
+
+    foreach ($userGoals as $goal) {
+        if ($goal->getTitle() === $_POST['selExercise']) {
+            $WeightGoal = $goal->getValue();
+        }
+    }
+    $_POST['selExercise'] = "poggers";
 }
 
 function getCycleWorkouts($user)
@@ -193,13 +239,13 @@ function createDates($array, $dateDiff)
 
         <h4 class="text-center mt-3">Cycling</h4>
         <?php
-        echo '<p class="text-center">Your average speed for cycling is ' . round($averageCycleSpeed, 1) . ' Km/h and ';
+        echo '<p class="text-center">Your average speed for cycling is <b> ' . round($averageCycleSpeed, 1) . '</b> Km/h and ';
         $avrDiff = averageWorkoutDiff($cycleWorkouts);
         if ($avrDiff > 0) {
-            echo 'on average you gain ' . round($avrDiff, 2) . ' Km/h each ride.';
+            echo 'on average you gain <b class="text-success">' . round($avrDiff, 2) . '</b> Km/h each ride.';
         } elseif ($avrDiff < 0) {
-            echo 'on average you lose ' . round($avrDiff, 2) . ' Km/h each ride.';
-        } elseif ($avrDiff === 0) {
+            echo 'on average you lose <b class="text-success">' . round($avrDiff, 2) . ' </b> Km/h each ride.';
+        } elseif ($avrDiff == 0) {
             echo 'you dont make any improvement from ride to ride.';
         }
 
@@ -235,13 +281,13 @@ function createDates($array, $dateDiff)
 
         <h4 class="text-center mt-3">Running</h4>
         <?php
-        echo '<p class="text-center">Your average speed for running is ' . round($averageRunSpeed, 1) . ' Km/h and ';
+        echo '<p class="text-center">Your average speed for running is <b>' . round($averageRunSpeed, 1) . '</b> Km/h and ';
         $avrDiff = averageWorkoutDiff($runWorkouts);
         if ($avrDiff > 0) {
-            echo 'on average you gain ' . round($avrDiff, 2) . ' Km/h each run.';
+            echo 'on average you gain <b class="text-success"> ' . round($avrDiff, 2) . '</b> Km/h each run.';
         } elseif ($avrDiff < 0) {
-            echo 'on average you lose ' . round($avrDiff, 2) . ' Km/h each run.';
-        } elseif ($avrDiff === 0) {
+            echo 'on average you lose <b class="text-danger"> ' . round($avrDiff, 2) . ' </b> Km/h each run.';
+        } elseif ($avrDiff == 0) {
             echo 'you dont make any improvement from ride to run.';
         }
 
@@ -259,12 +305,12 @@ function createDates($array, $dateDiff)
             <div class="col-sm-5">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">Speed</label>
+                        <label class="input-group-text" for="runGoal">Speed</label>
                     </div>
                     <input class="form-control" type="number" min="0" value="<?php echo $averageRunSpeedGoal ?>"
                            name="runGoal">
                     <div class="input-group-append">
-                        <label class="input-group-text" for="cycleGoal">Km/h</label>
+                        <label class="input-group-text" for="runGoal">Km/h</label>
                         <button class="btn btn-success" name="btnSetRunGoal" type="submit">Set</button>
                         <button class="btn btn-danger" name="btnDeleteRunGoal" type="submit">Delete</button>
                     </div>
@@ -274,22 +320,58 @@ function createDates($array, $dateDiff)
         </div>
         <canvas id="runAverageSpeedChart" width="200" height=75"></canvas>
 
+
+        <h4 class="text-center mt-3">Weights</h4>
         <div class="row">
             <div class="col"></div>
-            <div class="col-sm-5">
+            <div class="col">
                 <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">Options</label>
-                    </div>
-                    <input type="number" name="cyc789789789leGoal">
+                    <select class="form-control" name="selExercise">
+                        <option>Select an Exercise...</option>
+                        <option>Barbell Bench Press</option>
+                        <option>Dumbbell Bench Press</option>
+                        <option>Incline Bench Press</option>
+                        <option>Squat</option>
+                        <option>Single Leg Curl</option>
+                        <option>Leg Extension</option>
+                        <option>Deadlift</option>
+                        <option>Row</option>
+                        <option>Barbell Bent-Over Row</option>
+                        <option>Dumbbell Single-arm Row</option>
+                        <option>Incline Bicep Curl</option>
+                        <option>Concentration Curl</option>
+                        <option>One Arm Tricep Extension</option>
+                        <option>Skullcrusher</option>
+                        <option>Military Press</option>
+                        <option>Barbell Standing Press</option>
+                        <option>Seated Dumbbell Press</option>
+                    </select>
                     <div class="input-group-append">
-                        <button class="btn btn-warning" name="btnEditExercises" type="submit">Edit</button>
-                        <button class="btn btn-danger" name="btnDeleteExercises" type="submit">Delete</button>
+                        <button class="btn btn-success" name="btnShowExerciseGoal" type="submit">Show</button>
                     </div>
                 </div>
             </div>
             <div class="col"></div>
         </div>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-sm-5">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="weightGoal">Weight</label>
+                    </div>
+                    <input class="form-control" type="number" min="0" value="<?php echo $WeightGoal ?>"
+                           name="weightGoal">
+                    <div class="input-group-append">
+                        <label class="input-group-text" for="weightGoal">Kg</label>
+                        <button class="btn btn-success" name="btnSetWeightGoal" type="submit">Set</button>
+                        <button class="btn btn-danger" name="btnDeleteWeightGoal" type="submit">Delete</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+        <p class="text-center text-danger"><?php echo $failureOutputPara ?></p>
         <canvas id="exercise" width="200" height=75"></canvas>
     </form>
 </div>
