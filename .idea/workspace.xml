@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="fix setting goal bug">
+    <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/viewGoals.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewGoals.php" afterDir="false" />
     </list>
@@ -167,14 +167,8 @@
       <workItem from="1624707587816" duration="3759000" />
       <workItem from="1624784838921" duration="1978000" />
       <workItem from="1624872958055" duration="3040000" />
-      <workItem from="1624956343957" duration="3317000" />
-    </task>
-    <task id="LOCAL-00049" summary="prediction message finished">
-      <created>1613750642842</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1613750642842</updated>
+      <workItem from="1624956343957" duration="3354000" />
+      <workItem from="1625041220297" duration="724000" />
     </task>
     <task id="LOCAL-00050" summary="add activity to prediction">
       <created>1613926148562</created>
@@ -512,14 +506,20 @@
       <option name="project" value="LOCAL" />
       <updated>1624786806301</updated>
     </task>
-    <option name="localTasksCounter" value="98" />
+    <task id="LOCAL-00098" summary="goals can be less than average speed and cycle message">
+      <created>1624959719708</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1624959719709</updated>
+    </task>
+    <option name="localTasksCounter" value="99" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="basic upload of image for meals" />
     <MESSAGE value="upload image complete" />
     <MESSAGE value="access meal image" />
     <MESSAGE value="dispaly image above meal" />
@@ -544,6 +544,7 @@
     <MESSAGE value="goals can be lower than avr speed" />
     <MESSAGE value="run predcition" />
     <MESSAGE value="fix setting goal bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix setting goal bug" />
+    <MESSAGE value="goals can be less than average speed and cycle message" />
+    <option name="LAST_COMMIT_MESSAGE" value="goals can be less than average speed and cycle message" />
   </component>
 </project>

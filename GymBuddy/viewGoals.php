@@ -234,6 +234,26 @@ function createDates($array, $dateDiff)
 
 
         <h4 class="text-center mt-3">Running</h4>
+        <?php
+        echo '<p class="text-center">Your average speed for running is ' . round($averageRunSpeed, 1) . ' Km/h and ';
+        $avrDiff = averageWorkoutDiff($runWorkouts);
+        if ($avrDiff > 0) {
+            echo 'on average you gain ' . round($avrDiff, 2) . ' Km/h each run.';
+        } elseif ($avrDiff < 0) {
+            echo 'on average you lose ' . round($avrDiff, 2) . ' Km/h each run.';
+        } elseif ($avrDiff === 0) {
+            echo 'you dont make any improvement from ride to run.';
+        }
+
+        if ($averageRunSpeed < $averageRunSpeedGoal && $avrDiff > 0) {
+            echo ' The graph below shows you how long we predict it will take to reach your goal.</p>';
+        } elseif ($averageRunSpeed > $averageRunSpeedGoal && $avrDiff < 0) {
+            echo ' The graph below shows you how long we predict it will take to reach your goal.</p>';
+        } else {
+            echo ' Meaning you will be unable to reach your goal at the moment.</p>';
+        }
+
+        ?>
         <div class="row">
             <div class="col"></div>
             <div class="col-sm-5">
