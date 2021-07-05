@@ -3,12 +3,13 @@
 include $_SERVER['DOCUMENT_ROOT'] . "/COMP3000/GymBuddy/src/DBFunctions.php";
 include_once 'header.php';
 
-$failureOutputPara = "";
+$failureOutputPara = $selectExe = "";
 $user = getUser($_SESSION['userID']);
 $userGoals = $user->getGoals();
 
 $averageCycleSpeedGoal = $averageRunSpeedGoal = $WeightGoal = 0;
 
+$weightPrediction = $weightDates = array();
 foreach ($userGoals as $goal) {
     if ($goal->getType() === "0") {
         //Cycle goal functions
@@ -123,14 +124,19 @@ if (isset($_POST['btnDeleteWeightGoal'])) {
 }
 
 if (isset($_POST['btnShowExerciseGoal'])) {
-    var_dump($_POST['selExercise']);
-
     foreach ($userGoals as $goal) {
         if ($goal->getTitle() === $_POST['selExercise']) {
             $WeightGoal = $goal->getValue();
         }
     }
-    $_POST['selExercise'] = "poggers";
+    $selectExe = $_POST['selExercise'];
+    $weightWorkout = getWeightWorkouts($user);
+    $exerciseArray = getExercise($weightWorkout, $_POST['selExercise']);
+    $workoutsWithExercises = getWeightWorkoutDates($weightWorkout, $_POST['selExercise']);
+    $averageDiff = averageWeightWorkoutDiff($exerciseArray);
+    $averageWeight = getAverageWeight($exerciseArray);
+    $weightPrediction = createWeightPrediction($userGoals, $averageWeight, $averageDiff, $_POST['selExercise']);
+    $weightDates = createDates($weightPrediction, averageDateDiff($weightWorkout));
 }
 
 function getCycleWorkouts($user)
@@ -155,6 +161,44 @@ function getRunWorkouts($user)
     return array_reverse($runWorkouts);
 }
 
+function getWeightWorkouts($user)
+{
+    $weightWorkouts = array();
+    foreach ($user->getWorkouts() as $workout) {
+        if (get_class($workout) == "weights") {
+            array_push($weightWorkouts, $workout);
+        }
+    }
+    return array_reverse($weightWorkouts);
+}
+
+function getWeightWorkoutDates($weightWorkouts, $exerciseToFind)
+{
+    $wokrouts = array();
+    foreach ($weightWorkouts as $weights) {
+        foreach ($weights->getExercises() as $ex) {
+            if ($ex->getName() === $exerciseToFind) {
+
+                array_push($wokrouts, $weights);
+            }
+        }
+    }
+    return $wokrouts;
+}
+
+function getExercise($weightWorkouts, $exerciseToFind)
+{
+    $exercises = array();
+    foreach ($weightWorkouts as $weights) {
+        foreach ($weights->getExercises() as $ex) {
+            if ($ex->getName() === $exerciseToFind) {
+                array_push($exercises, $ex);
+            }
+        }
+    }
+    return $exercises;
+}
+
 function getAverageSpeed($workouts)
 {
     $speed = 0;
@@ -162,6 +206,15 @@ function getAverageSpeed($workouts)
         $speed = $speed + $x->getSpeed();
     }
     return ($speed / count($workouts)) * 3.6;
+}
+
+function getAverageWeight($workouts)
+{
+    $speed = 0;
+    foreach ($workouts as $x) {
+        $speed = $speed + $x->getWeight();
+    }
+    return $speed / count($workouts);
 }
 
 function averageWorkoutDiff($workouts)
@@ -176,10 +229,21 @@ function averageWorkoutDiff($workouts)
     return ($totalDiff / count($workouts)) * 3.6;
 }
 
+function averageWeightWorkoutDiff($workouts)
+{
+    $totalDiff = 0;
+    for ($i = 0; $i < count($workouts); $i++) {
+        if ($i < count($workouts) - 1) {
+            $diff = ($workouts[$i]->getWeight() - $workouts[$i + 1]->getWeight());
+            $totalDiff = $totalDiff + $diff;
+        }
+    }
+    return $totalDiff / count($workouts);
+}
+
 function createCardioPrediction($userGoal, $averageSpeed, $averageDiff, $type)
 {
     $speedPrediction = array();
-    $goalSpeed = 0;
 
     foreach ($userGoal as $goal) {
         if ($goal->getType() === strval($type)) {
@@ -199,6 +263,31 @@ function createCardioPrediction($userGoal, $averageSpeed, $averageDiff, $type)
 
     return $speedPrediction;
 }
+
+function createWeightPrediction($userGoal, $averageSpeed, $averageDiff, $exercise)
+{
+    $weightPrediction = array();
+    var_dump($userGoal);
+
+    foreach ($userGoal as $goal) {
+        if ($goal->getTitle() === $exercise) {
+            $goalSpeed = $goal->getValue();
+        }
+    }
+    if ($averageDiff > 0) {
+        for ($i = $averageSpeed; $i <= $goalSpeed; $i = $i + $averageDiff) {
+            array_push($weightPrediction, $i);
+        }
+    } elseif ($averageDiff < 0) {
+        for ($i = $averageSpeed; $i >= $goalSpeed; $i = $i + $averageDiff) {
+
+            array_push($weightPrediction, $i);
+        }
+    }
+
+    return $weightPrediction;
+}
+
 
 function averageDateDiff($array)
 {
@@ -322,10 +411,34 @@ function createDates($array, $dateDiff)
 
 
         <h4 class="text-center mt-3">Weights</h4>
+        <?php
+        if (isset($averageWeight)) {
+            echo '<p class="text-center">Your average weight lifted for ' . $selectExe . ' is <b>' . round($averageWeight, 1) . '</b> Kg and ';
+            $avrDiff = averageWorkoutDiff($runWorkouts);
+            if ($avrDiff > 0) {
+                echo 'on average you gain <b class="text-success"> ' . round($avrDiff, 2) . '</b> Kg each session.';
+            } elseif ($avrDiff < 0) {
+                echo 'on average you lose <b class="text-danger"> ' . round($avrDiff, 2) . ' </b> Kg each session.';
+            } elseif ($avrDiff == 0) {
+                echo 'you dont make any improvement from ride to run.';
+            }
+
+            if ($averageRunSpeed < $averageRunSpeedGoal && $avrDiff > 0) {
+                echo ' The graph below shows you how long we predict it will take to reach your goal.</p>';
+            } elseif ($averageRunSpeed > $averageRunSpeedGoal && $avrDiff < 0) {
+                echo ' The graph below shows you how long we predict it will take to reach your goal.</p>';
+            } else {
+                echo ' Meaning you will be unable to reach your goal at the moment.</p>';
+            }
+        }
+        ?>
         <div class="row">
             <div class="col"></div>
             <div class="col">
                 <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="selExercise">Exercise</label>
+                    </div>
                     <select class="form-control" name="selExercise">
                         <option>Select an Exercise...</option>
                         <option>Barbell Bench Press</option>
@@ -372,7 +485,7 @@ function createDates($array, $dateDiff)
             <div class="col"></div>
         </div>
         <p class="text-center text-danger"><?php echo $failureOutputPara ?></p>
-        <canvas id="exercise" width="200" height=75"></canvas>
+        <canvas id="weightChart" width="200" height=75"></canvas>
     </form>
 </div>
 </body>
@@ -392,6 +505,12 @@ function createDates($array, $dateDiff)
 
     $js_array = json_encode($runDates);
     echo "let runDates = " . $js_array . ";\n";
+
+    $js_array = json_encode($weightPrediction);
+    echo "let weightPrediction = " . $js_array . ";\n";
+
+    $js_array = json_encode($weightDates);
+    echo "let weightDates = " . $js_array . ";\n";
 
     ?>
 
@@ -431,14 +550,14 @@ function createDates($array, $dateDiff)
         options: {}
     });
 
-    var ctx3 = document.getElementById('exercise').getContext('2d');
+    var ctx3 = document.getElementById('weightChart').getContext('2d');
     var myChart = new Chart(ctx3, {
         type: 'line',
         data: {
-            labels: [1, 2, 3, 4, 5, 6, 7],
+            labels: weightDates,
             datasets: [{
                 label: 'Weight (kg)',
-                data: [1, 2, 3, 4, 5, 6, 7],
+                data: weightPrediction,
                 fill: false,
                 borderColor: 'navy',
                 borderWidth: 2,
@@ -446,14 +565,6 @@ function createDates($array, $dateDiff)
                 pointRadius: 4
             }]
         },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
+        options: {}
     });
 </script>

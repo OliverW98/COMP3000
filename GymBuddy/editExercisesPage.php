@@ -39,7 +39,7 @@ if (isset($_POST['btnAddExercise'])) {
 
 if (isset($_POST['btnEditExercise'])) {
     if (empty($_POST['nameInput']) || empty($_POST['setsInput']) || empty($_POST['repsInput']) || empty($_POST['weightInput'])) {
-        $outputPara = "All fields must be filled to add an exercise";
+        $outputPara = "All fields must be filled to edit an exercise";
     } else if ($_POST['setsInput'] <= 0) {
         $outputPara = "Sets can't be negative";
     } else if ($_POST['repsInput'] <= 0) {
@@ -78,7 +78,7 @@ if (isset($_POST['btnEditExercise'])) {
             </div>
             <input class="form-control"
                    name="nameInput" value="<?php if (!$_SESSION['boolAddExercise']) echo $exerciseToEdit->getName(); ?>"
-                   type="text">
+                   type="text" readonly>
         </div>
 
         <div class="input-group mb-3">
