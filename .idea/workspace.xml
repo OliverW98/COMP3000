@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/GymBuddy/exerciseGudiePage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/editExercisesPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/editExercisesPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/viewGoals.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewGoals.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,11 +33,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Documents/COMP3006/COMP3006CW2/CW2Chess" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Images" />
     <property name="settings.editor.selected.configurable" value="settings.saveactions" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\COMP3000\Images" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\COMP3000\GymBuddy" />
     </key>
@@ -174,14 +176,12 @@
       <workItem from="1625128213807" duration="1277000" />
       <workItem from="1625133875921" duration="2280000" />
       <workItem from="1625208662640" duration="1855000" />
-      <workItem from="1625467212838" duration="2766000" />
-    </task>
-    <task id="LOCAL-00052" summary="Fixed Header">
-      <created>1614191538935</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1614191538936</updated>
+      <workItem from="1625467212838" duration="2818000" />
+      <workItem from="1625559407793" duration="1264000" />
+      <workItem from="1625562328781" duration="739000" />
+      <workItem from="1625674668877" duration="1941000" />
+      <workItem from="1625729018122" duration="2694000" />
+      <workItem from="1625810303199" duration="3643000" />
     </task>
     <task id="LOCAL-00053" summary="remove include in excercise pages">
       <created>1614192524417</created>
@@ -519,14 +519,20 @@
       <option name="project" value="LOCAL" />
       <updated>1625073642702</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="full weight goals">
+      <created>1625471199193</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1625471199193</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="dispaly image above meal" />
     <MESSAGE value="img_dir is no longer stored" />
     <MESSAGE value="can delete meal with image" />
     <MESSAGE value="basic edit meal image" />
@@ -551,6 +557,7 @@
     <MESSAGE value="goals can be less than average speed and cycle message" />
     <MESSAGE value="run message" />
     <MESSAGE value="basic weight goals" />
-    <option name="LAST_COMMIT_MESSAGE" value="basic weight goals" />
+    <MESSAGE value="full weight goals" />
+    <option name="LAST_COMMIT_MESSAGE" value="full weight goals" />
   </component>
 </project>
