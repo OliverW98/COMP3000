@@ -37,7 +37,7 @@ session_start();
                     echo '<div class="dropdown-menu" aria-labelledby="navbarDropdown">';
                     echo '<a class="dropdown-item" href="createWeightsWorkoutPage.php">Record Weights</a>';
                     echo '<a class="dropdown-item" href="viewWeightsWorkoutData.php">Weights Stats</a>';
-                    echo '<a class="dropdown-item" href="viewWeightsWorkoutData.php">Weights Guide</a>';
+                    echo '<a class="dropdown-item" href="exerciseGuidePage.php">Weights Guide</a>';
                     echo '</div>';
                     echo '</li>';
                     echo '<li class="nav-item dropdown">';
