@@ -4,7 +4,6 @@
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/exerciseGuidePage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/exerciseGuidePage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/header.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +42,7 @@
       <recent name="C:\wamp64\www\COMP3000\Images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\COMP3000\Images" />
       <recent name="C:\wamp64\www\COMP3000\GymBuddy" />
     </key>
   </component>
@@ -184,14 +184,9 @@
       <workItem from="1625729018122" duration="2694000" />
       <workItem from="1625810303199" duration="3766000" />
       <workItem from="1625914524093" duration="3278000" />
-      <workItem from="1626078717362" duration="2813000" />
-    </task>
-    <task id="LOCAL-00054" summary="Fixed Delete Activity page and can record a Meal without comment">
-      <created>1614349739287</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1614349739288</updated>
+      <workItem from="1626078717362" duration="2862000" />
+      <workItem from="1626101675598" duration="493000" />
+      <workItem from="1626156459225" duration="3217000" />
     </task>
     <task id="LOCAL-00055" summary="can create a cardio workout without elevation and comment">
       <created>1614351310734</created>
@@ -529,14 +524,20 @@
       <option name="project" value="LOCAL" />
       <updated>1625814447793</updated>
     </task>
-    <option name="localTasksCounter" value="103" />
+    <task id="LOCAL-00103" summary="some exercise gifs complete">
+      <created>1626081598446</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1626081598446</updated>
+    </task>
+    <option name="localTasksCounter" value="104" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="can delete meal with image" />
     <MESSAGE value="basic edit meal image" />
     <MESSAGE value="complete edit meal image" />
     <MESSAGE value="image is no longer required for meals" />
@@ -561,6 +562,7 @@
     <MESSAGE value="basic weight goals" />
     <MESSAGE value="full weight goals" />
     <MESSAGE value="descriptions for exercises" />
-    <option name="LAST_COMMIT_MESSAGE" value="descriptions for exercises" />
+    <MESSAGE value="some exercise gifs complete" />
+    <option name="LAST_COMMIT_MESSAGE" value="some exercise gifs complete" />
   </component>
 </project>

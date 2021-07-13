@@ -1,4 +1,6 @@
 <?php
+include $_SERVER['DOCUMENT_ROOT'] . "/COMP3000/GymBuddy/src/DBFunctions.php";
+include_once 'header.php';
 ?>
 <html lang="en">
 <head>
@@ -7,11 +9,28 @@
 </head>
 <body>
 <div class="container">
-    <h2 class="text-center mt-3">My Goals</h2>
 
     <div class="row">
         <div class="col"></div>
         <div class="col-sm-5">
+            <h2 class="text-center mt-3">Exercise Guide</h2>
+            <div class="card" style="width: 25rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Barbell Bench Press</h5>
+                    <p class="card-text">Grip the bar with hands just wider than shoulder-width apart, so when you’re at
+                        the bottom of your move
+                        your hands are directly above your elbows. This allows for maximum force generation. Bring the
+                        bar
+                        slowly down to your chest as you breathe in. Push up as you breathe out, gripping the bar hard
+                        and
+                        watching a spot on the ceiling rather than the bar, so you can ensure it travels the same path
+                        every
+                        time.</p>
+                </div>
+                <iframe src="https://giphy.com/embed/E3irczshX1TAyUZyuR" width="270" height="480" frameBorder="0"
+                        class="giphy-embed card-img-bottom " allowFullScreen></iframe>
+            </div>
+
             <h3>Barbell Bench Press</h3>
             <p>Grip the bar with hands just wider than shoulder-width apart, so when you’re at the bottom of your move
                 your hands are directly above your elbows. This allows for maximum force generation. Bring the bar
@@ -72,6 +91,8 @@
             <p>Stand tall with feet hip-width apart. Engage your core. Take a big step forward with right leg. Start to
                 shift your weight forward so heel hits the floor first. Lower your body until right thigh is parallel to
                 the floor and right shin is vertical. Press into right heel to drive back up to starting position. </p>
+            <iframe src="https://giphy.com/embed/xVY5yNsqIG4Sn6GrD8" width="270" height="480" frameBorder="0"
+                    class="giphy-embed" allowFullScreen></iframe>
             <h3>Romanian Deadlift</h3>
             <p>To start the move, stand with the bar or weight in your hands as opposed to the floor. Slowly lower the
                 weight with a slight bend in your knees, bending at the hips and keeping your back straight. Lower until
@@ -179,14 +200,6 @@
                 return to the starting position.</p>
             <iframe src="https://giphy.com/embed/KQtfMPk9m5ms3NDQWX" width="270" height="480" frameBorder="0"
                     class="giphy-embed" allowFullScreen></iframe>
-            <h3>One Arm Tricep Extension</h3>
-            <p>Lift the dumbbell up so that it is at shoulder height and then extend your arm up over your head. Your
-                entire arm should be perpendicular to the floor. The dumbbell should be over your head. Your other hand
-                can be extended out the the side, held by your waist or can support the arm that has the dumbbell. urn
-                your wrist until the palm of your hand is facing forward and your pinkie is facing the ceiling. This is
-                the starting position. Bring the dumbbell behind your head slowly as you hold your upper arm stationary.
-                Inhale as you do so, and stop for a second when your triceps are fully extended. Flex your triceps and
-                return to the starting position.</p>
             <h3>Skullcrusher</h3>
             <p>Hold the dumbbell with both hands above your chest. Move the weight down toward the rear of your head by
                 flexing your elbows while exhaling. Continue lowering the weight behind the head until the dumbbell head
@@ -219,23 +232,29 @@
                 roughly shoulder-width apart. Before initiating the press, contract the lats, brace the abs, and tuck
                 the chin. Press the barbell by keeping it positioned in the meat of the hands and driving it directly
                 overhead. Lower the bar back down to the starting position with control. </p>
+            <iframe src="https://giphy.com/embed/6kPOPuz76CuqRjLSIj" width="270" height="480" frameBorder="0"
+                    class="giphy-embed" allowFullScreen></iframe>
             <h3>Seated Dumbbell Press</h3>
             <p>Position the end of the dumbbells on your knees and sit down on the bench. Kick your knees up one at a
                 time in order to get each dumbbell into place. Once the dumbbells are in place, rotate your palms so
                 they are facing forward. Take a deep breath then press the dumbbells overhead by extending the elbows
                 and contracting the deltoids. Slowly lower the dumbbells back to the starting position.</p>
+            <iframe src="https://giphy.com/embed/rhf3a47EHgK5wf7Q0m" width="270" height="480" frameBorder="0"
+                    class="giphy-embed" allowFullScreen></iframe>
             <h3>Arnold Press</h3>
             <p>Position the end of the dumbbells on your knees and sit down on the bench. Kick your knees up one at a
                 time in order to get each dumbbell into place. Once the dumbbells are in place, rotate your palms so
                 they are facing you. Take a deep breath then press the dumbbells overhead by extending the elbows and
                 contracting the deltoids. As you press, rotate the dumbbells until your palms are facing forward. Slowly
                 lower the dumbbells back to the starting position.</p>
-            <iframe src="https://giphy.com/embed/xrA1sWoIFc3aiohyCq" width="270" height="480" frameBorder="0"
+            <iframe src="https://giphy.com/embed/mHKEPoovTpo5ZA6VkC" width="270" height="480" frameBorder="0"
                     class="giphy-embed" allowFullScreen></iframe>
             <h3>Lateral Raise</h3>
             <p>Keep your back straight, brace your core, and then slowly lift the weights out to the side until your
                 arms are parallel with the floor, with the elbow slightly bent. Then lower them back down, again in
                 measured fashion.</p>
+            <iframe src="https://giphy.com/embed/aq8ulHsgAYfQ0i3p7R" width="480" height="270" frameBorder="0"
+                    class="giphy-embed" allowFullScreen></iframe>
             <h3>Upright Row</h3>
             <p>Using an overhand grip with hands shoulder-width apart. Keeping your chest up and your abs braced, raise
                 the bar or weights to your shoulders, leading with your elbows. Keep the lifting stage smooth to avoid
@@ -249,11 +268,15 @@
                 arm out to your side to help you balance. Press the kettlebell overhead, maintaining your shoulder
                 position as you do so. As you press, allow your elbow to move away from your body and your arm to go
                 upward in an arcing motion. </p>
+            <iframe src="https://giphy.com/embed/xrA1sWoIFc3aiohyCq" width="270" height="480" frameBorder="0"
+                    class="giphy-embed" allowFullScreen></iframe>
             <h3>Front Raises</h3>
             <p>Begin by holding both dumbbells of equal weight in front of your thighs with your palms facing your
                 body. Keeping your back straight and feet shoulder-width apart, lift the dumbbells in front of you in a
                 controlled manner until your hands are in line with your shoulders. Pause, then slowly lower back to the
                 starting position. </p>
+            <iframe src="https://giphy.com/embed/M6MZfhiKwG1p6RDvG3" width="270" height="480" frameBorder="0"
+                    class="giphy-embed" allowFullScreen></iframe>
             <h3>Military Press</h3>
             <p>Grab the bar with hands slightly wider than shoulder-width, palms facing forwards. tand with your feet
                 together, like a soldier on parade and squeeze your glutes and core muscles hard to give you a solid
@@ -268,12 +291,13 @@
                 be working.
                 Neutralize your neck and spine by looking at a spot on the floor about a foot beyond your hands. Your
                 head should be in line with your back. Place</p>
-            <iframe src="https://giphy.com/embed/9DaF9WQyH26UiTGvDK" width="480" height="270" frameBorder="0"
-                    class="giphy-embed" allowFullScreen></iframe>
+            <img src="../Images/IMG_5335.jpg" width="480" height="350">
             <h3>Butterfly Sit-up</h3>
             <p>Lie faceup on the floor with your arms extended past your head, your knees bent, and the soles of your
                 feet facing one another. In one fluid movement, raise your torso to a sitting position as your reach
                 forward with both hands to touch your ankles. Slowly lower your torso back to the starting position.</p>
+            <iframe src="https://giphy.com/embed/9DaF9WQyH26UiTGvDK" width="480" height="270" frameBorder="0"
+                    class="giphy-embed" allowFullScreen></iframe>
             <h3>Dead Bug</h3>
             <p>Lie flat on your back with your arms extended towards the ceiling. Then lift your legs and bend your
                 knees at 90° so your lower legs are parallel with the floor. Slowly lower your right arm behind your
@@ -295,6 +319,8 @@
                 Even if you can’t hold them perfectly rigid, keep your legs as straight as possible, and lift them until
                 they are pointing at the ceiling, or as near as you can get. Make sure your toes are pointed. Then lower
                 them back down, being careful to keep your movements measured.</p>
+            <iframe src="https://giphy.com/embed/lT1iqykdYRcmhNy3zm" width="480" height="270" frameBorder="0"
+                    class="giphy-embed" allowFullScreen></iframe>
             <h3>Bird-dog</h3>
             <p>Kneel with knees hip-width apart and hands firmly on the ground about shoulder-width apart. point the arm
                 out straight in front and extend the opposite leg behind you. You should form one straight line from
@@ -303,10 +329,9 @@
                 hands and knees. Switch to the other side.</p>
             <iframe src="https://giphy.com/embed/SSNo6fdE5MIoyc8XQW" width="480" height="270" frameBorder="0"
                     class="giphy-embed" allowFullScreen></iframe>
-            <div class="col"></div>
-        </div>
-        <canvas id="cycleAverageSpeedChart" width="200" height=75"></canvas>
 
+        </div>
+        <div class="col"></div>
     </div>
 </body>
 </html>
