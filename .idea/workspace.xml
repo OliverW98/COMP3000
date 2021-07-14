@@ -186,14 +186,8 @@
       <workItem from="1625914524093" duration="3278000" />
       <workItem from="1626078717362" duration="2862000" />
       <workItem from="1626101675598" duration="493000" />
-      <workItem from="1626156459225" duration="3217000" />
-    </task>
-    <task id="LOCAL-00055" summary="can create a cardio workout without elevation and comment">
-      <created>1614351310734</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1614351310735</updated>
+      <workItem from="1626156459225" duration="3252000" />
+      <workItem from="1626246742046" duration="2962000" />
     </task>
     <task id="LOCAL-00056" summary="can edit meal to have no comment">
       <created>1614351641098</created>
@@ -531,14 +525,20 @@
       <option name="project" value="LOCAL" />
       <updated>1626081598446</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <task id="LOCAL-00104" summary="all exercise gifs">
+      <created>1626159727555</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1626159727556</updated>
+    </task>
+    <option name="localTasksCounter" value="105" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="basic edit meal image" />
     <MESSAGE value="complete edit meal image" />
     <MESSAGE value="image is no longer required for meals" />
     <MESSAGE value="select exercise type page" />
@@ -563,6 +563,7 @@
     <MESSAGE value="full weight goals" />
     <MESSAGE value="descriptions for exercises" />
     <MESSAGE value="some exercise gifs complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="some exercise gifs complete" />
+    <MESSAGE value="all exercise gifs" />
+    <option name="LAST_COMMIT_MESSAGE" value="all exercise gifs" />
   </component>
 </project>
