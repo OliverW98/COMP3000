@@ -188,14 +188,8 @@
       <workItem from="1626101675598" duration="493000" />
       <workItem from="1626156459225" duration="3252000" />
       <workItem from="1626246742046" duration="3035000" />
-      <workItem from="1626345089989" duration="2859000" />
-    </task>
-    <task id="LOCAL-00057" summary="can edit workout to have no elevation and  comment">
-      <created>1614352017913</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1614352017913</updated>
+      <workItem from="1626345089989" duration="2951000" />
+      <workItem from="1626597483255" duration="1296000" />
     </task>
     <task id="LOCAL-00058" summary="fixed index card duration display">
       <created>1614440147198</created>
@@ -533,14 +527,20 @@
       <option name="project" value="LOCAL" />
       <updated>1626249805235</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="added rest of the exercises to function calls">
+      <created>1626348057990</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1626348057990</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="image is no longer required for meals" />
     <MESSAGE value="select exercise type page" />
     <MESSAGE value="adding exercises" />
     <MESSAGE value="basic exercise page" />
@@ -565,6 +565,7 @@
     <MESSAGE value="some exercise gifs complete" />
     <MESSAGE value="all exercise gifs" />
     <MESSAGE value="added displaying exercises to function call" />
-    <option name="LAST_COMMIT_MESSAGE" value="added displaying exercises to function call" />
+    <MESSAGE value="added rest of the exercises to function calls" />
+    <option name="LAST_COMMIT_MESSAGE" value="added rest of the exercises to function calls" />
   </component>
 </project>

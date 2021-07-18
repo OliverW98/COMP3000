@@ -79,8 +79,6 @@ function displayChestExercises()
                 should
                 be via your pectorals, with the triceps being the assistance.</p>';
     echo '</div>';
-    echo '            <iframe src="https://giphy.com/embed/dHbPVgJNHLzhOBq1aX" width="270" height="480" frameBorder="0"
-                    class="giphy-embed card-img-bottom" allowFullScreen></iframe>';
     echo '</div>';
     echo '<div class="card mt-3 mx-auto border-dark" style="width: 25rem;">';
     echo '<div class="card-body">';
@@ -92,8 +90,6 @@ function displayChestExercises()
                 allow
                 the bars to return toward your chest and breathe in during this recovery.</p>';
     echo '</div>';
-    echo '            <iframe src="https://giphy.com/embed/dHbPVgJNHLzhOBq1aX" width="270" height="480" frameBorder="0"
-                    class="giphy-embed card-img-bottom" allowFullScreen></iframe>';
     echo '</div>';
     echo '<div class="card mt-3 mx-auto border-dark" style="width: 25rem;">';
     echo '<div class="card-body">';
@@ -264,7 +260,7 @@ function displayBackExercises()
     echo '<div class="card mt-3 mx-auto border-dark" style="width: 25rem;">';
     echo '<div class="card-body">';
     echo '<h5 class="card-title">Row</h5>';
-    echo ' <p class="card-text"></p>';
+    echo ' <p class="card-text">Begin by having your arms completely outstretched as this move targets the lats and this position best engages the area. Keep your head, back and spine neutrally aligned, with your chest elevated and core engaged. With a small bend in your knees, pull the attachment in towards your body to just below the naval, initiating the move by driving your elbows towards your hips, keeping the elbows in. As the attachment reaches your torso, squeeze your lats and shoulder blades, holding the contraction for 1-2sec. Reverse to the start.</p>';
     echo '</div>';
     echo '</div>';
     echo '<div class="card mt-3 mx-auto border-dark" style="width: 25rem;">';
@@ -685,7 +681,9 @@ function displayCoreExercises()
         <div class="row">
             <div class="col"></div>
             <div class="col-sm-5">
-                <div class="input-group mb-3 mt-5">
+                <p class="text-center mt-5">Select a muscle group for which you would like to see example exercises
+                    for. </p>
+                <div class="input-group mb-3 mt-3">
                     <div class="input-group-prepend">
                         <label class="input-group-text text-light bg-dark" for="nameInput">Muscle Group</label>
                     </div>
