@@ -67,4 +67,13 @@ class workout
     {
         return $this->imageName;
     }
+
+    /**
+     * @param mixed $imageName
+     */
+    public function setImageName($imageName)
+    {
+        $this->imageName = $imageName;
+    }
+
 }

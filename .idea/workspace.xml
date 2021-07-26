@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/deleteWorkoutMealConfirmPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/deleteWorkoutMealConfirmPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/createMealPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createMealPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/editCardioWorkoutPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/editCardioWorkoutPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/src/workout.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/workout.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,14 +193,7 @@
       <workItem from="1626246742046" duration="3035000" />
       <workItem from="1626345089989" duration="2951000" />
       <workItem from="1626597483255" duration="2536000" />
-      <workItem from="1627290001713" duration="2849000" />
-    </task>
-    <task id="LOCAL-00060" summary="spell check">
-      <created>1614440933932</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1614440933933</updated>
+      <workItem from="1627290001713" duration="3709000" />
     </task>
     <task id="LOCAL-00061" summary="can create weights workout without comment">
       <created>1614441875075</created>
@@ -535,14 +531,20 @@
       <option name="project" value="LOCAL" />
       <updated>1627292539679</updated>
     </task>
-    <option name="localTasksCounter" value="109" />
+    <task id="LOCAL-00109" summary="can delete workout with image">
+      <created>1627292927253</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1627292927253</updated>
+    </task>
+    <option name="localTasksCounter" value="110" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="basic exercise page" />
     <MESSAGE value="basic exercise stats page" />
     <MESSAGE value="totals and average for exercises. predcition messages. cleaned up functions." />
     <MESSAGE value="exercises names added" />
@@ -567,6 +569,7 @@
     <MESSAGE value="added rest of the exercises to function calls" />
     <MESSAGE value="finished exercise guide page" />
     <MESSAGE value="can add images to workouts" />
-    <option name="LAST_COMMIT_MESSAGE" value="can add images to workouts" />
+    <MESSAGE value="can delete workout with image" />
+    <option name="LAST_COMMIT_MESSAGE" value="can delete workout with image" />
   </component>
 </project>

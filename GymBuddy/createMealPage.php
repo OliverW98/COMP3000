@@ -48,7 +48,6 @@ if (isset($_POST['btnCreateMeal'])) {
             $successOutputPara = "Meal has been recorded";
         }
     } else {
-
         createMeal($_SESSION['userID'], $_POST['titleInput'], $_POST['dateInput'], $_POST['caloriesInput'], $_POST['notesInput'], null);
         $successOutputPara = "Meal has been recorded";
     }
