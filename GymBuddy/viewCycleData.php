@@ -193,19 +193,20 @@ function createTrendLine($cycleWorkouts, $numOfCyclesToDislay)
             array_push($trendline, round(($cycleWorkouts[$i + 1]->getSpeed() + $diff) * 3.6, 1));
         }
     }
-    array_push($trendline, round(($cycleWorkouts[$i + 1]->getSpeed() + $totalDiff) * 3.6, 1));
-    array_push($trendline, round(($trendline[count($trendline) - 1] + ($totalDiff * 0.5) * 3.6), 1));
-    array_push($trendline, round(($trendline[count($trendline) - 1] + ($totalDiff * 0.5) * 3.6), 1));
+    array_push($trendline, round(($cycleWorkouts[$i + 1]->getSpeed() + ($totalDiff / $numOfCyclesToDislay)) * 3.6, 1));
+    array_push($trendline, round(($trendline[count($trendline) - 1] + ($totalDiff / $numOfCyclesToDislay) * 3.6), 1));
+    array_push($trendline, round(($trendline[count($trendline) - 1] + ($totalDiff / $numOfCyclesToDislay) * 3.6), 1));
     return $trendline;
 }
 
 function trendlineMessage($trendline)
 {
-    echo '<p class="text-center mt-3 mb-5">Over time your speed has been trending ';
     if ($trendline[count($trendline) - 1] < $trendline[count($trendline) - 2]) {
-        echo 'slower.</p>';
+        echo '<p class="text-center mt-3 mb-5">Over time your speed has been trending slower.</p>';
     } elseif ($trendline[count($trendline) - 1] > $trendline[count($trendline) - 2]) {
-        echo 'faster.</p>';
+        echo '<p class="text-center mt-3 mb-5">Over time your speed has been trending faster.</p>';
+    } else {
+        echo '<p class="text-center mt-3 mb-5">Over time your speed has been steady with little change to it.</p>';
     }
 }
 

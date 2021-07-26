@@ -10,7 +10,7 @@ class cycle extends workout
     private $averageWatts;
     private $caloriesBurnt;
 
-    public function __construct($id, $title, $date, $duration, $distance, $elevation, $notes)
+    public function __construct($id, $title, $date, $duration, $distance, $elevation, $notes, $imageName)
     {
         $this->workoutID = $id;
         $this->title = $title;
@@ -19,6 +19,7 @@ class cycle extends workout
         $this->distance = $distance;
         $this->elevation = $elevation;
         $this->notes = $notes;
+        $this->imageName = $imageName;
         $this->setSpeed();
     }
 

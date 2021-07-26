@@ -112,6 +112,9 @@ function displayWorkout($workout)
     $datetime = new DateTime($workout->getDate());
     $date = "{$datetime->format('d/m/y')} at {$datetime->format('H:i')}";
     echo '<div class="card mt-3 mx-auto border-dark" style="width: 25rem;">';
+    if ($workout->getImageName() != "") {
+        echo '<img src="../Images/' . $workout->getImageName() . '" class="card-img-top" alt="...">';
+    }
     echo '<div class="card-body">';
     echo '<h5 class="card-title">' . $workout->getTitle() . '</h5>';
     echo '<p class="card-text">' . $workout->getNotes() . '</p>';

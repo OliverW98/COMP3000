@@ -5,13 +5,14 @@ class weights extends workout
 {
     private $exercises;
 
-    public function __construct($id, $title, $date, $duration, $notes, $exercises)
+    public function __construct($id, $title, $date, $duration, $notes, $imageName, $exercises)
     {
         $this->workoutID = $id;
         $this->title = $title;
         $this->date = $date;
         $this->duration = $duration;
         $this->notes = $notes;
+        $this->imageName = $imageName;
         $this->exercises = $exercises;
     }
 

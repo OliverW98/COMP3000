@@ -8,13 +8,16 @@ class workout
     protected $date;
     protected $duration;
     protected $notes;
+    protected $imageName;
 
-    public function __construct($id, $title , $date , $duration,$notes){
+    public function __construct($id, $title, $date, $duration, $notes, $imageName)
+    {
         $this->workoutID = $id;
-        $this->title=$title;
+        $this->title = $title;
         $this->date = $date;
         $this->duration = $duration;
         $this->notes = $notes;
+        $this->imageName = $imageName;
     }
 
     /**
@@ -55,5 +58,13 @@ class workout
     public function getNotes()
     {
         return $this->notes;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getImageName()
+    {
+        return $this->imageName;
     }
 }

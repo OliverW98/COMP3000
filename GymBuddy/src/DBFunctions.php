@@ -131,16 +131,17 @@ function constructUserObject($userData, $userSnapshots, $usersMeals, $usersWorko
         $distance = $usersWorkouts[$i]['distance'];
         $elevation = $usersWorkouts[$i]['elevation'];
         $notes = $usersWorkouts[$i]['notes'];
+        $imageName = $usersWorkouts[$i]['imageName'];
 
         if ($type == 0) {
 
-            $cycle = new cycle($workoutID, $title, $date, $duration, $distance, $elevation, $notes);
+            $cycle = new cycle($workoutID, $title, $date, $duration, $distance, $elevation, $notes, $imageName);
 
             array_push($workoutsArray, $cycle);
 
         } elseif ($type == 1) {
 
-            $run = new run($workoutID, $title, $date, $duration, $distance, $elevation, $notes);
+            $run = new run($workoutID, $title, $date, $duration, $distance, $elevation, $notes, $imageName);
 
             array_push($workoutsArray, $run);
 
@@ -160,7 +161,7 @@ function constructUserObject($userData, $userSnapshots, $usersMeals, $usersWorko
 
                 array_push($exercisesArray, $exercise);
             }
-            $weights = new weights($workoutID, $title, $date, $duration, $notes, $exercisesArray);
+            $weights = new weights($workoutID, $title, $date, $duration, $notes, $imageName, $exercisesArray);
 
             array_push($workoutsArray, $weights);
         }
@@ -357,12 +358,6 @@ function deleteMeal($mealID)
     $statement->execute();
 }
 
-function createSnapshot($userID, $date, $weight, $height, $BFP, $MMP)
-{
-    $statement = getConnection()->prepare("CALL createSnapshot ('" . $userID . "','" . $date . "','" . $weight . "','" . $height . "','" . $BFP . "','" . $MMP . "')");
-    $statement->execute();
-}
-
 function deleteExercise($exerciseID)
 {
     $statement = getConnection()->prepare("CALL deleteExercise ('" . $exerciseID . "')");
@@ -372,6 +367,12 @@ function deleteExercise($exerciseID)
 function deleteGoal($goalID)
 {
     $statement = getConnection()->prepare("CALL deleteGoal ('" . $goalID . "')");
+    $statement->execute();
+}
+
+function createSnapshot($userID, $date, $weight, $height, $BFP, $MMP)
+{
+    $statement = getConnection()->prepare("CALL createSnapshot ('" . $userID . "','" . $date . "','" . $weight . "','" . $height . "','" . $BFP . "','" . $MMP . "')");
     $statement->execute();
 }
 
@@ -387,9 +388,9 @@ function createExercise($workoutID, $name, $sets, $reps, $weight)
     $statement->execute();
 }
 
-function createWorkout($userID, $type, $title, $date, $duration, $distance, $elevation, $notes)
+function createWorkout($userID, $type, $title, $date, $duration, $distance, $elevation, $notes, $imageName)
 {
-    $statement = getConnection()->prepare("CALL createWorkout ('" . $userID . "','" . $type . "','" . $title . "','" . $date . "','" . $duration . "','" . $distance . "','" . $elevation . "','" . $notes . "')");
+    $statement = getConnection()->prepare("CALL createWorkout ('" . $userID . "','" . $type . "','" . $title . "','" . $date . "','" . $duration . "','" . $distance . "','" . $elevation . "','" . $notes . "','" . $imageName . "')");
     $statement->execute();
 }
 

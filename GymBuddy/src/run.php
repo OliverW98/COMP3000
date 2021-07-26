@@ -8,7 +8,7 @@ class run extends workout
     private $speed;
     private $caloriesBurnt;
 
-    public function __construct($id, $title, $date, $duration, $distance, $elevation, $notes)
+    public function __construct($id, $title, $date, $duration, $distance, $elevation, $notes, $imageName)
     {
         $this->workoutID = $id;
         $this->title = $title;
@@ -17,6 +17,7 @@ class run extends workout
         $this->distance = $distance;
         $this->elevation = $elevation;
         $this->notes = $notes;
+        $this->imageName = $imageName;
         $this->setSpeed();
     }
 
