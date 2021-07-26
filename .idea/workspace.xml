@@ -3,14 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/createCardioWorkoutPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createCardioWorkoutPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/DBFunctions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/src/cycle.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/cycle.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/src/run.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/run.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/src/weights.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/weights.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/src/workout.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/src/workout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/deleteWorkoutMealConfirmPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/deleteWorkoutMealConfirmPage.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,14 +190,7 @@
       <workItem from="1626246742046" duration="3035000" />
       <workItem from="1626345089989" duration="2951000" />
       <workItem from="1626597483255" duration="2536000" />
-      <workItem from="1627290001713" duration="2440000" />
-    </task>
-    <task id="LOCAL-00059" summary="create pages now have cancel buttons">
-      <created>1614440895652</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1614440895652</updated>
+      <workItem from="1627290001713" duration="2849000" />
     </task>
     <task id="LOCAL-00060" summary="spell check">
       <created>1614440933932</created>
@@ -542,14 +528,20 @@
       <option name="project" value="LOCAL" />
       <updated>1626599406135</updated>
     </task>
-    <option name="localTasksCounter" value="108" />
+    <task id="LOCAL-00108" summary="can add images to workouts">
+      <created>1627292539678</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1627292539679</updated>
+    </task>
+    <option name="localTasksCounter" value="109" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="adding exercises" />
     <MESSAGE value="basic exercise page" />
     <MESSAGE value="basic exercise stats page" />
     <MESSAGE value="totals and average for exercises. predcition messages. cleaned up functions." />
@@ -574,6 +566,7 @@
     <MESSAGE value="added displaying exercises to function call" />
     <MESSAGE value="added rest of the exercises to function calls" />
     <MESSAGE value="finished exercise guide page" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished exercise guide page" />
+    <MESSAGE value="can add images to workouts" />
+    <option name="LAST_COMMIT_MESSAGE" value="can add images to workouts" />
   </component>
 </project>

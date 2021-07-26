@@ -24,6 +24,7 @@ if (isset($_POST['btnDeleteActivity'])) {
         unlink('../Images/' . $activity->getImageName());
     } else {
         deleteWorkout($activity->getWorkoutID());
+        unlink('../Images/' . $activity->getImageName());
     }
 
     unsetSessions();
