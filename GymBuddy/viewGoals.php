@@ -130,13 +130,13 @@ if (isset($_POST['btnShowExerciseGoal'])) {
         }
     }
     $selectExe = $_POST['selExercise'];
-    $weightWorkout = getWeightWorkouts($user);
-    $exerciseArray = getExercise($weightWorkout, $_POST['selExercise']);
-    $workoutsWithExercises = getWeightWorkoutDates($weightWorkout, $_POST['selExercise']);
+    $weightWorkouts = getWeightWorkouts($user);
+    $exerciseArray = getExercise($weightWorkouts, $_POST['selExercise']);
+    $workoutsWithExercises = getWeightWorkoutDates($weightWorkouts, $_POST['selExercise']);
     $averageDiff = averageWeightWorkoutDiff($exerciseArray);
     $averageWeight = getAverageWeight($exerciseArray);
     $weightPrediction = createWeightPrediction($userGoals, $averageWeight, $averageDiff, $_POST['selExercise']);
-    $weightDates = createDates($weightPrediction, averageDateDiff($weightWorkout));
+    $weightDates = createDates($weightPrediction, averageDateDiff($weightWorkouts));
 }
 
 function getCycleWorkouts($user)
@@ -169,7 +169,7 @@ function getWeightWorkouts($user)
             array_push($weightWorkouts, $workout);
         }
     }
-    return array_reverse($weightWorkouts);
+    return $weightWorkouts;
 }
 
 function getWeightWorkoutDates($weightWorkouts, $exerciseToFind)
@@ -178,7 +178,6 @@ function getWeightWorkoutDates($weightWorkouts, $exerciseToFind)
     foreach ($weightWorkouts as $weights) {
         foreach ($weights->getExercises() as $ex) {
             if ($ex->getName() === $exerciseToFind) {
-
                 array_push($wokrouts, $weights);
             }
         }
@@ -267,7 +266,6 @@ function createCardioPrediction($userGoal, $averageSpeed, $averageDiff, $type)
 function createWeightPrediction($userGoal, $averageSpeed, $averageDiff, $exercise)
 {
     $weightPrediction = array();
-    var_dump($userGoal);
 
     foreach ($userGoal as $goal) {
         if ($goal->getTitle() === $exercise) {
@@ -334,7 +332,7 @@ function createDates($array, $dateDiff)
             echo 'on average you gain <b class="text-success">' . round($avrDiff, 2) . '</b> Km/h each ride.';
         } elseif ($avrDiff < 0) {
             echo 'on average you lose <b class="text-success">' . round($avrDiff, 2) . ' </b> Km/h each ride.';
-        } elseif ($avrDiff == 0) {
+        } elseif ($avrDiff === 0) {
             echo 'you dont make any improvement from ride to ride.';
         }
 
@@ -376,8 +374,8 @@ function createDates($array, $dateDiff)
             echo 'on average you gain <b class="text-success"> ' . round($avrDiff, 2) . '</b> Km/h each run.';
         } elseif ($avrDiff < 0) {
             echo 'on average you lose <b class="text-danger"> ' . round($avrDiff, 2) . ' </b> Km/h each run.';
-        } elseif ($avrDiff == 0) {
-            echo 'you dont make any improvement from ride to run.';
+        } elseif ($avrDiff === 0) {
+            echo 'you dont make any improvement from run to run.';
         }
 
         if ($averageRunSpeed < $averageRunSpeedGoal && $avrDiff > 0) {
@@ -414,18 +412,18 @@ function createDates($array, $dateDiff)
         <?php
         if (isset($averageWeight)) {
             echo '<p class="text-center">Your average weight lifted for ' . $selectExe . ' is <b>' . round($averageWeight, 1) . '</b> Kg and ';
-            $avrDiff = averageWorkoutDiff($runWorkouts);
+            $avrDiff = averageWeightWorkoutDiff($exerciseArray);
             if ($avrDiff > 0) {
                 echo 'on average you gain <b class="text-success"> ' . round($avrDiff, 2) . '</b> Kg each session.';
             } elseif ($avrDiff < 0) {
                 echo 'on average you lose <b class="text-danger"> ' . round($avrDiff, 2) . ' </b> Kg each session.';
-            } elseif ($avrDiff == 0) {
-                echo 'you dont make any improvement from ride to run.';
+            } elseif ($avrDiff === 0) {
+                echo 'you dont make any improvement from session to session.';
             }
 
-            if ($averageRunSpeed < $averageRunSpeedGoal && $avrDiff > 0) {
+            if ($averageWeight < $WeightGoal && $avrDiff > 0) {
                 echo ' The graph below shows you how long we predict it will take to reach your goal.</p>';
-            } elseif ($averageRunSpeed > $averageRunSpeedGoal && $avrDiff < 0) {
+            } elseif ($averageWeight > $WeightGoal && $avrDiff < 0) {
                 echo ' The graph below shows you how long we predict it will take to reach your goal.</p>';
             } else {
                 echo ' Meaning you will be unable to reach your goal at the moment.</p>';

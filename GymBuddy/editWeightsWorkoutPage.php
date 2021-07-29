@@ -61,7 +61,7 @@ if (isset($_POST['btnEditWorkout'])) {
     } elseif (count($exercises) === 0) {
         $failureOutputPara = "Workout must contain atleast one exercise";
     } else {
-        editWorkout($workout->getWorkoutID(), $_POST['titleInput'], $_POST['dateInput'], $_POST['durationInput'], 0, 0, $_POST['notesInput']);
+        editWorkout($workout->getWorkoutID(), $_POST['titleInput'], $_POST['dateInput'], $_POST['durationInput'], 0, 0, $_POST['notesInput'], null);
         header("Location: index.php");
     }
 }

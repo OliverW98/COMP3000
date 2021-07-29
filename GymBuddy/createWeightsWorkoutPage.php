@@ -42,7 +42,7 @@ if (isset($_POST['btnCreateWorkout'])) {
         $type = "2";
         $distance = 0;
         $elevation = 0;
-        createWorkout($_SESSION['userID'], $type, $_POST['titleInput'], $_POST['dateInput'], $_POST['durationInput'], $distance, $elevation, $_POST['notesInput']);
+        createWorkout($_SESSION['userID'], $type, $_POST['titleInput'], $_POST['dateInput'], $_POST['durationInput'], $distance, $elevation, $_POST['notesInput'], null);
         $workoutID = getWorkoutID($_POST['dateInput']);
         $exercises = $_SESSION['tempExerciseArray'];
         foreach ($exercises as $ex) {
