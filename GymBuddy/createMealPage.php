@@ -62,55 +62,61 @@ if (isset($_POST['btnCreateMeal'])) {
 </head>
 <body>
 <div class="container">
-    <p class="text-center mt-5">Enter details about your meal</p>
-    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-sm-8">
+            <p class="text-center mt-5">Enter details about your meal</p>
+            <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data">
 
-        <div class="input-group mb-3 mt-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="titleInput">Title<span
-                            style="color: red">*</span></label>
-            </div>
-            <input class="form-control" name="titleInput" type="text">
+                <div class="input-group mb-3 mt-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text text-light bg-dark" for="titleInput">Title<span
+                                    style="color: red">*</span></label>
+                    </div>
+                    <input class="form-control" name="titleInput" type="text">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text text-light bg-dark" for="dateInput">Date<span
+                                    style="color: red">*</span></label>
+                    </div>
+                    <input class="form-control" name="dateInput" type="datetime-local">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text text-light bg-dark" for="caloriesInput">Calories<span
+                                    style="color: red">*</span></label>
+                    </div>
+                    <input class="form-control" name="caloriesInput" min="0" type="number">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text text-light bg-dark" for="notesInput">Notes</label>
+                    </div>
+                    <textarea class="form-control" name="notesInput" maxlength="300"
+                              style="resize: none;height: 90px;"></textarea>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text text-light bg-dark" for="mealImage">Image</label>
+                    </div>
+                    <input class="form-control" type="file" name="mealImage" multiple="">
+                </div>
+
+                <input class="btn btn-danger" name="btnCancel" type="submit" value="Cancel">
+                <input class="btn btn-success float-right" name="btnCreateMeal" type="submit" value="Record Meal">
+
+                <p class="text-center text-success"><?php echo $successOutputPara ?></p>
+                <p class="text-center text-danger"><?php echo $failureOutputPara ?></p>
+
+            </form>
         </div>
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="dateInput">Date<span
-                            style="color: red">*</span></label>
-            </div>
-            <input class="form-control" name="dateInput" type="datetime-local">
-        </div>
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="caloriesInput">Calories<span
-                            style="color: red">*</span></label>
-            </div>
-            <input class="form-control" name="caloriesInput" min="0" type="number">
-        </div>
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="notesInput">Notes</label>
-            </div>
-            <textarea class="form-control" name="notesInput" maxlength="300"
-                      style="resize: none;height: 90px;"></textarea>
-        </div>
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="mealImage">Image</label>
-            </div>
-            <input class="form-control" type="file" name="mealImage" multiple="">
-        </div>
-
-        <input class="btn btn-danger" name="btnCancel" type="submit" value="Cancel">
-        <input class="btn btn-success float-right" name="btnCreateMeal" type="submit" value="Record Meal">
-
-        <p class="text-center text-success"><?php echo $successOutputPara ?></p>
-        <p class="text-center text-danger"><?php echo $failureOutputPara ?></p>
-
-    </form>
+        <div class="col"></div>
+    </div>
 </div>
 
 </body>

@@ -69,59 +69,69 @@ if (isset($_POST['btnEditExercise'])) {
 </head>
 <body>
 <div class="container">
-    <p class="text-center">Enter Exercise Information</p>
-    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-sm-8">
+            <p class="text-center">Enter Exercise Information</p>
+            <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="nameInput">Name</label>
-            </div>
-            <input class="form-control"
-                   name="nameInput" value="<?php if (!$_SESSION['boolAddExercise']) echo $exerciseToEdit->getName(); ?>"
-                   type="text" readonly>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text text-light bg-dark" for="nameInput">Name</label>
+                    </div>
+                    <input class="form-control"
+                           name="nameInput"
+                           value="<?php if (!$_SESSION['boolAddExercise']) echo $exerciseToEdit->getName(); ?>"
+                           type="text" readonly>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text text-light bg-dark" min="0" for="setsInput">Sets</label>
+                    </div>
+                    <input class="form-control" name="setsInput"
+                           value="<?php if (!$_SESSION['boolAddExercise']) echo $exerciseToEdit->getSets(); ?>"
+                           type="number">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text text-light bg-dark" min="0" for="repsInput">Reps</label>
+                    </div>
+                    <input class="form-control" name="repsInput"
+                           value="<?php if (!$_SESSION['boolAddExercise']) echo $exerciseToEdit->getReps(); ?>"
+                           type="number">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text text-light bg-dark" for="weightInput">Weight</label>
+                    </div>
+                    <input class="form-control" name="weightInput" min="0"
+                           value="<?php if (!$_SESSION['boolAddExercise']) echo $exerciseToEdit->getWeight(); ?>"
+                           type="number">
+                    <div class="input-group-append">
+                        <label class="input-group-text text-light bg-dark" for="weightInput">Kg</label>
+                    </div>
+                </div>
+
+                <div>
+                    <input class="btn btn-danger" name="btnBack" type="submit" value="Back">
+                    <?php
+                    if (!$_SESSION['boolAddExercise']) {
+                        echo '<input class="btn btn-Warning float-right" name="btnEditExercise" type="submit" value="Edit Exercise">';
+
+                    } else {
+                        echo '<input class="btn btn-success float-right" name="btnAddExercise" type="submit" value="Add Exercise">';
+                    }
+                    ?>
+                </div>
+
+                <p class="text-center text-danger"><?php echo $outputPara ?></p>
+            </form>
         </div>
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" min="0" for="setsInput">Sets</label>
-            </div>
-            <input class="form-control" name="setsInput"
-                   value="<?php if (!$_SESSION['boolAddExercise']) echo $exerciseToEdit->getSets(); ?>" type="number">
-        </div>
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" min="0" for="repsInput">Reps</label>
-            </div>
-            <input class="form-control" name="repsInput"
-                   value="<?php if (!$_SESSION['boolAddExercise']) echo $exerciseToEdit->getReps(); ?>" type="number">
-        </div>
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="weightInput">Weight</label>
-            </div>
-            <input class="form-control" name="weightInput" min="0"
-                   value="<?php if (!$_SESSION['boolAddExercise']) echo $exerciseToEdit->getWeight(); ?>" type="number">
-            <div class="input-group-append">
-                <label class="input-group-text text-light bg-dark" for="weightInput">Kg</label>
-            </div>
-        </div>
-
-        <div>
-            <input class="btn btn-danger" name="btnBack" type="submit" value="Back">
-            <?php
-            if (!$_SESSION['boolAddExercise']) {
-                echo '<input class="btn btn-Warning float-right" name="btnEditExercise" type="submit" value="Edit Exercise">';
-
-            } else {
-                echo '<input class="btn btn-success float-right" name="btnAddExercise" type="submit" value="Add Exercise">';
-            }
-            ?>
-        </div>
-
-        <p class="text-center text-danger"><?php echo $outputPara ?></p>
-    </form>
+        <div class="col"></div>
+    </div>
 </div>
 
 </body>

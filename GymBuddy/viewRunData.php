@@ -179,9 +179,9 @@ function createTrendLine($runWorkouts, $numOfRunsToDislay)
             array_push($trendline, round(($runWorkouts[$i + 1]->getSpeed() + $diff) * 3.6, 1));
         }
     }
-    array_push($trendline, round(($runWorkouts[$i + 1]->getSpeed() + $totalDiff) * 3.6, 1));
-    array_push($trendline, round(($trendline[count($trendline) - 1] + ($totalDiff * 0.5) * 3.6), 1));
-    array_push($trendline, round(($trendline[count($trendline) - 1] + ($totalDiff * 0.5) * 3.6), 1));
+    array_push($trendline, round(($runWorkouts[$i + 1]->getSpeed() + ($totalDiff / $numOfRunsToDislay)) * 3.6, 1));
+    array_push($trendline, round(($trendline[count($trendline) - 1] + (($totalDiff / $numOfRunsToDislay) * 0.5) * 3.6), 1));
+    array_push($trendline, round(($trendline[count($trendline) - 1] + (($totalDiff / $numOfRunsToDislay) * 0.5) * 3.6), 1));
     return $trendline;
 }
 

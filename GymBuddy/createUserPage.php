@@ -38,35 +38,41 @@ if (isset($_POST['btnNext'])) {
 <body>
 <div class="container">
     <p class="text-center"><b>Create Account</b> >>> Personal Details >>> Confirmation</p>
-    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="userNameInput">Username</label>
-            </div>
-            <input class="form-control" name="userNameInput" type="text">
-        </div>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-sm-8">
+            <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text text-light bg-dark" for="userNameInput">Username</label>
+                    </div>
+                    <input class="form-control" name="userNameInput" type="text">
+                </div>
 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="emailInput">Email</label>
-            </div>
-            <input class="form-control" name="emailInput" type="text">
-        </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text text-light bg-dark" for="emailInput">Email</label>
+                    </div>
+                    <input class="form-control" name="emailInput" type="text">
+                </div>
 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="passwordInput">Password</label>
-            </div>
-            <input class="form-control" name="passwordInput" type="password">
-        </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text text-light bg-dark" for="passwordInput">Password</label>
+                    </div>
+                    <input class="form-control" name="passwordInput" type="password">
+                </div>
 
-        <div>
-            <input class="btn btn-danger" name="btnCancel" type="submit" value="Cancel">
-            <input class="btn btn-primary float-right" name="btnNext" type="submit" value="Next">
-        </div>
+                <div>
+                    <input class="btn btn-danger" name="btnCancel" type="submit" value="Cancel">
+                    <input class="btn btn-primary float-right" name="btnNext" type="submit" value="Next">
+                </div>
 
-        <p class="text-center text-danger"><?php echo $outputPara ?></p>
-    </form>
+                <p class="text-center text-danger"><?php echo $outputPara ?></p>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
 </div>
 
 </body>

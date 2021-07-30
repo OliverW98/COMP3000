@@ -131,97 +131,105 @@ if (isset($_POST['btnDeleteDetails'])) {
 <body>
 <div class="container">
     <h3 class="text-center mt-3">This information is used to created statistics for your workouts</h3>
-    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-sm-8">
+            <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
 
-        <h5 class="text-center mt-5">Body Stats</h5>
-        <p class="text-center">This is you body Snapshot
-            from <?php echo $snapshotDate; ?> </p>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="weightInput">Weight</label>
-            </div>
-            <input class="form-control" name="weightInput" min="0" type="number"
-                   value="<?php echo $weight ?>">
-            <div class="input-group-append">
-                <label class="input-group-text text-light bg-dark" for="weightInput">Kg</label>
-            </div>
+                <h5 class="text-center mt-5">Body Stats</h5>
+                <p class="text-center">This is you body Snapshot
+                    from <?php echo $snapshotDate; ?> </p>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text text-light bg-dark" for="weightInput">Weight</label>
+                    </div>
+                    <input class="form-control" name="weightInput" min="0" type="number"
+                           value="<?php echo $weight ?>">
+                    <div class="input-group-append">
+                        <label class="input-group-text text-light bg-dark" for="weightInput">Kg</label>
+                    </div>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text text-light bg-dark" for="heightInput">Height</label>
+                    </div>
+                    <input class="form-control" name="heightInput" min="0" type="number"
+                           value="<?php echo $height ?>">
+                    <div class="input-group-append">
+                        <label class="input-group-text text-light bg-dark" for="heightInput">Cm</label>
+                    </div>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text text-light bg-dark" for="BFPInput">Body Fat Percent</label>
+                    </div>
+                    <input class="form-control" name="BFPInput" min="0" type="number"
+                           value="<?php echo $BFP ?>">
+                    <div class="input-group-append">
+                        <label class="input-group-text text-light bg-dark" for="BFPInput">%</label>
+                    </div>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text text-light bg-dark" for="MMPInput">Muscle Mass Percent</label>
+                    </div>
+                    <input class="form-control" name="MMPInput" min="0" type="number"
+                           value="<?php echo $MMP; ?>">
+                    <div class="input-group-append">
+                        <label class="input-group-text text-light bg-dark" for="MMPInput">%</label>
+                    </div>
+                </div>
+
+                <div>
+                    <input class="btn btn-danger" name="btnDeleteStats" type="submit" value="Delete Stats">
+                    <input class="btn btn-primary float-right" name="btnUpdateStats" type="submit" value="Update Stats">
+                </div>
+
+                <h5 class="text-center mt-3">Details</h5>
+
+                <div class="input-group mt-3 mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text text-light bg-dark" for="dobInput">Date Of Birth</label>
+                    </div>
+                    <input class="form-control" name="dobInput" type="date" value="<?php echo $user->getDob(); ?>">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text text-light bg-dark" for="genderInput">Gender</label>
+                    </div>
+                    <select class="form-control" name="genderInput">
+                        <?php if ($user->getGender() == "Female") {
+                            echo '<option>Male</option>';
+                            echo '<option selected>Female</optionselected>';
+                        } else if ($user->getGender() == "Male") {
+                            echo '<option selected>Male</option>';
+                            echo '<option>Female</optionselected>';
+                        } else {
+                            echo '<option selected>Select a Gender</option>';
+                            echo '<option>Male</option>';
+                            echo '<option>Female</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
+
+                <div>
+                    <input class="btn btn-danger" name="btnDeleteDetails" type="submit" value="Delete Details">
+                    <input class="btn btn-primary float-right" name="btnUpdateDetails" type="submit"
+                           value="Update Details">
+                </div>
+
+                <p class="text-center text-success"><?php echo $successOutputPara ?></p>
+                <p class="text-center text-danger"><?php echo $failureOutputPara ?></p>
+
+            </form>
         </div>
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="heightInput">Height</label>
-            </div>
-            <input class="form-control" name="heightInput" min="0" type="number"
-                   value="<?php echo $height ?>">
-            <div class="input-group-append">
-                <label class="input-group-text text-light bg-dark" for="heightInput">Cm</label>
-            </div>
-        </div>
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="BFPInput">Body Fat Percent</label>
-            </div>
-            <input class="form-control" name="BFPInput" min="0" type="number"
-                   value="<?php echo $BFP ?>">
-            <div class="input-group-append">
-                <label class="input-group-text text-light bg-dark" for="BFPInput">%</label>
-            </div>
-        </div>
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="MMPInput">Muscle Mass Percent</label>
-            </div>
-            <input class="form-control" name="MMPInput" min="0" type="number"
-                   value="<?php echo $MMP; ?>">
-            <div class="input-group-append">
-                <label class="input-group-text text-light bg-dark" for="MMPInput">%</label>
-            </div>
-        </div>
-
-        <div>
-            <input class="btn btn-danger" name="btnDeleteStats" type="submit" value="Delete Stats">
-            <input class="btn btn-primary float-right" name="btnUpdateStats" type="submit" value="Update Stats">
-        </div>
-
-        <h5 class="text-center mt-3">Details</h5>
-
-        <div class="input-group mt-3 mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="dobInput">Date Of Birth</label>
-            </div>
-            <input class="form-control" name="dobInput" type="date" value="<?php echo $user->getDob(); ?>">
-        </div>
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="genderInput">Gender</label>
-            </div>
-            <select class="form-control" name="genderInput">
-                <?php if ($user->getGender() == "Female") {
-                    echo '<option>Male</option>';
-                    echo '<option selected>Female</optionselected>';
-                } else if ($user->getGender() == "Male") {
-                    echo '<option selected>Male</option>';
-                    echo '<option>Female</optionselected>';
-                } else {
-                    echo '<option selected>Select a Gender</option>';
-                    echo '<option>Male</option>';
-                    echo '<option>Female</option>';
-                }
-                ?>
-            </select>
-        </div>
-
-        <div>
-            <input class="btn btn-danger" name="btnDeleteDetails" type="submit" value="Delete Details">
-            <input class="btn btn-primary float-right" name="btnUpdateDetails" type="submit" value="Update Details">
-        </div>
-
-        <p class="text-center text-success"><?php echo $successOutputPara ?></p>
-        <p class="text-center text-danger"><?php echo $failureOutputPara ?></p>
-    </form>
+        <div class="col"></div>
+    </div>
 </div>
 
 </body>

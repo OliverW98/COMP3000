@@ -39,46 +39,47 @@ if (isset($_POST['btnDeleteActivity'])) {
 </head>
 <body>
 <div class="container">
-    <?php
-    if (get_class($activity) == "meal") {
-        echo '<p class="text-center mt-3">Are you sure you want to delete this meal?</p>';
-    } else {
-        echo '<p class="text-center mt-3">Are you sure you want to delete this workout?</p>';
-    }
-
-    ?>
-    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="titleInput">Title</label>
-            </div>
-            <input class="form-control" name="titleInput" disabled value="<?php echo $activity->getTitle() ?>"
-                   type="text">
-        </div>
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="dateInput">Date</label>
-            </div>
-            <input class="form-control" name="dateInput" disabled value="<?php echo $date ?>" type="datetime-local">
-        </div>
-
-        <div>
-            <input class="btn btn-primary" name="btnCancel" type="submit" value="Cancel">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-sm-8">
             <?php
             if (get_class($activity) == "meal") {
-                echo '<input class="btn btn-danger float-right" name="btnDeleteActivity" type="submit" value="Delete Meal">';
+                echo '<p class="text-center mt-5">Are you sure you want to delete this meal?</p>';
             } else {
-                echo '<input class="btn btn-danger float-right" name="btnDeleteActivity" type="submit" value="Delete Workout">';
+                echo '<p class="text-center mt-5">Are you sure you want to delete this workout?</p>';
             }
 
             ?>
+            <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text text-light bg-dark" for="titleInput">Title</label>
+                    </div>
+                    <input class="form-control" name="titleInput" disabled value="<?php echo $activity->getTitle() ?>"
+                           type="text">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text text-light bg-dark" for="dateInput">Date</label>
+                    </div>
+                    <input class="form-control" name="dateInput" disabled value="<?php echo $date ?>"
+                           type="datetime-local">
+                </div>
+                <div>
+                    <input class="btn btn-primary" name="btnCancel" type="submit" value="Cancel">
+                    <?php
+                    if (get_class($activity) == "meal") {
+                        echo '<input class="btn btn-danger float-right" name="btnDeleteActivity" type="submit" value="Delete Meal">';
+                    } else {
+                        echo '<input class="btn btn-danger float-right" name="btnDeleteActivity" type="submit" value="Delete Workout">';
+                    }
 
+                    ?>
+                </div>
+            </form>
         </div>
-
-    </form>
+        <div class="col"></div>
+    </div>
 </div>
 
 </body>

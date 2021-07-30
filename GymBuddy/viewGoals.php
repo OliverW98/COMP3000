@@ -323,8 +323,11 @@ function createDates($array, $dateDiff)
 <div class="container">
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
         <h2 class="text-center mt-3">My Goals</h2>
+        <p class="text-center">On this page you can set goals for average cycling and running speed plus weight lifting
+            goals for exercises. Once a goal is set a predicted time
+            for you to achieve this goal will be displayed.</p>
 
-        <h4 class="text-center mt-3">Cycling</h4>
+        <h4 class="text-center mt-6">Cycling</h4>
         <?php
         echo '<p class="text-center">Your average speed for cycling is <b> ' . round($averageCycleSpeed, 1) . '</b> Km/h and ';
         $avrDiff = averageWorkoutDiff($cycleWorkouts);

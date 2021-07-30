@@ -330,22 +330,29 @@ function predictionMessage($avgCalsADay, $avgBurntCalsADay, $avgActivitiesAWeek,
 </head>
 <body>
 <div class="container">
-    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-        <div class="input-group mb-3 mt-3">
-            <select id="selectYear" class="custom-select" name="selectYear">
-                <option selected>Choose a Year...</option>
-                <option>2021</option>
-                <option>2020</option>
-                <option>2019</option>
-                <option>2018</option>
-                <option>2017</option>
-            </select>
-            <div class="input-group-append">
-                <button id="FindYear" class="btn btn-success" name="btnFindYear" type="submit">Find</button>
-            </div>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-sm-5">
+            <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+                <h1 class="text-center mt-3">View Snapshots</h1>
+                <div class="input-group mb-4 mt-5">
+                    <select id="selectYear" class="custom-select" name="selectYear">
+                        <option selected>Choose a Year...</option>
+                        <option>2021</option>
+                        <option>2020</option>
+                        <option>2019</option>
+                        <option>2018</option>
+                        <option>2017</option>
+                    </select>
+                    <div class="input-group-append">
+                        <button id="FindYear" class="btn btn-success" name="btnFindYear" type="submit">Find</button>
+                    </div>
+                </div>
+            </form>
+            <p class="text-center text-danger"><?php echo $failureOutputPara ?></p>
         </div>
-    </form>
-    <p class="text-center text-danger"><?php echo $failureOutputPara ?></p>
+        <div class="col"></div>
+    </div>
     <h4 class="text-center">Current Body Composition</h4>
     <?php
     if ($snapshotCount > 0) {

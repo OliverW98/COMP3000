@@ -678,15 +678,13 @@ function displayCoreExercises()
 <body>
 <div class="container">
     <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+        <h1 class="text-center mt-3">Exercise Guide</h1>
+        <p class="text-center mt-3">Select a muscle group for which you would like to see example exercises
+            for. </p>
         <div class="row">
             <div class="col"></div>
             <div class="col-sm-5">
-                <p class="text-center mt-5">Select a muscle group for which you would like to see example exercises
-                    for. </p>
                 <div class="input-group mb-3 mt-3">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text text-light bg-dark" for="nameInput">Muscle Group</label>
-                    </div>
                     <select class="form-control" name="selMuscleGroup" type="text">
                         <option>Choose Muscle Group...</option>
                         <option>Chest</option>
@@ -697,7 +695,7 @@ function displayCoreExercises()
                         <option>Core</option>
                     </select>
                     <div class="input-group-append">
-                        <input class="btn btn-Primary" name="btnSelect" type="submit" value="Select">
+                        <input class="btn btn-success" name="btnSelect" type="submit" value="Select">
                     </div>
                 </div>
                 <p class="text-center text-danger"><?php echo $outputPara ?></p>

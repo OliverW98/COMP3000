@@ -3,9 +3,25 @@
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/createCardioWorkoutPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createCardioWorkoutPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/createExercisePage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createExercisePage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/createMealPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createMealPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/createUserConfirmPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createUserConfirmPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/createUserPDPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createUserPDPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/createUserPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createUserPage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/createWeightsWorkoutPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createWeightsWorkoutPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/deleteWorkoutMealConfirmPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/deleteWorkoutMealConfirmPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/editCardioWorkoutPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/editCardioWorkoutPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/editExercisesPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/editExercisesPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/editMealPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/editMealPage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/editWeightsWorkoutPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/editWeightsWorkoutPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/exerciseGuidePage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/exerciseGuidePage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/logInPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/logInPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/personalDetailsPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/personalDetailsPage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/selectExerciseType.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/selectExerciseType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/viewBodySnapshots.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewBodySnapshots.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/viewGoals.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewGoals.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/viewRunData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewRunData.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +52,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Images" />
-    <property name="settings.editor.selected.configurable" value="settings.saveactions" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -193,14 +209,9 @@
       <workItem from="1626345089989" duration="2951000" />
       <workItem from="1626597483255" duration="2536000" />
       <workItem from="1627290001713" duration="4023000" />
-      <workItem from="1627553592518" duration="3368000" />
-    </task>
-    <task id="LOCAL-00062" summary="can edit weight workout to have not comment and must have 1 exercise">
-      <created>1614443052536</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1614443052536</updated>
+      <workItem from="1627553592518" duration="3402000" />
+      <workItem from="1627649876444" duration="1099000" />
+      <workItem from="1627651838811" duration="2645000" />
     </task>
     <task id="LOCAL-00063" summary="edit page now have red themed cancel buttons">
       <created>1614443134479</created>
@@ -538,14 +549,20 @@
       <option name="project" value="LOCAL" />
       <updated>1627293906543</updated>
     </task>
-    <option name="localTasksCounter" value="111" />
+    <task id="LOCAL-00111" summary="bug fixed goals page for Weights">
+      <created>1627557670804</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1627557670804</updated>
+    </task>
+    <option name="localTasksCounter" value="112" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="totals and average for exercises. predcition messages. cleaned up functions." />
     <MESSAGE value="exercises names added" />
     <MESSAGE value="exercises names added 2" />
     <MESSAGE value="removed annotation" />
@@ -570,6 +587,7 @@
     <MESSAGE value="can add images to workouts" />
     <MESSAGE value="can delete workout with image" />
     <MESSAGE value="can edit cardio workout with image" />
-    <option name="LAST_COMMIT_MESSAGE" value="can edit cardio workout with image" />
+    <MESSAGE value="bug fixed goals page for Weights" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fixed goals page for Weights" />
   </component>
 </project>

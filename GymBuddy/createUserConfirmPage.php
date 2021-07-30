@@ -40,98 +40,109 @@ if (isset($_POST['btnCreateUser'])) {
 <body>
 <div class="container">
     <p class="text-center">Create Account >>> Personal Details >>> <b>Confirmation</b></p>
-    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="userNameInput">Username</label>
-            </div>
-            <input class="form-control" name="userNameInput" type="text" value="<?php echo $_SESSION['userName'] ?>"
-                   disabled>
-        </div>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-sm-8">
+            <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text text-light bg-dark" for="userNameInput">Username</label>
+                    </div>
+                    <input class="form-control" name="userNameInput" type="text"
+                           value="<?php echo $_SESSION['userName'] ?>"
+                           disabled>
+                </div>
 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="emailInput">Email</label>
-            </div>
-            <input class="form-control" name="emailInput" type="text" value="<?php echo $_SESSION['email'] ?>" disabled>
-        </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text text-light bg-dark" for="emailInput">Email</label>
+                    </div>
+                    <input class="form-control" name="emailInput" type="text" value="<?php echo $_SESSION['email'] ?>"
+                           disabled>
+                </div>
 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="passwordInput">Password</label>
-            </div>
-            <input class="form-control" name="passwordInput" type="password"
-                   value="<?php echo $_SESSION['password'] ?>" disabled>
-        </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text text-light bg-dark" for="passwordInput">Password</label>
+                    </div>
+                    <input class="form-control" name="passwordInput" type="password"
+                           value="<?php echo $_SESSION['password'] ?>" disabled>
+                </div>
 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="weightInput">Weight</label>
-            </div>
-            <input class="form-control" name="weightInput" type="text" value="<?php echo $_SESSION['weight'] ?>"
-                   disabled>
-            <div class="input-group-append">
-                <label class="input-group-text text-light bg-dark" for="weightInput">Kg</label>
-            </div>
-        </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text text-light bg-dark" for="weightInput">Weight</label>
+                    </div>
+                    <input class="form-control" name="weightInput" type="text" value="<?php echo $_SESSION['weight'] ?>"
+                           disabled>
+                    <div class="input-group-append">
+                        <label class="input-group-text text-light bg-dark" for="weightInput">Kg</label>
+                    </div>
+                </div>
 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="heightInput">Height</label>
-            </div>
-            <input class="form-control" name="heightInput" type="text" value="<?php echo $_SESSION['height'] ?>"
-                   disabled>
-            <div class="input-group-append">
-                <label class="input-group-text text-light bg-dark" for="heightInput">Cm</label>
-            </div>
-        </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text text-light bg-dark" for="heightInput">Height</label>
+                    </div>
+                    <input class="form-control" name="heightInput" type="text" value="<?php echo $_SESSION['height'] ?>"
+                           disabled>
+                    <div class="input-group-append">
+                        <label class="input-group-text text-light bg-dark" for="heightInput">Cm</label>
+                    </div>
+                </div>
 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="BFPInput">Body Fat Percent</label>
-            </div>
-            <input class="form-control" name="BFPInput" type="text" value="<?php echo $_SESSION['BFP'] ?>" disabled>
-            <div class="input-group-append">
-                <label class="input-group-text text-light bg-dark" for="BFPInput">%</label>
-            </div>
-        </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text text-light bg-dark" for="BFPInput">Body Fat Percent</label>
+                    </div>
+                    <input class="form-control" name="BFPInput" type="text" value="<?php echo $_SESSION['BFP'] ?>"
+                           disabled>
+                    <div class="input-group-append">
+                        <label class="input-group-text text-light bg-dark" for="BFPInput">%</label>
+                    </div>
+                </div>
 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="MMPInput">Muscle Mass Percent</label>
-            </div>
-            <input class="form-control" name="MMPInput" type="text" value="<?php echo $_SESSION['MMP'] ?>" disabled>
-            <div class="input-group-append">
-                <label class="input-group-text text-light bg-dark" for="MMPInput">%</label>
-            </div>
-        </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text text-light bg-dark" for="MMPInput">Muscle Mass Percent</label>
+                    </div>
+                    <input class="form-control" name="MMPInput" type="text" value="<?php echo $_SESSION['MMP'] ?>"
+                           disabled>
+                    <div class="input-group-append">
+                        <label class="input-group-text text-light bg-dark" for="MMPInput">%</label>
+                    </div>
+                </div>
 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="dobInput">Date Of Birth</label>
-            </div>
-            <input class="form-control" name="dobInput" type="text" value="<?php echo $_SESSION['dob'] ?>" disabled>
-        </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text text-light bg-dark" for="dobInput">Date Of Birth</label>
+                    </div>
+                    <input class="form-control" name="dobInput" type="text" value="<?php echo $_SESSION['dob'] ?>"
+                           disabled>
+                </div>
 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text text-light bg-dark" for="genderInput">Gender</label>
-            </div>
-            <input class="form-control" name="genderInput" type="text" value="<?php echo $_SESSION['gender'] ?>"
-                   disabled>
-        </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text text-light bg-dark" for="genderInput">Gender</label>
+                    </div>
+                    <input class="form-control" name="genderInput" type="text" value="<?php echo $_SESSION['gender'] ?>"
+                           disabled>
+                </div>
 
-        <div>
-            <div class="btn-group">
-                <input class="btn btn-danger" name="btnCancel" type="submit" value="Cancel">
-                <input class="btn btn-secondary" name="btnBack" type="submit" value="Back">
-            </div>
-            <input class="btn btn-success float-right" name="btnCreateUser" type="submit" value="Sign Up">
-        </div>
+                <div>
+                    <div class="btn-group">
+                        <input class="btn btn-danger" name="btnCancel" type="submit" value="Cancel">
+                        <input class="btn btn-secondary" name="btnBack" type="submit" value="Back">
+                    </div>
+                    <input class="btn btn-success float-right" name="btnCreateUser" type="submit" value="Sign Up">
+                </div>
 
-        <p class="text-center text-success"><?php echo $successOutputPara ?></p>
-        <p class="text-center text-danger"><?php echo $failureOutputPara ?></p>
-    </form>
+                <p class="text-center text-success"><?php echo $successOutputPara ?></p>
+                <p class="text-center text-danger"><?php echo $failureOutputPara ?></p>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
 </div>
 
 </body>
