@@ -92,7 +92,7 @@ if (isset($_POST['btnDeleteRunGoal'])) {
 if (isset($_POST['btnSetWeightGoal'])) {
 
     if ($_POST['selExercise'] === "Select an Exercise...") {
-        $failureOutputPara = "Please Select an Exercise";
+        $failureOutputPara = "Please Select an Exercise.";
     } else {
         if (count($userGoals) === 0) {
             createGoal($_SESSION['userID'], 2, $_POST['selExercise'], $_POST['weightGoal']);
@@ -127,16 +127,23 @@ if (isset($_POST['btnShowExerciseGoal'])) {
     foreach ($userGoals as $goal) {
         if ($goal->getTitle() === $_POST['selExercise']) {
             $WeightGoal = $goal->getValue();
+            $selectExe = $_POST['selExercise'];
+            $failureOutputPara = "";
+            $weightWorkouts = getWeightWorkouts($user);
+            $exerciseArray = getExercise($weightWorkouts, $_POST['selExercise']);
+            $workoutsWithExercises = getWeightWorkoutDates($weightWorkouts, $_POST['selExercise']);
+            $averageDiff = averageWeightWorkoutDiff($exerciseArray);
+            $averageWeight = getAverageWeight($exerciseArray);
+            $weightPrediction = createWeightPrediction($userGoals, $averageWeight, $averageDiff, $_POST['selExercise']);
+            $weightDates = createDates($weightPrediction, averageDateDiff($weightWorkouts));
+            break;
+        } elseif ($_POST['selExercise'] === "Select an Exercise...") {
+            $failureOutputPara = "Please Select an Exercise.";
+            break;
+        } else {
+            $failureOutputPara = "No goal set for this exercise.";
         }
     }
-    $selectExe = $_POST['selExercise'];
-    $weightWorkouts = getWeightWorkouts($user);
-    $exerciseArray = getExercise($weightWorkouts, $_POST['selExercise']);
-    $workoutsWithExercises = getWeightWorkoutDates($weightWorkouts, $_POST['selExercise']);
-    $averageDiff = averageWeightWorkoutDiff($exerciseArray);
-    $averageWeight = getAverageWeight($exerciseArray);
-    $weightPrediction = createWeightPrediction($userGoals, $averageWeight, $averageDiff, $_POST['selExercise']);
-    $weightDates = createDates($weightPrediction, averageDateDiff($weightWorkouts));
 }
 
 function getCycleWorkouts($user)
@@ -369,7 +376,7 @@ function createDates($array, $dateDiff)
         <canvas id="cycleAverageSpeedChart" width="200" height=75"></canvas>
 
 
-        <h4 class="text-center mt-3">Running</h4>
+        <h4 class="text-center mt-6">Running</h4>
         <?php
         echo '<p class="text-center">Your average speed for running is <b>' . round($averageRunSpeed, 1) . '</b> Km/h and ';
         $avrDiff = averageWorkoutDiff($runWorkouts);

@@ -38,7 +38,7 @@ if (isset($_POST['btnCreateWorkout'])) {
             $failureOutputPara = "Can't upload file of this type.";
         } elseif ($fileError === 1) {
             $failureOutputPara = "There was an error whilst uploading your image.";
-        } elseif ($fileSize > 10000) {
+        } elseif ($fileSize > 25000) {
             $failureOutputPara = "Your image size is too big.";
         } else {
             $type = $elevation = "";

@@ -4,22 +4,9 @@
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/createCardioWorkoutPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createCardioWorkoutPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/createExercisePage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createExercisePage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/createMealPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createMealPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/createUserConfirmPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createUserConfirmPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/createUserPDPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createUserPDPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/createUserPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createUserPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/createWeightsWorkoutPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createWeightsWorkoutPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/deleteWorkoutMealConfirmPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/deleteWorkoutMealConfirmPage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/editCardioWorkoutPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/editCardioWorkoutPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/editExercisesPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/editExercisesPage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/editMealPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/editMealPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/editWeightsWorkoutPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/editWeightsWorkoutPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/exerciseGuidePage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/exerciseGuidePage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/logInPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/logInPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/personalDetailsPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/personalDetailsPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/selectExerciseType.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/selectExerciseType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/viewBodySnapshots.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewBodySnapshots.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/viewGoals.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewGoals.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/viewRunData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewRunData.php" afterDir="false" />
     </list>
@@ -211,14 +198,10 @@
       <workItem from="1627290001713" duration="4023000" />
       <workItem from="1627553592518" duration="3402000" />
       <workItem from="1627649876444" duration="1099000" />
-      <workItem from="1627651838811" duration="2645000" />
-    </task>
-    <task id="LOCAL-00063" summary="edit page now have red themed cancel buttons">
-      <created>1614443134479</created>
-      <option name="number" value="00063" />
-      <option name="presentableId" value="LOCAL-00063" />
-      <option name="project" value="LOCAL" />
-      <updated>1614443134479</updated>
+      <workItem from="1627651838811" duration="2721000" />
+      <workItem from="1628154382601" duration="1255000" />
+      <workItem from="1628512610828" duration="914000" />
+      <workItem from="1628697363433" duration="2354000" />
     </task>
     <task id="LOCAL-00064" summary="fixed no activities last month bug">
       <created>1614606108519</created>
@@ -556,14 +539,20 @@
       <option name="project" value="LOCAL" />
       <updated>1627557670804</updated>
     </task>
-    <option name="localTasksCounter" value="112" />
+    <task id="LOCAL-00112" summary="resizing alot of boxes">
+      <created>1627654622431</created>
+      <option name="number" value="00112" />
+      <option name="presentableId" value="LOCAL-00112" />
+      <option name="project" value="LOCAL" />
+      <updated>1627654622431</updated>
+    </task>
+    <option name="localTasksCounter" value="113" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="exercises names added" />
     <MESSAGE value="exercises names added 2" />
     <MESSAGE value="removed annotation" />
     <MESSAGE value="goal class and basic page layout" />
@@ -588,6 +577,7 @@
     <MESSAGE value="can delete workout with image" />
     <MESSAGE value="can edit cardio workout with image" />
     <MESSAGE value="bug fixed goals page for Weights" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fixed goals page for Weights" />
+    <MESSAGE value="resizing alot of boxes" />
+    <option name="LAST_COMMIT_MESSAGE" value="resizing alot of boxes" />
   </component>
 </project>
