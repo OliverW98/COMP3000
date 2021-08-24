@@ -62,6 +62,7 @@ session_start();
                     echo '</a>';
                     echo '<div class="dropdown-menu" aria-labelledby="navbarDropdown">';
                     echo '<a class="dropdown-item" href="viewGoals.php">My Goals</a>';
+                    echo '<a class="dropdown-item" href="viewCyclingGoal.php">Cycling Goals</a>';
                     echo '</div>';
                     echo '</li>';
                     echo '<li class="nav-item"><a class="nav-link" href="personalDetailsPage.php">Personal Details</a></li>';

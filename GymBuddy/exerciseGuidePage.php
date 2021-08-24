@@ -114,26 +114,6 @@ function displayLegExercises()
     echo '<div class="col-sm-5">';
     echo '<div class="card mt-3 mx-auto border-dark" style="width: 25rem;">';
     echo '<div class="card-body">';
-    echo '<h5 class="card-title">Barbell Bench Press</h5>';
-    echo ' <p class="card-text">Grip the bar with hands just wider than shoulder-width apart, so when
-                        you’re at
-                        the bottom of your move
-                        your hands are directly above your elbows. This allows for maximum force generation. Bring
-                        the
-                        bar
-                        slowly down to your chest as you breathe in. Push up as you breathe out, gripping the bar
-                        hard
-                        and
-                        watching a spot on the ceiling rather than the bar, so you can ensure it travels the same
-                        path
-                        every
-                        time.</p>';
-    echo '</div>';
-    echo '<iframe src="https://giphy.com/embed/E3irczshX1TAyUZyuR" width="270" height="480" frameBorder="0"
-                        class="giphy-embed card-img-bottom " allowFullScreen></iframe>';
-    echo '</div>';
-    echo '<div class="card mt-3 mx-auto border-dark" style="width: 25rem;">';
-    echo '<div class="card-body">';
     echo '<h5 class="card-title">Squat</h5>';
     echo ' <p class="card-text">Take the bar out of the rack with it resting on your rear shoulder muscles. Take two big steps back
                 and
@@ -214,8 +194,6 @@ function displayLegExercises()
                 the
                 bar down until the hips are just a few inches off the floor. Squeeze the glutes and lift again.</p>';
     echo '</div>';
-    echo '<iframe src="https://giphy.com/embed/DsWAL5lkEBh7SjA83j" width="270" height="480" frameBorder="0"
-                    class="giphy-embed card-img-bottom" allowFullScreen></iframe>';
     echo '</div>';
     echo '<div class="card mt-3 mx-auto border-dark" style="width: 25rem;">';
     echo '<div class="card-body">';
@@ -391,8 +369,6 @@ function displayArmExercises()
                 curling your wrist upwards and exhaling. Slowly lower your wrists back down to the starting position
                 while inhaling.</p>';
     echo '</div>';
-    echo '<iframe src="https://giphy.com/embed/iuykA9iWo1NA5WfLWo" width="270" height="480" frameBorder="0"
-                    class="giphy-embed card-img-bottom" allowFullScreen></iframe>';
     echo '</div>';
     echo '</div>';
     echo '<div class="col-sm-5">';
@@ -604,8 +580,6 @@ function displayCoreExercises()
                 forward with both hands to touch your ankles. Slowly lower your torso back to the starting
                 position.</p>';
     echo '</div>';
-    echo '<iframe src="https://giphy.com/embed/9DaF9WQyH26UiTGvDK"  frameBorder="0"
-                    class="giphy-embed card-img-bottom" allowFullScreen></iframe>';
     echo '</div>';
     echo '<div class="card mt-3 mx-auto border-dark" style="width: 25rem;">';
     echo '<div class="card-body">';

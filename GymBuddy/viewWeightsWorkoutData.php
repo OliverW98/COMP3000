@@ -31,7 +31,7 @@ if (isset($_POST['btnShowExercise'])) {
                 $avgLifted = getAverageLifted($selectedExercises);
                 $avgReps = getAverageReps($selectedExercises);
             } else {
-                $failureOutputPara = "No exercise of this type are recorded.";
+                $failureOutputPara = "No exercise of this type is recorded.";
             }
         } else {
             $failureOutputPara = "No weight workouts are recorded.";

@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/GymBuddy/viewCyclingGoal.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/createCardioWorkoutPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createCardioWorkoutPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/createMealPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/createMealPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/editCardioWorkoutPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/editCardioWorkoutPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/editMealPage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/editMealPage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/viewGoals.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewGoals.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/viewRunData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewRunData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/exerciseGuidePage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/exerciseGuidePage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/viewWeightsWorkoutData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewWeightsWorkoutData.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,14 +200,10 @@
       <workItem from="1627651838811" duration="2721000" />
       <workItem from="1628154382601" duration="1255000" />
       <workItem from="1628512610828" duration="914000" />
-      <workItem from="1628697363433" duration="2354000" />
-    </task>
-    <task id="LOCAL-00064" summary="fixed no activities last month bug">
-      <created>1614606108519</created>
-      <option name="number" value="00064" />
-      <option name="presentableId" value="LOCAL-00064" />
-      <option name="project" value="LOCAL" />
-      <updated>1614606108519</updated>
+      <workItem from="1628697363433" duration="2650000" />
+      <workItem from="1629793311664" duration="1132000" />
+      <workItem from="1629813648455" duration="6885000" />
+      <workItem from="1629826767519" duration="4408000" />
     </task>
     <task id="LOCAL-00065" summary="fixed trendline">
       <created>1621163494022</created>
@@ -546,14 +541,20 @@
       <option name="project" value="LOCAL" />
       <updated>1627654622431</updated>
     </task>
-    <option name="localTasksCounter" value="113" />
+    <task id="LOCAL-00113" summary="file size changes and trending message">
+      <created>1628703462314</created>
+      <option name="number" value="00113" />
+      <option name="presentableId" value="LOCAL-00113" />
+      <option name="project" value="LOCAL" />
+      <updated>1628703462314</updated>
+    </task>
+    <option name="localTasksCounter" value="114" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="exercises names added 2" />
     <MESSAGE value="removed annotation" />
     <MESSAGE value="goal class and basic page layout" />
     <MESSAGE value="set and delete cycle goals" />
@@ -578,6 +579,7 @@
     <MESSAGE value="can edit cardio workout with image" />
     <MESSAGE value="bug fixed goals page for Weights" />
     <MESSAGE value="resizing alot of boxes" />
-    <option name="LAST_COMMIT_MESSAGE" value="resizing alot of boxes" />
+    <MESSAGE value="file size changes and trending message" />
+    <option name="LAST_COMMIT_MESSAGE" value="file size changes and trending message" />
   </component>
 </project>
