@@ -64,6 +64,7 @@ session_start();
                     echo '<a class="dropdown-item" href="viewGoals.php">My Goals</a>';
                     echo '<a class="dropdown-item" href="viewCyclingGoal.php">Cycling Goals</a>';
                     echo '<a class="dropdown-item" href="viewRunningGoal.php">Running Goals</a>';
+                    echo '<a class="dropdown-item" href="viewWeightsWorkoutGoal.php">Weights Goals</a>';
                     echo '</div>';
                     echo '</li>';
                     echo '<li class="nav-item"><a class="nav-link" href="personalDetailsPage.php">Personal Details</a></li>';
