@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b535b38-687c-4246-9ee1-c8836f32ec93" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/GymBuddy/viewCyclingGoal.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GymBuddy/viewRunningGoal.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/exerciseGuidePage.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/exerciseGuidePage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/GymBuddy/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewCycleData.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GymBuddy/viewWeightsWorkoutData.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewWeightsWorkoutData.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GymBuddy/viewCyclingGoal.php" beforeDir="false" afterPath="$PROJECT_DIR$/GymBuddy/viewCyclingGoal.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,14 +201,8 @@
       <workItem from="1628697363433" duration="2650000" />
       <workItem from="1629793311664" duration="1132000" />
       <workItem from="1629813648455" duration="6885000" />
-      <workItem from="1629826767519" duration="4408000" />
-    </task>
-    <task id="LOCAL-00065" summary="fixed trendline">
-      <created>1621163494022</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1621163494023</updated>
+      <workItem from="1629826767519" duration="4503000" />
+      <workItem from="1629876900633" duration="2687000" />
     </task>
     <task id="LOCAL-00066" summary="fixed snapshot prediction">
       <created>1621186478093</created>
@@ -548,14 +540,20 @@
       <option name="project" value="LOCAL" />
       <updated>1628703462314</updated>
     </task>
-    <option name="localTasksCounter" value="114" />
+    <task id="LOCAL-00114" summary="cycle Goal page">
+      <created>1629831502020</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1629831502020</updated>
+    </task>
+    <option name="localTasksCounter" value="115" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="removed annotation" />
     <MESSAGE value="goal class and basic page layout" />
     <MESSAGE value="set and delete cycle goals" />
     <MESSAGE value="cycle goal duration prediction" />
@@ -580,6 +578,7 @@
     <MESSAGE value="bug fixed goals page for Weights" />
     <MESSAGE value="resizing alot of boxes" />
     <MESSAGE value="file size changes and trending message" />
-    <option name="LAST_COMMIT_MESSAGE" value="file size changes and trending message" />
+    <MESSAGE value="cycle Goal page" />
+    <option name="LAST_COMMIT_MESSAGE" value="cycle Goal page" />
   </component>
 </project>

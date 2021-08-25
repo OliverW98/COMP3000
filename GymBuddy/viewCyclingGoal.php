@@ -319,7 +319,7 @@ function createDates($array, $dateDiff)
         if ($avrDiff > 0) {
             echo 'on average you gain <b class="text-success">' . round($avrDiff, 2) . '</b> Km/h each ride.';
         } elseif ($avrDiff < 0) {
-            echo 'on average you lose <b class="text-success">' . round($avrDiff, 2) . ' </b> Km/h each ride.';
+            echo 'on average you lose <b class="text-danger">' . round($avrDiff, 2) . ' </b> Km/h each ride.';
         } elseif ($avrDiff === 0) {
             echo 'you dont make any improvement from ride to ride.';
         }
@@ -360,7 +360,7 @@ function createDates($array, $dateDiff)
         if ($avrDiff > 0) {
             echo 'on average you gain <b class="text-success">' . round($avrDiff, 2) . '</b> meters each ride.';
         } elseif ($avrDiff < 0) {
-            echo 'on average you lose <b class="text-success">' . round($avrDiff, 2) . ' </b> meters each ride.';
+            echo 'on average you lose <b class="text-danger">' . round($avrDiff, 2) . ' </b> meters each ride.';
         } elseif ($avrDiff === 0) {
             echo 'you dont make any improvement from ride to ride.';
         }
@@ -402,7 +402,7 @@ function createDates($array, $dateDiff)
         if ($avrDiff > 0) {
             echo 'on average you gain <b class="text-success">' . round($avrDiff, 2) . '</b> meters each ride.';
         } elseif ($avrDiff < 0) {
-            echo 'on average you lose <b class="text-success">' . round($avrDiff, 2) . ' </b> meters each ride.';
+            echo 'on average you lose <b class="text-danger">' . round($avrDiff, 2) . ' </b> meters each ride.';
         } elseif ($avrDiff === 0) {
             echo 'you dont make any improvement from ride to ride.';
         }
